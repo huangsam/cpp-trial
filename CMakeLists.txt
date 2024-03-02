@@ -48,5 +48,5 @@ target_link_libraries(
   gtest_main
 )
 
-# include(GoogleTest)
-# gtest_discover_tests(hello_test.out)
+include(GoogleTest)
+gtest_discover_tests(hello_test.out)
