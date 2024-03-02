@@ -39,14 +39,15 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 
 add_executable(
-  hello_test.out
+  test.out
   test/hello_test.cpp
+  test/factorial_test.cpp
   src/factorial.cpp
 )
 target_link_libraries(
-  hello_test.out
+  test.out
   gtest_main
 )
 
 include(GoogleTest)
-gtest_discover_tests(hello_test.out)
+gtest_discover_tests(test.out)
