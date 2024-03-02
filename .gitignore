@@ -1,0 +1,9 @@
+_deps/
+bin/
+build/
+CMakeFiles/
+lib/
+CMakeCache.txt
+Makefile
+*.cmake
+*.out
