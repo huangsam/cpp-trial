@@ -1,5 +1,5 @@
 #!/bin/bash
-set -eu
+set -eux
 
 # Download GoogleTest dependency and prepare make assets
 cmake -S . -B build
