@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eu
 
 # Possible options include:
 # LLVM, GNU, Google, Chromium, Microsoft, Mozilla, WebKit
