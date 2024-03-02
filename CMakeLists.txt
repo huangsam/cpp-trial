@@ -17,10 +17,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(
   main.out
-  main.cpp
-  date.cpp
-  factorial.cpp
-  person.cpp
+  src/main.cpp
+  src/date.cpp
+  src/factorial.cpp
+  src/person.cpp
 )
 
 ###
@@ -40,8 +40,8 @@ enable_testing()
 
 add_executable(
   hello_test.out
-  hello_test.cpp
-  factorial.cpp
+  test/hello_test.cpp
+  src/factorial.cpp
 )
 target_link_libraries(
   hello_test.out

@@ -7,3 +7,4 @@ CMakeCache.txt
 Makefile
 *.cmake
 *.out
+.DS_Store
