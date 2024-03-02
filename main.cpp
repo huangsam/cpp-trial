@@ -6,18 +6,15 @@
 
 using namespace std;
 
-void printDate(Date d)
-{
+void printDate(Date d) {
   cout << d.getYear() << "/" << d.getMonth() << "/" << d.getDay() << "\n";
 }
 
-void printPerson(Person p)
-{
+void printPerson(Person p) {
   cout << p.getName() << " is " << p.getAge() << " years old\n";
 }
 
-int main()
-{
+int main() {
   // date.h test
   auto d1 = Date(2024, 1, 1);
   printDate(d1);

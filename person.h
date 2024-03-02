@@ -3,13 +3,12 @@
 
 #include <string>
 
-class Person
-{
-private:
+class Person {
+ private:
   std::string name;
   int age;
 
-public:
+ public:
   Person(std::string name, int age);
 
   std::string getName() const { return name; }
