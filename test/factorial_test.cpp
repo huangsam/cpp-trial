@@ -1,6 +1,6 @@
-#include <gtest/gtest.h>
-
 #include "../src/factorial.h"
+
+#include <gtest/gtest.h>
 
 TEST(FactorialTest, BasicAssertions) {
   EXPECT_EQ(factorial(0), 1);
