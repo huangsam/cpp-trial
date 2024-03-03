@@ -1,8 +1,5 @@
-###
-# Basic setup:
-# https://cmake.org/cmake/help/latest/guide/tutorial/index.html
-###
-
+# Set min version of 3.24 to avoid DOWNLOAD_EXTRACT_TIMESTAMP warning
+# https://github.com/ethereum/solidity/pull/13429
 cmake_minimum_required(VERSION 3.24)
 
 project(
