@@ -4,7 +4,7 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 
 ## Getting started
 
-Please install tools like `cmake` and `clang-format` first beforehand. YOu can do this with Homebrew on Mac by running `brew install cmake clang-format`.
+Please install tools like `cmake` and `clang-format` first beforehand. You can do this with Homebrew on Mac by running `brew install cmake clang-format`.
 
 Once all the tool requirements are met, you can run the end-to-end build process:
 
