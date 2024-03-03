@@ -24,7 +24,7 @@ From there, run the binaries from the `build/bin` folder.
 If you wish to use `ctest` for testing, run:
 
 ```shell
-ctest --test-dir build/test
+bash test.sh
 ```
 
 ### Formatting the code
