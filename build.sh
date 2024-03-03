@@ -6,5 +6,3 @@ cmake -S . -B build
 
 # Run build process E2E and place final assets in build/ folder
 cmake --build build
-
-echo 'Build complete. You can "cd build && ctest" now'
