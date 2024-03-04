@@ -16,12 +16,12 @@ class Date {
 };
 
 // Primitive operators
-bool operator==(Date const& lhs, Date const& rhs);
-bool operator<(Date const& lhs, Date const& rhs);
+bool operator==(const Date& lhs, const Date& rhs);
+bool operator<(const Date& lhs, const Date& rhs);
 
 // Composite operators
-bool operator>(Date const& lhs, Date const& rhs);
-bool operator<=(Date const& lhs, Date const& rhs);
-bool operator>=(Date const& lhs, Date const& rhs);
+bool operator>(const Date& lhs, const Date& rhs);
+bool operator<=(const Date& lhs, const Date& rhs);
+bool operator>=(const Date& lhs, const Date& rhs);
 
 #endif
