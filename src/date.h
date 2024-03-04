@@ -15,6 +15,13 @@ class Date {
   int getDay() const { return day; }
 };
 
-bool operator<(Date const & lhs, Date const & rhs);
+// Primitive operators
+bool operator==(Date const& lhs, Date const& rhs);
+bool operator<(Date const& lhs, Date const& rhs);
+
+// Composite operators
+bool operator>(Date const& lhs, Date const& rhs);
+bool operator<=(Date const& lhs, Date const& rhs);
+bool operator>=(Date const& lhs, Date const& rhs);
 
 #endif

@@ -18,7 +18,7 @@ int main() {
   // date.h test
   auto d1 = Date(2024, 1, 1);
   printDate(d1);
-  auto d2 = Date(2024, 2 ,2);
+  auto d2 = Date(2024, 2, 2);
   printDate(d2);
   if (d1 < d2) {
     cout << "First date is older than second date\n";
