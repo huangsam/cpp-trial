@@ -17,10 +17,8 @@ bool operator<(Date const& lhs, Date const& rhs) {
     return year_delta < 0;
   else if (month_delta)
     return month_delta < 0;
-  else if (day_delta)
-    return day_delta < 0;
   else
-    return false;
+    return day_delta < 0;
 }
 
 bool operator>(Date const& lhs, Date const& rhs) {
