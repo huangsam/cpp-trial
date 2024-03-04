@@ -10,6 +10,4 @@ TEST(FactorialTest, TextbookStyle) {
   EXPECT_EQ(factorial(4), 24);
 }
 
-TEST(FactorialTest, OutOfBounds) {
-  EXPECT_EQ(factorial(-1), 1);
-}
+TEST(FactorialTest, OutOfBounds) { EXPECT_EQ(factorial(-1), 1); }
