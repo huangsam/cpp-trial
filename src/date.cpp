@@ -29,6 +29,4 @@ bool operator<=(Date const& lhs, Date const& rhs) {
   return lhs < rhs || lhs == rhs;
 }
 
-bool operator>=(Date const& lhs, Date const& rhs) {
-  return !(lhs < rhs);
-}
+bool operator>=(Date const& lhs, Date const& rhs) { return !(lhs < rhs); }
