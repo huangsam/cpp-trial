@@ -1,8 +1,12 @@
 #!/bin/bash
 set -eux
 
-# Download GoogleTest dependency and prepare make assets
+# Run the following:
+# - Set source directory to current one
+# - Set build directory to ./build
+# - Download GoogleTest dependency
+# - Generate CMake assets for E2E build
 cmake -S . -B build
 
-# Run build process E2E and place final assets in build/ folder
+# Run E2E build and place output artifacts in ./build
 cmake --build build
