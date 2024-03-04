@@ -8,3 +8,4 @@ Makefile
 *.cmake
 *.out
 .DS_Store
+.vscode/
