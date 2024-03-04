@@ -15,4 +15,6 @@ class Date {
   int getDay() const { return day; }
 };
 
+bool operator<(Date const & lhs, Date const & rhs);
+
 #endif
