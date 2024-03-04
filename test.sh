@@ -1,8 +1,7 @@
 #!/bin/bash
 set -eux
 
-if [ ! -f build/test ]; then
-    echo -n "Cannot find tests. Please run build.sh first"
+if [[ ! -f build/test ]]; then
     exit 1
 fi
 
