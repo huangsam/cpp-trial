@@ -18,6 +18,8 @@ add_executable(
   hello_test.cpp
   factorial_test.cpp
   ${CMAKE_SOURCE_DIR}/src/factorial.cpp
+  person_test.cpp
+  ${CMAKE_SOURCE_DIR}/src/person.cpp
 )
 target_link_libraries(
   test.out
