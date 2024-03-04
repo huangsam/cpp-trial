@@ -15,7 +15,7 @@ void printPerson(Person p) {
 }
 
 int main() {
-  // date.h test
+  // date.h demo
   auto d1 = Date(2024, 1, 1);
   printDate(d1);
   auto d2 = Date(2024, 2, 2);
@@ -24,10 +24,10 @@ int main() {
     cout << "First date is older than second date\n";
   }
 
-  // factorial.h test
+  // factorial.h demo
   cout << "factorial(4): " << factorial(4) << endl;
 
-  // person.h test
+  // person.h demo
   auto p1 = Person("David", 21);
   printPerson(p1);
 
