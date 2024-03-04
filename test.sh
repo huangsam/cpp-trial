@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eux
 
-if [[ ! -f build/test ]]; then
+if [[ ! -d build/test ]]; then
     exit 1
 fi
 
