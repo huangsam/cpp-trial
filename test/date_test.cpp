@@ -25,7 +25,7 @@ TEST_F(DateTest, GreaterComparisons) {
   ASSERT_GE(one_date, older_date);
 }
 
-TEST_F(DateTest, UnequalComparison) {
+TEST_F(DateTest, UnequalComparisons) {
   ASSERT_NE(one_date, newer_date);
   ASSERT_NE(one_date, older_date);
 }
