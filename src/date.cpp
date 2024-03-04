@@ -13,16 +13,12 @@ bool operator<(Date const& lhs, Date const& rhs) {
   int year_delta = lhs.getYear() - rhs.getYear();
   int month_delta = lhs.getMonth() - rhs.getMonth();
   int day_delta = lhs.getDay() - rhs.getDay();
-  if (year_delta < 0)
-    return true;
-  else if (year_delta > 0)
-    return false;
-  else if (month_delta < 0)
-    return true;
-  else if (month_delta > 0)
-    return false;
-  else if (day_delta < 0)
-    return true;
+  if (year_delta)
+    return year_delta < 0;
+  else if (month_delta)
+    return month_delta < 0;
+  else if (day_delta)
+    return day_delta < 0;
   else
     return false;
 }
