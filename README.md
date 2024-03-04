@@ -10,11 +10,13 @@ Once all the tool requirements are met, you can proceed with building, testing a
 
 ### Building code
 
+To use `cmake` for building, run:
+
 ```shell
 bash build.sh
 ```
 
-From there, run the binaries from the `build/bin` folder.
+From there, you can run binaries from `build/bin`.
 
 ```shell
 ./build/bin/main.out # for main executable
@@ -23,7 +25,7 @@ From there, run the binaries from the `build/bin` folder.
 
 ### Testing code
 
-If you wish to use `ctest` for testing, run:
+To use `ctest` for testing, run:
 
 ```shell
 bash test.sh
@@ -31,7 +33,7 @@ bash test.sh
 
 ### Formatting code
 
-If you wish to reformat the code, run:
+To use `clang-format` for formatting, run:
 
 ```shell
 bash format.sh
