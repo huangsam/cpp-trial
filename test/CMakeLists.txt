@@ -20,6 +20,8 @@ add_executable(
   ${CMAKE_SOURCE_DIR}/src/factorial.cpp
   person_test.cpp
   ${CMAKE_SOURCE_DIR}/src/person.cpp
+  date_test.cpp
+  ${CMAKE_SOURCE_DIR}/src/date.cpp
 )
 target_link_libraries(
   test.out

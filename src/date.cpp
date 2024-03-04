@@ -5,17 +5,30 @@
 Date::Date(int year, int month, int day) : year(year), month(month), day(day) {}
 
 bool operator==(Date const& lhs, Date const& rhs) {
-  return lhs.getYear() == rhs.getYear() || lhs.getMonth() == rhs.getMonth() ||
+  return lhs.getYear() == rhs.getYear() && lhs.getMonth() == rhs.getMonth() &&
          lhs.getDay() == rhs.getDay();
 }
 
 bool operator<(Date const& lhs, Date const& rhs) {
-  return lhs.getYear() < rhs.getYear() || lhs.getMonth() < rhs.getMonth() ||
-         lhs.getDay() < rhs.getDay();
+  int year_delta = lhs.getYear() - rhs.getYear();
+  int month_delta = lhs.getMonth() - rhs.getMonth();
+  int day_delta = lhs.getDay() - rhs.getDay();
+  if (year_delta < 0)
+    return true;
+  else if (year_delta > 0)
+    return false;
+  else if (month_delta < 0)
+    return true;
+  else if (month_delta > 0)
+    return false;
+  else if (day_delta < 0)
+    return true;
+  else
+    return false;
 }
 
 bool operator>(Date const& lhs, Date const& rhs) {
-  return !(lhs < rhs || lhs == rhs);
+  return lhs <= rhs ? false : true;
 }
 
 bool operator<=(Date const& lhs, Date const& rhs) {
