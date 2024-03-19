@@ -8,5 +8,7 @@ set -eux
 # - Generate CMake assets for E2E build
 cmake -S . -B build
 
-# Run E2E build and place output artifacts in ./build
+# Run the following:
+# - E2E build process
+# - Place output artifacts in ./build
 cmake --build build
