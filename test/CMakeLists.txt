@@ -15,15 +15,15 @@ enable_testing()
 
 add_executable(
   test.out
+  date_test.cpp
+  factorial_test.cpp
   hello_test.cpp
+  lambda_test.cpp
+  person_test.cpp
   ${CMAKE_SOURCE_DIR}/src/date.cpp
   ${CMAKE_SOURCE_DIR}/src/factorial.cpp
   ${CMAKE_SOURCE_DIR}/src/lambda.cpp
   ${CMAKE_SOURCE_DIR}/src/person.cpp
-  date_test.cpp
-  factorial_test.cpp
-  lambda_test.cpp
-  person_test.cpp
 )
 target_link_libraries(
   test.out
