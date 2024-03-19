@@ -2,6 +2,7 @@
 
 #include "date.h"
 #include "factorial.h"
+#include "lambda.h"
 #include "person.h"
 
 using namespace std;
@@ -26,6 +27,9 @@ int main() {
 
   // factorial.h demo
   cout << "factorial(4): " << factorial(4) << endl;
+
+  // lambda.h demo
+  cout << "lessThan(3,4): " << lessThan(3, 4) << endl;
 
   // person.h demo
   auto p1 = Person("David", 21);

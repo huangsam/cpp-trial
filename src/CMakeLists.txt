@@ -8,5 +8,6 @@ add_executable(
   main.cpp
   date.cpp
   factorial.cpp
+  lambda.cpp
   person.cpp
 )
