@@ -30,7 +30,7 @@ int main() {
 
   // lambda.h demo
   cout << "lessThan(3,4): " << lessThan(3, 4) << endl;
-  cout << "sumOfSquares(1,2,3)" << sumOfSquares(1, 2, 3) << endl;
+  cout << "sumOfSquares(1,2,3): " << sumOfSquares(1, 2, 3) << endl;
 
   // person.h demo
   auto p1 = Person("David", 21);
