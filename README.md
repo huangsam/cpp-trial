@@ -46,3 +46,4 @@ bash format.sh
 - https://google.github.io/googletest/reference/assertions.html
 - https://cmake.org/cmake/help/git-master/manual/cmake-commands.7.html
 - https://github.com/fffaraz/awesome-cpp
+- https://github.com/oz123/awesome-c
