@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+#include <stdexcept>
+
 TEST(FactorialTest, TextbookInputs) {
   // 0 is the smallest valid input
   EXPECT_EQ(factorial(0), 1);
@@ -15,5 +17,5 @@ TEST(FactorialTest, TextbookInputs) {
 
 TEST(FactorialTest, OutOfBounds) {
   // -1 and below are invalid inputs
-  EXPECT_ANY_THROW(factorial(-1));
+  EXPECT_THROW(factorial(-1), std::invalid_argument);
 }
