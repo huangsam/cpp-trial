@@ -1,5 +1,6 @@
 #include "lambda.h"
 
+#include <algorithm>
 #include <vector>
 
 bool lessThan(int a, int b) {
@@ -8,10 +9,6 @@ bool lessThan(int a, int b) {
 }
 
 int sumOfSquares(std::vector<int> numbers) {
-  auto square = [](auto a) { return a * a; };
-  auto sum = 0;
-  for (auto i : numbers) {
-    sum += square(i);
-  }
-  return sum;
+  auto square = [](auto acc, auto i) { return acc + (i * i); };
+  return std::reduce(numbers.begin(), numbers.end(), 0, square);
 }
