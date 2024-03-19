@@ -1,6 +1,6 @@
 #include "lambda.h"
 
-#include <algorithm>
+#include <numeric>
 #include <vector>
 
 bool lessThan(int a, int b) {
