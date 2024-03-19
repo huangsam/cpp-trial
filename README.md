@@ -42,6 +42,7 @@ bash format.sh
 ## Helpful resources
 
 - https://cplusplus.com/
+- https://en.cppreference.com/w/
 - https://google.github.io/styleguide/cppguide.html
 - https://google.github.io/googletest/reference/assertions.html
 - https://cmake.org/cmake/help/git-master/manual/cmake-commands.7.html
