@@ -1,5 +1,5 @@
 #include <iostream>
-#include <list>
+#include <vector>
 
 #include "date.h"
 #include "factorial.h"
@@ -31,7 +31,7 @@ int main() {
 
   // lambda.h demo
   cout << "lessThan(3,4): " << lessThan(3, 4) << endl;
-  cout << "sumOfSquares(list{1,2,3}): " << sumOfSquares(std::list{1, 2, 3})
+  cout << "sumOfSquares(vector{1,2,3}): " << sumOfSquares(std::vector{1, 2, 3})
        << endl;
 
   // person.h demo

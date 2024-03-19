@@ -1,10 +1,10 @@
 #ifndef LAMBDA_H
 #define LAMBDA_H
 
-#include <list>
+#include <vector>
 
 bool lessThan(int a, int b);
 
-int sumOfSquares(std::list<int> numbers);
+int sumOfSquares(std::vector<int> numbers);
 
 #endif
