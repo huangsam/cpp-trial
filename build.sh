@@ -2,7 +2,7 @@
 set -eux
 
 # Run the following:
-# - Set source directory to current one
+# - Set source directory to ./
 # - Set build directory to ./build
 # - Download GoogleTest dependency
 # - Generate CMake assets for E2E build
