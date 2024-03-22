@@ -9,7 +9,7 @@ bool lessThan(int a, int b) {
 }
 
 int sumOfSquares(std::vector<int> numbers) {
-  auto square = [](int acc, int i) { return acc + (i * i); };
+  auto add_square = [](int acc, int i) { return acc + (i * i); };
 
   /**
    * std::reduce works as expected, given that associativity and
@@ -19,5 +19,5 @@ int sumOfSquares(std::vector<int> numbers) {
    *
    * https://stackoverflow.com/q/47144083
    */
-  return std::reduce(numbers.begin(), numbers.end(), 0, square);
+  return std::reduce(numbers.begin(), numbers.end(), 0, add_square);
 }
