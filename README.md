@@ -1,4 +1,4 @@
-# CPP Trial
+# C++ Trial
 
 Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest](https://google.github.io/googletest/).
 
