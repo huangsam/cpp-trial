@@ -11,8 +11,8 @@ class Person {
  public:
   Person(std::string name, int age);
 
-  std::string getName() const { return name; }
-  int getAge() const { return age; }
+  std::string get_name() const { return name; }
+  int get_age() const { return age; }
 };
 
 #endif

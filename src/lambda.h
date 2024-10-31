@@ -3,8 +3,8 @@
 
 #include <vector>
 
-bool lessThan(int a, int b);
+bool less_than(int a, int b);
 
-int sumOfSquares(std::vector<int> numbers);
+int sum_of_squares(std::vector<int> numbers);
 
 #endif

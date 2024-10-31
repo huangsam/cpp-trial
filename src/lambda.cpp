@@ -3,12 +3,12 @@
 #include <numeric>
 #include <vector>
 
-bool lessThan(int a, int b) {
+bool less_than(int a, int b) {
   auto less_than = [](int a, int b) { return a < b; };
   return less_than(a, b);
 }
 
-int sumOfSquares(std::vector<int> numbers) {
+int sum_of_squares(std::vector<int> numbers) {
   auto add_square = [](int acc, int i) { return acc + (i * i); };
 
   /**

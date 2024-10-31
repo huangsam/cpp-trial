@@ -8,20 +8,20 @@
 
 using namespace std;
 
-void printDate(Date d) {
-  cout << d.getYear() << "/" << d.getMonth() << "/" << d.getDay() << "\n";
+void print_date(Date d) {
+  cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day() << "\n";
 }
 
-void printPerson(Person p) {
-  cout << p.getName() << " is " << p.getAge() << " years old\n";
+void print_person(Person p) {
+  cout << p.get_name() << " is " << p.get_age() << " years old\n";
 }
 
 int main() {
   // date.h demo
   auto d1 = Date(2024, 1, 1);
-  printDate(d1);
+  print_date(d1);
   auto d2 = Date(2024, 2, 2);
-  printDate(d2);
+  print_date(d2);
   if (d1 < d2) {
     cout << "First date is older than second date\n";
   }
@@ -30,13 +30,13 @@ int main() {
   cout << "factorial(4): " << factorial(4) << endl;
 
   // lambda.h demo
-  cout << "lessThan(3,4): " << lessThan(3, 4) << endl;
-  cout << "sumOfSquares(vector{1,2,3}): " << sumOfSquares(std::vector{1, 2, 3})
-       << endl;
+  cout << "less_than(3,4): " << less_than(3, 4) << endl;
+  cout << "sum_of_squares(vector{1,2,3}): "
+       << sum_of_squares(std::vector{1, 2, 3}) << endl;
 
   // person.h demo
   auto p1 = Person("David", 21);
-  printPerson(p1);
+  print_person(p1);
 
   return 0;
 }

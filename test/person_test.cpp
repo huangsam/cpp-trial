@@ -7,6 +7,6 @@ class PersonTest : public testing::Test {
   Person person = Person("John", 28);
 };
 
-TEST_F(PersonTest, NameGetter) { EXPECT_EQ(person.getName(), "John"); }
+TEST_F(PersonTest, NameGetter) { EXPECT_EQ(person.get_name(), "John"); }
 
-TEST_F(PersonTest, AgeGetter) { EXPECT_EQ(person.getAge(), 28); }
+TEST_F(PersonTest, AgeGetter) { EXPECT_EQ(person.get_age(), 28); }
