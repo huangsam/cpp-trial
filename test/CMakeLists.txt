@@ -20,6 +20,9 @@ add_executable(
   hello_test.cpp
   lambda_test.cpp
   person_test.cpp
+
+  # Use CMAKE_SOURCE_DIR as the top level directory
+  # https://cmake.org/cmake/help/latest/variable/CMAKE_SOURCE_DIR.html
   ${CMAKE_SOURCE_DIR}/src/date.cpp
   ${CMAKE_SOURCE_DIR}/src/factorial.cpp
   ${CMAKE_SOURCE_DIR}/src/lambda.cpp

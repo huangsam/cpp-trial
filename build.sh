@@ -10,5 +10,5 @@ cmake -S . -B build
 
 # Run the following:
 # - E2E build process
-# - Place output artifacts in ./build
+# - Place binary assets in ./build
 cmake --build build
