@@ -18,4 +18,5 @@ TEST(FactorialTest, TextbookInputs) {
 TEST(FactorialTest, OutOfBounds) {
   // -1 and below are invalid inputs
   EXPECT_THROW(factorial(-1), std::invalid_argument);
+  EXPECT_THROW(factorial(-99), std::invalid_argument);
 }
