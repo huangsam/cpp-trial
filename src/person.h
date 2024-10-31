@@ -4,11 +4,11 @@
 #include <string>
 
 class Person {
- private:
+private:
   std::string name;
   int age;
 
- public:
+public:
   Person(std::string name, int age);
 
   std::string get_name() const { return name; }

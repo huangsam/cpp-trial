@@ -2,12 +2,12 @@
 #define DATE_H
 
 class Date {
- private:
+private:
   int year;
   int month;
   int day;
 
- public:
+public:
   Date(int year, int month, int day);
 
   int get_year() const { return year; }
@@ -16,13 +16,13 @@ class Date {
 };
 
 // Primitive operators
-bool operator==(const Date& lhs, const Date& rhs);
-bool operator<(const Date& lhs, const Date& rhs);
+bool operator==(const Date &lhs, const Date &rhs);
+bool operator<(const Date &lhs, const Date &rhs);
 
 // Composite operators
-bool operator>(const Date& lhs, const Date& rhs);
-bool operator<=(const Date& lhs, const Date& rhs);
-bool operator>=(const Date& lhs, const Date& rhs);
-bool operator!=(const Date& lhs, const Date& rhs);
+bool operator>(const Date &lhs, const Date &rhs);
+bool operator<=(const Date &lhs, const Date &rhs);
+bool operator>=(const Date &lhs, const Date &rhs);
+bool operator!=(const Date &lhs, const Date &rhs);
 
 #endif
