@@ -6,14 +6,12 @@
 #include "lambda.h"
 #include "person.h"
 
-using namespace std;
-
 void print_date(Date d) {
-  cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day() << "\n";
+  std::cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day() << "\n";
 }
 
 void print_person(Person p) {
-  cout << p.get_name() << " is " << p.get_age() << " years old\n";
+  std::cout << p.get_name() << " is " << p.get_age() << " years old\n";
 }
 
 int main() {
@@ -23,16 +21,16 @@ int main() {
   auto d2 = Date(2024, 2, 2);
   print_date(d2);
   if (d1 < d2) {
-    cout << "First date is older than second date\n";
+    std::cout << "First date is older than second date\n";
   }
 
   // factorial.h demo
-  cout << "factorial(4): " << factorial(4) << endl;
+  std::cout << "factorial(4): " << factorial(4) << std::endl;
 
   // lambda.h demo
-  cout << "less_than(3,4): " << less_than(3, 4) << endl;
-  cout << "sum_of_squares(vector{1,2,3}): "
-       << sum_of_squares(std::vector{1, 2, 3}) << endl;
+  std::cout << "less_than(3,4): " << less_than(3, 4) << std::endl;
+  std::cout << "sum_of_squares(vector{1,2,3}): "
+       << sum_of_squares(std::vector{1, 2, 3}) << std::endl;
 
   // person.h demo
   auto p1 = Person("David", 21);
