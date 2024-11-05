@@ -1,5 +1,5 @@
-#ifndef LAMBDA_H
-#define LAMBDA_H
+#ifndef LAMBDA_HPP
+#define LAMBDA_HPP
 
 #include <vector>
 

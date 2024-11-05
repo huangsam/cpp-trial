@@ -1,5 +1,5 @@
-#ifndef DATE_H
-#define DATE_H
+#ifndef DATE_HPP
+#define DATE_HPP
 
 class Date {
 private:
