@@ -3,7 +3,8 @@ set -eux
 
 # Possible options include:
 # LLVM, GNU, Google, Chromium, Microsoft, Mozilla, WebKit
-PREFERRED_STYLE="LLVM"
+STYLE="LLVM"
 
-find src test -name '*.cpp' -exec clang-format --style="$PREFERRED_STYLE" -i {} +
-find src test -name '*.h'  -exec clang-format --style="$PREFERRED_STYLE" -i {} +
+find src test \
+    -name '*.cpp' -o -name '*.h' \
+    -exec clang-format --style="$STYLE" -i {} +
