@@ -16,19 +16,11 @@ To use `cmake` for building, run:
 bash build.sh
 ```
 
-From there, you can run binaries from `build/bin`.
+From there, you can use the `run.sh` script to the compiled binaries:
 
 ```shell
-./build/bin/main.out # for main executable
-./build/bin/test.out # for GoogleTest executable
-```
-
-### Testing code
-
-To use `ctest` for testing, run:
-
-```shell
-bash test.sh
+./run.sh main
+./run.sh test
 ```
 
 ### Formatting code
