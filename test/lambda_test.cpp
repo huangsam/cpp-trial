@@ -1,4 +1,4 @@
-#include "../src/lambda.h"
+#include "../src/lambda.hpp"
 
 #include <gtest/gtest.h>
 

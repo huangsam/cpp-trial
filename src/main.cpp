@@ -1,10 +1,10 @@
 #include <iostream>
 #include <vector>
 
-#include "date.h"
-#include "factorial.h"
-#include "lambda.h"
-#include "person.h"
+#include "date.hpp"
+#include "factorial.hpp"
+#include "lambda.hpp"
+#include "person.hpp"
 
 void print_date(Date d) {
   std::cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day() << "\n";

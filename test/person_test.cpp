@@ -1,4 +1,4 @@
-#include "../src/person.h"
+#include "../src/person.hpp"
 
 #include <gtest/gtest.h>
 
