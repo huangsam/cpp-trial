@@ -15,7 +15,7 @@ void print_person(Person p) {
 }
 
 int main() {
-  // date.h demo
+  // date.hpp demo
   auto d1 = Date(2024, 1, 1);
   print_date(d1);
   auto d2 = Date(2024, 2, 2);
@@ -24,15 +24,15 @@ int main() {
     std::cout << "First date is older than second date\n";
   }
 
-  // factorial.h demo
+  // factorial.hpp demo
   std::cout << "factorial(4): " << factorial(4) << std::endl;
 
-  // lambda.h demo
+  // lambda.hpp demo
   std::cout << "less_than(3,4): " << less_than(3, 4) << std::endl;
   std::cout << "sum_of_squares(vector{1,2,3}): "
        << sum_of_squares(std::vector{1, 2, 3}) << std::endl;
 
-  // person.h demo
+  // person.hpp demo
   auto p1 = Person("David", 21);
   print_person(p1);
 
