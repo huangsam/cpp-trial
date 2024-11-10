@@ -8,6 +8,6 @@ if [[ "$mode" == "main" ]]; then
 elif [[ "$mode" == "test" ]]; then
     test -f ./build/bin/test.out && ./build/bin/test.out
 else
-    echo "Invalid mode: $mode. Please provide 'main' or 'test'"
+    echo "Invalid mode '$mode'. Please provide 'main' or 'test'"
     exit 1
 fi
