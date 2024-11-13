@@ -13,7 +13,7 @@ Once all the tool requirements are met, you can proceed with building, testing a
 To use `cmake` for building, run:
 
 ```shell
-bash build.sh
+./build.sh
 ```
 
 From there, you can use the `run.sh` script to the compiled binaries:
@@ -28,7 +28,7 @@ From there, you can use the `run.sh` script to the compiled binaries:
 To use `clang-format` for formatting, run:
 
 ```shell
-bash format.sh
+./format.sh
 ```
 
 ## Helpful resources
