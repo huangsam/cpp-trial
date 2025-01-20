@@ -14,6 +14,7 @@ Once all tool requirements are met, you can proceed with building, testing and f
 To use `cmake` for building, run:
 
 ```shell
+# Run end-to-end build
 make build
 ```
 
@@ -22,7 +23,10 @@ make build
 Now you can run the compiled binaries:
 
 ```shell
+# Run main binary
 make run
+
+# Run test binary
 make test
 ```
 
@@ -31,6 +35,7 @@ make test
 To use `clang-format` for formatting, run:
 
 ```shell
+# Run clang-format on CPP and HPP files
 make format
 ```
 
