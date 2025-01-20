@@ -1,5 +1,7 @@
 .PHONY: run test format build clean
 
+all: run test
+
 run: build
 	./build/bin/main.out
 
