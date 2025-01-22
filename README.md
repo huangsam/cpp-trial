@@ -4,7 +4,7 @@
 
 Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest](https://google.github.io/googletest/).
 
-<img src="images/cpp-wikipedia.svg" alt="C++" width="250px">
+<img src="images/cpp-wikipedia.svg" alt="C++" width="150px">
 
 ## Getting started
 
