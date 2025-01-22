@@ -4,6 +4,8 @@
 
 Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest](https://google.github.io/googletest/).
 
+<img src="images/cpp-wikipedia.svg" alt="C++" width="250px">
+
 ## Getting started
 
 Please install tools like `cmake` and `clang-format` first. You can do this with Homebrew on Mac by
