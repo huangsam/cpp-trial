@@ -24,6 +24,9 @@ build: $(BUILD_DEPS)
 	cmake -S . -B build -D CMAKE_BUILD_TYPE=RELEASE
 	cmake --build build
 
+setup:
+	brew install --formula cmake clang-format
+
 format:
 	clang-format --style="LLVM" -i $(BUILD_DEPS)
 

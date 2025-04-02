@@ -8,25 +8,10 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 
 ## Getting started
 
-Please install tools like `cmake` and `clang-format` first. You can do this with Homebrew on Mac by
-running `brew install cmake clang-format`.
-
-Once all tool requirements are met, you can proceed with building, testing and formatting code.
-
-### Build binaries
-
-To use `cmake` for building, run:
-
 ```shell
-# Run end-to-end build
-make build
-```
+# Install tools (REQUIRED)
+make setup
 
-### Run binaries
-
-Now you can run the compiled binaries:
-
-```shell
 # Run main binary
 make run
 
@@ -34,14 +19,7 @@ make run
 make test
 ```
 
-### Format code
-
-To use `clang-format` for formatting, run:
-
-```shell
-# Run clang-format on CPP and HPP files
-make format
-```
+For contributors, please run `make format` before creating a PR.
 
 ## Helpful resources
 
