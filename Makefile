@@ -1,7 +1,7 @@
 # For more about phony targets:
 # https://www.gnu.org/software/make/manual/html_node/Phony-Targets.html
 # https://stackoverflow.com/a/2145605/2748860
-.PHONY: run test format
+.PHONY: run test
 
 # Define all build dependencies
 SRC_FILES := $(wildcard src/*.cpp src/*.hpp)
