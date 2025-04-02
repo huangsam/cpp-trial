@@ -7,7 +7,8 @@
 #include "person.hpp"
 
 void print_date(Date d) {
-  std::cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day() << "\n";
+  std::cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day()
+            << "\n";
 }
 
 void print_person(Person p) {
@@ -30,7 +31,7 @@ int main() {
   // lambda.hpp demo
   std::cout << "less_than(3,4): " << less_than(3, 4) << std::endl;
   std::cout << "sum_of_squares(vector{1,2,3}): "
-       << sum_of_squares(std::vector{1, 2, 3}) << std::endl;
+            << sum_of_squares(std::vector{1, 2, 3}) << std::endl;
 
   // person.hpp demo
   auto p1 = Person("David", 21);
