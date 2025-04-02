@@ -19,14 +19,14 @@ run: build
 test: build
 	./build/bin/test.out
 
-format:
-	clang-format --style="LLVM" -i $(BUILD_DEPS)
-
 # Step 1: Set source and build, download GoogleTest, generate CMake assets
 # Step 2: Run the build process and place binaries in build/bin
 build: $(BUILD_DEPS)
 	cmake -S . -B build
 	cmake --build build
+
+format:
+	clang-format --style="LLVM" -i $(BUILD_DEPS)
 
 clean:
 	rm -rf build
