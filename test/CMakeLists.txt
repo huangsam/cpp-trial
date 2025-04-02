@@ -24,11 +24,15 @@ list(REMOVE_ITEM SRC_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
 
 add_executable(
   test.out
+
+  # Test code
   date_test.cpp
   factorial_test.cpp
   hello_test.cpp
   lambda_test.cpp
   person_test.cpp
+
+  # Source code
   ${SRC_FILES}
 )
 target_link_libraries(

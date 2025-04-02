@@ -5,6 +5,8 @@
 
 add_executable(
   main.out
+
+  # Source code
   main.cpp
   date.cpp
   factorial.cpp
