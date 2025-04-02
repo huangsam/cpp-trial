@@ -24,6 +24,9 @@ build: $(BUILD_DEPS)
 	cmake -S . -B build -D CMAKE_BUILD_TYPE=RELEASE
 	cmake --build build
 
+# Install required software:
+# https://formulae.brew.sh/formula/cmake
+# https://formulae.brew.sh/formula/clang-format
 setup:
 	brew install --formula cmake clang-format
 
