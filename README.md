@@ -12,11 +12,8 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 # Install tools (REQUIRED)
 make setup
 
-# Run main binary
-make run
-
-# Run test binary
-make test
+# Run main binary and test binary
+make all
 ```
 
 For contributors, please run `make format` before creating a PR.
