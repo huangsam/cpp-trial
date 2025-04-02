@@ -8,7 +8,7 @@ project(
   LANGUAGES CXX
 )
 
-# Set flags for base
+# Set flags for baseline
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 
 # Set flags for each build type
