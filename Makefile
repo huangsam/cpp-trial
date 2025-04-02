@@ -9,7 +9,6 @@ TEST_FILES := $(wildcard test/*.cpp test/*.hpp)
 BUILD_DEPS := $(SRC_FILES) $(TEST_FILES)
 
 # This Makefile runs and tests a C++ project using CMake and GoogleTest.
-# It assumes that the source files are in the src directory and the test files are in the test directory.
 # The build artifacts will be placed in the build directory.
 all: run test
 
