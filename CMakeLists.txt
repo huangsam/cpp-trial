@@ -8,10 +8,11 @@ project(
   LANGUAGES CXX
 )
 
-# Set baseline settings for C++
+# Set flags for base
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
 
-# Set build-specific flags
+# Set flags for each build type
+# https://stackoverflow.com/a/41361741/2748860
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3")
 
