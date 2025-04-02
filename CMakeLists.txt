@@ -9,7 +9,14 @@ project(
 )
 
 # Set baseline settings for C++
-set(CMAKE_CXX_FLAGS "-Wall -O3")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Werror")
+
+# Set build-specific flags
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
+# Set C++ standard to 2020
+# https://en.cppreference.com/w/cpp/20
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
