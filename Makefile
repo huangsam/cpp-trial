@@ -30,7 +30,7 @@ build: $(BUILD_DEPS)
 setup:
 	brew install --formula cmake clang-format
 
-# Using LLVM style based on preferences
+# Choose LLVM style based on preferences:
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html#basedonstyle
 format:
 	clang-format --style="LLVM" -i $(BUILD_DEPS)
