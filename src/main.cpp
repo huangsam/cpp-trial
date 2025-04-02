@@ -8,11 +8,12 @@
 
 void print_date(Date d) {
   std::cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day()
-            << "\n";
+            << std::endl;
 }
 
 void print_person(Person p) {
-  std::cout << p.get_name() << " is " << p.get_age() << " years old\n";
+  std::cout << p.get_name() << " is " << p.get_age() << " years old"
+            << std::endl;
 }
 
 int main() {
@@ -22,7 +23,7 @@ int main() {
   auto d2 = Date(2024, 2, 2);
   print_date(d2);
   if (d1 < d2) {
-    std::cout << "First date is older than second date\n";
+    std::cout << "First date is older than second date" << std::endl;
   }
 
   // factorial.hpp demo
