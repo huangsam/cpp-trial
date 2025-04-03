@@ -1,7 +1,5 @@
 #include "date.hpp"
 
-#include <iostream>
-
 Date::Date(int year, int month, int day) : year(year), month(month), day(day) {}
 
 bool operator==(const Date &lhs, const Date &rhs) {
