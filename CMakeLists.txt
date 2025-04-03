@@ -10,7 +10,7 @@ project(
 
 # Set flags for baseline
 # https://clang.llvm.org/docs/DiagnosticsReference.html
-set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wunused -Werror")
+set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -Wunused -Werror")
 
 # Set flags for each build type
 # https://stackoverflow.com/a/41361741/2748860

@@ -21,7 +21,7 @@ test: build
 # Step 1: Set source and build, download GoogleTest, generate CMake assets
 # Step 2: Run the build process and place binaries in build/bin
 build: $(BUILD_DEPS)
-	cmake -S . -B build -D CMAKE_BUILD_TYPE=RELEASE
+	cmake -S . -B build -DCMAKE_BUILD_TYPE:STRING=Debug -DCMAKE_EXPORT_COMPILE_COMMANDS:BOOL=TRUE -G Ninja
 	cmake --build build
 
 # Install required software:
