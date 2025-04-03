@@ -8,6 +8,10 @@ project(
   LANGUAGES CXX
 )
 
+# Include CTest
+# https://cmake.org/cmake/help/latest/module/CTest.html
+include(CTest)
+
 # Set flags for baseline
 # https://clang.llvm.org/docs/DiagnosticsReference.html
 set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -Wunused -Werror")
