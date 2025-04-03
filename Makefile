@@ -27,8 +27,9 @@ build: $(BUILD_DEPS)
 # Install required software:
 # https://formulae.brew.sh/formula/cmake
 # https://formulae.brew.sh/formula/clang-format
+# https://formulae.brew.sh/formula/ninja
 setup:
-	brew install --formula cmake clang-format
+	brew install --formula cmake clang-format ninja
 
 # Choose LLVM style based on preferences:
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html#basedonstyle
