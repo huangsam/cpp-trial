@@ -16,7 +16,7 @@ make setup
 make all
 ```
 
-For contributors, please run `make format` before creating a PR.
+For contributors, please run `make format` and `make lint` before creating a PR.
 
 ## Helpful resources
 
