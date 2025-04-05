@@ -9,7 +9,7 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 ## Getting started
 
 ```shell
-# Install tools
+# Install developer tools
 make setup
 
 # Run main binary and test binary
