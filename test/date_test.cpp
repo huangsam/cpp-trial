@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 class DateTest : public testing::Test {
-protected:
+ protected:
   Date one_date = Date(2024, 2, 1);
   Date newer_date = Date(2024, 2, 2);
   Date older_date = Date(2024, 1, 31);

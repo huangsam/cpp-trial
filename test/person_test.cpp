@@ -3,7 +3,7 @@
 #include <gtest/gtest.h>
 
 class PersonTest : public testing::Test {
-protected:
+ protected:
   Person person = Person("John", 28);
 };
 

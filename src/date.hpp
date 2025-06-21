@@ -2,12 +2,12 @@
 #define DATE_HPP
 
 class Date {
-private:
+ private:
   int year;
   int month;
   int day;
 
-public:
+ public:
   Date(int year, int month, int day);
 
   int get_year() const { return year; }
