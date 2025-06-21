@@ -4,9 +4,12 @@
 
 class DateTest : public testing::Test {
  protected:
-  Date one_date = Date(2024, 2, 1);
-  Date newer_date = Date(2024, 2, 2);
-  Date older_date = Date(2024, 1, 31);
+  Date one_date;
+  Date newer_date;
+  Date older_date;
+
+  DateTest()
+      : one_date(2024, 2, 1), newer_date(2024, 2, 2), older_date(2024, 1, 31) {}
 };
 
 TEST_F(DateTest, EqualComparisons) {
