@@ -27,10 +27,10 @@ For contributors:
 
 ```shell
 # Ensure all files are formatted before PR
-cmake --build build --target format
+find src test -name '*.cpp' -o -name '*.hpp' -exec clang-format -i {} +
 
 # Ensure all files are linted before PR
-cmake --build build --target lint
+cppcheck ./src ./test
 ```
 
 ## Helpful resources
@@ -42,3 +42,5 @@ cmake --build build --target lint
 - <https://cmake.org/cmake/help/git-master/manual/cmake-commands.7.html>
 - <https://github.com/fffaraz/awesome-cpp>
 - <https://github.com/oz123/awesome-c>
+- <https://clang.llvm.org/docs/ClangFormatStyleOptions.html>
+- <https://cppcheck.sourceforge.io/>
