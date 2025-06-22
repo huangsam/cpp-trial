@@ -10,10 +10,15 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 
 ```shell
 # Install developer tools
-make setup
+brew install --formula clang-format cmake cppcheck ninja
 
-# Run main binary and test binary
-make all
+# Build binaries
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --config Debug
+
+# Run binaries in their original form
+./build/bin/main.out
+./build/bin/test.out
 ```
 
 For contributors, please run `make format` and `make lint` before creating a PR.
