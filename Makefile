@@ -35,7 +35,7 @@ setup:
 # Choose formatting style based on preferences:
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html#basedonstyle
 format:
-	clang-format --style="Google" -i $(BUILD_DEPS)
+	clang-format -i $(BUILD_DEPS)
 
 # Lint the entire codebase
 # https://cppcheck.sourceforge.io/
