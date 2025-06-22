@@ -10,9 +10,9 @@ class Date {
  public:
   Date(int year, int month, int day);
 
-  int get_year() const { return year; }
-  int get_month() const { return month; }
-  int get_day() const { return day; }
+  [[nodiscard]] int get_year() const { return year; }
+  [[nodiscard]] int get_month() const { return month; }
+  [[nodiscard]] int get_day() const { return day; }
 };
 
 // Primitive operators

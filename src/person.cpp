@@ -1,3 +1,6 @@
 #include "person.hpp"
 
-Person::Person(std::string name, int age) : name(name), age(age) {}
+#include <utility>
+
+Person::Person(std::string name, const int age)
+    : name(std::move(name)), age(age) {}

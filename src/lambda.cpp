@@ -3,13 +3,13 @@
 #include <numeric>
 #include <vector>
 
-bool less_than(int a, int b) {
-  auto check_both = [](int a, int b) { return a < b; };
+bool less_than(const int a, const int b) {
+  auto check_both = [](const int i, const int j) { return i < j; };
   return check_both(a, b);
 }
 
 int sum_of_squares(std::vector<int> numbers) {
-  auto add_square = [](int acc, int i) { return acc + (i * i); };
+  auto add_square = [](const int acc, const int i) { return acc + (i * i); };
 
   /**
    * std::reduce works as expected, given that associativity and

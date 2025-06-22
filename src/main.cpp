@@ -6,12 +6,12 @@
 #include "lambda.hpp"
 #include "person.hpp"
 
-void print_date(Date d) {
+void print_date(const Date d) {
   std::cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day()
             << std::endl;
 }
 
-void print_person(Person p) {
+void print_person(const Person& p) {
   std::cout << p.get_name() << " is " << p.get_age() << " years old"
             << std::endl;
 }
