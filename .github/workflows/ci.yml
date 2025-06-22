@@ -16,7 +16,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Run build
-        run: make build
-      - name: Run tests
-        run: make test
+      - name: Configure CMake
+        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
+      - name: Build
+        run: cmake --build build --config Debug
+      - name: Run Tests
+        run: ctest --test-dir build --output-on-failure
