@@ -10,7 +10,7 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 
 ```shell
 # Install developer tools
-brew install --formula clang-format cmake cppcheck ninja
+brew install --formula cmake cppcheck llvm ninja
 
 # Build binaries
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
