@@ -32,7 +32,7 @@ build: $(BUILD_DEPS)
 setup:
 	brew install --formula clang-format cmake cppcheck ninja
 
-# Choose LLVM style based on preferences:
+# Choose formatting style based on preferences:
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html#basedonstyle
 format:
 	clang-format --style="Google" -i $(BUILD_DEPS)
