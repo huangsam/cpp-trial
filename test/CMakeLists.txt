@@ -34,14 +34,8 @@ add_executable(
   hello_test.cpp
   lambda_test.cpp
   person_test.cpp
-
-  # Source code
-  ${SRC_FILES}
 )
-target_link_libraries(
-  test.out
-  gtest_main
-)
+target_link_libraries(test.out gtest_main CPPTrialCore)
 
 include(GoogleTest)
 gtest_discover_tests(test.out)
