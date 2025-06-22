@@ -8,6 +8,8 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 
 ## Getting started
 
+For everyone:
+
 ```shell
 # Install developer tools
 brew install --formula cmake cppcheck llvm ninja
@@ -21,7 +23,15 @@ cmake --build build --config Debug
 ./build/bin/test.out
 ```
 
-For contributors, please run `make format` and `make lint` before creating a PR.
+For contributors:
+
+```shell
+# Ensure all files are formatted before PR
+cmake --build build --target format
+
+# Ensure all files are linted before PR
+cmake --build build --target lint
+```
 
 ## Helpful resources
 
