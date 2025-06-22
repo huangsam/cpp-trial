@@ -9,7 +9,7 @@ bool less_than(const int a, const int b) {
 }
 
 int sum_of_squares(std::vector<int> numbers) {
-  auto add_square = [](const int acc, const int i) { return acc + (i * i); };
+  auto add_square = [](const int acc, const int i) { return acc + i * i; };
 
   /**
    * std::reduce works as expected, given that associativity and

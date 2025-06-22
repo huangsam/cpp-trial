@@ -2,7 +2,6 @@
 #define DATE_HPP
 
 class Date {
- private:
   int year;
   int month;
   int day;
