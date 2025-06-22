@@ -32,15 +32,20 @@ build: $(BUILD_DEPS)
 setup:
 	brew install --formula clang-format cmake cppcheck ninja
 
+# Apply formatting to the entire codebase
+format: .clang-format
+	clang-format -i $(BUILD_DEPS)
+
 # Choose formatting style based on preferences:
 # https://clang.llvm.org/docs/ClangFormatStyleOptions.html#basedonstyle
-format:
-	clang-format -i $(BUILD_DEPS)
+.clang-format:
+	clang-format --style=Google --dump-config > .clang-format
 
 # Lint the entire codebase
 # https://cppcheck.sourceforge.io/
 lint:
 	cppcheck ./src ./test
 
+# Clean all build assets
 clean:
 	rm -rf build
