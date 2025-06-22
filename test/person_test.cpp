@@ -4,7 +4,9 @@
 
 class PersonTest : public testing::Test {
  protected:
-  Person person = Person("John", 28);
+  Person person;
+
+  PersonTest() : person("John", 28) {}
 };
 
 TEST_F(PersonTest, NameGetter) { EXPECT_EQ(person.get_name(), "John"); }
