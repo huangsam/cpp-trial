@@ -11,12 +11,12 @@ int sum_of_squares(std::vector<int> numbers) {
   auto add_square = [](const int acc, const int i) { return acc + i * i; };
 
   /**
-   * std::reduce works as expected, given that associativity and
-   * commutativity holds for addition and multiplication.
-   * Otherwise, we would use std::accumulate to ensure that we
-   * get a consistent output, albeit with less performance.
+   * We use std::accumulate here to ensure that we get a consistent
+   * output, albeit with less performance. Assuming that we have a larger
+   * number of inputs, and associativity and commutativity are upheld, then
+   * std::reduce or std::transform_reduce are scalable. To learn more:
    *
    * https://stackoverflow.com/q/47144083
    */
-  return std::reduce(numbers.begin(), numbers.end(), 0, add_square);
+  return std::accumulate(numbers.begin(), numbers.end(), 0, add_square);
 }
