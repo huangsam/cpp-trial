@@ -35,3 +35,26 @@ add_subdirectory(src)
 
 # Run steps for building test.out
 add_subdirectory(test)
+
+# Define 'format' target
+# Find all C++ source and header files in src and test directories
+file(GLOB_RECURSE CXX_SOURCE_FILES
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/*.hpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/test/*.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/test/*.hpp
+)
+
+# Choose formatting style based on preferences:
+# https://clang.llvm.org/docs/ClangFormatStyleOptions.html#basedonstyle
+add_custom_target(format
+    COMMAND clang-format -i ${CXX_SOURCE_FILES}
+    COMMENT "Applying clang-format to source files."
+)
+
+# Lint the entire codebase
+# https://cppcheck.sourceforge.io/
+add_custom_target(lint
+    COMMAND cppcheck ${CXX_SOURCE_FILES}
+    COMMENT "Linting codebase with cppcheck."
+)
