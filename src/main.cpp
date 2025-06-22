@@ -18,9 +18,9 @@ void print_person(const Person& p) {
 
 int main() {
   // date.hpp demo
-  auto d1 = Date(2024, 1, 1);
+  const auto d1 = Date(2024, 1, 1);
   print_date(d1);
-  auto d2 = Date(2024, 2, 2);
+  const auto d2 = Date(2024, 2, 2);
   print_date(d2);
   if (d1 < d2) {
     std::cout << "First date is older than second date" << std::endl;
@@ -35,7 +35,7 @@ int main() {
             << sum_of_squares(std::vector{1, 2, 3}) << std::endl;
 
   // person.hpp demo
-  auto p1 = Person("David", 21);
+  const auto p1 = Person("David", 21);
   print_person(p1);
 
   return 0;
