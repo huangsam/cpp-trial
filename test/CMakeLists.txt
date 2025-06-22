@@ -35,7 +35,7 @@ add_executable(
   lambda_test.cpp
   person_test.cpp
 )
-target_link_libraries(test.out gtest_main CPPTrialCore)
+target_link_libraries(test.out gtest_main cpp_trial_core)
 
 include(GoogleTest)
 gtest_discover_tests(test.out)
