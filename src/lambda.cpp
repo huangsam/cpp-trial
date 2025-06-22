@@ -4,8 +4,7 @@
 #include <vector>
 
 bool less_than(const int a, const int b) {
-  auto check_both = [](const int i, const int j) { return i < j; };
-  return check_both(a, b);
+  return [](const int i, const int j) { return i < j; }(a, b);
 }
 
 int sum_of_squares(std::vector<int> numbers) {

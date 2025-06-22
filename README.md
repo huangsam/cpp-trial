@@ -27,7 +27,7 @@ For contributors:
 
 ```shell
 # Ensure all files are formatted before PR
-find src test -name '*.cpp' -o -name '*.hpp' -exec clang-format -i {} +
+git ls-files '*.cpp' '*.hpp' | xargs clang-format -i
 
 # Ensure all files are linted before PR
 cppcheck ./src ./test
