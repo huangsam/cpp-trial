@@ -1,6 +1,7 @@
 #include "date.hpp"
 
-Date::Date(int year, int month, int day) : year(year), month(month), day(day) {}
+Date::Date(const int year, const int month, const int day)
+    : year(year), month(month), day(day) {}
 
 bool operator==(const Date &lhs, const Date &rhs) {
   return lhs.get_year() == rhs.get_year() &&
