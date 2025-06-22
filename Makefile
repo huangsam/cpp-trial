@@ -48,4 +48,4 @@ lint:
 
 # Clean all build assets
 clean:
-	rm -rf build
+	rm -rf build _deps/
