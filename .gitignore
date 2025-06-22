@@ -9,4 +9,5 @@ Makefile
 *.out
 .DS_Store
 .vscode/
+.idea/
 !/Makefile
