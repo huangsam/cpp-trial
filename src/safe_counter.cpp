@@ -7,7 +7,7 @@ SafeCounter::~SafeCounter() {
   join_worker_threads();
 }
 
-void SafeCounter::start_worker_threads(int num_threads,
+void SafeCounter::start_worker_threads(const int num_threads,
                                        int increments_per_thread) {
   m_all_workers_finished = false;  // Reset for a new run
   m_count = 0;                     // Reset counter
@@ -29,7 +29,7 @@ void SafeCounter::join_worker_threads() {
   m_all_workers_finished = true;  // All threads have joined
 }
 
-void SafeCounter::worker_function(int increments) {
+void SafeCounter::worker_function(const int increments) {
   for (int i = 0; i < increments; ++i) {
     // --- CRITICAL SECTION START ---
     // Lock the mutex before accessing the shared resource (m_count)
