@@ -38,6 +38,4 @@ std::string ThreadSimpleClass::get_worker_message() const {
   return m_worker_message;
 }
 
-bool ThreadSimpleClass::is_worker_finished() const {
-  return m_worker_finished;
-}
+bool ThreadSimpleClass::is_worker_finished() const { return m_worker_finished; }
