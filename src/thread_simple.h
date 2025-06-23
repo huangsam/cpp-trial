@@ -12,8 +12,8 @@ class ExampleThreadClass {
   // Public methods in snake_case
   void start_worker_thread();
   void join_worker_thread();
-  std::string get_worker_message() const;
-  bool is_worker_finished() const;
+  [[nodiscard]] std::string get_worker_message() const;
+  [[nodiscard]] bool is_worker_finished() const;
 
  private:
   // Private method in snake_case
