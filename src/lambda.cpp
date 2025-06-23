@@ -1,4 +1,4 @@
-#include "lambda.hpp"
+#include "lambda.h"
 
 #include <numeric>
 #include <vector>

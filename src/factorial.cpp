@@ -1,4 +1,4 @@
-#include "factorial.hpp"
+#include "factorial.h"
 
 #include <stdexcept>
 

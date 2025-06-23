@@ -1,4 +1,4 @@
-#include "../src/factorial.hpp"
+#include "../src/factorial.h"
 
 #include <gtest/gtest.h>
 

@@ -1,4 +1,4 @@
-#include "../src/date.hpp"
+#include "../src/date.h"
 
 #include <gtest/gtest.h>
 

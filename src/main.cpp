@@ -2,10 +2,10 @@
 #include <iostream>
 #include <vector>
 
-#include "date.hpp"
-#include "factorial.hpp"
-#include "lambda.hpp"
-#include "person.hpp"
+#include "date.h"
+#include "factorial.h"
+#include "lambda.h"
+#include "person.h"
 
 void print_date(const Date& d) {
   std::cout << d.get_year() << "/" << d.get_month() << "/" << d.get_day()
@@ -30,7 +30,7 @@ void print_person(const Person& p) {
 }
 
 int main() {
-  // date.hpp demo
+  // date.h demo
   const auto d1 = Date(2024, 1, 1);
   print_date(d1);
   const auto d2 = Date(2024, 2, 2);
@@ -39,15 +39,15 @@ int main() {
     std::cout << "First date is older than second date" << std::endl;
   }
 
-  // factorial.hpp demo
+  // factorial.h demo
   std::cout << "factorial(4): " << factorial(4) << std::endl;
 
-  // lambda.hpp demo
+  // lambda.h demo
   std::cout << "less_than(3,4): " << less_than(3, 4) << std::endl;
   std::cout << "sum_of_squares(vector{1,2,3}): "
             << sum_of_squares(std::vector{1, 2, 3}) << std::endl;
 
-  // person.hpp demo
+  // person.h demo
   const auto p1 = Person("David", 21, 65000.00);
   print_person(p1);
 

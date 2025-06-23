@@ -1,4 +1,4 @@
-#include "date.hpp"
+#include "date.h"
 
 Date::Date(const int year, const int month, const int day)
     : year(year), month(month), day(day) {}
