@@ -1,3 +1,4 @@
+#include <iomanip>
 #include <iostream>
 #include <vector>
 
@@ -12,8 +13,20 @@ void print_date(const Date& d) {
 }
 
 void print_person(const Person& p) {
-  std::cout << p.get_name() << " is " << p.get_age() << " years old"
-            << std::endl;
+  // Keep original output settings
+  const std::ios_base::fmtflags originalFlags = std::cout.flags();
+  const std::streamsize originalPrecision = std::cout.precision();
+
+  std::cout << p.get_name() << " is " << p.get_age() << " years old with $";
+
+  std::cout << std::fixed << std::setprecision(2) << std::showpoint
+            << p.get_salary();
+
+  std::cout << " as a salary" << std::endl;
+
+  // Restore original output settings
+  std::cout.flags(originalFlags);
+  std::cout.precision(originalPrecision);
 }
 
 int main() {
@@ -35,7 +48,7 @@ int main() {
             << sum_of_squares(std::vector{1, 2, 3}) << std::endl;
 
   // person.hpp demo
-  const auto p1 = Person("David", 21);
+  const auto p1 = Person("David", 21, 65000.00);
   print_person(p1);
 
   return 0;
