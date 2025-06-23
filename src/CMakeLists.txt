@@ -10,6 +10,7 @@ add_library(
   factorial.cpp factorial.h
   lambda.cpp lambda.h
   person.cpp person.h
+  safe_counter.cpp safe_counter.h
   thread_simple.cpp thread_simple.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})

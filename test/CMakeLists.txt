@@ -27,6 +27,7 @@ add_executable(
   hello_test.cpp
   lambda_test.cpp
   person_test.cpp
+  safe_counter_test.cpp
   thread_simple_test.cpp
 )
 target_link_libraries(test.out gtest_main cpp_trial_core)
