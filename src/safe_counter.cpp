@@ -33,7 +33,7 @@ void SafeCounter::worker_function(const int increments) {
   for (int i = 0; i < increments; ++i) {
     // --- CRITICAL SECTION START ---
     // Lock the mutex before accessing the shared resource (m_count)
-    std::lock_guard<std::mutex> lock(m_mutex);
+    std::lock_guard lock(m_mutex);
     m_count++;
     // --- CRITICAL SECTION END ---
   }
