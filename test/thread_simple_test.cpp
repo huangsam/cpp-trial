@@ -2,13 +2,12 @@
 
 #include <gtest/gtest.h>
 
-// Test fixture for ExampleThreadClass
-class ConcurrencyTest : public ::testing::Test {
+class ThreadSimpleTest : public ::testing::Test {
  protected:
   ExampleThreadClass obj;
 };
 
-TEST_F(ConcurrencyTest, WorkerThreadCompletesTask) {
+TEST_F(ThreadSimpleTest, WorkerThreadCompletesTask) {
   ASSERT_FALSE(obj.is_worker_finished());   // Initially not finished
   ASSERT_EQ("", obj.get_worker_message());  // Message should be empty initially
 
@@ -20,7 +19,7 @@ TEST_F(ConcurrencyTest, WorkerThreadCompletesTask) {
             obj.get_worker_message());  // Check the message
 }
 
-TEST_F(ConcurrencyTest, StateBeforeThreadStarts) {
+TEST_F(ThreadSimpleTest, StateBeforeThreadStarts) {
   // Ensure initial state is as expected before the thread is even started
   ASSERT_FALSE(obj.is_worker_finished());
   ASSERT_EQ("", obj.get_worker_message());

@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 
-// Test fixture for SafeCounter
 class SafeCounterTest : public ::testing::Test {
  protected:
   SafeCounter counter_obj;
