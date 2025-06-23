@@ -1,6 +1,11 @@
 ###
 # Basic setup:
 # https://cmake.org/cmake/help/latest/guide/tutorial/index.html
+#
+# For more about libraries:
+# https://cmake.org/cmake/help/latest/command/add_library.html
+# https://cmake.org/cmake/help/latest/command/target_include_directories.html
+# https://cmake.org/cmake/help/latest/command/target_link_libraries.html
 ###
 
 # Add all source files to the library
