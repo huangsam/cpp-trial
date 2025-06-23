@@ -3,6 +3,7 @@
 # https://cmake.org/cmake/help/latest/guide/tutorial/index.html
 ###
 
+# Add all source files to the library
 add_library(
   cpp_trial_core STATIC
   date.cpp date.h

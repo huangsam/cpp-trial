@@ -16,15 +16,6 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
-# Use CMAKE_SOURCE_DIR as the top level directory
-# https://cmake.org/cmake/help/latest/variable/CMAKE_SOURCE_DIR.html
-#
-# Using globs strategically here. But generally it should be avoided
-# as it can introduce unexpected behavior:
-# https://www.reddit.com/r/cmake/comments/17j3fmu/comment/k6yb8ej
-file(GLOB SRC_FILES ${CMAKE_SOURCE_DIR}/src/*.cpp)
-list(REMOVE_ITEM SRC_FILES ${CMAKE_SOURCE_DIR}/src/main.cpp)
-
 add_executable(
   test.out
 
