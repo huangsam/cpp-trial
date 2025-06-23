@@ -5,6 +5,7 @@
 # https://github.com/google/googletest/releases
 ###
 
+# Download and build Google Test framework
 include(FetchContent)
 FetchContent_Declare(
   googletest
@@ -16,6 +17,7 @@ FetchContent_MakeAvailable(googletest)
 
 enable_testing()
 
+# Add test files and libraries to the test executable
 add_executable(
   test.out
 
@@ -29,5 +31,6 @@ add_executable(
 )
 target_link_libraries(test.out gtest_main cpp_trial_core)
 
+# Find all tests and register them with CTest
 include(GoogleTest)
 gtest_discover_tests(test.out)
