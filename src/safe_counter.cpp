@@ -1,7 +1,5 @@
 #include "safe_counter.h"
 
-#include <chrono>
-
 SafeCounter::SafeCounter() : m_count(0), m_all_workers_finished(false) {}
 
 SafeCounter::~SafeCounter() {
