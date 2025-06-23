@@ -30,8 +30,6 @@ void ThreadSimpleClass::worker_function() {
       std::chrono::milliseconds(10));  // Simulate a small delay
   m_worker_message = "Hello from the worker thread!";
   m_worker_finished = true;
-  // std::cout << "Worker thread finished its task." << std::endl; // For
-  // observation
 }
 
 std::string ThreadSimpleClass::get_worker_message() const {
