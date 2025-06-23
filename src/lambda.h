@@ -1,5 +1,5 @@
-#ifndef LAMBDA_HPP
-#define LAMBDA_HPP
+#ifndef LAMBDA_H
+#define LAMBDA_H
 
 #include <vector>
 
@@ -7,4 +7,4 @@ bool less_than(int a, int b);
 
 int sum_of_squares(std::vector<int> numbers);
 
-#endif // LAMBDA_HPP
+#endif // LAMBDA_H

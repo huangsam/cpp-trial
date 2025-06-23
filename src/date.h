@@ -1,5 +1,5 @@
-#ifndef DATE_HPP
-#define DATE_HPP
+#ifndef DATE_H
+#define DATE_H
 
 #include <format>
 
@@ -35,4 +35,4 @@ struct std::formatter<Date> : std::formatter<std::string> {
   }
 };
 
-#endif // DATE_HPP
+#endif // DATE_H

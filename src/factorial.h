@@ -1,6 +1,6 @@
-#ifndef FACTORIAL_HPP
-#define FACTORIAL_HPP
+#ifndef FACTORIAL_H
+#define FACTORIAL_H
 
 int factorial(int n);
 
-#endif // FACTORIAL_HPP
+#endif // FACTORIAL_H
