@@ -4,7 +4,7 @@
 
 class ThreadSimpleTest : public ::testing::Test {
  protected:
-  ExampleThreadClass obj;
+  ThreadSimpleClass obj;
 };
 
 TEST_F(ThreadSimpleTest, WorkerThreadCompletesTask) {
