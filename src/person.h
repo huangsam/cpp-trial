@@ -1,6 +1,7 @@
 #ifndef PERSON_HPP
 #define PERSON_HPP
 
+#include <format>
 #include <string>
 
 class Person {
@@ -14,6 +15,17 @@ class Person {
   [[nodiscard]] std::string get_name() const { return name; }
   [[nodiscard]] int get_age() const { return age; }
   [[nodiscard]] double get_salary() const { return salary; }
+};
+
+// Specialization for Person
+template <>
+struct std::formatter<Person> : std::formatter<std::string> {
+  static auto format(const Person& p, std::format_context& ctx) {
+    // Using a format specifier for floating-point numbers (:.2f)
+    return std::format_to(ctx.out(),
+                          "{} is {} years old with ${:.2f} as a salary",
+                          p.get_name(), p.get_age(), p.get_salary());
+  }
 };
 
 #endif
