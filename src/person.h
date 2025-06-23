@@ -28,4 +28,7 @@ struct std::formatter<Person> : std::formatter<std::string> {
   }
 };
 
+double calculate_average_eligible_salary_ranges(
+    const std::vector<Person>& people, int age_threshold, double min_salary);
+
 #endif
