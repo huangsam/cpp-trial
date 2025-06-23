@@ -1,7 +1,6 @@
 #include "lambda.h"
 
 #include <numeric>
-#include <vector>
 
 bool less_than(const int a, const int b) {
   return [](const int i, const int j) { return i < j; }(a, b);

@@ -3,7 +3,6 @@
 #include <numeric>
 #include <ranges>
 #include <utility>
-#include <vector>
 
 Person::Person(std::string name, const int age, const double salary)
     : name(std::move(name)), age(age), salary(salary) {}
