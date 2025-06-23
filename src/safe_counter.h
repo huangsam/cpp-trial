@@ -26,4 +26,4 @@ class SafeCounter {
       m_all_workers_finished;  // To indicate when all threads are done
 };
 
-#endif
+#endif // SAFE_COUNTER_H

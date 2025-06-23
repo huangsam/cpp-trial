@@ -35,4 +35,4 @@ struct std::formatter<Date> : std::formatter<std::string> {
   }
 };
 
-#endif
+#endif // DATE_HPP

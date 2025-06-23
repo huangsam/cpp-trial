@@ -3,4 +3,4 @@
 
 int factorial(int n);
 
-#endif
+#endif // FACTORIAL_HPP
