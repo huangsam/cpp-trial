@@ -44,3 +44,4 @@ cppcheck ./src ./test
 - <https://github.com/oz123/awesome-c>
 - <https://clang.llvm.org/docs/ClangFormatStyleOptions.html>
 - <https://cppcheck.sourceforge.io/>
+- <https://stackoverflow.com/a/34661386/2748860>
