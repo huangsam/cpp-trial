@@ -3,9 +3,26 @@
 
 #include <format>
 
-struct Year { explicit Year(const int y) : value(y) {} int value; };
-struct Month { explicit Month(const int m) : value(m) {} int value; };
-struct Day { explicit Day(const int d) : value(d) {} int value; };
+struct Year {
+  explicit Year(const int y) : value(y) {
+    if (value <= 0) { throw std::out_of_range("Year must be positive."); }
+  }
+  int value;
+};
+
+struct Month {
+  explicit Month(const int m) : value(m) {
+    if (value < 1 || value > 12) { throw std::out_of_range("Month must be between 1 and 12."); }
+  }
+  int value;
+};
+
+struct Day {
+  explicit Day(const int d) : value(d) {
+    if (value < 1 || value > 31) { throw std::out_of_range("Day must be between 1 and 31."); }
+  }
+  int value;
+};
 
 class Date {
   int year;
