@@ -3,4 +3,3 @@ Checks: 'bugprone-*,cppcoreguidelines-*,-cppcoreguidelines-non-private-member-va
 HeaderFilterRegex: '^(src|test)/.*'
 UseColor: true
 WarningsAsErrors: 'bugprone-*'
-FormatStyle: file
