@@ -15,10 +15,6 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
-# Include CTest
-# https://cmake.org/cmake/help/latest/module/CTest.html
-include(CTest)
-
 enable_testing()
 
 # Add test files and libraries to the test executable
