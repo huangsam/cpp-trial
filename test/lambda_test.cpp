@@ -5,9 +5,9 @@
 #include <vector>
 
 TEST(LambdaTest, less_thanComparison) {
-  EXPECT_EQ(less_than(3, 3), false);
-  EXPECT_EQ(less_than(3, 4), true);
-  EXPECT_EQ(less_than(-4, -3), true);
+  EXPECT_EQ(less_than(ValueOne(3), ValueTwo(3)), false);
+  EXPECT_EQ(less_than(ValueOne(3), ValueTwo(4)), true);
+  EXPECT_EQ(less_than(ValueOne(-4), ValueTwo(-3)), true);
 }
 
 TEST(LambdaTest, sum_of_squares) {

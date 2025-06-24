@@ -1,3 +1,4 @@
-Checks: 'bugprone-unsafe-functions,cppcoreguidelines-avoid-*'
+Checks: 'bugprone-*,-bugprone-suspicious-include'
 HeaderFilterRegex: '^(src|test)/.*'
+UseColor: true
 FormatStyle: file

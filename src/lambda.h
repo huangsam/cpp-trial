@@ -3,7 +3,17 @@
 
 #include <vector>
 
-bool less_than(int a, int b);
+struct ValueOne {
+  explicit ValueOne(const int one) : value(one) {}
+  int value;
+};
+
+struct ValueTwo {
+  explicit ValueTwo(const int two) : value(two) {}
+  int value;
+};
+
+bool less_than(ValueOne a, ValueTwo b);
 
 int sum_of_squares(std::vector<int> numbers);
 

@@ -1,6 +1,7 @@
 #ifndef DATE_H
 #define DATE_H
 
+#include <stdexcept>
 #include <format>
 
 struct Year {

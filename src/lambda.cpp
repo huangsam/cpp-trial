@@ -2,8 +2,8 @@
 
 #include <numeric>
 
-bool less_than(const int a, const int b) {
-  return [](const int i, const int j) { return i < j; }(a, b);
+bool less_than(const ValueOne a, const ValueTwo b) {
+  return [](const int i, const int j) { return i < j; }(a.value, b.value);
 }
 
 int sum_of_squares(std::vector<int> numbers) {

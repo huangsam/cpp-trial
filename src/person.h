@@ -4,6 +4,21 @@
 #include <format>
 #include <string>
 #include <vector>
+#include <stdexcept>
+
+struct Age {
+  explicit Age(const int a) : value(a) {
+    if (value < 1) { throw std::invalid_argument("Age must be positive"); }
+  }
+  int value;
+};
+
+struct Salary {
+  explicit Salary(const double s) : value(s) {
+    if (value < 1) { throw std::invalid_argument("Salary must be positive"); }
+  }
+  double value;
+};
 
 class Person {
   std::string name;
@@ -11,7 +26,7 @@ class Person {
   double salary;
 
  public:
-  Person(std::string name, int age, double salary);
+  Person(std::string name, Age age, Salary salary);
 
   [[nodiscard]] std::string get_name() const { return name; }
   [[nodiscard]] int get_age() const { return age; }

@@ -21,12 +21,13 @@ int main() {
   std::cout << std::format("factorial(4): {}\n", factorial(4));
 
   // lambda.h demo
-  std::cout << std::format("less_than(3,4): {}\n", less_than(3, 4));
+  std::cout << std::format("less_than(3,4): {}\n",
+                           less_than(ValueOne(3), ValueTwo(4)));
   std::cout << std::format("sum_of_squares(vector{{1,2,3}}): {}\n",
                            sum_of_squares(std::vector{1, 2, 3}));
 
   // person.h demo
-  const auto p1 = Person("David", 21, 65000.00);
+  const auto p1 = Person("David", Age(21), Salary(65000.00));
   std::cout << std::format("{}\n", p1);
 
   return 0;

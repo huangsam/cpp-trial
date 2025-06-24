@@ -1,7 +1,8 @@
-#include "../src/date.h" // Assuming date.h defines Date, Year, Month, Day classes
+#include "../src/date.h"  // Assuming date.h defines Date, Year, Month, Day classes
 
 #include <gtest/gtest.h>
-#include <string> // For potential string conversions or debugging if needed
+
+#include <string>  // For potential string conversions or debugging if needed
 
 // Namespace for constants specific to Date testing
 namespace DateTestConstants {
@@ -20,7 +21,7 @@ constexpr int NEWER_DATE_DAY = 2;
 constexpr int OLDER_DATE_YEAR = 2024;
 constexpr int OLDER_DATE_MONTH = 1;
 constexpr int OLDER_DATE_DAY = 31;
-} // namespace DateTestConstants
+}  // namespace DateTestConstants
 
 class DateTest : public testing::Test {
  protected:
