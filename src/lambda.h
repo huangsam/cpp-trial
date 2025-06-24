@@ -17,4 +17,4 @@ bool less_than(ValueOne a, ValueTwo b);
 
 int sum_of_squares(std::vector<int> numbers);
 
-#endif // LAMBDA_H
+#endif  // LAMBDA_H

@@ -22,4 +22,4 @@ class ThreadSimpleClass {
   bool m_worker_finished;
 };
 
-#endif // THREAD_SIMPLE_H
+#endif  // THREAD_SIMPLE_H

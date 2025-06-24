@@ -1,26 +1,32 @@
 #ifndef DATE_H
 #define DATE_H
 
-#include <stdexcept>
 #include <format>
+#include <stdexcept>
 
 struct Year {
   explicit Year(const int y) : value(y) {
-    if (value <= 0) { throw std::out_of_range("Year must be positive."); }
+    if (value <= 0) {
+      throw std::out_of_range("Year must be positive.");
+    }
   }
   int value;
 };
 
 struct Month {
   explicit Month(const int m) : value(m) {
-    if (value < 1 || value > 12) { throw std::out_of_range("Month must be between 1 and 12."); }
+    if (value < 1 || value > 12) {
+      throw std::out_of_range("Month must be between 1 and 12.");
+    }
   }
   int value;
 };
 
 struct Day {
   explicit Day(const int d) : value(d) {
-    if (value < 1 || value > 31) { throw std::out_of_range("Day must be between 1 and 31."); }
+    if (value < 1 || value > 31) {
+      throw std::out_of_range("Day must be between 1 and 31.");
+    }
   }
   int value;
 };
@@ -55,6 +61,15 @@ struct std::formatter<Date> : std::formatter<std::string> {
     return std::format_to(ctx.out(), "{}/{}/{}", d.get_year(), d.get_month(),
                           d.get_day());
   }
+
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin();
+    auto end = ctx.end();
+    while (it != end && *it != '}') {
+      ++it;
+    }
+    return it;
+  }
 };
 
-#endif // DATE_H
+#endif  // DATE_H

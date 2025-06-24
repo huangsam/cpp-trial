@@ -5,4 +5,4 @@
 
 std::string greet();
 
-#endif //ASYNC_SIMPLE_H
+#endif  // ASYNC_SIMPLE_H

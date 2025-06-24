@@ -2,20 +2,24 @@
 #define PERSON_H
 
 #include <format>
+#include <stdexcept>
 #include <string>
 #include <vector>
-#include <stdexcept>
 
 struct Age {
   explicit Age(const int a) : value(a) {
-    if (value < 1) { throw std::invalid_argument("Age must be positive"); }
+    if (value < 1) {
+      throw std::invalid_argument("Age must be positive");
+    }
   }
   int value;
 };
 
 struct Salary {
   explicit Salary(const double s) : value(s) {
-    if (value < 0.0) { throw std::invalid_argument(std::format("Salary must be non-negative")); }
+    if (value < 0.0) {
+      throw std::invalid_argument(std::format("Salary must be non-negative"));
+    }
   }
   double value;
 };
@@ -42,9 +46,18 @@ struct std::formatter<Person> : std::formatter<std::string> {
                           "{} is {} years old with ${:.2f} as a salary",
                           p.get_name(), p.get_age(), p.get_salary());
   }
+
+  constexpr auto parse(format_parse_context& ctx) {
+    auto it = ctx.begin();
+    auto end = ctx.end();
+    while (it != end && *it != '}') {
+      ++it;
+    }
+    return it;
+  }
 };
 
 double calculate_average_eligible_salary_ranges(
     const std::vector<Person>& people, int age_threshold, double min_salary);
 
-#endif // PERSON_H
+#endif  // PERSON_H
