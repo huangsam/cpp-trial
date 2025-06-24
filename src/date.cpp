@@ -12,8 +12,12 @@ bool operator<(const Date& lhs, const Date& rhs) {
   const int year_delta = lhs.get_year() - rhs.get_year();
   const int month_delta = lhs.get_month() - rhs.get_month();
   const int day_delta = lhs.get_day() - rhs.get_day();
-  if (year_delta) return year_delta < 0;
-  if (month_delta) return month_delta < 0;
+  if (year_delta != 0) {
+    return year_delta < 0;
+  }
+  if (month_delta != 0) {
+    return month_delta < 0;
+  }
   return day_delta < 0;
 }
 

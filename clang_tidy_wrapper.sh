@@ -55,9 +55,11 @@ done
 
 if $SHOULD_SKIP; then
     echo "--> clang-tidy SKIPPED for: $SOURCE_FILE" >&2
+    echo "Skip this tidy stuff here: $SOURCE_FILE" >> /tmp/clang-debug.log
     exec "${COMPILER_ARGS[@]}" # Execute the actual compiler command
 else
     echo "--> Running clang-tidy for: $SOURCE_FILE" >&2
+    echo "--> Running clang-tidy command: $ACTUAL_CLANG_TIDY_EXEC ${CLANG_TIDY_ARGS[@]} -- ${COMPILER_ARGS[@]}" >> /tmp/clang-debug.log
     # Execute clang-tidy with its arguments, followed by the delimiter,
     # and then the compiler arguments.
     exec "$ACTUAL_CLANG_TIDY_EXEC" "${CLANG_TIDY_ARGS[@]}" -- "${COMPILER_ARGS[@]}"
