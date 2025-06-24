@@ -22,6 +22,7 @@ add_executable(
   test.out
 
   # Test code
+  async_simple_test.cpp
   date_test.cpp
   factorial_test.cpp
   hello_test.cpp

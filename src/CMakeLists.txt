@@ -17,6 +17,7 @@ add_library(
   person.cpp person.h
   safe_counter.cpp safe_counter.h
   thread_simple.cpp thread_simple.h
+  async_simple.cpp async_simple.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
