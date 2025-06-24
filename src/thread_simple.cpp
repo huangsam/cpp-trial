@@ -28,8 +28,7 @@ void ThreadSimpleClass::join_worker_thread() {
 
 void ThreadSimpleClass::worker_function() {
   // Simulate some work
-  std::this_thread::sleep_for(
-      std::chrono::milliseconds(WORK_SLEEP_MS));  // Simulate a small delay
+  std::this_thread::sleep_for(std::chrono::milliseconds(WORK_SLEEP_MS));
   m_worker_message = "Hello from the worker thread!";
   m_worker_finished = true;
 }
