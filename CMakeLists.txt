@@ -30,6 +30,23 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 # https://stackoverflow.com/q/3431829
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
+# Enable clang-tidy
+# https://cmake.org/cmake/help/latest/variable/CMAKE_LANG_CLANG_TIDY.html
+# https://stackoverflow.com/a/64252351/2748860
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+option(ENABLE_CLANG_TIDY "Enable Clang-Tidy static analysis" ON)
+
+find_program(CLANG_TIDY_EXEC NAMES clang-tidy)
+set(CLANG_TIDY_ARGS ${CLANG_TIDY_EXEC})
+
+if (CLANG_TIDY_EXEC AND ENABLE_CLANG_TIDY)
+  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_ARGS}" CACHE STRING "Clang-Tidy executable and arguments")
+  message(STATUS "Clang-Tidy enabled: ${CMAKE_CXX_CLANG_TIDY}")
+else ()
+  set(CMAKE_CXX_CLANG_TIDY "" CACHE STRING "" FORCE) # Force to empty if explicitly disabled or not found
+  message(STATUS "Clang-Tidy disabled")
+endif ()
+
 # Run steps for building main.out
 add_subdirectory(src)
 
