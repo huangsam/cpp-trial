@@ -2,6 +2,8 @@
 
 #include <chrono>
 
+constexpr long long WORK_SLEEP_MS = 10;
+
 ThreadSimpleClass::ThreadSimpleClass() : m_worker_finished(false) {
   // Constructor doesn't start the thread automatically, allowing for controlled
   // testing.
@@ -27,7 +29,7 @@ void ThreadSimpleClass::join_worker_thread() {
 void ThreadSimpleClass::worker_function() {
   // Simulate some work
   std::this_thread::sleep_for(
-      std::chrono::milliseconds(10));  // Simulate a small delay
+      std::chrono::milliseconds(WORK_SLEEP_MS));  // Simulate a small delay
   m_worker_message = "Hello from the worker thread!";
   m_worker_finished = true;
 }

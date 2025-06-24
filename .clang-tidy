@@ -1,2 +1,2 @@
+Checks: 'cppcoreguidelines-*'
 HeaderFilterRegex: '^(src|test)/.*'
-FormatStyle: file
