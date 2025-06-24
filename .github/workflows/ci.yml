@@ -13,6 +13,10 @@ jobs:
   cpp-build:
     name: C++
     runs-on: ubuntu-latest
+    # Keep in mind that ubuntu-latest is a rolling release, and that we heavily
+    # rely on its builtin CMake, Ninja, clang-tidy, etc. in order for this CI
+    # build to work. To learn more about the runner images:
+    # https://github.com/actions/runner-images
 
     steps:
       - uses: actions/checkout@v4
