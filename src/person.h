@@ -15,7 +15,7 @@ struct Age {
 
 struct Salary {
   explicit Salary(const double s) : value(s) {
-    if (value < 1) { throw std::invalid_argument("Salary must be positive"); }
+    if (value < 0.0) { throw std::invalid_argument(std::format("Salary must be non-negative")); }
   }
   double value;
 };

@@ -1,8 +1,8 @@
-#include "../src/person.h"  // Assuming person.h defines the Person class and calculate_average_eligible_salary_ranges
+#include "../src/person.h"
 
 #include <gtest/gtest.h>
 
-#include <string>  // For string literals
+#include <string>
 #include <vector>
 
 // Define global constants for common test data or thresholds,
@@ -107,10 +107,10 @@ class PersonAnalyzerTest : public testing::Test {
 
   static void expect_average_salary(const std::vector<Person>& people_data,
                                     const int age_threshold,
-                                    const double min_salary,
+                                    const Salary min_salary,
                                     const double expected_average) {
     const double actual_average = calculate_average_eligible_salary_ranges(
-        people_data, age_threshold, min_salary);
+        people_data, age_threshold, min_salary.value);
     ASSERT_NEAR(expected_average, actual_average,
                 PersonAnalyzerTestConstants::DEFAULT_EPSILON);
   }
@@ -124,21 +124,21 @@ TEST_F(PersonAnalyzerTest, StandardFilteringCase) {
   // Average = 185000 / 3 = 61666.666...
   expect_average_salary(
       staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_STANDARD,
-      PersonAnalyzerTestConstants::SALARY_THRESHOLD_STANDARD,
+      Salary(PersonAnalyzerTestConstants::SALARY_THRESHOLD_STANDARD),
       PersonAnalyzerTestConstants::EXPECTED_AVG_STANDARD_FILTER);
 }
 
 TEST_F(PersonAnalyzerTest, NoEligiblePeople_AgeTooHigh) {
   expect_average_salary(
       staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_NONE_ELIGIBLE_HIGH,
-      PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE,
+      Salary(PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE),
       PersonAnalyzerTestConstants::EXPECTED_AVG_NO_ELIGIBLE);
 }
 
 TEST_F(PersonAnalyzerTest, NoEligiblePeople_SalaryTooHigh) {
   expect_average_salary(
       staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_NONE,
-      PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE_ELIGIBLE_HIGH,
+      Salary(PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE_ELIGIBLE_HIGH),
       PersonAnalyzerTestConstants::EXPECTED_AVG_NO_ELIGIBLE);
 }
 
@@ -149,16 +149,16 @@ TEST_F(PersonAnalyzerTest, AllEligible_LowThresholds) {
   // Average = 278000 / 5 = 55600
   expect_average_salary(
       staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_ALL_ELIGIBLE,
-      PersonAnalyzerTestConstants::SALARY_THRESHOLD_ALL_ELIGIBLE,
+      Salary(PersonAnalyzerTestConstants::SALARY_THRESHOLD_ALL_ELIGIBLE),
       PersonAnalyzerTestConstants::EXPECTED_AVG_ALL_ELIGIBLE);
 }
 
 TEST_F(PersonAnalyzerTest, EmptyInputVector) {
   constexpr std::vector<Person> empty_staff = {};
-  expect_average_salary(empty_staff,
-                        PersonAnalyzerTestConstants::AGE_THRESHOLD_NONE,
-                        PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE,
-                        PersonAnalyzerTestConstants::EXPECTED_AVG_NO_ELIGIBLE);
+  expect_average_salary(
+      empty_staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_NONE,
+      Salary(PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE),
+      PersonAnalyzerTestConstants::EXPECTED_AVG_NO_ELIGIBLE);
 }
 
 TEST_F(PersonAnalyzerTest, MinSalaryEdgeCase_ExclusiveThreshold) {
@@ -168,7 +168,7 @@ TEST_F(PersonAnalyzerTest, MinSalaryEdgeCase_ExclusiveThreshold) {
   // 233000 / 4 = 58250
   expect_average_salary(
       staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_NONE,
-      PersonAnalyzerTestConstants::
-          SALARY_THRESHOLD_STANDARD,  // Re-using 45000.0 constant
+      Salary(PersonAnalyzerTestConstants::
+                 SALARY_THRESHOLD_STANDARD),  // Re-using 45000.0 constant
       PersonAnalyzerTestConstants::EXPECTED_AVG_MIN_SALARY_EDGE_CASE);
 }
