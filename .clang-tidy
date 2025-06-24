@@ -1,2 +1,3 @@
 Checks: 'bugprone-unsafe-functions,cppcoreguidelines-avoid-*'
 HeaderFilterRegex: '^(src|test)/.*'
+FormatStyle: file
