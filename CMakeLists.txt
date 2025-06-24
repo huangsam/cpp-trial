@@ -37,13 +37,20 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 option(ENABLE_CLANG_TIDY "Enable Clang-Tidy static analysis" ON)
 
 find_program(CLANG_TIDY_EXEC NAMES clang-tidy)
-set(CLANG_TIDY_ARGS ${CLANG_TIDY_EXEC})
+
+# Use wrapper script to ignore googletest since it's not a header, but
+# rather a main entrypoint
+set(CLANG_TIDY_WRAPPER_SCRIPT "${CMAKE_SOURCE_DIR}/clang_tidy_wrapper.sh")
 
 if (CLANG_TIDY_EXEC AND ENABLE_CLANG_TIDY)
-  set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_ARGS}" CACHE STRING "Clang-Tidy executable and arguments")
+  set(CMAKE_CXX_CLANG_TIDY
+    "${CLANG_TIDY_WRAPPER_SCRIPT};${CLANG_TIDY_EXEC}"
+    CACHE STRING "Clang-Tidy wrapper and executable"
+  )
   message(STATUS "Clang-Tidy enabled: ${CMAKE_CXX_CLANG_TIDY}")
 else ()
-  set(CMAKE_CXX_CLANG_TIDY "" CACHE STRING "" FORCE) # Force to empty if explicitly disabled or not found
+  # Force to empty if explicitly disabled or not found
+  set(CMAKE_CXX_CLANG_TIDY "" CACHE STRING "" FORCE)
   message(STATUS "Clang-Tidy disabled")
 endif ()
 

@@ -1,3 +1,3 @@
-Checks: 'bugprone-*,-bugprone-suspicious-include'
+Checks: 'bugprone-*'
 HeaderFilterRegex: '^(src|test)/.*'
 UseColor: true
