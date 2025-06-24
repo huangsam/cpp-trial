@@ -1,7 +1,7 @@
 #include "date.h"
 
-Date::Date(const int year, const int month, const int day)
-    : year(year), month(month), day(day) {}
+Date::Date(const Year year, const Month month, const Day day)
+    : year(year.value), month(month.value), day(day.value) {}
 
 bool operator==(const Date& lhs, const Date& rhs) {
   return lhs.get_year() == rhs.get_year() &&

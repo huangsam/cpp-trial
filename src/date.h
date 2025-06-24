@@ -3,13 +3,17 @@
 
 #include <format>
 
+struct Year { explicit Year(const int y) : value(y) {} int value; };
+struct Month { explicit Month(const int m) : value(m) {} int value; };
+struct Day { explicit Day(const int d) : value(d) {} int value; };
+
 class Date {
   int year;
   int month;
   int day;
 
  public:
-  Date(int year, int month, int day);
+  Date(Year year, Month month, Day day);
 
   [[nodiscard]] int get_year() const { return year; }
   [[nodiscard]] int get_month() const { return month; }

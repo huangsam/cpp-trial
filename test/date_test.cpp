@@ -9,7 +9,9 @@ class DateTest : public testing::Test {
   Date older_date;
 
   DateTest()
-      : one_date(2024, 2, 1), newer_date(2024, 2, 2), older_date(2024, 1, 31) {}
+      : one_date(Year(2024), Month(2), Day(1)),
+        newer_date(Year(2024), Month(2), Day(2)),
+        older_date(Year(2024), Month(1), Day(31)) {}
 };
 
 TEST_F(DateTest, EqualComparisons) {
