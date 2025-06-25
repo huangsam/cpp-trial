@@ -2,11 +2,6 @@
 
 SafeCounter::SafeCounter() : m_count(0), m_all_workers_finished(false) {}
 
-SafeCounter::~SafeCounter() {
-  // Ensure all threads are joined before destruction
-  join_worker_threads();
-}
-
 void SafeCounter::start_worker_threads(const int num_threads,
                                        int increments_per_thread) {
   m_all_workers_finished = false;  // Reset for a new run

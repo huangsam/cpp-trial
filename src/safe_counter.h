@@ -2,7 +2,6 @@
 #define SAFE_COUNTER_H
 
 #include <atomic>
-#include <cstdint>
 #include <mutex>
 #include <thread>
 #include <vector>
@@ -10,13 +9,6 @@
 class SafeCounter {
  public:
   SafeCounter();
-  ~SafeCounter();
-
-  // Disable copy/move to prevent unsafe sharing of threads/resources
-  SafeCounter(const SafeCounter&) = delete;
-  SafeCounter& operator=(const SafeCounter&) = delete;
-  SafeCounter(SafeCounter&&) = delete;
-  SafeCounter& operator=(SafeCounter&&) = delete;
 
   void start_worker_threads(int num_threads, int increments_per_thread);
   void join_worker_threads();

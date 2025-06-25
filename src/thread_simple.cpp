@@ -9,12 +9,6 @@ ThreadSimpleClass::ThreadSimpleClass() : m_worker_finished(false) {
   // testing.
 }
 
-ThreadSimpleClass::~ThreadSimpleClass() {
-  if (m_worker_thread.joinable()) {
-    m_worker_thread.join();
-  }
-}
-
 void ThreadSimpleClass::start_worker_thread() {
   // Pass 'this' to the worker function so it can modify member variables
   m_worker_thread = std::thread(&ThreadSimpleClass::worker_function, this);
