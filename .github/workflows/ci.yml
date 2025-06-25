@@ -21,8 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Configure CMake
-        run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
-      - name: Build
-        run: cmake --build build --config Debug
+        run: cmake --preset ci
+      - name: Run build
+        run: cmake --build --preset ci
       - name: Run tests
         run: ctest --test-dir build --output-on-failure

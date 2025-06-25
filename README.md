@@ -15,8 +15,8 @@ For everyone:
 brew install --formula cmake llvm ninja
 
 # Build binaries
-cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
-cmake --build build --config Debug
+cmake --preset dev
+cmake --build --preset dev
 
 # Run binaries in their original form
 ./build/bin/main.out
