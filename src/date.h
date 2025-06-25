@@ -62,8 +62,8 @@ bool operator!=(const Date& lhs, const Date& rhs);
 template <>
 struct std::formatter<Date> : std::formatter<std::string> {
   static auto format(const Date& date, std::format_context& ctx) {
-    return std::format_to(ctx.out(), "{}/{}/{}", date.get_year(), date.get_month(),
-                          date.get_day());
+    return std::format_to(ctx.out(), "{}/{}/{}", date.get_year(),
+                          date.get_month(), date.get_day());
   }
 };
 

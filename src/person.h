@@ -42,9 +42,9 @@ template <>
 struct std::formatter<Person> : std::formatter<std::string> {
   static auto format(const Person& person, std::format_context& ctx) {
     // Using a format specifier for floating-point numbers (:.2f)
-    return std::format_to(ctx.out(),
-                          "{} is {} years old with ${:.2f} as a salary",
-                          person.get_name(), person.get_age(), person.get_salary());
+    return std::format_to(
+        ctx.out(), "{} is {} years old with ${:.2f} as a salary",
+        person.get_name(), person.get_age(), person.get_salary());
   }
 };
 
