@@ -12,6 +12,14 @@ class SafeCounter {
   SafeCounter();
   ~SafeCounter();
 
+  // Disable copy/move to prevent unsafe sharing of threads/resources.
+  // To learn more about this best practice, refer to the Rule of Three:
+  // https://en.cppreference.com/w/cpp/language/rule_of_three.html
+  SafeCounter(const SafeCounter&) = delete;
+  SafeCounter& operator=(const SafeCounter&) = delete;
+  SafeCounter(SafeCounter&&) = delete;
+  SafeCounter& operator=(SafeCounter&&) = delete;
+
   void start_worker_threads(int num_threads, int increments_per_thread);
   void join_worker_threads();
   int64_t get_count() const;
@@ -20,7 +28,7 @@ class SafeCounter {
  private:
   void worker_function(int increments);
 
-  long m_count;
+  int64_t m_count;
   std::mutex m_mutex;
   std::vector<std::thread> m_worker_threads;
   std::atomic<bool>
