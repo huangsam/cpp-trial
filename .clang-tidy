@@ -43,8 +43,11 @@ Checks: >
   -bugprone-unused-local-non-trivial-variable,
   -bugprone-unused-return-value
 
-UseColor: true
-
+# Enable warnings as errors for all bugprone checks
 WarningsAsErrors: 'bugprone-*'
 
+# Apply auto-fixes based on .clang-format settings
 FormatStyle: file
+
+# Use colors when showing warning and error messages
+UseColor: true
