@@ -1,5 +1,50 @@
 # https://clang.llvm.org/extra/clang-tidy/checks/list.html
-Checks: 'bugprone-*,cppcoreguidelines-*,-cppcoreguidelines-non-private-member-variables-in-classes,google-*,modernize-*,-modernize-use-trailing-return-type,performance-*,readability-*'
+
+# Borrowed from Google Cloud:
+# https://github.com/googleapis/google-cloud-cpp/blob/main/.clang-tidy
+Checks: >
+  -*,
+  abseil-*,
+  bugprone-*,
+  google-*,
+  misc-*,
+  modernize-*,
+  performance-*,
+  portability-*,
+  readability-*,
+  -google-readability-braces-around-statements,
+  -google-readability-namespace-comments,
+  -google-runtime-references,
+  -misc-non-private-member-variables-in-classes,
+  -misc-const-correctness,
+  -misc-include-cleaner,
+  -modernize-return-braced-init-list,
+  -modernize-use-trailing-return-type,
+  -modernize-concat-nested-namespaces,
+  -modernize-use-nodiscard,
+  -modernize-avoid-c-arrays,
+  -modernize-type-traits,
+  -modernize-unary-static-assert,
+  -performance-move-const-arg,
+  -performance-avoid-endl,
+  -performance-enum-size,
+  -readability-braces-around-statements,
+  -readability-identifier-length,
+  -readability-magic-numbers,
+  -readability-named-parameter,
+  -readability-redundant-declaration,
+  -readability-avoid-return-with-void-value,
+  -readability-function-cognitive-complexity,
+  -bugprone-narrowing-conversions,
+  -bugprone-easily-swappable-parameters,
+  -bugprone-inc-dec-in-conditions,
+  -bugprone-implicit-widening-of-multiplication-result,
+  -bugprone-unchecked-optional-access,
+  -bugprone-unused-local-non-trivial-variable,
+  -bugprone-unused-return-value
+
 UseColor: true
+
 WarningsAsErrors: 'bugprone-*'
+
 FormatStyle: file
