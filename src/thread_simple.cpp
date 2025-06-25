@@ -1,7 +1,6 @@
 #include "thread_simple.h"
 
 #include <chrono>
-#include <cstdint>
 
 constexpr int64_t WORK_SLEEP_MS = 10;
 
