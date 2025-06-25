@@ -37,8 +37,6 @@ git ls-files '*.cpp' '*.h' | xargs clang-format -i
 - <https://google.github.io/styleguide/cppguide.html>
 - <https://google.github.io/googletest/reference/assertions.html>
 - <https://cmake.org/cmake/help/git-master/manual/cmake-commands.7.html>
-- <https://github.com/fffaraz/awesome-cpp>
-- <https://github.com/oz123/awesome-c>
 - <https://clang.llvm.org/docs/ClangFormatStyleOptions.html>
-- <https://cppcheck.sourceforge.io/>
-- <https://stackoverflow.com/a/34661386/2748860>
+- <https://clang.llvm.org/extra/clang-tidy/checks/list.html>
+- <https://github.com/fffaraz/awesome-cpp>
