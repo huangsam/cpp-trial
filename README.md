@@ -12,7 +12,7 @@ For everyone:
 
 ```shell
 # Install developer tools
-brew install --formula cmake cppcheck llvm ninja
+brew install --formula cmake llvm ninja
 
 # Build binaries
 cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Debug
@@ -28,9 +28,6 @@ For contributors:
 ```shell
 # Ensure all files are formatted before PR
 git ls-files '*.cpp' '*.h' | xargs clang-format -i
-
-# Ensure all files are linted before PR
-cppcheck ./src ./test
 ```
 
 ## Helpful resources
