@@ -21,9 +21,9 @@ void SafeCounter::start_worker_threads(const int num_threads,
 }
 
 void SafeCounter::join_worker_threads() {
-  for (std::thread& t : m_worker_threads) {
-    if (t.joinable()) {
-      t.join();
+  for (std::thread& mw_th : m_worker_threads) {
+    if (mw_th.joinable()) {
+      mw_th.join();
     }
   }
   m_all_workers_finished = true;  // All threads have joined

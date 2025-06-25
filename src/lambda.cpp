@@ -2,12 +2,15 @@
 
 #include <numeric>
 
-bool less_than(const ValueOne a, const ValueTwo b) {
-  return [](const int i, const int j) { return i < j; }(a.value, b.value);
+bool less_than(const ValueOne val_one, const ValueTwo val_two) {
+  return [](const int val_i, const int val_j) { return val_i < val_j; }(
+             val_one.value, val_two.value);
 }
 
-int sum_of_squares(std::vector<int> numbers) {
-  auto add_square = [](const int acc, const int i) { return acc + (i * i); };
+int sum_of_squares(std::vector<int> numbers_vec) {
+  auto add_square = [](const int accu, const int val_int) {
+    return accu + (val_int * val_int);
+  };
 
   /**
    * We use std::accumulate here to ensure that we get a consistent
@@ -17,5 +20,5 @@ int sum_of_squares(std::vector<int> numbers) {
    *
    * https://stackoverflow.com/q/47144083
    */
-  return std::accumulate(numbers.begin(), numbers.end(), 0, add_square);
+  return std::accumulate(numbers_vec.begin(), numbers_vec.end(), 0, add_square);
 }

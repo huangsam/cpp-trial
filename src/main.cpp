@@ -9,11 +9,11 @@
 
 int main() {
   // date.h demo
-  const auto d1 = Date(Year(2024), Month(1), Day(1));
-  std::cout << std::format("{}\n", d1);
-  const auto d2 = Date(Year(2024), Month(2), Day(2));
-  std::cout << std::format("{}\n", d2);
-  if (d1 < d2) {
+  const auto date1 = Date(Year(2024), Month(1), Day(1));
+  std::cout << std::format("{}\n", date1);
+  const auto date2 = Date(Year(2024), Month(2), Day(2));
+  std::cout << std::format("{}\n", date2);
+  if (date1 < date2) {
     std::cout << std::format("First date is older than second date\n");
   }
 
@@ -27,8 +27,8 @@ int main() {
                            sum_of_squares(std::vector{1, 2, 3}));
 
   // person.h demo
-  const auto p1 = Person("David", Age(21), Salary(65000.00));
-  std::cout << std::format("{}\n", p1);
+  const auto person = Person("David", Age(21), Salary(65000.00));
+  std::cout << std::format("{}\n", person);
 
   return 0;
 }

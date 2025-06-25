@@ -13,7 +13,7 @@ struct ValueTwo {
   int value;
 };
 
-bool less_than(ValueOne a, ValueTwo b);
+bool less_than(ValueOne val_one, ValueTwo val_two);
 
 int sum_of_squares(std::vector<int> numbers);
 
