@@ -53,18 +53,12 @@ struct StaffMemberData {
 
 // Define individual constants for staff members, making it clear which person
 // is which
-constexpr StaffMemberData ALICE_DATA = {
-    .name = "Alice", .age = 30, .salary = 50000.0};
-constexpr StaffMemberData BOB_DATA = {
-    .name = "Bob", .age = 25, .salary = 45000.0};
-constexpr StaffMemberData CHARLIE_DATA = {
-    .name = "Charlie", .age = 35, .salary = 60000.0};
-constexpr StaffMemberData DAVID_DATA = {
-    .name = "David", .age = 40, .salary = 75000.0};
-constexpr StaffMemberData EVE_DATA = {
-    .name = "Eve", .age = 28, .salary = 48000.0};
-constexpr StaffMemberData FRANK_DATA = {
-    .name = "Frank", .age = 22, .salary = 30000.0};
+constexpr StaffMemberData ALICE_DATA = {"Alice", 30, 50000.0};
+constexpr StaffMemberData BOB_DATA = {"Bob", 25, 45000.0};
+constexpr StaffMemberData CHARLIE_DATA = {"Charlie", 35, 60000.0};
+constexpr StaffMemberData DAVID_DATA = {"David", 40, 75000.0};
+constexpr StaffMemberData EVE_DATA = {"Eve", 28, 48000.0};
+constexpr StaffMemberData FRANK_DATA = {"Frank", 22, 30000.0};
 
 // Thresholds for filtering
 constexpr int AGE_THRESHOLD_STANDARD = 30;

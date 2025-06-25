@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-auto factorial(const int n) -> int {
+int factorial(const int n) {
   if (n < 0) {
     throw std::invalid_argument("n must be non-negative");
   }

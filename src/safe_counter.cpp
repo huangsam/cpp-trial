@@ -39,7 +39,7 @@ void SafeCounter::worker_function(const int increments) {
   }
 }
 
-auto SafeCounter::get_count() const -> long {
+long SafeCounter::get_count() const {
   // While reading a long might be atomic on some architectures,
   // if other threads were still writing, we'd want to ensure
   // we get a consistent read. For a final read after joining,
@@ -48,6 +48,6 @@ auto SafeCounter::get_count() const -> long {
   return m_count;
 }
 
-auto SafeCounter::are_workers_finished() const -> bool {
+bool SafeCounter::are_workers_finished() const {
   return m_all_workers_finished.load();  // Use load() for atomic variable
 }

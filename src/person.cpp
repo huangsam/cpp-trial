@@ -7,9 +7,8 @@
 Person::Person(std::string name, const Age age, const Salary salary)
     : name(std::move(name)), age(age.value), salary(salary.value) {}
 
-auto calculate_average_eligible_salary_ranges(const std::vector<Person>& people,
-                                              int age_threshold,
-                                              double min_salary) -> double {
+double calculate_average_eligible_salary_ranges(
+    const std::vector<Person>& people, int age_threshold, double min_salary) {
   // Pipeline: filter -> transform (salary) -> accumulate
   auto eligible_salaries_view =
       people | std::views::filter([age_threshold, min_salary](const Person& p) {
