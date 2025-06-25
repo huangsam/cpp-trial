@@ -1,5 +1,6 @@
 #include "person.h"
 
+#include <cstdint>
 #include <numeric>
 #include <ranges>
 #include <utility>

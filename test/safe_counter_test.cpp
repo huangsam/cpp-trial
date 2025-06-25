@@ -1,5 +1,6 @@
 #include "safe_counter.h"
 
+#include <cstdint>
 #include <gtest/gtest.h>
 
 class SafeCounterTest : public ::testing::Test {

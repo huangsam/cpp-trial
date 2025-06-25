@@ -1,6 +1,7 @@
 #include "async_simple.h"
 
 #include <chrono>
+#include <cstdint>
 #include <thread>
 
 constexpr int64_t GREET_SLEEP_MS = 100;
