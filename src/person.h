@@ -46,15 +46,6 @@ struct std::formatter<Person> : std::formatter<std::string> {
                           "{} is {} years old with ${:.2f} as a salary",
                           p.get_name(), p.get_age(), p.get_salary());
   }
-
-  constexpr auto parse(format_parse_context& ctx) {
-    auto it = ctx.begin();
-    auto end = ctx.end();
-    while (it != end && *it != '}') {
-      ++it;
-    }
-    return it;
-  }
 };
 
 double calculate_average_eligible_salary_ranges(

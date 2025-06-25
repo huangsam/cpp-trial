@@ -14,8 +14,10 @@ struct Year {
 };
 
 struct Month {
+  static constexpr int MIN_MONTH = 1;
+  static constexpr int MAX_MONTH = 12;
   explicit Month(const int m) : value(m) {
-    if (value < 1 || value > 12) {
+    if (value < MIN_MONTH || value > MAX_MONTH) {
       throw std::out_of_range("Month must be between 1 and 12.");
     }
   }
@@ -23,8 +25,10 @@ struct Month {
 };
 
 struct Day {
+  static constexpr int MIN_DAY = 1;
+  static constexpr int MAX_DAY = 31;
   explicit Day(const int d) : value(d) {
-    if (value < 1 || value > 31) {
+    if (value < MIN_DAY || value > MAX_DAY) {
       throw std::out_of_range("Day must be between 1 and 31.");
     }
   }
@@ -60,15 +64,6 @@ struct std::formatter<Date> : std::formatter<std::string> {
   static auto format(const Date& d, std::format_context& ctx) {
     return std::format_to(ctx.out(), "{}/{}/{}", d.get_year(), d.get_month(),
                           d.get_day());
-  }
-
-  constexpr auto parse(format_parse_context& ctx) {
-    auto it = ctx.begin();
-    auto end = ctx.end();
-    while (it != end && *it != '}') {
-      ++it;
-    }
-    return it;
   }
 };
 
