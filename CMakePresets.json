@@ -1,0 +1,101 @@
+{
+  "version": 6,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 24,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "base",
+      "displayName": "Base Configuration",
+      "description": "Common settings for all configurations.",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "installDir": "${sourceDir}/install",
+      "cacheVariables": {
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+      }
+    },
+    {
+      "name": "dev",
+      "displayName": "Development Build (Debug + Clang-Tidy)",
+      "description": "Debug build with Clang-Tidy and auto-fix enabled for local development.",
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Debug",
+        "ENABLE_CLANG_TIDY": "ON",
+        "CLANG_TIDY_AUTO_FIX": "ON"
+      }
+    },
+    {
+      "name": "ci",
+      "displayName": "CI Build (Release + Clang-Tidy)",
+      "description": "Release build with Clang-Tidy, no auto-fix, for CI systems.",
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "ENABLE_CLANG_TIDY": "ON",
+        "CLANG_TIDY_AUTO_FIX": "OFF"
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Release Build (Optimized, No Clang-Tidy)",
+      "description": "Optimized release build with Clang-Tidy disabled for final artifacts.",
+      "inherits": "base",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "ENABLE_CLANG_TIDY": "OFF",
+        "CLANG_TIDY_AUTO_FIX": "OFF"
+      }
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "dev",
+      "displayName": "Build Development (Debug)",
+      "configurePreset": "dev"
+    },
+    {
+      "name": "ci",
+      "displayName": "Build CI (Release)",
+      "configurePreset": "ci"
+    },
+    {
+      "name": "release",
+      "displayName": "Build Release",
+      "configurePreset": "release"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "dev",
+      "displayName": "Test Development (Debug)",
+      "configurePreset": "dev",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "ci",
+      "displayName": "Test CI (Release)",
+      "configurePreset": "ci",
+      "output": {
+        "outputOnFailure": true,
+        "quiet": true
+      },
+      "execution": {
+        "stopOnFailure": true
+      }
+    },
+    {
+      "name": "release",
+      "displayName": "Test Release (Optimized)",
+      "configurePreset": "release",
+      "output": {
+        "outputOnFailure": true
+      }
+    }
+  ]
+}
