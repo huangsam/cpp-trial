@@ -2,8 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <string>
-
 // Namespace for constants specific to Date testing
 namespace DateTestConstants {
 // Constants for 'one_date'

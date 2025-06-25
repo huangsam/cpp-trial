@@ -9,6 +9,12 @@ class ThreadSimpleClass {
   ThreadSimpleClass();
   ~ThreadSimpleClass();
 
+  // Disable copy/move to prevent unsafe sharing of threads/resources
+  ThreadSimpleClass(const ThreadSimpleClass&) = delete;
+  ThreadSimpleClass& operator=(const ThreadSimpleClass&) = delete;
+  ThreadSimpleClass(ThreadSimpleClass&&) = delete;
+  ThreadSimpleClass& operator=(ThreadSimpleClass&&) = delete;
+
   void start_worker_thread();
   void join_worker_thread();
   [[nodiscard]] std::string get_worker_message() const;

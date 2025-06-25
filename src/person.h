@@ -7,7 +7,7 @@
 #include <vector>
 
 struct Age {
-  explicit Age(const int a) : value(a) {
+  explicit Age(const int age) : value(age) {
     if (value < 1) {
       throw std::invalid_argument("Age must be positive");
     }
@@ -16,7 +16,7 @@ struct Age {
 };
 
 struct Salary {
-  explicit Salary(const double s) : value(s) {
+  explicit Salary(const double salary) : value(salary) {
     if (value < 0.0) {
       throw std::invalid_argument(std::format("Salary must be non-negative"));
     }
@@ -40,11 +40,11 @@ class Person {
 // Specialization for Person
 template <>
 struct std::formatter<Person> : std::formatter<std::string> {
-  static auto format(const Person& p, std::format_context& ctx) {
+  static auto format(const Person& person, std::format_context& ctx) {
     // Using a format specifier for floating-point numbers (:.2f)
     return std::format_to(ctx.out(),
                           "{} is {} years old with ${:.2f} as a salary",
-                          p.get_name(), p.get_age(), p.get_salary());
+                          person.get_name(), person.get_age(), person.get_salary());
   }
 };
 

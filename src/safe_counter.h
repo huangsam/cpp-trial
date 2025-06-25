@@ -12,9 +12,7 @@ class SafeCounter {
   SafeCounter();
   ~SafeCounter();
 
-  // Disable copy/move to prevent unsafe sharing of threads/resources.
-  // To learn more about this best practice, refer to the Rule of Three:
-  // https://en.cppreference.com/w/cpp/language/rule_of_three.html
+  // Disable copy/move to prevent unsafe sharing of threads/resources
   SafeCounter(const SafeCounter&) = delete;
   SafeCounter& operator=(const SafeCounter&) = delete;
   SafeCounter(SafeCounter&&) = delete;

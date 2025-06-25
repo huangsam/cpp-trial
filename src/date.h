@@ -5,7 +5,7 @@
 #include <stdexcept>
 
 struct Year {
-  explicit Year(const int y) : value(y) {
+  explicit Year(const int year) : value(year) {
     if (value <= 0) {
       throw std::out_of_range("Year must be positive.");
     }
@@ -16,7 +16,7 @@ struct Year {
 struct Month {
   static constexpr int MIN_MONTH = 1;
   static constexpr int MAX_MONTH = 12;
-  explicit Month(const int m) : value(m) {
+  explicit Month(const int month) : value(month) {
     if (value < MIN_MONTH || value > MAX_MONTH) {
       throw std::out_of_range("Month must be between 1 and 12.");
     }
@@ -27,7 +27,7 @@ struct Month {
 struct Day {
   static constexpr int MIN_DAY = 1;
   static constexpr int MAX_DAY = 31;
-  explicit Day(const int d) : value(d) {
+  explicit Day(const int day) : value(day) {
     if (value < MIN_DAY || value > MAX_DAY) {
       throw std::out_of_range("Day must be between 1 and 31.");
     }
@@ -61,9 +61,9 @@ bool operator!=(const Date& lhs, const Date& rhs);
 // Specialization for Date
 template <>
 struct std::formatter<Date> : std::formatter<std::string> {
-  static auto format(const Date& d, std::format_context& ctx) {
-    return std::format_to(ctx.out(), "{}/{}/{}", d.get_year(), d.get_month(),
-                          d.get_day());
+  static auto format(const Date& date, std::format_context& ctx) {
+    return std::format_to(ctx.out(), "{}/{}/{}", date.get_year(), date.get_month(),
+                          date.get_day());
   }
 };
 
