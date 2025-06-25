@@ -3,12 +3,12 @@
 Date::Date(const Year year, const Month month, const Day day)
     : year(year.value), month(month.value), day(day.value) {}
 
-bool operator==(const Date& lhs, const Date& rhs) {
+auto operator==(const Date& lhs, const Date& rhs) -> bool {
   return lhs.get_year() == rhs.get_year() &&
          lhs.get_month() == rhs.get_month() && lhs.get_day() == rhs.get_day();
 }
 
-bool operator<(const Date& lhs, const Date& rhs) {
+auto operator<(const Date& lhs, const Date& rhs) -> bool {
   const int year_delta = lhs.get_year() - rhs.get_year();
   const int month_delta = lhs.get_month() - rhs.get_month();
   const int day_delta = lhs.get_day() - rhs.get_day();
@@ -21,14 +21,18 @@ bool operator<(const Date& lhs, const Date& rhs) {
   return day_delta < 0;
 }
 
-bool operator>(const Date& lhs, const Date& rhs) {
+auto operator>(const Date& lhs, const Date& rhs) -> bool {
   return !(lhs < rhs || lhs == rhs);
 }
 
-bool operator<=(const Date& lhs, const Date& rhs) {
+auto operator<=(const Date& lhs, const Date& rhs) -> bool {
   return lhs < rhs || lhs == rhs;
 }
 
-bool operator>=(const Date& lhs, const Date& rhs) { return !(lhs < rhs); }
+auto operator>=(const Date& lhs, const Date& rhs) -> bool {
+  return !(lhs < rhs);
+}
 
-bool operator!=(const Date& lhs, const Date& rhs) { return !(lhs == rhs); }
+auto operator!=(const Date& lhs, const Date& rhs) -> bool {
+  return !(lhs == rhs);
+}

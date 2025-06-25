@@ -7,7 +7,7 @@
 #include "lambda.h"
 #include "person.h"
 
-int main() {
+auto main() -> int {
   // date.h demo
   const auto d1 = Date(Year(2024), Month(1), Day(1));
   std::cout << std::format("{}\n", d1);

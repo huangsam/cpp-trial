@@ -2,11 +2,11 @@
 
 #include <numeric>
 
-bool less_than(const ValueOne a, const ValueTwo b) {
+auto less_than(const ValueOne a, const ValueTwo b) -> bool {
   return [](const int i, const int j) { return i < j; }(a.value, b.value);
 }
 
-int sum_of_squares(std::vector<int> numbers) {
+auto sum_of_squares(std::vector<int> numbers) -> int {
   auto add_square = [](const int acc, const int i) { return acc + (i * i); };
 
   /**

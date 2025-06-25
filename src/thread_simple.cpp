@@ -33,8 +33,10 @@ void ThreadSimpleClass::worker_function() {
   m_worker_finished = true;
 }
 
-std::string ThreadSimpleClass::get_worker_message() const {
+auto ThreadSimpleClass::get_worker_message() const -> std::string {
   return m_worker_message;
 }
 
-bool ThreadSimpleClass::is_worker_finished() const { return m_worker_finished; }
+auto ThreadSimpleClass::is_worker_finished() const -> bool {
+  return m_worker_finished;
+}
