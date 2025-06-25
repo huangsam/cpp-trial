@@ -134,21 +134,21 @@ TEST_F(PersonAnalyzerTest, StandardFilteringCase) {
       PersonAnalyzerTestConstants::EXPECTED_AVG_STANDARD_FILTER);
 }
 
-TEST_F(PersonAnalyzerTest, NoEligiblePeople_AgeTooHigh) {
+TEST_F(PersonAnalyzerTest, NoEligiblePeopleAgeTooHigh) {
   expect_average_salary(
       staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_NONE_ELIGIBLE_HIGH,
       Salary(PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE),
       PersonAnalyzerTestConstants::EXPECTED_AVG_NO_ELIGIBLE);
 }
 
-TEST_F(PersonAnalyzerTest, NoEligiblePeople_SalaryTooHigh) {
+TEST_F(PersonAnalyzerTest, NoEligiblePeopleSalaryTooHigh) {
   expect_average_salary(
       staff, PersonAnalyzerTestConstants::AGE_THRESHOLD_NONE,
       Salary(PersonAnalyzerTestConstants::SALARY_THRESHOLD_NONE_ELIGIBLE_HIGH),
       PersonAnalyzerTestConstants::EXPECTED_AVG_NO_ELIGIBLE);
 }
 
-TEST_F(PersonAnalyzerTest, AllEligible_LowThresholds) {
+TEST_F(PersonAnalyzerTest, AllEligibleLowThresholds) {
   // All staff members except Frank (salary 30000 <= 30000)
   // Eligible: Alice (50000), Bob (45000), Charlie (60000), David (75000), Eve
   // (48000) Sum = 50000 + 45000 + 60000 + 75000 + 48000 = 278000 Count = 5
@@ -167,7 +167,7 @@ TEST_F(PersonAnalyzerTest, EmptyInputVector) {
       PersonAnalyzerTestConstants::EXPECTED_AVG_NO_ELIGIBLE);
 }
 
-TEST_F(PersonAnalyzerTest, MinSalaryEdgeCase_ExclusiveThreshold) {
+TEST_F(PersonAnalyzerTest, MinSalaryEdgeCaseExclusiveThreshold) {
   // If min_salary is 45000.0, Bob (45000.0) should be excluded because it's >
   // min_salary Eligible: Alice (50000), Charlie (60000), David (75000), Eve
   // (48000) Sum = 50000 + 60000 + 75000 + 48000 = 233000 Count = 4 Average =

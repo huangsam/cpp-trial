@@ -3,7 +3,7 @@
 #include <chrono>
 #include <thread>
 
-constexpr long long GREET_SLEEP_MS = 100;
+constexpr int64_t GREET_SLEEP_MS = 100;
 
 std::string greet() {
   // Simulate some work being done in the background

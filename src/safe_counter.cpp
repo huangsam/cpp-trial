@@ -39,7 +39,7 @@ void SafeCounter::worker_function(const int increments) {
   }
 }
 
-long SafeCounter::get_count() const {
+int64_t SafeCounter::get_count() const {
   // While reading a long might be atomic on some architectures,
   // if other threads were still writing, we'd want to ensure
   // we get a consistent read. For a final read after joining,

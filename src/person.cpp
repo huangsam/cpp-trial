@@ -22,7 +22,7 @@ double calculate_average_eligible_salary_ranges(
   // To get the count, we count the view elements directly. For more about
   // the double-long usage, please refer to this SO post:
   // https://stackoverflow.com/a/62132391/2748860
-  const long long count = std::ranges::distance(eligible_salaries_view);
+  const int64_t count = std::ranges::distance(eligible_salaries_view);
 
   if (count == 0) {
     return 0.0;

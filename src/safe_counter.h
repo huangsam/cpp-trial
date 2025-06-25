@@ -13,7 +13,7 @@ class SafeCounter {
 
   void start_worker_threads(int num_threads, int increments_per_thread);
   void join_worker_threads();
-  long get_count() const;
+  int64_t get_count() const;
   bool are_workers_finished() const;
 
  private:

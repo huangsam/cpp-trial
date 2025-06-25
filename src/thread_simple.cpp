@@ -2,7 +2,7 @@
 
 #include <chrono>
 
-constexpr long long WORK_SLEEP_MS = 10;
+constexpr int64_t WORK_SLEEP_MS = 10;
 
 ThreadSimpleClass::ThreadSimpleClass() : m_worker_finished(false) {
   // Constructor doesn't start the thread automatically, allowing for controlled
