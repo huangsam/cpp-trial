@@ -43,8 +43,8 @@ Checks: >
   -bugprone-unused-local-non-trivial-variable,
   -bugprone-unused-return-value
 
-# Enable warnings as errors for all bugprone checks
-WarningsAsErrors: 'bugprone-*'
+# Enable warnings as errors for all the checks above
+WarningsAsErrors: *
 
 # Apply auto-fixes based on .clang-format settings
 FormatStyle: file
