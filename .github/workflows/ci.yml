@@ -19,7 +19,7 @@ jobs:
     # https://github.com/actions/runner-images
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Configure CMake
         run: cmake --preset ci
       - name: Run build
