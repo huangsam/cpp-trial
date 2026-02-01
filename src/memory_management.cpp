@@ -18,9 +18,9 @@ ArenaAllocator::~ArenaAllocator() {
 }
 
 void* ArenaAllocator::allocate(size_t bytes, size_t alignment) {
-  size_t current = reinterpret_cast<size_t>(buffer_ + offset_);
-  size_t aligned = (current + alignment - 1) & ~(alignment - 1);
-  size_t new_offset = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
+  auto current = reinterpret_cast<size_t>(buffer_ + offset_);
+  auto aligned = (current + alignment - 1) & ~(alignment - 1);
+  auto new_offset = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
 
   if (new_offset > size_) {
     return nullptr;  // Out of memory
@@ -99,9 +99,9 @@ MemoryManager::~MemoryManager() {
 }
 
 void* MemoryManager::allocate(size_t bytes, size_t alignment) {
-  size_t current = reinterpret_cast<size_t>(buffer_ + used_);
-  size_t aligned = (current + alignment - 1) & ~(alignment - 1);
-  size_t new_used = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
+  auto current = reinterpret_cast<size_t>(buffer_ + used_);
+  auto aligned = (current + alignment - 1) & ~(alignment - 1);
+  auto new_used = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
 
   if (new_used > size_) {
     return nullptr;
@@ -182,9 +182,9 @@ void demonstrate_placement_new() {
 
   MemoryManager manager(1024);
 
-  int* i = manager.construct<int>(42);
-  double* d = manager.construct<double>(3.14);
-  std::string* s = manager.construct<std::string>("Hello");
+  auto* i = manager.construct<int>(42);
+  auto* d = manager.construct<double>(3.14);
+  auto* s = manager.construct<std::string>("Hello");
 
   std::cout << "Constructed: " << *i << ", " << *d << ", " << *s << "\n";
 
@@ -196,10 +196,10 @@ void demonstrate_placement_new() {
 void demonstrate_memory_alignment() {
   std::cout << "=== Memory Alignment ===\n";
 
-  void* aligned_ptr = AlignedAllocator::allocate(64, 64);
+  auto* aligned_ptr = AlignedAllocator::allocate(64, 64);
   std::cout << "Allocated 64-byte aligned memory at: " << aligned_ptr << "\n";
 
-  uintptr_t addr = reinterpret_cast<uintptr_t>(aligned_ptr);
+  auto addr = reinterpret_cast<uintptr_t>(aligned_ptr);
   std::cout << "Address is " << (addr % 64 == 0 ? "" : "not ")
             << "64-byte aligned\n";
 
@@ -207,7 +207,7 @@ void demonstrate_memory_alignment() {
 
   CacheLineAligned cla;
   std::cout << "CacheLineAligned object at: " << &cla << "\n";
-  uintptr_t cla_addr = reinterpret_cast<uintptr_t>(&cla);
+  auto cla_addr = reinterpret_cast<uintptr_t>(&cla);
   std::cout << "Address is " << (cla_addr % 64 == 0 ? "" : "not ")
             << "cache-line aligned\n";
 }

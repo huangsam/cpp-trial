@@ -59,7 +59,7 @@ ResourceManager ResourceManager::create_large_resource(size_t size) {
 }
 
 void ResourceManager::demonstrate_move(ResourceManager& rm) {
-  ResourceManager new_rm = std::move(rm);
+  const ResourceManager new_rm = std::move(rm);
   std::cout << "Moved resource with " << new_rm.size() << " elements\n";
 }
 
@@ -73,10 +73,10 @@ std::chrono::nanoseconds measure_copy_time(size_t size) {
 }
 
 std::chrono::nanoseconds measure_move_time(size_t size) {
-  ResourceManager source(size);
-  auto start = std::chrono::high_resolution_clock::now();
-  ResourceManager moved = std::move(source);
-  auto end = std::chrono::high_resolution_clock::now();
+  const ResourceManager source(size);
+  const auto start = std::chrono::high_resolution_clock::now();
+  ResourceManager moved = std::move(const_cast<ResourceManager&>(source));
+  const auto end = std::chrono::high_resolution_clock::now();
   return end - start;
 }
 
@@ -85,11 +85,11 @@ void demonstrate_move_vs_copy() {
 
   constexpr size_t test_size = 100000;
 
-  auto copy_time = measure_copy_time(test_size);
+  const auto copy_time = measure_copy_time(test_size);
   std::cout << "Copy time for " << test_size
             << " elements: " << copy_time.count() << " nanoseconds\n";
 
-  auto move_time = measure_move_time(test_size);
+  const auto move_time = measure_move_time(test_size);
   std::cout << "Move time for " << test_size
             << " elements: " << move_time.count() << " nanoseconds\n";
 
