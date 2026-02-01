@@ -5,8 +5,9 @@
 #include <stdexcept>
 
 struct Year {
+  static constexpr int MIN_YEAR = 1;
   explicit Year(const int year) : value(year) {
-    if (value <= 0) {
+    if (value < MIN_YEAR) {
       throw std::out_of_range("Year must be positive.");
     }
   }

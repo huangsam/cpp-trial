@@ -7,8 +7,9 @@
 #include <vector>
 
 struct Age {
+  static constexpr int MIN_AGE = 1;
   explicit Age(const int age) : value(age) {
-    if (value < 1) {
+    if (value < MIN_AGE) {
       throw std::invalid_argument("Age must be positive");
     }
   }
@@ -16,8 +17,9 @@ struct Age {
 };
 
 struct Salary {
+  static constexpr double MIN_SALARY = 0.0;
   explicit Salary(const double salary) : value(salary) {
-    if (value < 0.0) {
+    if (value < MIN_SALARY) {
       throw std::invalid_argument(std::format("Salary must be non-negative"));
     }
   }
