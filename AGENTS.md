@@ -4,6 +4,25 @@ This document tracks the key C++ concepts and learnings from each module in the 
 
 Please refer to README.md for project setup, build instructions, and testing procedures.
 
+## namespaces
+
+**Key Concepts:**
+- Organizing code with namespaces
+- Nested namespaces and namespace aliases
+- Using declarations and directives
+- Avoiding name conflicts in large codebases
+
+**Learnings:**
+- Defining and using namespaces for code organization
+- Namespace aliases for shorter names
+- Using declarations to bring specific names into scope
+- Best practices for namespace usage in C++
+
+**Backend Relevance:**
+- Modular code organization in large applications
+- Preventing naming collisions in libraries and APIs
+- Clean interfaces for backend services
+
 ## enums_unions
 
 **Key Concepts:**

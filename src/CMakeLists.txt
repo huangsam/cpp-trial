@@ -21,6 +21,7 @@ add_library(
   inheritance.cpp inheritance.h
   file_io.cpp file_io.h
   enums_unions.cpp enums_unions.h
+  namespaces.cpp namespaces.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
