@@ -37,7 +37,7 @@ TEST(STLDeepDiveTest, MostFrequentWord) {
 TEST(STLDeepDiveTest, UniqueElements) {
   const std::vector numbers = {1, 2, 2, 3, 3, 3};
   const std::set<int> unique = STLDeepDive::unique_elements(numbers);
-  EXPECT_EQ(unique, std::set<int>({1, 2, 3}));
+  EXPECT_EQ(unique, std::set({1, 2, 3}));
 }
 
 TEST(STLDeepDiveTest, SetIntersection) {
@@ -63,7 +63,7 @@ TEST(STLDeepDiveTest, TransformMultiply) {
   const std::vector numbers = {1, 2, 3};
   const std::vector<int> multiplied =
       STLDeepDive::transform_multiply(numbers, 2);
-  EXPECT_EQ(multiplied, std::vector<int>({2, 4, 6}));
+  EXPECT_EQ(multiplied, std::vector({2, 4, 6}));
 }
 
 TEST(STLDeepDiveTest, FilterLongWords) {
