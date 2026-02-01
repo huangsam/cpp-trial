@@ -3,7 +3,6 @@
 #include <gtest/gtest.h>
 
 #include <memory>
-#include <string>
 
 // Test fixture for inheritance and polymorphism tests
 class InheritanceTest : public testing::Test {

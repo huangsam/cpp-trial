@@ -2,8 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <string>
-
 TEST(EnumsUnionsTest, UnscopedEnum) {
   Color c = Red;
   EXPECT_EQ(c, 0);  // Unscoped enums are implicitly convertible to int
