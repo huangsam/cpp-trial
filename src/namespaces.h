@@ -15,7 +15,7 @@ int add(int a, int b);
 // Class in nested namespace
 class Calculator {
  public:
-  int multiply(int a, int b) const;
+  static int multiply(int a, int b);
 };
 
 }  // namespace math
@@ -33,7 +33,7 @@ namespace data {
 
 class Processor {
  public:
-  std::string process(const std::string& input) const;
+  static std::string process(const std::string& input);
 };
 
 }  // namespace data

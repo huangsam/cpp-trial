@@ -41,18 +41,17 @@ std::set<int> STLDeepDive::unique_elements(const std::vector<int>& numbers) {
 std::set<int> STLDeepDive::intersection(const std::set<int>& set1,
                                         const std::set<int>& set2) {
   std::set<int> result;
-  std::set_intersection(set1.begin(), set1.end(), set2.begin(), set2.end(),
-                        std::inserter(result, result.begin()));
+  std::ranges::set_intersection(set1, set2, std::inserter(result, result.begin()));
   return result;
 }
 
 void STLDeepDive::sort_vector(std::vector<int>& numbers) {
-  std::sort(numbers.begin(), numbers.end());
+  std::ranges::sort(numbers);
 }
 
 bool STLDeepDive::contains_element(const std::vector<int>& numbers,
                                    int target) {
-  return std::find(numbers.begin(), numbers.end(), target) != numbers.end();
+  return std::ranges::find(numbers, target) != numbers.end();
 }
 
 std::vector<int> STLDeepDive::transform_multiply(

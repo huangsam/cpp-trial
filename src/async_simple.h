@@ -3,6 +3,6 @@
 
 #include <string>
 
-std::string greet();
+auto greet() -> std::string;
 
 #endif  // ASYNC_SIMPLE_H

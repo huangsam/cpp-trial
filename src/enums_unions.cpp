@@ -18,13 +18,13 @@ std::string TaggedData::to_string() const {
 
 std::string variant_to_string(const VariantData& var) {
   return std::visit(
-      [](auto&& arg) -> std::string {
-        using T = std::decay_t<decltype(arg)>;
-        if constexpr (std::is_same_v<T, int>) {
+      []<typename T>(T&& arg) -> std::string {
+        using DecayedT = std::decay_t<T>;
+        if constexpr (std::is_same_v<DecayedT, int>) {
           return std::format("Int: {}", arg);
-        } else if constexpr (std::is_same_v<T, double>) {
+        } else if constexpr (std::is_same_v<DecayedT, double>) {
           return std::format("Double: {}", arg);
-        } else if constexpr (std::is_same_v<T, char>) {
+        } else if constexpr (std::is_same_v<DecayedT, char>) {
           return std::format("Char: {}", arg);
         }
         return "Unknown type";
