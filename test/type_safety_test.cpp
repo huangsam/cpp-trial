@@ -5,7 +5,7 @@
 #include <map>
 
 TEST(TypeSafetyTest, OptionalFindValue) {
-  std::map<std::string, int> data = {{"a", 1}, {"b", 2}};
+  const std::map<std::string, int> data = {{"a", 1}, {"b", 2}};
   EXPECT_EQ(find_value(data, "a"), 1);
   EXPECT_EQ(find_value(data, "c"), std::nullopt);
 }
@@ -28,15 +28,15 @@ TEST(TypeSafetyTest, AnyContainer) {
 
   EXPECT_EQ(container.size(), 2);
 
-  auto opt1 = container.get_as<int>(0);
+  const auto opt1 = container.get_as<int>(0);
   ASSERT_TRUE(opt1);
   EXPECT_EQ(*opt1, 42);
 
-  auto opt2 = container.get_as<std::string>(1);
+  const auto opt2 = container.get_as<std::string>(1);
   ASSERT_TRUE(opt2);
   EXPECT_EQ(*opt2, "test");
 
-  auto opt3 = container.get_as<double>(0);
+  const auto opt3 = container.get_as<double>(0);
   EXPECT_FALSE(opt3);
 }
 
@@ -66,17 +66,17 @@ TEST(TypeSafetyTest, SafeComparisons) {
 }
 
 TEST(TypeSafetyTest, ErrorHandlingVariant) {
-  auto res1 = safe_divide(10, 2);
+  const auto res1 = safe_divide(10, 2);
   ASSERT_TRUE(std::holds_alternative<std::string>(res1));
   EXPECT_EQ(std::get<std::string>(res1), "Result: 5");
 
-  auto res2 = safe_divide(10, 0);
+  const auto res2 = safe_divide(10, 0);
   ASSERT_TRUE(std::holds_alternative<Error>(res2));
   EXPECT_EQ(std::get<Error>(res2), Error::DivisionByZero);
 }
 
 TEST(TypeSafetyTest, OptionalParse) {
-  auto res1 = safe_parse_int("123");
+  const auto res1 = safe_parse_int("123");
   ASSERT_TRUE(res1);
   EXPECT_EQ(*res1, "Parsed: 123");
 

@@ -14,7 +14,7 @@ class SmartPointersTest : public testing::Test {
 
 TEST_F(SmartPointersTest, UniquePtrWithCustomDeleter) {
   // Test unique_ptr with custom deleter
-  auto fileHandler = createFileHandler("test_file.txt");
+  const auto fileHandler = createFileHandler("test_file.txt");
   ASSERT_TRUE(fileHandler);
 
   fileHandler->writeData("Hello, World!");
@@ -25,7 +25,7 @@ TEST_F(SmartPointersTest, UniquePtrWithCustomDeleter) {
 
 TEST_F(SmartPointersTest, SharedPtrReferenceCounting) {
   // Test shared_ptr reference counting behavior
-  auto resource1 = createSharedResource("Resource1");
+  const auto resource1 = createSharedResource("Resource1");
   ASSERT_TRUE(resource1);
   EXPECT_EQ(resource1->getName(), "Resource1");
 
@@ -44,7 +44,7 @@ TEST_F(SmartPointersTest, SharedPtrReferenceCounting) {
 TEST_F(SmartPointersTest, WeakPtrBreaksCircularReferences) {
   // Test weak_ptr breaking circular references
   auto parent = createParent("Dad");
-  auto child = createChild("Son");
+  const auto child = createChild("Son");
 
   createFamily(parent, child);
 
@@ -63,8 +63,8 @@ TEST_F(SmartPointersTest, WeakPtrBreaksCircularReferences) {
 
 TEST_F(SmartPointersTest, MakeUniqueAndMakeShared) {
   // Test make_unique and make_shared best practices
-  auto uniquePtr = std::make_unique<std::string>("unique");
-  auto sharedPtr = std::make_shared<std::string>("shared");
+  const auto uniquePtr = std::make_unique<std::string>("unique");
+  const auto sharedPtr = std::make_shared<std::string>("shared");
 
   EXPECT_EQ(*uniquePtr, "unique");
   EXPECT_EQ(*sharedPtr, "shared");
@@ -114,8 +114,8 @@ TEST_F(SmartPointersTest, UniquePtrOwnershipTransfer) {
 
 // Helper methods for weak_ptr test (assuming we add these to classes)
 TEST_F(SmartPointersTest, WeakPtrLocking) {
-  auto parent = createParent("Parent");
-  auto child = createChild("Child");
+  const auto parent = createParent("Parent");
+  const auto child = createChild("Child");
 
   // Initially no weak references
   EXPECT_FALSE(parent->getChild().lock());
@@ -124,8 +124,8 @@ TEST_F(SmartPointersTest, WeakPtrLocking) {
   createFamily(parent, child);
 
   // Now weak references work
-  auto childFromParent = parent->getChild().lock();
-  auto parentFromChild = child->getParent().lock();
+  const auto childFromParent = parent->getChild().lock();
+  const auto parentFromChild = child->getParent().lock();
 
   ASSERT_TRUE(childFromParent);
   ASSERT_TRUE(parentFromChild);

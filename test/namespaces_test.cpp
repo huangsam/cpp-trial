@@ -8,7 +8,7 @@
 namespace um = utils::math;
 
 TEST(NamespacesTest, NestedNamespaceFunction) {
-  int result = utils::math::add(2, 3);
+  constexpr int result = utils::math::add(2, 3);
   EXPECT_EQ(result, 5);
 }
 
@@ -18,18 +18,18 @@ TEST(NamespacesTest, NestedNamespaceClass) {
 }
 
 TEST(NamespacesTest, TopLevelNamespaceFunction) {
-  std::string result = utils::to_upper("hello");
+  const std::string result = utils::to_upper("hello");
   EXPECT_EQ(result, "HELLO");
 }
 
 TEST(NamespacesTest, NamespaceAlias) {
-  int result = um::add(10, 20);  // Using alias um for utils::math
+  constexpr int result = um::add(10, 20);  // Using alias um for utils::math
   EXPECT_EQ(result, 30);
 }
 
 TEST(NamespacesTest, UsingDeclaration) {
   // to_upper is brought into global scope via using declaration
-  std::string result = to_upper("world");
+  const std::string result = to_upper("world");
   EXPECT_EQ(result, "WORLD");
 }
 

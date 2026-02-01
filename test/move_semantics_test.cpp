@@ -55,7 +55,7 @@ TEST_F(ResourceManagerTest, ConsumeRvalue) {
 }
 
 TEST_F(ResourceManagerTest, CreateLargeResource) {
-  ResourceManager large = ResourceManager::create_large_resource(100);
+  const ResourceManager large = ResourceManager::create_large_resource(100);
   EXPECT_EQ(large.size(), 100);
 }
 
@@ -82,18 +82,18 @@ TEST(MoveSemanticsTest, PerfectForwarding) {
 
 // Test MoveOnlyType
 TEST(MoveOnlyTypeTest, DefaultConstruction) {
-  MoveOnlyType mot;
+  const MoveOnlyType mot;
   EXPECT_EQ(mot.get_data(), "default");
 }
 
 TEST(MoveOnlyTypeTest, ValueConstruction) {
-  MoveOnlyType mot("test data");
+  const MoveOnlyType mot("test data");
   EXPECT_EQ(mot.get_data(), "test data");
 }
 
 TEST(MoveOnlyTypeTest, MoveConstruction) {
   MoveOnlyType original("original");
-  MoveOnlyType moved = std::move(original);
+  const MoveOnlyType moved = std::move(original);
   EXPECT_EQ(moved.get_data(), "original");
 }
 

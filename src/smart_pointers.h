@@ -40,7 +40,7 @@ class FileHandler {
 // Class demonstrating shared_ptr with reference counting
 class SharedResource : public std::enable_shared_from_this<SharedResource> {
  public:
-  explicit SharedResource(std::string  name);
+  explicit SharedResource(std::string name);
   ~SharedResource();
 
   void useResource() const;
@@ -56,7 +56,7 @@ class Child;
 
 class Parent {
  public:
-  explicit Parent(std::string  name);
+  explicit Parent(std::string name);
   ~Parent();
 
   void setChild(const std::shared_ptr<Child>& child);
@@ -71,7 +71,7 @@ class Parent {
 
 class Child {
  public:
-  explicit Child(std::string  name);
+  explicit Child(std::string name);
   ~Child();
 
   void setParent(const std::shared_ptr<Parent>& parent);

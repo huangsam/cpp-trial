@@ -44,7 +44,7 @@ size_t TypeSafeContainer::size() const { return data_.size(); }
 void process_string(std::string_view sv) {
   // std::string_view avoids copying; efficient for read-only operations
   int vowels = 0;
-  for (char c : sv) {
+  for (const char c : sv) {
     if (std::string_view("aeiouAEIOU").find(c) != std::string_view::npos) {
       ++vowels;
     }
@@ -54,16 +54,17 @@ void process_string(std::string_view sv) {
 }
 
 std::optional<Point> parse_point(std::string_view input) {
-  size_t comma = input.find(',');
+  const size_t comma = input.find(',');
   if (comma == std::string_view::npos) return std::nullopt;
 
   int x, y;
-  auto res1 = std::from_chars(input.data(), input.data() + comma, x);
-  if (res1.ec != std::errc{}) return std::nullopt;
+  if (auto [ptr, ec] = std::from_chars(input.data(), input.data() + comma, x);
+      ec != std::errc{})
+    return std::nullopt;
 
-  auto res2 =
+  auto [ptr, ec] =
       std::from_chars(input.data() + comma + 1, input.data() + input.size(), y);
-  if (res2.ec != std::errc{}) return std::nullopt;
+  if (ec != std::errc{}) return std::nullopt;
 
   return Point{x, y};
 }

@@ -28,7 +28,7 @@ std::map<std::string, int> STLDeepDive::count_words(
 std::string STLDeepDive::most_frequent_word(
     const std::map<std::string, int>& word_count) {
   if (word_count.empty()) return "";
-  auto max_it = std::ranges::max_element(
+  const auto max_it = std::ranges::max_element(
       word_count, [](const auto& a, const auto& b) constexpr {
         return a.second < b.second;
       });

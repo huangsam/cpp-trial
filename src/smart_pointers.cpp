@@ -48,7 +48,7 @@ void SharedResource::useResource() const {
 std::string SharedResource::getName() const { return name_; }
 
 // Parent implementation
-Parent::Parent(std::string  name) : name_(std::move(name)) {
+Parent::Parent(std::string name) : name_(std::move(name)) {
   std::cout << "Parent created: " << name_ << "\n";
 }
 
@@ -58,7 +58,7 @@ void Parent::setChild(const std::shared_ptr<Child>& child) { child_ = child; }
 
 void Parent::showFamily() const {
   std::cout << "Parent " << name_;
-  if (auto child = child_.lock()) {
+  if (const auto child = child_.lock()) {
     std::cout << " has child " << child->getName();
   } else {
     std::cout << " has no child";
@@ -67,7 +67,7 @@ void Parent::showFamily() const {
 }
 
 // Child implementation
-Child::Child(std::string  name) : name_(std::move(name)) {
+Child::Child(std::string name) : name_(std::move(name)) {
   std::cout << "Child created: " << name_ << "\n";
 }
 
@@ -79,7 +79,7 @@ void Child::setParent(const std::shared_ptr<Parent>& parent) {
 
 void Child::showFamily() const {
   std::cout << "Child " << name_;
-  if (auto parent = parent_.lock()) {
+  if (const auto parent = parent_.lock()) {
     std::cout << " has parent " << parent->getName();
   } else {
     std::cout << " has no parent";
@@ -113,7 +113,7 @@ void ExceptionSafeManager::addResourceWithExceptionSafety(
     const std::string& data) {
   // Using make_shared ensures exception safety - if an exception occurs,
   // the shared_ptr won't be created, preventing resource leaks
-  auto resource = std::make_shared<std::string>(data);
+  const auto resource = std::make_shared<std::string>(data);
 
   // Simulate potential exception after resource creation
   if (data == "throw") {

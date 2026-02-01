@@ -27,7 +27,8 @@ TEST_F(FileIOTest, WriteAndReadString) {
 TEST_F(FileIOTest, WriteAndReadLines) {
   const std::vector<std::string> lines = {"Line 1", "Line 2", "Line 3"};
   FileIO::write_lines_to_file(temp_file_, lines);
-  const std::vector<std::string> read_lines = FileIO::read_file_lines(temp_file_);
+  const std::vector<std::string> read_lines =
+      FileIO::read_file_lines(temp_file_);
   EXPECT_EQ(lines, read_lines);
 }
 

@@ -18,7 +18,7 @@ void demo_sfinae() {
 
 void demo_type_traits() {
   std::cout << "=== Type Traits ===\n";
-  std::vector<int> vec = {1, 2, 3};
+  const std::vector<int> vec = {1, 2, 3};
   print_container_size(vec);
 }
 
@@ -44,7 +44,7 @@ void demo_recursion() {
 
 void demo_crtp() {
   std::cout << "=== CRTP ===\n";
-  MyClass obj;
+  const MyClass obj;
   obj.print();
 }
 
