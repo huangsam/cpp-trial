@@ -18,26 +18,26 @@ class FileIOTest : public testing::Test {
 };
 
 TEST_F(FileIOTest, WriteAndReadString) {
-  std::string content = "Hello, World!\nThis is a test.";
+  const std::string content = "Hello, World!\nThis is a test.";
   FileIO::write_string_to_file(temp_file_, content);
-  std::string read_content = FileIO::read_file_to_string(temp_file_);
+  const std::string read_content = FileIO::read_file_to_string(temp_file_);
   EXPECT_EQ(content, read_content);
 }
 
 TEST_F(FileIOTest, WriteAndReadLines) {
-  std::vector<std::string> lines = {"Line 1", "Line 2", "Line 3"};
+  const std::vector<std::string> lines = {"Line 1", "Line 2", "Line 3"};
   FileIO::write_lines_to_file(temp_file_, lines);
-  std::vector<std::string> read_lines = FileIO::read_file_lines(temp_file_);
+  const std::vector<std::string> read_lines = FileIO::read_file_lines(temp_file_);
   EXPECT_EQ(lines, read_lines);
 }
 
 TEST_F(FileIOTest, ReadNonExistentFileThrows) {
-  std::filesystem::path non_existent = "non_existent_file.txt";
+  const std::filesystem::path non_existent = "non_existent_file.txt";
   EXPECT_THROW(FileIO::read_file_to_string(non_existent), std::runtime_error);
 }
 
 TEST_F(FileIOTest, WriteToInvalidPathThrows) {
-  std::filesystem::path invalid_path = "/invalid/path/file.txt";
+  const std::filesystem::path invalid_path = "/invalid/path/file.txt";
   EXPECT_THROW(FileIO::write_string_to_file(invalid_path, "test"),
                std::runtime_error);
 }

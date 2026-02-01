@@ -18,9 +18,9 @@ ArenaAllocator::~ArenaAllocator() {
 }
 
 void* ArenaAllocator::allocate(size_t bytes, size_t alignment) {
-  auto current = reinterpret_cast<size_t>(buffer_ + offset_);
-  auto aligned = (current + alignment - 1) & ~(alignment - 1);
-  auto new_offset = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
+  const auto current = reinterpret_cast<size_t>(buffer_ + offset_);
+  const auto aligned = (current + alignment - 1) & ~(alignment - 1);
+  const auto new_offset = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
 
   if (new_offset > size_) {
     return nullptr;  // Out of memory
@@ -77,8 +77,8 @@ Timer::Timer(const char* label)
 }
 
 Timer::~Timer() {
-  auto end = std::chrono::high_resolution_clock::now();
-  auto duration =
+  const auto end = std::chrono::high_resolution_clock::now();
+  const auto duration =
       std::chrono::duration_cast<std::chrono::microseconds>(end - start_);
   std::cout << "Timer ended: " << label_ << " - " << duration.count()
             << " microseconds\n";
@@ -99,9 +99,9 @@ MemoryManager::~MemoryManager() {
 }
 
 void* MemoryManager::allocate(size_t bytes, size_t alignment) {
-  auto current = reinterpret_cast<size_t>(buffer_ + used_);
-  auto aligned = (current + alignment - 1) & ~(alignment - 1);
-  auto new_used = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
+  const auto current = reinterpret_cast<size_t>(buffer_ + used_);
+  const auto aligned = (current + alignment - 1) & ~(alignment - 1);
+  const auto new_used = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
 
   if (new_used > size_) {
     return nullptr;
@@ -134,7 +134,7 @@ void demonstrate_custom_allocators() {
   std::cout << "=== Custom Allocators ===\n";
 
   ArenaAllocator arena(1024);
-  CustomAllocator<int> alloc(&arena);
+  const CustomAllocator<int> alloc(&arena);
 
   std::vector<int, CustomAllocator<int>> vec(alloc);
   vec.push_back(1);
@@ -168,7 +168,7 @@ void demonstrate_raii_patterns() {
 
   {
     Timer timer("File operation");
-    FileHandle file("temp.txt", "w");
+    const FileHandle file("temp.txt", "w");
     if (file) {
       fprintf(file.get(), "Hello, RAII!");
     }
@@ -188,9 +188,9 @@ void demonstrate_placement_new() {
 
   std::cout << "Constructed: " << *i << ", " << *d << ", " << *s << "\n";
 
-  manager.destroy(s);
-  manager.destroy(d);
-  manager.destroy(i);
+  MemoryManager::destroy(s);
+  MemoryManager::destroy(d);
+  MemoryManager::destroy(i);
 }
 
 void demonstrate_memory_alignment() {
@@ -199,15 +199,15 @@ void demonstrate_memory_alignment() {
   auto* aligned_ptr = AlignedAllocator::allocate(64, 64);
   std::cout << "Allocated 64-byte aligned memory at: " << aligned_ptr << "\n";
 
-  auto addr = reinterpret_cast<uintptr_t>(aligned_ptr);
+  const auto addr = reinterpret_cast<uintptr_t>(aligned_ptr);
   std::cout << "Address is " << (addr % 64 == 0 ? "" : "not ")
             << "64-byte aligned\n";
 
   AlignedAllocator::deallocate(aligned_ptr);
 
-  CacheLineAligned cla;
+  CacheLineAligned cla{};
   std::cout << "CacheLineAligned object at: " << &cla << "\n";
-  auto cla_addr = reinterpret_cast<uintptr_t>(&cla);
+  const auto cla_addr = reinterpret_cast<uintptr_t>(&cla);
   std::cout << "Address is " << (cla_addr % 64 == 0 ? "" : "not ")
             << "cache-line aligned\n";
 }
@@ -225,5 +225,5 @@ void demonstrate_stack_memory() {
   for (size_t i = 0; i < stack_vec.size(); ++i) {
     std::cout << stack_vec[i] << " ";
   }
-  std::cout << "\nCapacity: " << stack_vec.capacity() << "\n";
+  std::cout << "\nCapacity: " << StackVector<int, 10>::capacity() << "\n";
 }

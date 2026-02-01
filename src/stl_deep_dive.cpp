@@ -36,7 +36,7 @@ std::string STLDeepDive::most_frequent_word(
 }
 
 std::set<int> STLDeepDive::unique_elements(const std::vector<int>& numbers) {
-  return std::set<int>(numbers.begin(), numbers.end());
+  return {numbers.begin(), numbers.end()};
 }
 
 std::set<int> STLDeepDive::intersection(const std::set<int>& set1,

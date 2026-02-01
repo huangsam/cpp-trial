@@ -14,7 +14,7 @@ class ResourceManagerTest : public testing::Test {
 };
 
 TEST_F(ResourceManagerTest, DefaultConstruction) {
-  ResourceManager rm;
+  const ResourceManager rm;
   EXPECT_EQ(rm.size(), 0);
 }
 
@@ -23,7 +23,7 @@ TEST_F(ResourceManagerTest, SizedConstruction) {
 }
 
 TEST_F(ResourceManagerTest, CopyConstruction) {
-  ResourceManager copy = rm_;
+  const ResourceManager copy = rm_;
   EXPECT_EQ(copy.size(), rm_.size());
   EXPECT_EQ(copy.data(), rm_.data());
 }
@@ -36,13 +36,13 @@ TEST_F(ResourceManagerTest, CopyAssignment) {
 }
 
 TEST_F(ResourceManagerTest, MoveConstruction) {
-  ResourceManager moved = std::move(rm_);
+  const ResourceManager moved = std::move(rm_);
   EXPECT_EQ(moved.size(), test_size_);
   EXPECT_GE(rm_.size(), 0);
 }
 
 TEST_F(ResourceManagerTest, MoveAssignment) {
-  ResourceManager moved = std::move(rm_);
+  const ResourceManager moved = std::move(rm_);
   EXPECT_EQ(moved.size(), test_size_);
   EXPECT_GE(rm_.size(), 0);
 }
@@ -55,7 +55,7 @@ TEST_F(ResourceManagerTest, ConsumeRvalue) {
 }
 
 TEST_F(ResourceManagerTest, CreateLargeResource) {
-  ResourceManager large = rm_.create_large_resource(100);
+  ResourceManager large = ResourceManager::create_large_resource(100);
   EXPECT_EQ(large.size(), 100);
 }
 

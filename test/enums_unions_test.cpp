@@ -17,32 +17,32 @@ TEST(EnumsUnionsTest, ScopedEnum) {
 }
 
 TEST(EnumsUnionsTest, TaggedUnion) {
-  TaggedData int_data(42);
+  const TaggedData int_data(42);
   EXPECT_EQ(int_data.type, TaggedData::Type::Int);
   EXPECT_EQ(int_data.to_string(), "Int: 42");
 
-  TaggedData double_data(3.14);
+  const TaggedData double_data(3.14);
   EXPECT_EQ(double_data.type, TaggedData::Type::Double);
   EXPECT_EQ(double_data.to_string(), "Double: 3.14");
 
-  TaggedData char_data('A');
+  const TaggedData char_data('A');
   EXPECT_EQ(char_data.type, TaggedData::Type::Char);
   EXPECT_EQ(char_data.to_string(), "Char: A");
 }
 
 TEST(EnumsUnionsTest, Variant) {
-  VariantData int_var = 42;
+  constexpr VariantData int_var = 42;
   EXPECT_EQ(variant_to_string(int_var), "Int: 42");
 
-  VariantData double_var = 3.14;
+  constexpr VariantData double_var = 3.14;
   EXPECT_EQ(variant_to_string(double_var), "Double: 3.14");
 
-  VariantData char_var = 'A';
+  constexpr VariantData char_var = 'A';
   EXPECT_EQ(variant_to_string(char_var), "Char: A");
 }
 
 TEST(EnumsUnionsTest, UnionMemorySharing) {
-  Data d;
+  Data d{};
   d.int_value = 100;
   EXPECT_EQ(d.int_value, 100);
 

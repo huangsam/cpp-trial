@@ -21,8 +21,8 @@ std::string config_to_string(const ConfigValue& val);
 class TypeSafeContainer {
  public:
   void add(std::any value);
-  std::any get(size_t index) const;
-  size_t size() const;
+  [[nodiscard]] std::any get(size_t index) const;
+  [[nodiscard]] size_t size() const;
 
   // Safe retrieval with type checking (demonstrates error handling)
   template <typename T>

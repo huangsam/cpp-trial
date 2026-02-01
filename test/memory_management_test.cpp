@@ -22,7 +22,7 @@ TEST(MemoryManagementTest, ArenaAllocator) {
 
 TEST(MemoryManagementTest, CustomAllocator) {
   ArenaAllocator arena(1024);
-  CustomAllocator<int> alloc(&arena);
+  const CustomAllocator<int> alloc(&arena);
 
   std::vector<int, CustomAllocator<int>> vec(alloc);
   vec.push_back(1);
@@ -61,7 +61,7 @@ TEST(MemoryManagementTest, FileHandle) {
   // This test assumes we can create temporary files
   // In a real scenario, you'd use a temporary directory
   {
-    FileHandle file("test_raii.txt", "w");
+    const FileHandle file("test_raii.txt", "w");
     EXPECT_TRUE(file);
     if (file) {
       fprintf(file.get(), "RAII test");
@@ -93,17 +93,17 @@ TEST(MemoryManagementTest, MemoryManager) {
   ASSERT_NE(i, nullptr);
   EXPECT_EQ(*i, 42);
 
-  double* d = manager.construct<double>(3.14);
+  auto* d = manager.construct<double>(3.14);
   ASSERT_NE(d, nullptr);
   EXPECT_DOUBLE_EQ(*d, 3.14);
 
-  std::string* s = manager.construct<std::string>("Hello");
+  auto* s = manager.construct<std::string>("Hello");
   ASSERT_NE(s, nullptr);
   EXPECT_EQ(*s, "Hello");
 
-  manager.destroy(s);
-  manager.destroy(d);
-  manager.destroy(i);
+  MemoryManager::destroy(s);
+  MemoryManager::destroy(d);
+  MemoryManager::destroy(i);
 }
 
 // Test memory alignment
@@ -111,15 +111,15 @@ TEST(MemoryManagementTest, AlignedAllocator) {
   void* ptr = AlignedAllocator::allocate(64, 64);
   ASSERT_NE(ptr, nullptr);
 
-  uintptr_t addr = reinterpret_cast<uintptr_t>(ptr);
+  const auto addr = reinterpret_cast<uintptr_t>(ptr);
   EXPECT_EQ(addr % 64, 0);  // Should be 64-byte aligned
 
   AlignedAllocator::deallocate(ptr);
 }
 
 TEST(MemoryManagementTest, CacheLineAligned) {
-  CacheLineAligned cla;
-  uintptr_t addr = reinterpret_cast<uintptr_t>(&cla);
+  CacheLineAligned cla{};
+  const auto addr = reinterpret_cast<uintptr_t>(&cla);
   EXPECT_EQ(addr % 64, 0);  // Should be cache-line aligned
 }
 

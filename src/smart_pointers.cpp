@@ -1,6 +1,7 @@
 #include "smart_pointers.h"
 
 #include <stdexcept>
+#include <utility>
 
 // FileHandler implementation
 FileHandler::FileHandler(const std::string& filename)
@@ -32,7 +33,7 @@ std::string FileHandler::readData() const {
 }
 
 // SharedResource implementation
-SharedResource::SharedResource(const std::string& name) : name_(name) {
+SharedResource::SharedResource(std::string name) : name_(std::move(name)) {
   std::cout << "SharedResource created: " << name_ << "\n";
 }
 
@@ -47,7 +48,7 @@ void SharedResource::useResource() const {
 std::string SharedResource::getName() const { return name_; }
 
 // Parent implementation
-Parent::Parent(const std::string& name) : name_(name) {
+Parent::Parent(std::string  name) : name_(std::move(name)) {
   std::cout << "Parent created: " << name_ << "\n";
 }
 
@@ -66,7 +67,7 @@ void Parent::showFamily() const {
 }
 
 // Child implementation
-Child::Child(const std::string& name) : name_(name) {
+Child::Child(std::string  name) : name_(std::move(name)) {
   std::cout << "Child created: " << name_ << "\n";
 }
 

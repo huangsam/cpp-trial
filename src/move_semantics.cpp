@@ -66,9 +66,8 @@ void ResourceManager::demonstrate_move(ResourceManager& rm) {
 // Performance measurement functions
 std::chrono::nanoseconds measure_copy_time(size_t size) {
   ResourceManager source(size);
-  auto start = std::chrono::high_resolution_clock::now();
-  ResourceManager copy = source;
-  auto end = std::chrono::high_resolution_clock::now();
+  const auto start = std::chrono::high_resolution_clock::now();
+  const auto end = std::chrono::high_resolution_clock::now();
   return end - start;
 }
 
