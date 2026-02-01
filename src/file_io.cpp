@@ -11,9 +11,8 @@ std::string FileIO::read_file_to_string(
     throw std::runtime_error("Failed to open file for reading: " +
                              file_path.string());
   }
-  std::string content((std::istreambuf_iterator<char>(file)),
-                      std::istreambuf_iterator<char>());
-  return content;
+  return std::string((std::istreambuf_iterator<char>(file)),
+                     std::istreambuf_iterator<char>());
 }
 
 void FileIO::write_string_to_file(const std::filesystem::path& file_path,

@@ -28,7 +28,8 @@ TEST(STLDeepDiveTest, CountWords) {
 }
 
 TEST(STLDeepDiveTest, MostFrequentWord) {
-  std::map<std::string, int> word_count = {{"hello", 2}, {"world", 1}, {"cpp", 3}};
+  std::map<std::string, int> word_count = {
+      {"hello", 2}, {"world", 1}, {"cpp", 3}};
   std::string most_frequent = STLDeepDive::most_frequent_word(word_count);
   EXPECT_EQ(most_frequent, "cpp");
 }
@@ -66,6 +67,7 @@ TEST(STLDeepDiveTest, TransformMultiply) {
 
 TEST(STLDeepDiveTest, FilterLongWords) {
   std::vector<std::string> words = {"hi", "hello", "world", "cpp"};
-  std::vector<std::string> long_words = STLDeepDive::filter_long_words(words, 5);
+  std::vector<std::string> long_words =
+      STLDeepDive::filter_long_words(words, 5);
   EXPECT_EQ(long_words, std::vector<std::string>({"hello", "world"}));
 }
