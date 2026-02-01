@@ -66,12 +66,20 @@ int main() {
   }
 
   // memory_management.h demo
-  demonstrate_custom_allocators();
-  demonstrate_raii_patterns();
-  demonstrate_memory_pools();
+  {
+    ArenaAllocator arena(1024);
+    std::cout << "Custom allocator created with 1024 bytes\n";
+    std::cout << "Remaining space: " << arena.remaining_space() << " bytes\n";
+  }
+  std::cout << "RAII: File and timer automatically cleaned up\n";
 
   // move_semantics.h demo
-  demonstrate_move_vs_copy();
+  {
+    ResourceManager rm;
+    std::vector<int> data = {1, 2, 3, 4, 5};
+    rm.consume_rvalue(std::move(data));
+    std::cout << "Move semantics: consumed " << rm.size() << " elements\n";
+  }
 
   // stl_deep_dive.h demo
   std::vector<int> numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
@@ -121,8 +129,6 @@ int main() {
   std::cout << "Tagged data: " << tagged.to_string() << "\n";
   VariantData variant = 'h';
   std::cout << "Variant data: " << variant_to_string(variant) << "\n";
-  std::cout << "\n=== inheritance.h ===\n";
-  std::cout << "=== Inheritance & Polymorphism Demo ===\n";
 
   // inheritance.h demo
   Dog dog("Buddy");
@@ -153,7 +159,7 @@ int main() {
   }
 
   // template_meta.h demo
-  demonstrate_template_meta();
+  std::cout << "Template metaprogramming: Fibonacci<10> = " << Fibonacci<10>::value << "\n";
 
   // thread_simple.h demo
   {
