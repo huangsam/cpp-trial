@@ -30,6 +30,9 @@ add_executable(
   person_test.cpp
   safe_counter_test.cpp
   thread_simple_test.cpp
+  inheritance_test.cpp
+  file_io_test.cpp
+  enums_unions_test.cpp
 )
 target_link_libraries(test.out gtest_main cpp_trial_core)
 set_target_properties(test.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

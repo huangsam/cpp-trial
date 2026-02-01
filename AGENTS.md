@@ -4,6 +4,60 @@ This document tracks the key C++ concepts and learnings from each module in the 
 
 Please refer to README.md for project setup, build instructions, and testing procedures.
 
+## enums_unions
+
+**Key Concepts:**
+- Enums (scoped vs. unscoped) and their usage
+- Unions for memory-efficient storage
+- Tagged unions and modern alternatives like `std::variant`
+- Type safety and memory management
+
+**Learnings:**
+- Scoped enums (`enum class`) prevent implicit conversions
+- Unions share memory between different types
+- Using tags with unions to avoid unsafe access
+- `std::variant` as a type-safe alternative to unions
+
+**Backend Relevance:**
+- Efficient data structures for configuration or protocol parsing
+- Type-safe handling of multiple data types in APIs
+
+## file_io
+
+**Key Concepts:**
+- File input/output with `std::fstream`
+- Exception handling for file operations
+- Using `std::filesystem` for paths
+- Reading/writing text files
+
+**Learnings:**
+- Opening files with different modes (`std::ios::in`, `std::ios::out`)
+- Reading entire files vs. line-by-line
+- Error handling with `std::runtime_error`
+- Using `std::filesystem::path` for cross-platform paths
+
+**Backend Relevance:**
+- Configuration file reading/writing
+- Logging to files
+- Data persistence in applications
+
+## inheritance
+
+**Key Concepts:**
+- Inheritance with base and derived classes
+- Polymorphism using virtual functions and pure virtual destructors
+- Runtime polymorphism via base class references
+
+**Learnings:**
+- Defining base classes with virtual methods
+- Overriding virtual functions in derived classes
+- Using `override` keyword for safety
+- Demonstrating polymorphism with base references
+
+**Backend Relevance:**
+- Object hierarchies in data models
+- Extensible interfaces for plugins or handlers
+
 ## async_simple
 
 **Key Concepts:**

@@ -18,6 +18,9 @@ add_library(
   safe_counter.cpp safe_counter.h
   thread_simple.cpp thread_simple.h
   async_simple.cpp async_simple.h
+  inheritance.cpp inheritance.h
+  file_io.cpp file_io.h
+  enums_unions.cpp enums_unions.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
