@@ -60,7 +60,7 @@ struct Power<Base, 0> {
 
 // Variadic templates
 template <typename... Args>
-requires (std::is_arithmetic_v<Args> && ...)
+  requires(std::is_arithmetic_v<Args> && ...)
 constexpr auto sum_all(Args... args) {
   return (args + ...);
 }

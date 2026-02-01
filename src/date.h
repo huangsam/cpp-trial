@@ -8,7 +8,8 @@ struct Year {
   static constexpr int MIN_YEAR = 1;
   explicit Year(const int year) : value(year) {
     if (value < MIN_YEAR) {
-      throw std::out_of_range(std::format("Year must be at least {}, got: {}", MIN_YEAR, year));
+      throw std::out_of_range(
+          std::format("Year must be at least {}, got: {}", MIN_YEAR, year));
     }
   }
   int value;
@@ -19,7 +20,9 @@ struct Month {
   static constexpr int MAX_MONTH = 12;
   explicit Month(const int month) : value(month) {
     if (value < MIN_MONTH || value > MAX_MONTH) {
-      throw std::out_of_range(std::format("Month must be between {} and {}, got: {}", MIN_MONTH, MAX_MONTH, month));
+      throw std::out_of_range(
+          std::format("Month must be between {} and {}, got: {}", MIN_MONTH,
+                      MAX_MONTH, month));
     }
   }
   int value;
@@ -30,7 +33,10 @@ struct Day {
   static constexpr int MAX_DAY = 31;
   explicit Day(const int day) : value(day) {
     if (value < MIN_DAY || value > MAX_DAY) {
-      throw std::out_of_range(std::format("Day must be between {} and {} (note: month-specific validation not performed), got: {}", MIN_DAY, MAX_DAY, day));
+      throw std::out_of_range(
+          std::format("Day must be between {} and {} (note: month-specific "
+                      "validation not performed), got: {}",
+                      MIN_DAY, MAX_DAY, day));
     }
   }
   int value;
