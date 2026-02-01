@@ -14,9 +14,7 @@ class FileIOTest : public testing::Test {
     temp_file_ = std::filesystem::temp_directory_path() / "test_file_io.txt";
   }
 
-  void TearDown() override {
-    std::filesystem::remove(temp_file_);
-  }
+  void TearDown() override { std::filesystem::remove(temp_file_); }
 };
 
 TEST_F(FileIOTest, WriteAndReadString) {
@@ -40,5 +38,6 @@ TEST_F(FileIOTest, ReadNonExistentFileThrows) {
 
 TEST_F(FileIOTest, WriteToInvalidPathThrows) {
   std::filesystem::path invalid_path = "/invalid/path/file.txt";
-  EXPECT_THROW(FileIO::write_string_to_file(invalid_path, "test"), std::runtime_error);
+  EXPECT_THROW(FileIO::write_string_to_file(invalid_path, "test"),
+               std::runtime_error);
 }

@@ -34,7 +34,8 @@ class Cat : public Animal {
   [[nodiscard]] std::string speak() const override { return "Meow!"; }
 };
 
-// Function demonstrating polymorphism: takes base reference and calls virtual method
+// Function demonstrating polymorphism: takes base reference and calls virtual
+// method
 std::string make_animal_speak(const Animal& animal);
 
 #endif  // INHERITANCE_H

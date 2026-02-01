@@ -20,16 +20,18 @@ std::string TaggedData::to_string() const {
 }
 
 std::string variant_to_string(const VariantData& var) {
-  return std::visit([](auto&& arg) -> std::string {
-    using T = std::decay_t<decltype(arg)>;
-    std::ostringstream oss;
-    if constexpr (std::is_same_v<T, int>) {
-      oss << "Int: " << arg;
-    } else if constexpr (std::is_same_v<T, double>) {
-      oss << "Double: " << arg;
-    } else if constexpr (std::is_same_v<T, char>) {
-      oss << "Char: " << arg;
-    }
-    return oss.str();
-  }, var);
+  return std::visit(
+      [](auto&& arg) -> std::string {
+        using T = std::decay_t<decltype(arg)>;
+        std::ostringstream oss;
+        if constexpr (std::is_same_v<T, int>) {
+          oss << "Int: " << arg;
+        } else if constexpr (std::is_same_v<T, double>) {
+          oss << "Double: " << arg;
+        } else if constexpr (std::is_same_v<T, char>) {
+          oss << "Char: " << arg;
+        }
+        return oss.str();
+      },
+      var);
 }
