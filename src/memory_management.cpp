@@ -41,52 +41,6 @@ void ArenaAllocator::reset() { offset_ = 0; }
 size_t ArenaAllocator::remaining_space() const { return size_ - offset_; }
 
 // ============================================================================
-// 2. Memory Pools Implementation
-// ============================================================================
-
-template <typename T, size_t BlockSize>
-MemoryPool<T, BlockSize>::MemoryPool()
-    : current_block_(nullptr),
-      object_size_(sizeof(T)),
-      objects_per_block_(BlockSize / sizeof(T)) {
-  add_block();
-}
-
-template <typename T, size_t BlockSize>
-MemoryPool<T, BlockSize>::~MemoryPool() {
-  while (current_block_) {
-    Block* next = current_block_->next;
-    delete current_block_;
-    current_block_ = next;
-  }
-}
-
-template <typename T, size_t BlockSize>
-void MemoryPool<T, BlockSize>::add_block() {
-  Block* new_block = new Block();
-  new_block->next = current_block_;
-  current_block_ = new_block;
-}
-
-template <typename T, size_t BlockSize>
-T* MemoryPool<T, BlockSize>::allocate() {
-  if (current_block_->used >= objects_per_block_) {
-    add_block();
-  }
-
-  T* result = reinterpret_cast<T*>(current_block_->data +
-                                   current_block_->used * object_size_);
-  ++current_block_->used;
-  return result;
-}
-
-template <typename T, size_t BlockSize>
-void MemoryPool<T, BlockSize>::deallocate(T* /*ptr*/) {
-  // Simple pool doesn't track individual deallocations
-  // In a real implementation, you'd maintain a free list
-}
-
-// ============================================================================
 // 3. RAII Patterns Implementation
 // ============================================================================
 

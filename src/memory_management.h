@@ -67,15 +67,42 @@ class MemoryPool {
   size_t object_size_;
   size_t objects_per_block_;
 
+  void add_block() {
+    Block* new_block = new Block();
+    new_block->next = current_block_;
+    current_block_ = new_block;
+  }
+
  public:
-  MemoryPool();
-  ~MemoryPool();
+  MemoryPool()
+      : current_block_(nullptr),
+        object_size_(sizeof(T)),
+        objects_per_block_(BlockSize / sizeof(T)) {
+    add_block();
+  }
 
-  T* allocate();
-  static void deallocate(T* ptr);
+  ~MemoryPool() {
+    while (current_block_) {
+      Block* next = current_block_->next;
+      delete current_block_;
+      current_block_ = next;
+    }
+  }
 
- private:
-  void add_block();
+  T* allocate() {
+    if (current_block_->used >= objects_per_block_) {
+      add_block();
+    }
+    T* result = reinterpret_cast<T*>(current_block_->data +
+                                     current_block_->used * object_size_);
+    ++current_block_->used;
+    return result;
+  }
+
+  static void deallocate(T* /*ptr*/) {
+    // Simple pool doesn't track individual deallocations
+    // In a real implementation, you'd maintain a free list
+  }
 };
 
 // ============================================================================
