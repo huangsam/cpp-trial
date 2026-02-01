@@ -3,12 +3,13 @@
 #include <numeric>
 
 bool less_than(const ValueOne val_one, const ValueTwo val_two) {
-  return [](const int val_i, const int val_j) { return val_i < val_j; }(
-             val_one.value, val_two.value);
+  return [](const int val_i, const int val_j) constexpr {
+    return val_i < val_j;
+  }(val_one.value, val_two.value);
 }
 
 int sum_of_squares(std::vector<int> numbers_vec) {
-  auto add_square = [](const int accu, const int val_int) {
+  auto add_square = [](const int accu, const int val_int) constexpr {
     return accu + (val_int * val_int);
   };
 

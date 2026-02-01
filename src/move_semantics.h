@@ -27,7 +27,7 @@ class ResourceManager {
   void set_data(size_t index, int value);
 
   void consume_rvalue(std::vector<int>&& vec);
-  ResourceManager create_large_resource(size_t size);
+  static ResourceManager create_large_resource(size_t size);
   static void demonstrate_move(ResourceManager& rm);
 };
 

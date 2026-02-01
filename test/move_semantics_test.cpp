@@ -42,8 +42,7 @@ TEST_F(ResourceManagerTest, MoveConstruction) {
 }
 
 TEST_F(ResourceManagerTest, MoveAssignment) {
-  ResourceManager moved;
-  moved = std::move(rm_);
+  ResourceManager moved = std::move(rm_);
   EXPECT_EQ(moved.size(), test_size_);
   EXPECT_GE(rm_.size(), 0);
 }

@@ -95,7 +95,7 @@ class Printable {
 
 class MyClass : public Printable<MyClass> {
  public:
-  void do_print() const { std::cout << "Printing MyClass\n"; }
+  static void do_print() { std::cout << "Printing MyClass\n"; }
 };
 
 // Tag dispatch

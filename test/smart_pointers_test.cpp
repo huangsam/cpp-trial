@@ -30,7 +30,7 @@ TEST_F(SmartPointersTest, SharedPtrReferenceCounting) {
   EXPECT_EQ(resource1->getName(), "Resource1");
 
   {
-    auto resource2 = resource1;  // Copy shared_ptr
+    const auto& resource2 = resource1;  // Copy shared_ptr
     EXPECT_EQ(resource1->getName(), "Resource1");
     EXPECT_EQ(resource2->getName(), "Resource1");
     // Both pointers should point to the same object

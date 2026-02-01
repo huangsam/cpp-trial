@@ -11,14 +11,14 @@ FileHandler::FileHandler(const std::string& filename)
   std::cout << "File opened: " << filename << "\n";
 }
 
-void FileHandler::writeData(const std::string& data) {
+void FileHandler::writeData(const std::string& data) const {
   if (file_) {
     fwrite(data.c_str(), sizeof(char), data.size(), file_.get());
     fflush(file_.get());
   }
 }
 
-std::string FileHandler::readData() {
+std::string FileHandler::readData() const {
   if (!file_) return "";
 
   fseek(file_.get(), 0, SEEK_SET);
@@ -40,7 +40,7 @@ SharedResource::~SharedResource() {
   std::cout << "SharedResource destroyed: " << name_ << "\n";
 }
 
-void SharedResource::useResource() {
+void SharedResource::useResource() const {
   std::cout << "Using resource: " << name_ << "\n";
 }
 
@@ -53,9 +53,9 @@ Parent::Parent(const std::string& name) : name_(name) {
 
 Parent::~Parent() { std::cout << "Parent destroyed: " << name_ << "\n"; }
 
-void Parent::setChild(std::shared_ptr<Child> child) { child_ = child; }
+void Parent::setChild(const std::shared_ptr<Child>& child) { child_ = child; }
 
-void Parent::showFamily() {
+void Parent::showFamily() const {
   std::cout << "Parent " << name_;
   if (auto child = child_.lock()) {
     std::cout << " has child " << child->getName();
@@ -72,9 +72,11 @@ Child::Child(const std::string& name) : name_(name) {
 
 Child::~Child() { std::cout << "Child destroyed: " << name_ << "\n"; }
 
-void Child::setParent(std::shared_ptr<Parent> parent) { parent_ = parent; }
+void Child::setParent(const std::shared_ptr<Parent>& parent) {
+  parent_ = parent;
+}
 
-void Child::showFamily() {
+void Child::showFamily() const {
   std::cout << "Child " << name_;
   if (auto parent = parent_.lock()) {
     std::cout << " has parent " << parent->getName();
@@ -93,7 +95,7 @@ void SmartContainer::addResource(std::unique_ptr<std::string> resource) {
   resources_.push_back(std::move(resource));
 }
 
-void SmartContainer::processResources() {
+void SmartContainer::processResources() const {
   for (const auto& resource : resources_) {
     if (resource) {
       std::cout << "Processing: " << *resource << "\n";
@@ -142,8 +144,8 @@ std::shared_ptr<Child> createChild(const std::string& name) {
   return std::make_shared<Child>(name);
 }
 
-void createFamily(std::shared_ptr<Parent> parent,
-                  std::shared_ptr<Child> child) {
+void createFamily(const std::shared_ptr<Parent>& parent,
+                  const std::shared_ptr<Child>& child) {
   parent->setChild(child);
   child->setParent(parent);
 }

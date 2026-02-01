@@ -30,8 +30,8 @@ class FileHandler {
   FileHandler(FileHandler&&) noexcept = default;
   FileHandler& operator=(FileHandler&&) noexcept = default;
 
-  void writeData(const std::string& data);
-  std::string readData();
+  void writeData(const std::string& data) const;
+  std::string readData() const;
 
  private:
   std::unique_ptr<FILE, FileDeleter> file_;
@@ -43,7 +43,7 @@ class SharedResource : public std::enable_shared_from_this<SharedResource> {
   explicit SharedResource(const std::string& name);
   ~SharedResource();
 
-  void useResource();
+  void useResource() const;
   std::string getName() const;
 
  private:
@@ -59,8 +59,8 @@ class Parent {
   explicit Parent(const std::string& name);
   ~Parent();
 
-  void setChild(std::shared_ptr<Child> child);
-  void showFamily();
+  void setChild(const std::shared_ptr<Child>& child);
+  void showFamily() const;
   std::weak_ptr<Child> getChild() const { return child_; }
   std::string getName() const { return name_; }
 
@@ -74,8 +74,8 @@ class Child {
   explicit Child(const std::string& name);
   ~Child();
 
-  void setParent(std::shared_ptr<Parent> parent);
-  void showFamily();
+  void setParent(const std::shared_ptr<Parent>& parent);
+  void showFamily() const;
   std::string getName() const;
   std::weak_ptr<Parent> getParent() const { return parent_; }
 
@@ -94,7 +94,7 @@ class SmartContainer {
   // Smart pointers handle resource management automatically
 
   void addResource(std::unique_ptr<std::string> resource);
-  void processResources();
+  void processResources() const;
   size_t getResourceCount() const;
 
  private:
@@ -124,6 +124,7 @@ std::shared_ptr<Child> createChild(const std::string& name);
 
 // Function to demonstrate connecting parent and child without circular
 // references
-void createFamily(std::shared_ptr<Parent> parent, std::shared_ptr<Child> child);
+void createFamily(const std::shared_ptr<Parent>& parent,
+                  const std::shared_ptr<Child>& child);
 
 #endif  // SMART_POINTERS_H

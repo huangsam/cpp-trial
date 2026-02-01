@@ -14,8 +14,8 @@ std::optional<int> find_value(const std::map<std::string, int>& data,
 
 std::string config_to_string(const ConfigValue& val) {
   return std::visit(
-      [](const auto& v) -> std::string {
-        using T = std::decay_t<decltype(v)>;
+      []<typename VS>(const VS& v) -> std::string {
+        using T = std::decay_t<VS>;
         if constexpr (std::is_same_v<T, int>) {
           return std::format("int: {}", v);
         } else if constexpr (std::is_same_v<T, std::string>) {
@@ -70,9 +70,9 @@ std::optional<Point> parse_point(std::string_view input) {
 
 bool compare_configs(const ConfigValue& a, const ConfigValue& b) {
   return std::visit(
-      [](const auto& lhs, const auto& rhs) -> bool {
-        using L = std::decay_t<decltype(lhs)>;
-        using R = std::decay_t<decltype(rhs)>;
+      []<typename LH, typename RH>(const LH& lhs, const RH& rhs) -> bool {
+        using L = std::decay_t<LH>;
+        using R = std::decay_t<RH>;
         if constexpr (std::is_same_v<L, R>) {
           return lhs == rhs;
         } else {

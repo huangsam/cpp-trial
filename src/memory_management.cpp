@@ -76,7 +76,7 @@ T* MemoryPool<T, BlockSize>::allocate() {
 
   T* result = reinterpret_cast<T*>(current_block_->data +
                                    current_block_->used * object_size_);
-  current_block_->used++;
+  ++current_block_->used;
   return result;
 }
 

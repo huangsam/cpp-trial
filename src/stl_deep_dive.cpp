@@ -8,7 +8,7 @@
 
 std::vector<int> STLDeepDive::filter_even(const std::vector<int>& numbers) {
   auto even_view =
-      numbers | std::views::filter([](int n) { return n % 2 == 0; });
+      numbers | std::views::filter([](int n) constexpr { return n % 2 == 0; });
   return {even_view.begin(), even_view.end()};
 }
 
@@ -29,8 +29,9 @@ std::string STLDeepDive::most_frequent_word(
     const std::map<std::string, int>& word_count) {
   if (word_count.empty()) return "";
   auto max_it = std::ranges::max_element(
-      word_count,
-      [](const auto& a, const auto& b) { return a.second < b.second; });
+      word_count, [](const auto& a, const auto& b) constexpr {
+        return a.second < b.second;
+      });
   return max_it->first;
 }
 

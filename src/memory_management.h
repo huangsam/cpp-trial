@@ -19,7 +19,7 @@ class ArenaAllocator {
   ~ArenaAllocator();
 
   void* allocate(size_t bytes, size_t alignment = alignof(std::max_align_t));
-  void deallocate(void* ptr, size_t bytes);
+  static void deallocate(void* ptr, size_t bytes);
   void reset();
 
   [[nodiscard]] size_t remaining_space() const;
@@ -70,7 +70,7 @@ class MemoryPool {
   ~MemoryPool();
 
   T* allocate();
-  void deallocate(T* ptr);
+  static void deallocate(T* ptr);
 
  private:
   void add_block();
@@ -138,7 +138,7 @@ class MemoryManager {
   }
 
   template <typename T>
-  void destroy(T* ptr) {
+  static void destroy(T* ptr) {
     if (ptr) {
       ptr->~T();
       // Note: memory is not deallocated in this simple example
@@ -193,7 +193,7 @@ class StackVector {
   const T& operator[](size_t index) const { return data_[index]; }
 
   [[nodiscard]] size_t size() const { return size_; }
-  [[nodiscard]] size_t capacity() const { return Capacity; }
+  [[nodiscard]] static size_t capacity() { return Capacity; }
   [[nodiscard]] bool empty() const { return size_ == 0; }
 };
 

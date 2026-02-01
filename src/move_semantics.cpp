@@ -83,7 +83,7 @@ std::chrono::nanoseconds measure_move_time(size_t size) {
 void demonstrate_move_vs_copy() {
   std::cout << "\n=== Move vs Copy Demonstration ===\n";
 
-  const size_t test_size = 100000;
+  constexpr size_t test_size = 100000;
 
   auto copy_time = measure_copy_time(test_size);
   std::cout << "Copy time for " << test_size
