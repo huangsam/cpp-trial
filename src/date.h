@@ -46,17 +46,17 @@ class Date {
   [[nodiscard]] int get_year() const { return year; }
   [[nodiscard]] int get_month() const { return month; }
   [[nodiscard]] int get_day() const { return day; }
+
+  // Three-way comparison operator
+  friend auto operator<=>(const Date& lhs, const Date& rhs) {
+    if (auto cmp = lhs.get_year() <=> rhs.get_year(); cmp != 0) return cmp;
+    if (auto cmp = lhs.get_month() <=> rhs.get_month(); cmp != 0) return cmp;
+    return lhs.get_day() <=> rhs.get_day();
+  }
+
+  // Equality operator (explicit for clarity)
+  friend bool operator==(const Date& lhs, const Date& rhs) = default;
 };
-
-// Primitive operators
-bool operator==(const Date& lhs, const Date& rhs);
-bool operator<(const Date& lhs, const Date& rhs);
-
-// Composite operators
-bool operator>(const Date& lhs, const Date& rhs);
-bool operator<=(const Date& lhs, const Date& rhs);
-bool operator>=(const Date& lhs, const Date& rhs);
-bool operator!=(const Date& lhs, const Date& rhs);
 
 // Specialization for Date
 template <>

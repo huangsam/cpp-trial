@@ -12,7 +12,7 @@
 add_library(
   cpp_trial_core STATIC
   date.cpp date.h
-  factorial.cpp factorial.h
+  factorial.h
   lambda.cpp lambda.h
   person.cpp person.h
   safe_counter.cpp safe_counter.h
