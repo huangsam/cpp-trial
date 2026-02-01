@@ -13,8 +13,7 @@ TEST(NamespacesTest, NestedNamespaceFunction) {
 }
 
 TEST(NamespacesTest, NestedNamespaceClass) {
-  utils::math::Calculator calc;
-  int result = calc.multiply(4, 5);
+  constexpr int result = utils::math::Calculator::multiply(4, 5);
   EXPECT_EQ(result, 20);
 }
 
@@ -35,7 +34,6 @@ TEST(NamespacesTest, UsingDeclaration) {
 }
 
 TEST(NamespacesTest, DifferentNamespace) {
-  data::Processor proc;
-  std::string result = proc.process("test");
+  const std::string result = data::Processor::process("test");
   EXPECT_EQ(result, "Processed: test");
 }
