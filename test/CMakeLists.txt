@@ -32,6 +32,7 @@ add_executable(
   thread_simple_test.cpp
 )
 target_link_libraries(test.out gtest_main cpp_trial_core)
+set_target_properties(test.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Find all tests and register them with CTest
 include(GoogleTest)

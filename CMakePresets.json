@@ -19,35 +19,29 @@
     },
     {
       "name": "dev",
-      "displayName": "Development Build (Debug + Clang-Tidy)",
-      "description": "Debug build with Clang-Tidy and auto-fix enabled for local development.",
+      "displayName": "Development Build (Debug)",
+      "description": "Debug build for local development.",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug",
-        "ENABLE_CLANG_TIDY": "ON",
-        "CLANG_TIDY_AUTO_FIX": "ON"
+        "CMAKE_BUILD_TYPE": "Debug"
       }
     },
     {
       "name": "ci",
-      "displayName": "CI Build (Release + Clang-Tidy)",
-      "description": "Release build with Clang-Tidy, no auto-fix, for CI systems.",
+      "displayName": "CI Build (Release)",
+      "description": "Release build for CI systems.",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "ENABLE_CLANG_TIDY": "ON",
-        "CLANG_TIDY_AUTO_FIX": "OFF"
+        "CMAKE_BUILD_TYPE": "Release"
       }
     },
     {
       "name": "release",
-      "displayName": "Release Build (Optimized, No Clang-Tidy)",
-      "description": "Optimized release build with Clang-Tidy disabled for final artifacts.",
+      "displayName": "Release Build (Optimized)",
+      "description": "Optimized release build for final artifacts.",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release",
-        "ENABLE_CLANG_TIDY": "OFF",
-        "CLANG_TIDY_AUTO_FIX": "OFF"
+        "CMAKE_BUILD_TYPE": "Release"
       }
     }
   ],
