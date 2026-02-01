@@ -2,6 +2,8 @@
 #define MEMORY_MANAGEMENT_H
 
 #include <algorithm>
+#include <chrono>
+#include <cstdio>
 
 // ============================================================================
 // 1. Custom Allocators for STL Containers
