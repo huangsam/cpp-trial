@@ -1,6 +1,8 @@
-# C++ Learning Notes - Source Modules
+# C++ Learning Notes
 
 This document tracks the key C++ concepts and learnings from each module in the `src/` directory. Each module demonstrates specific language features, best practices, and backend-relevant skills.
+
+Please refer to README.md for project setup, build instructions, and testing procedures.
 
 ## async_simple
 
