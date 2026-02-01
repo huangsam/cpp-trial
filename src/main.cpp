@@ -159,7 +159,8 @@ int main() {
   }
 
   // template_meta.h demo
-  std::cout << "Template metaprogramming: Fibonacci<10> = " << Fibonacci<10>::value << "\n";
+  std::cout << "Template metaprogramming: Fibonacci<10> = "
+            << Fibonacci<10>::value << "\n";
 
   // thread_simple.h demo
   {
