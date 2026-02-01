@@ -136,6 +136,10 @@ This document tracks the key C++ concepts and learnings from each module in the 
 - Testing integration with Google Test
 - CI/CD with GitHub Actions
 
+**Code Quality Tools:**
+- Clang-Format: Configured for Google style to ensure consistent code formatting across the project
+- Clang-Tidy: Static analysis checks for bug detection, performance, readability, and modern C++ best practices (currently disabled in build but available for manual use or IDE integration)
+
 **C++ Standards:**
 - C++20 features and modern idioms
 - Smart pointers and RAII
