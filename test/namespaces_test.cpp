@@ -4,6 +4,9 @@
 
 #include <string>
 
+// Namespace alias for testing
+namespace um = utils::math;
+
 TEST(NamespacesTest, NestedNamespaceFunction) {
   int result = utils::math::add(2, 3);
   EXPECT_EQ(result, 5);

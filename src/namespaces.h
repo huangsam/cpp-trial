@@ -25,9 +25,6 @@ std::string to_upper(const std::string& str);
 
 }  // namespace utils
 
-// Namespace alias
-namespace um = utils::math;
-
 // Using declaration (brings specific name into scope)
 using utils::to_upper;
 
