@@ -7,10 +7,10 @@ namespace utils {
 
 namespace math {}  // namespace math
 
-std::string to_upper(std::string_view str) {
+std::string to_upper(const std::string_view str) {
   std::string result(str);
   std::ranges::transform(result, result.begin(),
-                         [](unsigned char c) { return std::toupper(c); });
+                         [](const unsigned char c) { return std::toupper(c); });
   return result;
 }
 
@@ -18,7 +18,7 @@ std::string to_upper(std::string_view str) {
 
 namespace data {
 
-std::string Processor::process(std::string_view input) {
+std::string Processor::process(const std::string_view input) {
   return "Processed: " + std::string(input);
 }
 

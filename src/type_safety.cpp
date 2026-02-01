@@ -4,9 +4,8 @@
 #include <format>
 
 std::optional<int> find_value(const std::map<std::string, int>& data,
-                              std::string_view key) {
-  auto it = data.find(std::string(key));
-  if (it != data.end()) {
+                              const std::string_view key) {
+  if (const auto it = data.find(std::string(key)); it != data.end()) {
     return it->second;
   }
   return std::nullopt;
@@ -32,7 +31,7 @@ void TypeSafeContainer::add(std::any value) {
   data_.push_back(std::move(value));
 }
 
-std::any TypeSafeContainer::get(size_t index) const {
+std::any TypeSafeContainer::get(const size_t index) const {
   if (index < data_.size()) {
     return data_[index];
   }
@@ -41,7 +40,7 @@ std::any TypeSafeContainer::get(size_t index) const {
 
 size_t TypeSafeContainer::size() const { return data_.size(); }
 
-void process_string(std::string_view sv) {
+void process_string(const std::string_view sv) {
   // std::string_view avoids copying; efficient for read-only operations
   int vowels = 0;
   for (const char c : sv) {
@@ -83,17 +82,18 @@ bool compare_configs(const ConfigValue& a, const ConfigValue& b) {
       a, b);
 }
 
-Result safe_divide(int a, int b) {
+Result safe_divide(const int a, const int b) {
   if (b == 0) {
     return Error::DivisionByZero;
   }
   return std::format("Result: {}", a / b);
 }
 
-std::optional<std::string> safe_parse_int(std::string_view str) {
+std::optional<std::string> safe_parse_int(const std::string_view str) {
   int value;
-  auto res = std::from_chars(str.data(), str.data() + str.size(), value);
-  if (res.ec == std::errc{}) {
+  if (auto [ptr, ec] =
+          std::from_chars(str.data(), str.data() + str.size(), value);
+      ec == std::errc{}) {
     return std::format("Parsed: {}", value);
   }
   return std::nullopt;

@@ -48,7 +48,7 @@ TEST_F(ResourceManagerTest, MoveAssignment) {
 }
 
 TEST_F(ResourceManagerTest, ConsumeRvalue) {
-  std::vector<int> vec = {1, 2, 3, 4, 5};
+  std::vector vec = {1, 2, 3, 4, 5};
   rm_.consume_rvalue(std::move(vec));
   EXPECT_EQ(rm_.size(), 5);
   EXPECT_TRUE(vec.empty());

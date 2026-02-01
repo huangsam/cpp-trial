@@ -7,7 +7,7 @@
 // 1. Custom Allocators Implementation
 // ============================================================================
 
-ArenaAllocator::ArenaAllocator(size_t size) : size_(size), offset_(0) {
+ArenaAllocator::ArenaAllocator(const size_t size) : size_(size), offset_(0) {
   buffer_ = new char[size];
   std::cout << "ArenaAllocator created with " << size << " bytes\n";
 }
@@ -17,9 +17,9 @@ ArenaAllocator::~ArenaAllocator() {
   std::cout << "ArenaAllocator destroyed\n";
 }
 
-void* ArenaAllocator::allocate(size_t bytes, size_t alignment) {
+void* ArenaAllocator::allocate(const size_t bytes, const size_t alignment) {
   const auto current = reinterpret_cast<size_t>(buffer_ + offset_);
-  const auto aligned = (current + alignment - 1) & ~(alignment - 1);
+  const auto aligned = current + alignment - 1 & ~(alignment - 1);
   const auto new_offset = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
 
   if (new_offset > size_) {
@@ -88,7 +88,7 @@ Timer::~Timer() {
 // 4. Placement New Implementation
 // ============================================================================
 
-MemoryManager::MemoryManager(size_t size) : size_(size), used_(0) {
+MemoryManager::MemoryManager(const size_t size) : size_(size), used_(0) {
   buffer_ = new char[size];
   std::cout << "MemoryManager created with " << size << " bytes\n";
 }
@@ -98,7 +98,7 @@ MemoryManager::~MemoryManager() {
   std::cout << "MemoryManager destroyed\n";
 }
 
-void* MemoryManager::allocate(size_t bytes, size_t alignment) {
+void* MemoryManager::allocate(const size_t bytes, const size_t alignment) {
   const auto current = reinterpret_cast<size_t>(buffer_ + used_);
   const auto aligned = (current + alignment - 1) & ~(alignment - 1);
   const auto new_used = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
@@ -116,7 +116,7 @@ void* MemoryManager::allocate(size_t bytes, size_t alignment) {
 // 5. Memory Alignment Implementation
 // ============================================================================
 
-void* AlignedAllocator::allocate(size_t size, size_t alignment) {
+void* AlignedAllocator::allocate(const size_t size, const size_t alignment) {
   void* ptr = nullptr;
   if (posix_memalign(&ptr, alignment, size) != 0) {
     throw std::bad_alloc();

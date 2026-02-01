@@ -8,9 +8,9 @@ bool less_than(const ValueOne val_one, const ValueTwo val_two) {
   }(val_one.value, val_two.value);
 }
 
-int sum_of_squares(std::vector<int> numbers_vec) {
+int sum_of_squares(std::vector<int> numbers) {
   auto add_square = [](const int accu, const int val_int) constexpr {
-    return accu + (val_int * val_int);
+    return accu + val_int * val_int;
   };
 
   /**
@@ -21,5 +21,5 @@ int sum_of_squares(std::vector<int> numbers_vec) {
    *
    * https://stackoverflow.com/q/47144083
    */
-  return std::accumulate(numbers_vec.begin(), numbers_vec.end(), 0, add_square);
+  return std::accumulate(numbers.begin(), numbers.end(), 0, add_square);
 }

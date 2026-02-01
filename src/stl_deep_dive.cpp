@@ -7,8 +7,9 @@
 #include <vector>
 
 std::vector<int> STLDeepDive::filter_even(const std::vector<int>& numbers) {
-  auto even_view =
-      numbers | std::views::filter([](int n) constexpr { return n % 2 == 0; });
+  auto even_view = numbers | std::views::filter([](const int n) constexpr {
+                     return n % 2 == 0;
+                   });
   return {even_view.begin(), even_view.end()};
 }
 
@@ -52,14 +53,15 @@ void STLDeepDive::sort_vector(std::vector<int>& numbers) {
 }
 
 bool STLDeepDive::contains_element(const std::vector<int>& numbers,
-                                   int target) {
+                                   const int target) {
   return std::ranges::find(numbers, target) != numbers.end();
 }
 
 std::vector<int> STLDeepDive::transform_multiply(
     const std::vector<int>& numbers, int factor) {
   auto transformed_view =
-      numbers | std::views::transform([factor](int n) { return n * factor; });
+      numbers |
+      std::views::transform([factor](const int n) { return n * factor; });
   return {transformed_view.begin(), transformed_view.end()};
 }
 

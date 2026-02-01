@@ -32,7 +32,7 @@ TEST(TemplateMetaTest, TypeTraits) {
   EXPECT_FALSE(IsContainer<int>::value);
 
   testing::internal::CaptureStdout();
-  const std::vector<int> vec = {1, 2, 3};
+  const std::vector vec = {1, 2, 3};
   print_container_size(vec);
   std::string output = testing::internal::GetCapturedStdout();
   EXPECT_NE(output.find("Container size: 3"), std::string::npos);
@@ -76,7 +76,7 @@ TEST(TemplateMetaTest, TemplateRecursion) {
 
 // Test CRTP
 TEST(TemplateMetaTest, CRTP) {
-  const MyClass obj;
+  constexpr MyClass obj;
   testing::internal::CaptureStdout();
   obj.print();
   std::string output = testing::internal::GetCapturedStdout();

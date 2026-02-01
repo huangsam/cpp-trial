@@ -18,7 +18,7 @@ TEST(NamespacesTest, NestedNamespaceClass) {
 }
 
 TEST(NamespacesTest, TopLevelNamespaceFunction) {
-  const std::string result = utils::to_upper("hello");
+  const std::string result = to_upper("hello");
   EXPECT_EQ(result, "HELLO");
 }
 

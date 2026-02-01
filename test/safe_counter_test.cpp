@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-class SafeCounterTest : public ::testing::Test {
+class SafeCounterTest : public testing::Test {
  protected:
   SafeCounter counter_obj;
 

@@ -10,7 +10,7 @@ TEST(EnumsUnionsTest, UnscopedEnum) {
 }
 
 TEST(EnumsUnionsTest, ScopedEnum) {
-  Status s = Status::Idle;
+  auto s = Status::Idle;
   EXPECT_EQ(static_cast<int>(s), 0);  // Scoped enums require explicit cast
   s = Status::Running;
   EXPECT_EQ(static_cast<int>(s), 1);

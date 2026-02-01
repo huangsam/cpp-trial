@@ -1,11 +1,11 @@
 #include "move_semantics.h"
 
 // ResourceManager implementations
-ResourceManager::ResourceManager() : data_() {
+ResourceManager::ResourceManager() {
   std::cout << "ResourceManager default constructed\n";
 }
 
-ResourceManager::ResourceManager(size_t size) : data_(size, 0) {
+ResourceManager::ResourceManager(const size_t size) : data_(size, 0) {
   std::cout << "ResourceManager constructed with size " << size << "\n";
 }
 
@@ -39,7 +39,7 @@ ResourceManager::~ResourceManager() {
   std::cout << "ResourceManager destroyed\n";
 }
 
-void ResourceManager::set_data(size_t index, int value) {
+void ResourceManager::set_data(const size_t index, const int value) {
   if (index < data_.size()) {
     data_[index] = value;
   }
@@ -50,7 +50,7 @@ void ResourceManager::consume_rvalue(std::vector<int>&& vec) {
   std::cout << "Consumed rvalue vector with " << data_.size() << " elements\n";
 }
 
-ResourceManager ResourceManager::create_large_resource(size_t size) {
+ResourceManager ResourceManager::create_large_resource(const size_t size) {
   ResourceManager rm(size);
   for (size_t i = 0; i < size; ++i) {
     rm.set_data(i, static_cast<int>(i));
@@ -64,14 +64,14 @@ void ResourceManager::demonstrate_move(ResourceManager& rm) {
 }
 
 // Performance measurement functions
-std::chrono::nanoseconds measure_copy_time(size_t size) {
+std::chrono::nanoseconds measure_copy_time(const size_t size) {
   ResourceManager source(size);
   const auto start = std::chrono::high_resolution_clock::now();
   const auto end = std::chrono::high_resolution_clock::now();
   return end - start;
 }
 
-std::chrono::nanoseconds measure_move_time(size_t size) {
+std::chrono::nanoseconds measure_move_time(const size_t size) {
   const ResourceManager source(size);
   const auto start = std::chrono::high_resolution_clock::now();
   ResourceManager moved = std::move(const_cast<ResourceManager&>(source));
@@ -93,7 +93,8 @@ void demonstrate_move_vs_copy() {
             << " elements: " << move_time.count() << " nanoseconds\n";
 
   std::cout << "Move is approximately "
-            << static_cast<double>(copy_time.count()) / move_time.count()
+            << static_cast<double>(copy_time.count()) /
+                   static_cast<double>(move_time.count())
             << "x faster\n";
 
   std::cout << "\nWhen to use move vs copy:\n";

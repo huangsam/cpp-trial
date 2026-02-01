@@ -8,13 +8,13 @@
 #include <vector>
 
 TEST(STLDeepDiveTest, FilterEvenNumbers) {
-  const std::vector<int> numbers = {1, 2, 3, 4, 5, 6};
+  const std::vector numbers = {1, 2, 3, 4, 5, 6};
   const std::vector<int> evens = STLDeepDive::filter_even(numbers);
-  EXPECT_EQ(evens, std::vector<int>({2, 4, 6}));
+  EXPECT_EQ(evens, std::vector({2, 4, 6}));
 }
 
 TEST(STLDeepDiveTest, SumVector) {
-  const std::vector<int> numbers = {1, 2, 3, 4, 5};
+  const std::vector numbers = {1, 2, 3, 4, 5};
   const int sum = STLDeepDive::sum_vector(numbers);
   EXPECT_EQ(sum, 15);
 }
@@ -30,37 +30,37 @@ TEST(STLDeepDiveTest, CountWords) {
 TEST(STLDeepDiveTest, MostFrequentWord) {
   const std::map<std::string, int> word_count = {
       {"hello", 2}, {"world", 1}, {"cpp", 3}};
-  std::string most_frequent = STLDeepDive::most_frequent_word(word_count);
+  const std::string most_frequent = STLDeepDive::most_frequent_word(word_count);
   EXPECT_EQ(most_frequent, "cpp");
 }
 
 TEST(STLDeepDiveTest, UniqueElements) {
-  const std::vector<int> numbers = {1, 2, 2, 3, 3, 3};
+  const std::vector numbers = {1, 2, 2, 3, 3, 3};
   const std::set<int> unique = STLDeepDive::unique_elements(numbers);
   EXPECT_EQ(unique, std::set<int>({1, 2, 3}));
 }
 
 TEST(STLDeepDiveTest, SetIntersection) {
-  const std::set<int> set1 = {1, 2, 3, 4};
-  const std::set<int> set2 = {3, 4, 5, 6};
+  const std::set set1 = {1, 2, 3, 4};
+  const std::set set2 = {3, 4, 5, 6};
   const std::set<int> intersection = STLDeepDive::intersection(set1, set2);
-  EXPECT_EQ(intersection, std::set<int>({3, 4}));
+  EXPECT_EQ(intersection, std::set({3, 4}));
 }
 
 TEST(STLDeepDiveTest, SortVector) {
-  std::vector<int> numbers = {3, 1, 4, 1, 5};
+  std::vector numbers = {3, 1, 4, 1, 5};
   STLDeepDive::sort_vector(numbers);
-  EXPECT_EQ(numbers, std::vector<int>({1, 1, 3, 4, 5}));
+  EXPECT_EQ(numbers, std::vector({1, 1, 3, 4, 5}));
 }
 
 TEST(STLDeepDiveTest, ContainsElement) {
-  const std::vector<int> numbers = {1, 2, 3, 4, 5};
+  const std::vector numbers = {1, 2, 3, 4, 5};
   EXPECT_TRUE(STLDeepDive::contains_element(numbers, 3));
   EXPECT_FALSE(STLDeepDive::contains_element(numbers, 6));
 }
 
 TEST(STLDeepDiveTest, TransformMultiply) {
-  const std::vector<int> numbers = {1, 2, 3};
+  const std::vector numbers = {1, 2, 3};
   const std::vector<int> multiplied =
       STLDeepDive::transform_multiply(numbers, 2);
   EXPECT_EQ(multiplied, std::vector<int>({2, 4, 6}));

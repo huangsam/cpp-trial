@@ -11,12 +11,11 @@ std::string FileIO::read_file_to_string(
     throw std::runtime_error("Failed to open file for reading: " +
                              file_path.string());
   }
-  return {std::istreambuf_iterator<char>(file),
-          std::istreambuf_iterator<char>()};
+  return {std::istreambuf_iterator(file), std::istreambuf_iterator<char>()};
 }
 
 void FileIO::write_string_to_file(const std::filesystem::path& file_path,
-                                  std::string_view content) {
+                                  const std::string_view content) {
   std::ofstream file(file_path, std::ios::out | std::ios::binary);
   if (!file) {
     throw std::runtime_error("Failed to open file for writing: " +

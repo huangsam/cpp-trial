@@ -2,7 +2,7 @@
 
 #include <gtest/gtest.h>
 
-class ThreadSimpleTest : public ::testing::Test {
+class ThreadSimpleTest : public testing::Test {
  protected:
   ThreadSimpleClass obj;
 };
