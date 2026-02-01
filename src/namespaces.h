@@ -10,12 +10,12 @@ namespace utils {
 namespace math {
 
 // Function in nested namespace
-int add(int a, int b);
+constexpr int add(int a, int b) { return a + b; }
 
 // Class in nested namespace
 class Calculator {
  public:
-  static int multiply(int a, int b);
+  static constexpr int multiply(int a, int b) { return a * b; }
 };
 
 }  // namespace math

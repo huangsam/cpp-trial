@@ -5,13 +5,7 @@
 
 namespace utils {
 
-namespace math {
-
-int add(int a, int b) { return a + b; }
-
-int Calculator::multiply(int a, int b) { return a * b; }
-
-}  // namespace math
+namespace math {}  // namespace math
 
 std::string to_upper(const std::string& str) {
   std::string result = str;
