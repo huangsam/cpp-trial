@@ -10,7 +10,7 @@ struct Age {
   static constexpr int MIN_AGE = 1;
   explicit Age(const int age) : value(age) {
     if (value < MIN_AGE) {
-      throw std::invalid_argument("Age must be positive");
+      throw std::invalid_argument(std::format("Age must be at least {}, got: {}", MIN_AGE, age));
     }
   }
   int value;
@@ -20,7 +20,7 @@ struct Salary {
   static constexpr double MIN_SALARY = 0.0;
   explicit Salary(const double salary) : value(salary) {
     if (value < MIN_SALARY) {
-      throw std::invalid_argument(std::format("Salary must be non-negative"));
+      throw std::invalid_argument(std::format("Salary must be non-negative, got: {:.2f}", salary));
     }
   }
   double value;
