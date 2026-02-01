@@ -19,7 +19,7 @@ ArenaAllocator::~ArenaAllocator() {
 
 void* ArenaAllocator::allocate(const size_t bytes, const size_t alignment) {
   const auto current = reinterpret_cast<size_t>(buffer_ + offset_);
-  const auto aligned = current + alignment - 1 & ~(alignment - 1);
+  const auto aligned = (current + alignment - 1) & ~(alignment - 1);
   const auto new_offset = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
 
   if (new_offset > size_) {
