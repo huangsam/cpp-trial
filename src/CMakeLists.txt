@@ -22,6 +22,7 @@ add_library(
   file_io.cpp file_io.h
   enums_unions.cpp enums_unions.h
   namespaces.cpp namespaces.h
+  stl_deep_dive.cpp stl_deep_dive.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

@@ -203,6 +203,30 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Handling concurrent requests in server applications
 - Background task processing
 
+## stl_deep_dive
+
+**Key Concepts:**
+- STL containers (vector, map, set, unordered_map)
+- STL algorithms (sort, find, transform, accumulate, copy_if)
+- Iterator usage and range-based loops
+- Lambda expressions with algorithms
+- Container operations and performance considerations
+
+**Learnings:**
+- Using vector for dynamic arrays with push_back, size, and indexing
+- Map for key-value pairs with operator[] and find
+- Set for unique elements with insert and count
+- Unordered_map for fast lookups
+- Algorithms like sort, find_if, transform, accumulate
+- Lambda captures and usage in algorithms
+- Iterator-based operations
+
+**Backend Relevance:**
+- Data structures for caching and configuration
+- Algorithm implementations for data processing
+- Efficient container usage in high-performance applications
+- Functional programming patterns in C++
+
 ## Overall Project Learnings
 
 **Build System:**
