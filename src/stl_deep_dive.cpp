@@ -41,7 +41,8 @@ std::set<int> STLDeepDive::unique_elements(const std::vector<int>& numbers) {
 std::set<int> STLDeepDive::intersection(const std::set<int>& set1,
                                         const std::set<int>& set2) {
   std::set<int> result;
-  std::ranges::set_intersection(set1, set2, std::inserter(result, result.begin()));
+  std::ranges::set_intersection(set1, set2,
+                                std::inserter(result, result.begin()));
   return result;
 }
 

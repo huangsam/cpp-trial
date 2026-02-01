@@ -18,7 +18,12 @@ Please refer to README.md for project setup, build instructions, and testing pro
 10. [thread_simple](#thread_simple) - Basic threading concepts
 11. [safe_counter](#safe_counter) - Thread safety and synchronization
 12. [async_simple](#async_simple) - Asynchronous programming
-13. [Overall Project Learnings](#overall-project-learnings)
+13. [smart_pointers](#smart_pointers) - Modern smart pointer usage
+14. [type_safety](#type_safety) - C++17/20 type safety features
+15. [move_semantics](#move_semantics) - Move semantics and rvalue references
+16. [template_meta](#template_meta) - Advanced template metaprogramming
+17. [memory_management](#memory_management) - Custom memory management patterns
+18. [Overall Project Learnings](#overall-project-learnings)
 
 ## person
 
@@ -242,6 +247,139 @@ Please refer to README.md for project setup, build instructions, and testing pro
 **Backend Relevance:**
 - Simulates handling concurrent user requests in a web server
 - Foundation for building scalable, non-blocking services
+
+## smart_pointers
+
+**Key Concepts:**
+- Modern smart pointer usage in C++
+- unique_ptr with custom deleters
+- shared_ptr with reference counting
+- weak_ptr to break circular references
+- make_unique and make_shared best practices
+- Rule of Zero/Five with smart pointers
+- Exception safety with smart pointers
+
+**Learnings:**
+- When to use each smart pointer type
+- Implementing custom deleters for unique_ptr
+- Understanding reference counting in shared_ptr
+- Breaking circular references with weak_ptr
+- Best practices for factory functions
+- Automatic resource management following Rule of Zero
+- Exception-safe resource allocation
+
+**Backend Relevance:**
+- Memory management in C++ applications
+- Preventing memory leaks and dangling pointers
+- Resource management in multi-threaded environments
+- Safe object ownership patterns
+
+## type_safety
+
+**Key Concepts:**
+- std::optional for optional values (replacing pointers for "not found")
+- std::variant for type-safe unions (improving on raw unions)
+- std::any for type-erased storage
+- std::string_view for non-owning string references
+- Structured bindings with these types
+- Safe comparisons and operations
+- Error handling patterns
+
+**Learnings:**
+- Using optional instead of null pointers
+- Type-safe unions with variant
+- Type-erased containers with any
+- Efficient string handling with string_view
+- Structured bindings for unpacking types
+- Safe error handling without exceptions
+- Compile-time type safety
+
+**Backend Relevance:**
+- Type-safe APIs and data structures
+- Efficient string processing in servers
+- Optional configuration values
+- Error handling in network protocols
+
+## move_semantics
+
+**Key Concepts:**
+- Move constructors and move assignment operators
+- Rvalue references (&&) usage
+- std::move and std::forward
+- Rule of Five (or Rule of Zero with smart pointers)
+- Performance benefits of move semantics
+- When to use move vs copy
+- Perfect forwarding in templates
+- Move-only types
+
+**Learnings:**
+- Implementing move operations for performance
+- Understanding lvalue vs rvalue references
+- When to use std::move vs copy
+- Perfect forwarding in generic code
+- Rule of Zero for automatic resource management
+- Performance implications of move vs copy
+- Move-only type design patterns
+
+**Backend Relevance:**
+- High-performance data structures
+- Efficient resource transfer in servers
+- Database connection pooling
+- Large object handling in APIs
+
+## template_meta
+
+**Key Concepts:**
+- Template specialization and partial specialization
+- SFINAE (Substitution Failure is Not An Error)
+- Type traits and std::enable_if
+- constexpr programming with templates
+- Variadic templates and parameter packs
+- Template recursion and compile-time computation
+- CRTP (Curiously Recurring Template Pattern)
+- Tag dispatch and overload resolution
+
+**Learnings:**
+- Advanced template metaprogramming techniques
+- Compile-time type manipulation
+- SFINAE for function overloading
+- Variadic template programming
+- CRTP for static polymorphism
+- Tag dispatch for optimization
+- constexpr metaprogramming
+
+**Backend Relevance:**
+- Generic library design
+- Type-safe APIs
+- Compile-time optimization
+- Template-based serialization
+- Generic algorithms in frameworks
+
+## memory_management
+
+**Key Concepts:**
+- Custom allocators for STL containers
+- Memory pools and arena allocation
+- RAII (Resource Acquisition Is Initialization) patterns
+- Placement new and custom memory management
+- Memory alignment and alignment-aware allocation
+- Stack-based memory management
+
+**Learnings:**
+- Custom allocator implementation
+- Memory pool patterns for performance
+- RAII for exception safety
+- Placement new for custom allocation
+- Memory alignment for cache efficiency
+- Stack allocation for small objects
+- Memory management best practices
+
+**Backend Relevance:**
+- High-performance server applications
+- Game engine memory management
+- Embedded systems programming
+- Real-time system requirements
+- Custom heap implementations
 
 ## Overall Project Learnings
 

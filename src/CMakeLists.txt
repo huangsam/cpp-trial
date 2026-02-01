@@ -23,6 +23,11 @@ add_library(
   enums_unions.cpp enums_unions.h
   namespaces.cpp namespaces.h
   stl_deep_dive.cpp stl_deep_dive.h
+  smart_pointers.cpp smart_pointers.h
+  type_safety.cpp type_safety.h
+  move_semantics.cpp move_semantics.h
+  template_meta.cpp template_meta.h
+  memory_management.cpp memory_management.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

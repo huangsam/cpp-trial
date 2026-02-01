@@ -35,6 +35,11 @@ add_executable(
   enums_unions_test.cpp
   namespaces_test.cpp
   stl_deep_dive_test.cpp
+  smart_pointers_test.cpp
+  type_safety_test.cpp
+  move_semantics_test.cpp
+  template_meta_test.cpp
+  memory_management_test.cpp
 )
 target_link_libraries(test.out gtest_main cpp_trial_core)
 set_target_properties(test.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
