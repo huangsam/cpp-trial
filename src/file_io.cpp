@@ -16,7 +16,7 @@ std::string FileIO::read_file_to_string(
 }
 
 void FileIO::write_string_to_file(const std::filesystem::path& file_path,
-                                  const std::string& content) {
+                                  std::string_view content) {
   std::ofstream file(file_path, std::ios::out | std::ios::binary);
   if (!file) {
     throw std::runtime_error("Failed to open file for writing: " +

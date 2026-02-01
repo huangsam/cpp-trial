@@ -21,7 +21,7 @@ class Calculator {
 }  // namespace math
 
 // Function in top-level namespace
-std::string to_upper(const std::string& str);
+std::string to_upper(std::string_view str);
 
 }  // namespace utils
 
@@ -33,7 +33,7 @@ namespace data {
 
 class Processor {
  public:
-  static std::string process(const std::string& input);
+  static std::string process(std::string_view input);
 };
 
 }  // namespace data

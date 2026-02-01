@@ -14,7 +14,7 @@ class FileIO {
 
   // Write string to file (overwrites)
   static void write_string_to_file(const std::filesystem::path& file_path,
-                                   const std::string& content);
+                                   std::string_view content);
 
   // Read file line by line
   static std::vector<std::string> read_file_lines(
