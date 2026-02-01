@@ -1,6 +1,5 @@
 #include "memory_management.h"
 
-#include <algorithm>
 #include <chrono>
 #include <iostream>
 

@@ -2,7 +2,6 @@
 
 #include <gtest/gtest.h>
 
-#include <sstream>
 #include <string>
 
 // Test fixture for ResourceManager

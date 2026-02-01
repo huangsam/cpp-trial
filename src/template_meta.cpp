@@ -1,6 +1,5 @@
 #include "template_meta.h"
 
-#include <string>
 #include <vector>
 
 void demo_specialization() {

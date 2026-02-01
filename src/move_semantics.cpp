@@ -1,7 +1,5 @@
 #include "move_semantics.h"
 
-#include <algorithm>
-
 // ResourceManager implementations
 ResourceManager::ResourceManager() : data_() {
   std::cout << "ResourceManager default constructed\n";
