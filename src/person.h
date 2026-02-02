@@ -6,6 +6,7 @@
 #include <string>
 #include <vector>
 
+// Age represents a validated age value (minimum 1).
 struct Age {
   static constexpr int MIN_AGE = 1;
   explicit Age(const int age) : value(age) {
@@ -17,6 +18,7 @@ struct Age {
   int value;
 };
 
+// Salary represents a validated non-negative salary value.
 struct Salary {
   static constexpr double MIN_SALARY = 0.0;
   explicit Salary(const double salary) : value(salary) {
@@ -28,6 +30,7 @@ struct Salary {
   double value;
 };
 
+// Person represents a human with name, age, and salary information.
 class Person {
   std::string name;
   int age;
@@ -52,6 +55,8 @@ struct std::formatter<Person> : std::formatter<std::string> {
   }
 };
 
+// calculate_average_eligible_salary_ranges computes the average salary for
+// people meeting both age and salary thresholds.
 double calculate_average_eligible_salary_ranges(
     const std::vector<Person>& people, int age_threshold, double min_salary);
 

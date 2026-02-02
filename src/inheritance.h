@@ -3,7 +3,7 @@
 
 #include <string>
 
-// Base class demonstrating inheritance and polymorphism
+// Animal is the base class demonstrating inheritance and virtual polymorphism.
 class Animal {
  public:
   explicit Animal(std::string name) : name_(std::move(name)) {}
@@ -18,7 +18,7 @@ class Animal {
   std::string name_;
 };
 
-// Derived class: Dog
+// Dog is a derived class that speaks "Woof!".
 class Dog : public Animal {
  public:
   explicit Dog(std::string name) : Animal(std::move(name)) {}
@@ -26,7 +26,7 @@ class Dog : public Animal {
   [[nodiscard]] std::string speak() const override { return "Woof!"; }
 };
 
-// Derived class: Cat
+// Cat is a derived class that speaks "Meow!".
 class Cat : public Animal {
  public:
   explicit Cat(std::string name) : Animal(std::move(name)) {}
@@ -34,8 +34,8 @@ class Cat : public Animal {
   [[nodiscard]] std::string speak() const override { return "Meow!"; }
 };
 
-// Function demonstrating polymorphism: takes base reference and calls virtual
-// method
+// make_animal_speak demonstrates polymorphism by calling virtual method on base
+// class reference.
 std::string make_animal_speak(const Animal& animal);
 
 #endif  // INHERITANCE_H

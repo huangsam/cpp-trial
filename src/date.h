@@ -4,6 +4,7 @@
 #include <format>
 #include <stdexcept>
 
+// Year represents a validated year value (minimum 1).
 struct Year {
   static constexpr int MIN_YEAR = 1;
   explicit Year(const int year) : value(year) {
@@ -15,6 +16,7 @@ struct Year {
   int value;
 };
 
+// Month represents a validated month value (1-12).
 struct Month {
   static constexpr int MIN_MONTH = 1;
   static constexpr int MAX_MONTH = 12;
@@ -28,6 +30,7 @@ struct Month {
   int value;
 };
 
+// Day represents a validated day value (1-31).
 struct Day {
   static constexpr int MIN_DAY = 1;
   static constexpr int MAX_DAY = 31;
@@ -42,6 +45,8 @@ struct Day {
   int value;
 };
 
+// Date represents a calendar date with year, month, and day.
+// Dates can be compared using three-way comparison operator.
 class Date {
   int year;
   int month;

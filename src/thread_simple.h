@@ -4,6 +4,8 @@
 #include <string>
 #include <thread>
 
+// ThreadSimpleClass manages a background worker thread.
+// Demonstrates basic threading, synchronization, and message passing.
 class ThreadSimpleClass {
  public:
   ThreadSimpleClass();

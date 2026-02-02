@@ -4,7 +4,8 @@
 #include <iostream>
 #include <type_traits>
 
-// Template specialization and partial specialization
+// IsPointer is a type trait that checks if a template argument is a pointer
+// type.
 template <typename T>
 struct IsPointer {
   static constexpr bool value = false;
@@ -20,20 +21,24 @@ struct IsPointer<const T*> {
   static constexpr bool value = true;
 };
 
-// Constraints with requires
+// print_if_integral prints a value if it is an integral type, using
+// constraints.
 template <typename T>
   requires std::integral<T>
 void print_if_integral(T val) {
   std::cout << val << " is an integral type\n";
 }
 
+// print_if_floating prints a value if it is a floating-point type, using
+// constraints.
 template <typename T>
   requires std::floating_point<T>
 void print_if_floating(T val) {
   std::cout << val << " is a floating-point type\n";
 }
 
-// Type traits
+// IsContainer is a type trait that checks if a type has iterator and
+// value_type.
 template <typename T, typename = void>
 struct IsContainer : std::false_type {};
 

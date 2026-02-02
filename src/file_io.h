@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-// Class for file I/O operations
+// FileIO provides static methods for file reading and writing operations.
 class FileIO {
  public:
   // Read entire file to string

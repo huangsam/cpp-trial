@@ -6,6 +6,8 @@
 #include <thread>
 #include <vector>
 
+// SafeCounter demonstrates thread-safe counter using mutex and atomic
+// variables.
 class SafeCounter {
  public:
   SafeCounter();

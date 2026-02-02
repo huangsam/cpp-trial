@@ -9,7 +9,7 @@
 // 1. Custom Allocators for STL Containers
 // ============================================================================
 
-// Simple arena allocator for demonstration
+// ArenaAllocator manages a contiguous block of memory for efficient allocation.
 class ArenaAllocator {
  private:
   char* buffer_;
@@ -27,7 +27,8 @@ class ArenaAllocator {
   [[nodiscard]] size_t remaining_space() const;
 };
 
-// Custom allocator for STL containers
+// CustomAllocator is an STL-compatible allocator that delegates to an
+// ArenaAllocator.
 template <typename T>
 class CustomAllocator {
  private:
@@ -53,7 +54,8 @@ class CustomAllocator {
 // 2. Memory Pools
 // ============================================================================
 
-// Fixed-size memory pool for objects of type T
+// MemoryPool maintains a pool of pre-allocated blocks for fast object
+// allocation.
 template <typename T, size_t BlockSize = 4096>
 class MemoryPool {
  private:
@@ -109,7 +111,7 @@ class MemoryPool {
 // 3. RAII Patterns
 // ============================================================================
 
-// RAII wrapper for file handles
+// FileHandle is an RAII wrapper that automatically manages FILE* resources.
 class FileHandle {
  private:
   FILE* file_;
@@ -130,7 +132,8 @@ class FileHandle {
   explicit operator bool() const { return file_ != nullptr; }
 };
 
-// RAII timer for performance measurement
+// Timer is an RAII helper that measures elapsed time and prints the result on
+// destruction.
 class Timer {
  private:
   std::chrono::high_resolution_clock::time_point start_;
@@ -148,7 +151,8 @@ class Timer {
 // 4. Placement New and Custom Memory Management
 // ============================================================================
 
-// Custom memory manager with placement new
+// MemoryManager provides custom memory management with placement new for object
+// construction.
 class MemoryManager {
  private:
   char* buffer_;
@@ -182,14 +186,15 @@ class MemoryManager {
 // 5. Memory Alignment
 // ============================================================================
 
-// Aligned memory allocator
+// AlignedAllocator provides memory allocation with configurable alignment for
+// cache efficiency.
 class AlignedAllocator {
  public:
   static void* allocate(size_t size, size_t alignment);
   static void deallocate(void* ptr);
 };
 
-// Cache-line aligned type
+// CacheLineAligned is an example of memory alignment for cache-line efficiency.
 struct alignas(64) CacheLineAligned {
   int data[16];  // 64 bytes
 };
@@ -198,7 +203,8 @@ struct alignas(64) CacheLineAligned {
 // 6. Stack-based Memory Management
 // ============================================================================
 
-// Stack-based vector (fixed capacity)
+// StackVector is a fixed-capacity vector using stack allocation for small
+// objects.
 template <typename T, size_t Capacity>
 class StackVector {
  private:

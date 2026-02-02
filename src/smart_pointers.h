@@ -6,7 +6,7 @@
 #include <string>
 #include <vector>
 
-// Custom deleter for unique_ptr demonstrating resource management
+// FileDeleter is a custom deleter for unique_ptr managing FILE resources.
 struct FileDeleter {
   void operator()(FILE* file) const {
     if (file) {
@@ -16,7 +16,8 @@ struct FileDeleter {
   }
 };
 
-// Class demonstrating unique_ptr with custom deleter
+// FileHandler manages file I/O using unique_ptr with custom deleter.
+// Demonstrates RAII and move semantics for file resources.
 class FileHandler {
  public:
   explicit FileHandler(const std::string& filename);
@@ -37,7 +38,7 @@ class FileHandler {
   std::unique_ptr<FILE, FileDeleter> file_;
 };
 
-// Class demonstrating shared_ptr with reference counting
+// SharedResource demonstrates shared_ptr with reference counting.
 class SharedResource : public std::enable_shared_from_this<SharedResource> {
  public:
   explicit SharedResource(std::string name);
@@ -54,6 +55,8 @@ class SharedResource : public std::enable_shared_from_this<SharedResource> {
 class Parent;
 class Child;
 
+// Parent represents a parent in a parent-child relationship.
+// Uses weak_ptr to child to break circular references.
 class Parent {
  public:
   explicit Parent(std::string name);
