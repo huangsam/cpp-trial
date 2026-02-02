@@ -6,8 +6,8 @@
 #include <string>
 #include <vector>
 
-// STLDeepDive demonstrates STL containers and algorithms.
-// Includes examples with vectors, maps, sets, and functional programming.
+// STLDeepDive demonstrates STL containers and algorithms with vectors, maps,
+// sets, and functional programming.
 class STLDeepDive {
  public:
   // Vector operations

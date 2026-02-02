@@ -16,8 +16,8 @@ struct FileDeleter {
   }
 };
 
-// FileHandler manages file I/O using unique_ptr with custom deleter.
-// Demonstrates RAII and move semantics for file resources.
+// FileHandler manages file I/O using unique_ptr with custom deleter for RAII
+// and move semantics.
 class FileHandler {
  public:
   explicit FileHandler(const std::string& filename);
@@ -55,8 +55,8 @@ class SharedResource : public std::enable_shared_from_this<SharedResource> {
 class Parent;
 class Child;
 
-// Parent represents a parent in a parent-child relationship.
-// Uses weak_ptr to child to break circular references.
+// Parent represents a parent in a parent-child relationship using weak_ptr to
+// break circular references.
 class Parent {
  public:
   explicit Parent(std::string name);
@@ -125,8 +125,8 @@ std::shared_ptr<SharedResource> createSharedResource(const std::string& name);
 std::shared_ptr<Parent> createParent(const std::string& name);
 std::shared_ptr<Child> createChild(const std::string& name);
 
-// Function to demonstrate connecting parent and child without circular
-// references
+// createFamily demonstrates connecting parent and child without circular
+// references.
 void createFamily(const std::shared_ptr<Parent>& parent,
                   const std::shared_ptr<Child>& child);
 

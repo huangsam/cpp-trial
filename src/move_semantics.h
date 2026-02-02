@@ -8,8 +8,8 @@
 #include <utility>
 #include <vector>
 
-// ResourceManager demonstrates move semantics and the Rule of Five.
-// Manages a vector of integers showing copy vs move efficiency.
+// ResourceManager demonstrates move semantics and the Rule of Five for
+// efficient vector management.
 class ResourceManager {
  private:
   std::vector<int> data_;
