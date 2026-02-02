@@ -18,6 +18,7 @@ ArenaAllocator::~ArenaAllocator() {
 }
 
 void* ArenaAllocator::allocate(const size_t bytes, const size_t alignment) {
+  // Calculate aligned address within the buffer
   const auto current = reinterpret_cast<size_t>(buffer_ + offset_);
   const auto aligned = (current + alignment - 1) & ~(alignment - 1);
   const auto new_offset = aligned - reinterpret_cast<size_t>(buffer_) + bytes;
@@ -59,10 +60,12 @@ FileHandle::~FileHandle() {
 }
 
 FileHandle::FileHandle(FileHandle&& other) noexcept : file_(other.file_) {
+  // Transfer ownership and null out the source
   other.file_ = nullptr;
 }
 
 FileHandle& FileHandle::operator=(FileHandle&& other) noexcept {
+  // Self-assignment check and resource cleanup
   if (this != &other) {
     if (file_) fclose(file_);
     file_ = other.file_;

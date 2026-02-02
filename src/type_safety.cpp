@@ -12,6 +12,7 @@ std::optional<int> find_value(const std::map<std::string, int>& data,
 }
 
 std::string config_to_string(const ConfigValue& val) {
+  // Use std::visit with a template lambda to handle each variant type
   return std::visit(
       []<typename VS>(const VS& v) -> std::string {
         using T = std::decay_t<VS>;
@@ -69,6 +70,7 @@ std::optional<Point> parse_point(std::string_view input) {
 }
 
 bool compare_configs(const ConfigValue& a, const ConfigValue& b) {
+  // Use std::visit to compare variants, only equal if same type and value
   return std::visit(
       []<typename LH, typename RH>(const LH& lhs, const RH& rhs) -> bool {
         using L = std::decay_t<LH>;
@@ -90,6 +92,7 @@ Result safe_divide(const int a, const int b) {
 }
 
 std::optional<std::string> safe_parse_int(const std::string_view str) {
+  // Use std::from_chars for safe, locale-independent integer parsing
   int value;
   if (auto [ptr, ec] =
           std::from_chars(str.data(), str.data() + str.size(), value);

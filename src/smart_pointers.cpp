@@ -20,8 +20,10 @@ void FileHandler::writeData(const std::string& data) const {
 }
 
 std::string FileHandler::readData() const {
+  // Return empty string if file not open
   if (!file_) return "";
 
+  // Seek to beginning and read entire file content
   fseek(file_.get(), 0, SEEK_SET);
   std::string data;
   char buffer[1024];

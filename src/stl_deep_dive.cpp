@@ -28,7 +28,9 @@ std::map<std::string, int> STLDeepDive::count_words(
 
 std::string STLDeepDive::most_frequent_word(
     const std::map<std::string, int>& word_count) {
+  // Return empty string for empty map
   if (word_count.empty()) return "";
+  // Find iterator to element with maximum count using custom comparator
   const auto max_it = std::ranges::max_element(
       word_count, [](const auto& a, const auto& b) constexpr {
         return a.second < b.second;
@@ -42,6 +44,7 @@ std::set<int> STLDeepDive::unique_elements(const std::vector<int>& numbers) {
 
 std::set<int> STLDeepDive::intersection(const std::set<int>& set1,
                                         const std::set<int>& set2) {
+  // Use std::ranges::set_intersection to find common elements
   std::set<int> result;
   std::ranges::set_intersection(set1, set2,
                                 std::inserter(result, result.begin()));
