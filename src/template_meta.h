@@ -20,13 +20,15 @@ struct IsPointer<const T*> {
   static constexpr bool value = true;
 };
 
-// SFINAE with std::enable_if
-template <typename T, typename = std::enable_if_t<std::is_integral_v<T>>>
+// Constraints with requires
+template <typename T>
+  requires std::integral<T>
 void print_if_integral(T val) {
   std::cout << val << " is an integral type\n";
 }
 
-template <typename T, typename = std::enable_if_t<std::is_floating_point_v<T>>>
+template <typename T>
+  requires std::floating_point<T>
 void print_if_floating(T val) {
   std::cout << val << " is a floating-point type\n";
 }
@@ -39,8 +41,8 @@ template <typename T>
 struct IsContainer<T, std::void_t<typename T::iterator, typename T::value_type>>
     : std::true_type {};
 
-template <typename Container,
-          typename = std::enable_if_t<IsContainer<Container>::value>>
+template <typename Container>
+  requires IsContainer<Container>::value
 void print_container_size(const Container& c) {
   std::cout << "Container size: " << c.size() << "\n";
 }

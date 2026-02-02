@@ -5,11 +5,9 @@
 #include <stdexcept>
 #include <type_traits>
 
+// Function template for factorial with requires constraint
 template <typename T>
-concept Integral = std::is_integral_v<T>;
-
-// Function template for factorial with concept constraint
-template <Integral T>
+  requires std::integral<T>
 T factorial(T n) {
   static_assert(sizeof(T) <= sizeof(int64_t),
                 "Type too large for factorial computation");
