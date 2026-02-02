@@ -3,7 +3,6 @@
 
 #include <format>
 #include <stdexcept>
-#include <type_traits>
 
 // Function template for factorial with requires constraint
 template <typename T>
