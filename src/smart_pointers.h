@@ -32,7 +32,7 @@ class FileHandler {
   FileHandler& operator=(FileHandler&&) noexcept = default;
 
   void writeData(const std::string& data) const;
-  std::string readData() const;
+  [[nodiscard]] std::string readData() const;
 
  private:
   std::unique_ptr<FILE, FileDeleter> file_;
@@ -64,8 +64,8 @@ class Parent {
 
   void setChild(const std::shared_ptr<Child>& child);
   void showFamily() const;
-  std::weak_ptr<Child> getChild() const { return child_; }
-  std::string getName() const { return name_; }
+  [[nodiscard]] std::weak_ptr<Child> getChild() const { return child_; }
+  [[nodiscard]] std::string getName() const { return name_; }
 
  private:
   std::string name_;
@@ -79,8 +79,8 @@ class Child {
 
   void setParent(const std::shared_ptr<Parent>& parent);
   void showFamily() const;
-  std::string getName() const;
-  std::weak_ptr<Parent> getParent() const { return parent_; }
+  [[nodiscard]] std::string getName() const;
+  [[nodiscard]] std::weak_ptr<Parent> getParent() const { return parent_; }
 
  private:
   std::string name_;
@@ -98,7 +98,7 @@ class SmartContainer {
 
   void addResource(std::unique_ptr<std::string> resource);
   void processResources() const;
-  size_t getResourceCount() const;
+  [[nodiscard]] size_t getResourceCount() const;
 
  private:
   std::vector<std::unique_ptr<std::string>> resources_;
@@ -113,7 +113,7 @@ class ExceptionSafeManager {
   // Demonstrates exception safety with smart pointers
   void addResourceWithExceptionSafety(const std::string& data);
 
-  size_t getResourceCount() const;
+  [[nodiscard]] size_t getResourceCount() const;
 
  private:
   std::vector<std::shared_ptr<std::string>> resources_;

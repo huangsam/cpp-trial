@@ -43,7 +43,9 @@ class CustomAllocator {
     return static_cast<T*>(arena_->allocate(n * sizeof(T), alignof(T)));
   }
 
-  void deallocate(T* ptr, size_t n) { arena_->deallocate(ptr, n * sizeof(T)); }
+  static void deallocate(T* ptr, size_t n) {
+    ArenaAllocator::deallocate(ptr, n * sizeof(T));
+  }
 
   // Required for allocator compatibility
   template <typename U>
@@ -60,7 +62,7 @@ template <typename T, size_t BlockSize = 4096>
 class MemoryPool {
  private:
   struct Block {
-    char data[BlockSize];
+    char data[BlockSize]{};
     size_t used = 0;
     Block* next = nullptr;
   };
@@ -70,7 +72,7 @@ class MemoryPool {
   size_t objects_per_block_;
 
   void add_block() {
-    Block* new_block = new Block();
+    auto* new_block = new Block();
     new_block->next = current_block_;
     current_block_ = new_block;
   }
