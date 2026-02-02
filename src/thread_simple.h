@@ -18,9 +18,9 @@ class ThreadSimpleClass {
  private:
   void worker_function();
 
-  std::thread m_worker_thread;
-  std::string m_worker_message;
-  bool m_worker_finished;
+  std::thread worker_thread_;
+  std::string worker_message_;
+  bool worker_finished_;
 };
 
 #endif  // THREAD_SIMPLE_H

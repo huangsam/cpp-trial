@@ -5,7 +5,7 @@
 #include <utility>
 
 Person::Person(std::string name, const Age age, const Salary salary)
-    : name(std::move(name)), age(age.value), salary(salary.value) {}
+    : name_(std::move(name)), age_(age.value), salary_(salary.value) {}
 
 double calculate_average_eligible_salary_ranges(
     const std::vector<Person>& people, int age_threshold, double min_salary) {

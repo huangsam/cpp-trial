@@ -1,35 +1,35 @@
 #include "safe_counter.h"
 
-SafeCounter::SafeCounter() : m_count(0), m_all_workers_finished(false) {}
+SafeCounter::SafeCounter() : count_(0), all_workers_finished_(false) {}
 
 void SafeCounter::start_worker_threads(const int num_threads,
                                        int increments_per_thread) {
-  m_all_workers_finished = false;  // Reset for a new run
-  m_count = 0;                     // Reset counter
+  all_workers_finished_ = false;  // Reset for a new run
+  count_ = 0;                     // Reset counter
 
-  m_worker_threads.clear();  // Clear any previous threads
+  worker_threads_.clear();  // Clear any previous threads
 
   for (int i = 0; i < num_threads; ++i) {
-    m_worker_threads.emplace_back(&SafeCounter::worker_function, this,
-                                  increments_per_thread);
+    worker_threads_.emplace_back(&SafeCounter::worker_function, this,
+                                 increments_per_thread);
   }
 }
 
 void SafeCounter::join_worker_threads() {
-  for (std::thread& mw_th : m_worker_threads) {
-    if (mw_th.joinable()) {
-      mw_th.join();
+  for (std::thread& w_th : worker_threads_) {
+    if (w_th.joinable()) {
+      w_th.join();
     }
   }
-  m_all_workers_finished = true;  // All threads have joined
+  all_workers_finished_ = true;  // All threads have joined
 }
 
 void SafeCounter::worker_function(const int increments) {
   for (int i = 0; i < increments; ++i) {
     // --- CRITICAL SECTION START ---
-    // Lock the mutex before accessing the shared resource (m_count)
-    std::lock_guard lock(m_mutex);
-    m_count++;
+    // Lock the mutex before accessing the shared resource (count_)
+    std::lock_guard lock(mutex_);
+    count_++;
     // --- CRITICAL SECTION END ---
   }
 }
@@ -40,9 +40,9 @@ int64_t SafeCounter::get_count() const {
   // we get a consistent read. For a final read after joining,
   // a mutex isn't strictly necessary for correctness, but often good for
   // consistency. However, since we join all threads, the value is stable.
-  return m_count;
+  return count_;
 }
 
 bool SafeCounter::are_workers_finished() const {
-  return m_all_workers_finished.load();  // Use load() for atomic variable
+  return all_workers_finished_.load();  // Use load() for atomic variable
 }

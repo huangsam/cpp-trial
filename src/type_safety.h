@@ -16,6 +16,7 @@ std::optional<int> find_value(const std::map<std::string, int>& data,
 
 // ConfigValue is a type-safe union holding int, string, or bool.
 using ConfigValue = std::variant<int, std::string, bool>;
+
 // config_to_string converts any ConfigValue variant to a string representation.
 std::string config_to_string(const ConfigValue& val);
 
@@ -48,6 +49,7 @@ void process_string(std::string_view sv);
 struct Point {
   int x, y;
 };
+
 // parse_point parses a comma-separated coordinate string into a Point.
 std::optional<Point> parse_point(std::string_view input);
 
@@ -56,8 +58,10 @@ bool compare_configs(const ConfigValue& a, const ConfigValue& b);
 
 // Error represents different error conditions for Result type.
 enum class Error { InvalidInput, DivisionByZero, NotFound };
+
 // Result is a variant that holds either a success string or an error.
 using Result = std::variant<std::string, Error>;
+
 // safe_divide performs division with error handling via Result variant.
 Result safe_divide(int a, int b);
 

@@ -32,16 +32,16 @@ struct Salary {
 
 // Person represents a human with name, age, and salary information.
 class Person {
-  std::string name;
-  int age;
-  double salary;
+  std::string name_;
+  int age_;
+  double salary_;
 
  public:
   Person(std::string name, Age age, Salary salary);
 
-  [[nodiscard]] std::string get_name() const { return name; }
-  [[nodiscard]] int get_age() const { return age; }
-  [[nodiscard]] double get_salary() const { return salary; }
+  [[nodiscard]] std::string get_name() const { return name_; }
+  [[nodiscard]] int get_age() const { return age_; }
+  [[nodiscard]] double get_salary() const { return salary_; }
 };
 
 // Specialization for Person
