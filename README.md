@@ -6,6 +6,10 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 
 <img src="images/cplusplus.webp" alt="C++" width="250px">
 
+## Project goals
+
+This repository serves as a comprehensive learning resource for modern C++ development, focusing on language mastery through C++11 to C++23 features, tool proficiency with CMake and GoogleTest, backend development patterns for systems programming, code quality with clean and testable C++ code, and progressive learning from basic concepts to advanced template metaprogramming.
+
 ## Getting started
 
 For everyone:

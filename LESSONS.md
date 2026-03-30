@@ -105,6 +105,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Iterator usage and range-based loops
 - Lambda expressions with algorithms
 - Container operations and performance considerations
+- C++20 ranges and views for composable, lazy-evaluated operations
 
 **Learnings:**
 - Using vector for dynamic arrays with push_back, size, and indexing
@@ -114,12 +115,16 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Algorithms like sort, find_if, transform, accumulate
 - Lambda captures and usage in algorithms
 - Iterator-based operations
+- C++20 ranges: std::views::filter, std::views::transform, std::ranges::max_element
+- Lazy evaluation: Views create pipelines without immediate computation
+- Functional composition: Chaining views with pipe operator (|)
 
 **Backend Relevance:**
 - Data structures for caching and configuration
 - Algorithm implementations for data processing
 - Efficient container usage in high-performance applications
 - Functional programming patterns in C++
+- Modern C++ patterns: Ranges enable more expressive and efficient data processing
 
 ## enums_unions
 
