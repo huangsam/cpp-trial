@@ -23,7 +23,7 @@ IF user wants to add a new C++ topic or learning module, THEN:
 - Create implementation files in `src/` directory (.cpp/.h pair)
 - Add corresponding unit tests in `test/` directory
 - Update `CMakeLists.txt` in both `src/` and `test/` to include new files
-- Follow existing naming conventions (topic_name.cpp, topic_name.h, topic_name_test.cpp)
+- Follow existing naming conventions in those folders for consistency
 
 IF user encounters memory management or RAII issues, THEN:
 - Check for proper resource acquisition and release patterns
@@ -34,10 +34,6 @@ IF user asks about concurrency or threading problems, THEN:
 - Check for race conditions and proper synchronization
 - Use thread-safe patterns and avoid global state
 - Consider using C++ standard library concurrency features
-
-IF user mentions code formatting or style issues, THEN:
-- Reference `.clang-format` and `.clang-tidy` configuration files
-- Use clang-format for consistent code style
 
 IF user needs to update documentation or lessons, THEN:
 - Update `LESSONS.md` for learning content
