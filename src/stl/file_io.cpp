@@ -4,6 +4,20 @@
 #include <iostream>
 #include <stdexcept>
 
+std::filesystem::path FileIO::get_test_data_path(const std::string& filename) {
+#ifdef TEST_DATA_DIR
+  const std::filesystem::path base_path = TEST_DATA_DIR;
+#else
+  const std::filesystem::path base_path = ".";
+#endif
+
+  if (!std::filesystem::exists(base_path)) {
+    std::filesystem::create_directories(base_path);
+  }
+
+  return base_path / filename;
+}
+
 std::string FileIO::read_file_to_string(
     const std::filesystem::path& file_path) {
   std::ifstream file(file_path, std::ios::in | std::ios::binary);

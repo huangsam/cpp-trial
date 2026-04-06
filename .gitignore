@@ -15,5 +15,5 @@ CMakeCache.txt
 DartConfiguration.tcl
 Makefile
 build.ninja
-/*.txt
 /*.xml
+test_data/

@@ -8,6 +8,9 @@
 // FileIO provides static methods for file reading and writing operations.
 class FileIO {
  public:
+  // Get the full path for a test data file
+  static std::filesystem::path get_test_data_path(const std::string& filename);
+
   // Read entire file to string
   static std::string read_file_to_string(
       const std::filesystem::path& file_path);

@@ -4,6 +4,8 @@
 
 #include <vector>
 
+#include "stl/file_io.h"
+
 // Test custom allocators
 TEST(MemoryManagementTest, ArenaAllocator) {
   ArenaAllocator arena(1024);
@@ -61,7 +63,7 @@ TEST(MemoryManagementTest, FileHandle) {
   // This test assumes we can create temporary files
   // In a real scenario, you'd use a temporary directory
   {
-    const FileHandle file("test_raii.txt", "w");
+    const FileHandle file(FileIO::get_test_data_path("test_raii.txt"), "w");
     EXPECT_TRUE(file);
     if (file) {
       fprintf(file.get(), "RAII test");

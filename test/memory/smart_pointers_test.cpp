@@ -5,6 +5,8 @@
 #include <memory>
 #include <string>
 
+#include "stl/file_io.h"
+
 // Test fixture for smart pointers tests
 class SmartPointersTest : public testing::Test {
  protected:
@@ -14,7 +16,8 @@ class SmartPointersTest : public testing::Test {
 
 TEST_F(SmartPointersTest, UniquePtrWithCustomDeleter) {
   // Test unique_ptr with custom deleter
-  const auto fileHandler = createFileHandler("test_file.txt");
+  const auto fileHandler =
+      createFileHandler(FileIO::get_test_data_path("test_file.txt"));
   ASSERT_TRUE(fileHandler);
 
   fileHandler->writeData("Hello, World!");

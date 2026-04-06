@@ -1,6 +1,7 @@
 #ifndef SMART_POINTERS_H
 #define SMART_POINTERS_H
 
+#include <filesystem>
 #include <iostream>
 #include <memory>
 #include <string>
@@ -20,7 +21,7 @@ struct FileDeleter {
 // and move semantics.
 class FileHandler {
  public:
-  explicit FileHandler(const std::string& filename);
+  explicit FileHandler(const std::filesystem::path& filename);
   ~FileHandler() = default;
 
   // Deleted copy operations to enforce unique ownership
@@ -120,7 +121,8 @@ class ExceptionSafeManager {
 };
 
 // Factory functions demonstrating make_unique and make_shared best practices
-std::unique_ptr<FileHandler> createFileHandler(const std::string& filename);
+std::unique_ptr<FileHandler> createFileHandler(
+    const std::filesystem::path& filename);
 std::shared_ptr<SharedResource> createSharedResource(const std::string& name);
 std::shared_ptr<Parent> createParent(const std::string& name);
 std::shared_ptr<Child> createChild(const std::string& name);

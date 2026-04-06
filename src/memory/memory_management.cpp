@@ -3,6 +3,8 @@
 #include <chrono>
 #include <iostream>
 
+#include "stl/file_io.h"
+
 // ============================================================================
 // 1. Custom Allocators Implementation
 // ============================================================================
@@ -45,10 +47,10 @@ size_t ArenaAllocator::remaining_space() const { return size_ - offset_; }
 // 3. RAII Patterns Implementation
 // ============================================================================
 
-FileHandle::FileHandle(const char* filename, const char* mode)
-    : file_(fopen(filename, mode)) {
+FileHandle::FileHandle(const std::filesystem::path& filename, const char* mode)
+    : file_(fopen(filename.string().c_str(), mode)) {
   if (file_) {
-    std::cout << "File opened: " << filename << "\n";
+    std::cout << "File opened: " << filename.string() << "\n";
   }
 }
 
@@ -171,7 +173,7 @@ void demonstrate_raii_patterns() {
 
   {
     Timer timer("File operation");
-    const FileHandle file("temp.txt", "w");
+    const FileHandle file(FileIO::get_test_data_path("temp.txt"), "w");
     if (file) {
       fprintf(file.get(), "Hello, RAII!");
     }

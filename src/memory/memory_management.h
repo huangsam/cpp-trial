@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <chrono>
 #include <cstdio>
+#include <filesystem>
 
 // ============================================================================
 // 1. Custom Allocators for STL Containers
@@ -119,7 +120,7 @@ class FileHandle {
   FILE* file_;
 
  public:
-  explicit FileHandle(const char* filename, const char* mode);
+  explicit FileHandle(const std::filesystem::path& filename, const char* mode);
   ~FileHandle();
 
   // Prevent copying

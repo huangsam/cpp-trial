@@ -27,6 +27,11 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+# Configure test data directory
+set(TEST_DATA_DIR "${CMAKE_BINARY_DIR}/test_data")
+add_definitions("-DTEST_DATA_DIR=\"${TEST_DATA_DIR}\"")
+
 add_subdirectory(src)
 
 # Run steps for building test.out

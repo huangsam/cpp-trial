@@ -4,12 +4,12 @@
 #include <utility>
 
 // FileHandler implementation
-FileHandler::FileHandler(const std::string& filename)
-    : file_(fopen(filename.c_str(), "w+"), FileDeleter{}) {
+FileHandler::FileHandler(const std::filesystem::path& filename)
+    : file_(fopen(filename.string().c_str(), "w+"), FileDeleter{}) {
   if (!file_) {
-    throw std::runtime_error("Failed to open file: " + filename);
+    throw std::runtime_error("Failed to open file: " + filename.string());
   }
-  std::cout << "File opened: " << filename << "\n";
+  std::cout << "File opened: " << filename.string() << "\n";
 }
 
 void FileHandler::writeData(const std::string& data) const {
@@ -131,7 +131,8 @@ size_t ExceptionSafeManager::getResourceCount() const {
 }
 
 // Factory functions
-std::unique_ptr<FileHandler> createFileHandler(const std::string& filename) {
+std::unique_ptr<FileHandler> createFileHandler(
+    const std::filesystem::path& filename) {
   return std::make_unique<FileHandler>(filename);
 }
 

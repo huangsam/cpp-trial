@@ -2,20 +2,20 @@
 #include <iostream>
 #include <vector>
 
-#include "concurrency/async_simple.h"
-#include "stl/date.h"
-#include "types/enums_unions.h"
-#include "stl/file_io.h"
-#include "oop/inheritance.h"
 #include "advanced/lambda.h"
+#include "advanced/template_meta.h"
+#include "concurrency/async_simple.h"
+#include "concurrency/thread_simple.h"
 #include "memory/memory_management.h"
 #include "memory/move_semantics.h"
-#include "types/namespaces.h"
-#include "oop/person.h"
 #include "memory/smart_pointers.h"
+#include "oop/inheritance.h"
+#include "oop/person.h"
+#include "stl/date.h"
+#include "stl/file_io.h"
 #include "stl/stl_deep_dive.h"
-#include "advanced/template_meta.h"
-#include "concurrency/thread_simple.h"
+#include "types/enums_unions.h"
+#include "types/namespaces.h"
 #include "types/type_safety.h"
 
 int main() {
@@ -43,7 +43,8 @@ int main() {
 
   // smart_pointers.h demo
   try {
-    auto file_handler = createFileHandler("demo.txt");
+    auto file_handler =
+        createFileHandler(FileIO::get_test_data_path("demo.txt"));
     file_handler->writeData("Hello from unique_ptr!");
     std::cout << "File written successfully\n";
   } catch (const std::exception& e) {
@@ -145,14 +146,16 @@ int main() {
 
   // file_io.h demo
   try {
-    FileIO::write_string_to_file("demo_output.txt",
+    const auto output_path = FileIO::get_test_data_path("demo_output.txt");
+    FileIO::write_string_to_file(output_path,
                                  "Hello from FileIO!\nThis is a test file.");
-    auto content = FileIO::read_file_to_string("demo_output.txt");
+    auto content = FileIO::read_file_to_string(output_path);
     std::cout << "File content: " << content << "\n";
 
+    const auto lines_path = FileIO::get_test_data_path("demo_lines.txt");
     std::vector<std::string> lines = {"Line 1", "Line 2", "Line 3"};
-    FileIO::write_lines_to_file("demo_lines.txt", lines);
-    auto read_lines = FileIO::read_file_lines("demo_lines.txt");
+    FileIO::write_lines_to_file(lines_path, lines);
+    auto read_lines = FileIO::read_file_lines(lines_path);
     std::cout << "Read " << read_lines.size() << " lines from file\n";
   } catch (const std::exception& e) {
     std::cout << "File I/O error: " << e.what() << "\n";
