@@ -17,3 +17,4 @@ Makefile
 build.ninja
 /*.xml
 test_data/
+bench_results.json

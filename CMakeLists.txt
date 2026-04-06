@@ -36,3 +36,4 @@ add_subdirectory(src)
 
 # Run steps for building test.out
 add_subdirectory(test)
+add_subdirectory(bench)
