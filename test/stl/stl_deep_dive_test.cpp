@@ -1,0 +1,74 @@
+#include "stl/stl_deep_dive.h"
+
+#include <gtest/gtest.h>
+
+#include <map>
+#include <set>
+#include <string>
+#include <vector>
+
+TEST(STLDeepDiveTest, FilterEvenNumbers) {
+  const std::vector numbers = {1, 2, 3, 4, 5, 6};
+  const std::vector<int> evens = STLDeepDive::filter_even(numbers);
+  EXPECT_EQ(evens, std::vector({2, 4, 6}));
+}
+
+TEST(STLDeepDiveTest, SumVector) {
+  const std::vector numbers = {1, 2, 3, 4, 5};
+  const int sum = STLDeepDive::sum_vector(numbers);
+  EXPECT_EQ(sum, 15);
+}
+
+TEST(STLDeepDiveTest, CountWords) {
+  const std::vector<std::string> words = {"hello", "world", "hello", "cpp"};
+  std::map<std::string, int> word_count = STLDeepDive::count_words(words);
+  EXPECT_EQ(word_count["hello"], 2);
+  EXPECT_EQ(word_count["world"], 1);
+  EXPECT_EQ(word_count["cpp"], 1);
+}
+
+TEST(STLDeepDiveTest, MostFrequentWord) {
+  const std::map<std::string, int> word_count = {
+      {"hello", 2}, {"world", 1}, {"cpp", 3}};
+  const std::string most_frequent = STLDeepDive::most_frequent_word(word_count);
+  EXPECT_EQ(most_frequent, "cpp");
+}
+
+TEST(STLDeepDiveTest, UniqueElements) {
+  const std::vector numbers = {1, 2, 2, 3, 3, 3};
+  const std::set<int> unique = STLDeepDive::unique_elements(numbers);
+  EXPECT_EQ(unique, std::set({1, 2, 3}));
+}
+
+TEST(STLDeepDiveTest, SetIntersection) {
+  const std::set set1 = {1, 2, 3, 4};
+  const std::set set2 = {3, 4, 5, 6};
+  const std::set<int> intersection = STLDeepDive::intersection(set1, set2);
+  EXPECT_EQ(intersection, std::set({3, 4}));
+}
+
+TEST(STLDeepDiveTest, SortVector) {
+  std::vector numbers = {3, 1, 4, 1, 5};
+  STLDeepDive::sort_vector(numbers);
+  EXPECT_EQ(numbers, std::vector({1, 1, 3, 4, 5}));
+}
+
+TEST(STLDeepDiveTest, ContainsElement) {
+  const std::vector numbers = {1, 2, 3, 4, 5};
+  EXPECT_TRUE(STLDeepDive::contains_element(numbers, 3));
+  EXPECT_FALSE(STLDeepDive::contains_element(numbers, 6));
+}
+
+TEST(STLDeepDiveTest, TransformMultiply) {
+  const std::vector numbers = {1, 2, 3};
+  const std::vector<int> multiplied =
+      STLDeepDive::transform_multiply(numbers, 2);
+  EXPECT_EQ(multiplied, std::vector({2, 4, 6}));
+}
+
+TEST(STLDeepDiveTest, FilterLongWords) {
+  const std::vector<std::string> words = {"hi", "hello", "world", "cpp"};
+  const std::vector<std::string> long_words =
+      STLDeepDive::filter_long_words(words, 5);
+  EXPECT_EQ(long_words, std::vector<std::string>({"hello", "world"}));
+}

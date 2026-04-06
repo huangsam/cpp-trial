@@ -11,23 +11,23 @@
 # Add all source files to the library
 add_library(
   cpp_trial_core STATIC
-  date.cpp date.h
-  factorial.h
-  lambda.cpp lambda.h
-  person.cpp person.h
-  safe_counter.cpp safe_counter.h
-  thread_simple.cpp thread_simple.h
-  async_simple.cpp async_simple.h
-  inheritance.cpp inheritance.h
-  file_io.cpp file_io.h
-  enums_unions.cpp enums_unions.h
-  namespaces.cpp namespaces.h
-  stl_deep_dive.cpp stl_deep_dive.h
-  smart_pointers.cpp smart_pointers.h
-  type_safety.cpp type_safety.h
-  move_semantics.cpp move_semantics.h
-  template_meta.cpp template_meta.h
-  memory_management.cpp memory_management.h
+  stl/date.cpp stl/date.h
+  advanced/factorial.h
+  advanced/lambda.cpp advanced/lambda.h
+  oop/person.cpp oop/person.h
+  concurrency/safe_counter.cpp concurrency/safe_counter.h
+  concurrency/thread_simple.cpp concurrency/thread_simple.h
+  concurrency/async_simple.cpp concurrency/async_simple.h
+  oop/inheritance.cpp oop/inheritance.h
+  stl/file_io.cpp stl/file_io.h
+  types/enums_unions.cpp types/enums_unions.h
+  types/namespaces.cpp types/namespaces.h
+  stl/stl_deep_dive.cpp stl/stl_deep_dive.h
+  memory/smart_pointers.cpp memory/smart_pointers.h
+  types/type_safety.cpp types/type_safety.h
+  memory/move_semantics.cpp memory/move_semantics.h
+  advanced/template_meta.cpp advanced/template_meta.h
+  memory/memory_management.cpp memory/memory_management.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 

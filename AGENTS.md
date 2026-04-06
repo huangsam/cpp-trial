@@ -12,17 +12,17 @@ This workspace contains a C++ learning project demonstrating modern C++ concepts
 - **Build System**: CMake with Ninja generator, configured via `CMakePresets.json`
 - **Testing Framework**: GoogleTest (gtest) for unit testing
 - **Source Structure**:
-  - `src/`: Implementation files (.cpp/.h) for various C++ topics
-  - `test/`: Corresponding unit tests
+  - `src/`: Implementation files (.cpp/.h) organized into domain modules (`concurrency`, `memory`, etc.)
+  - `test/`: Corresponding unit tests mirroring the `src/` module structure
   - `build/`: Generated build artifacts and dependencies
 - **Topics Covered**: RAII, smart pointers, templates, inheritance, concurrency, STL, file I/O, type safety
 
 ## Conditional Instructions
 
 IF user wants to add a new C++ topic or learning module, THEN:
-- Create implementation files in `src/` directory (.cpp/.h pair)
-- Add corresponding unit tests in `test/` directory
-- Update `CMakeLists.txt` in both `src/` and `test/` to include new files
+- Create implementation files (.cpp/.h pair) in the appropriate domain folder within `src/`
+- Add corresponding unit tests in the matching domain folder within the `test/` directory
+- Update `CMakeLists.txt` in both the `src/` and `test/` roots to include new files using relative paths
 - Follow existing naming conventions in those folders for consistency
 
 IF user encounters memory management or RAII issues, THEN:

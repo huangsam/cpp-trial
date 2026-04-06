@@ -2,21 +2,21 @@
 #include <iostream>
 #include <vector>
 
-#include "async_simple.h"
-#include "date.h"
-#include "enums_unions.h"
-#include "file_io.h"
-#include "inheritance.h"
-#include "lambda.h"
-#include "memory_management.h"
-#include "move_semantics.h"
-#include "namespaces.h"
-#include "person.h"
-#include "smart_pointers.h"
-#include "stl_deep_dive.h"
-#include "template_meta.h"
-#include "thread_simple.h"
-#include "type_safety.h"
+#include "concurrency/async_simple.h"
+#include "stl/date.h"
+#include "types/enums_unions.h"
+#include "stl/file_io.h"
+#include "oop/inheritance.h"
+#include "advanced/lambda.h"
+#include "memory/memory_management.h"
+#include "memory/move_semantics.h"
+#include "types/namespaces.h"
+#include "oop/person.h"
+#include "memory/smart_pointers.h"
+#include "stl/stl_deep_dive.h"
+#include "advanced/template_meta.h"
+#include "concurrency/thread_simple.h"
+#include "types/type_safety.h"
 
 int main() {
   // date.h demo

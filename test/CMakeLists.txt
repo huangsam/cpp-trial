@@ -22,24 +22,24 @@ add_executable(
   test.out
 
   # Test code
-  async_simple_test.cpp
-  date_test.cpp
-  factorial_test.cpp
+  concurrency/async_simple_test.cpp
+  stl/date_test.cpp
+  advanced/factorial_test.cpp
   hello_test.cpp
-  lambda_test.cpp
-  person_test.cpp
-  safe_counter_test.cpp
-  thread_simple_test.cpp
-  inheritance_test.cpp
-  file_io_test.cpp
-  enums_unions_test.cpp
-  namespaces_test.cpp
-  stl_deep_dive_test.cpp
-  smart_pointers_test.cpp
-  type_safety_test.cpp
-  move_semantics_test.cpp
-  template_meta_test.cpp
-  memory_management_test.cpp
+  advanced/lambda_test.cpp
+  oop/person_test.cpp
+  concurrency/safe_counter_test.cpp
+  concurrency/thread_simple_test.cpp
+  oop/inheritance_test.cpp
+  stl/file_io_test.cpp
+  types/enums_unions_test.cpp
+  types/namespaces_test.cpp
+  stl/stl_deep_dive_test.cpp
+  memory/smart_pointers_test.cpp
+  types/type_safety_test.cpp
+  memory/move_semantics_test.cpp
+  advanced/template_meta_test.cpp
+  memory/memory_management_test.cpp
 )
 target_link_libraries(test.out gtest_main cpp_trial_core)
 set_target_properties(test.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

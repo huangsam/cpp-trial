@@ -6,26 +6,26 @@ Please refer to README.md for project setup, build instructions, and testing pro
 
 ## Table of Contents
 
-1. [person](#person) - Class design and encapsulation
-2. [date](#date) - Operator overloading and RAII
-3. [factorial](#factorial) - Function templates and generic programming
-4. [lambda](#lambda) - Lambda expressions and functional programming
-5. [stl_deep_dive](#stl_deep_dive) - STL containers and algorithms
-6. [enums_unions](#enums_unions) - Enums, unions, and type safety
-7. [namespaces](#namespaces) - Code organization and modularization
-8. [inheritance](#inheritance) - Inheritance and polymorphism
-9. [file_io](#file_io) - File input/output operations
-10. [thread_simple](#thread_simple) - Basic threading concepts
-11. [safe_counter](#safe_counter) - Thread safety and synchronization
-12. [async_simple](#async_simple) - Asynchronous programming
-13. [smart_pointers](#smart_pointers) - Modern smart pointer usage
-14. [type_safety](#type_safety) - C++17/20 type safety features
-15. [move_semantics](#move_semantics) - Move semantics and rvalue references
-16. [template_meta](#template_meta) - Advanced template metaprogramming
-17. [memory_management](#memory_management) - Custom memory management patterns
+1. [oop/person](#oopperson) - Class design and encapsulation
+2. [stl/date](#stldate) - Operator overloading and RAII
+3. [advanced/factorial](#advancedfactorial) - Function templates and generic programming
+4. [advanced/lambda](#advancedlambda) - Lambda expressions and functional programming
+5. [stl/stl_deep_dive](#stlstl_deep_dive) - STL containers and algorithms
+6. [types/enums_unions](#typesenums_unions) - Enums, unions, and type safety
+7. [types/namespaces](#typesnamespaces) - Code organization and modularization
+8. [oop/inheritance](#oopinheritance) - Inheritance and polymorphism
+9. [stl/file_io](#stlfile_io) - File input/output operations
+10. [concurrency/thread_simple](#concurrencythread_simple) - Basic threading concepts
+11. [concurrency/safe_counter](#concurrencysafe_counter) - Thread safety and synchronization
+12. [concurrency/async_simple](#concurrencyasync_simple) - Asynchronous programming
+13. [memory/smart_pointers](#memorysmart_pointers) - Modern smart pointer usage
+14. [types/type_safety](#typestype_safety) - C++17/20 type safety features
+15. [memory/move_semantics](#memorymove_semantics) - Move semantics and rvalue references
+16. [advanced/template_meta](#advancedtemplate_meta) - Advanced template metaprogramming
+17. [memory/memory_management](#memorymemory_management) - Custom memory management patterns
 18. [Overall Project Learnings](#overall-project-learnings)
 
-## person
+## oop/person
 
 **Key Concepts:**
 - Class design with multiple constructors
@@ -43,7 +43,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Data models for user entities
 - Business object design
 
-## date
+## stl/date
 
 **Key Concepts:**
 - Class design and encapsulation
@@ -61,7 +61,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Custom data types for business logic
 - Date handling in APIs and data processing
 
-## factorial
+## advanced/factorial
 
 **Key Concepts:**
 - Function templates and generic programming
@@ -79,7 +79,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Generic utility functions for data processing
 - Error handling in computational services
 
-## lambda
+## advanced/lambda
 
 **Key Concepts:**
 - Lambda expressions and closures
@@ -97,7 +97,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Data processing pipelines
 - Callback mechanisms in event-driven systems
 
-## stl_deep_dive
+## stl/stl_deep_dive
 
 **Key Concepts:**
 - STL containers (vector, map, set, unordered_map)
@@ -126,7 +126,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Functional programming patterns in C++
 - Modern C++ patterns: Ranges enable more expressive and efficient data processing
 
-## enums_unions
+## types/enums_unions
 
 **Key Concepts:**
 - Enums (scoped vs. unscoped) and their usage
@@ -144,7 +144,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Efficient data structures for configuration or protocol parsing
 - Type-safe handling of multiple data types in APIs
 
-## namespaces
+## types/namespaces
 
 **Key Concepts:**
 - Organizing code with namespaces
@@ -163,7 +163,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Preventing naming collisions in libraries and APIs
 - Clean interfaces for backend services
 
-## inheritance
+## oop/inheritance
 
 **Key Concepts:**
 - Inheritance with base and derived classes
@@ -180,7 +180,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Object hierarchies in data models
 - Extensible interfaces for plugins or handlers
 
-## file_io
+## stl/file_io
 
 **Key Concepts:**
 - File input/output with `std::fstream`
@@ -199,7 +199,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Logging to files
 - Data persistence in applications
 
-## thread_simple
+## concurrency/thread_simple
 
 **Key Concepts:**
 - Basic thread creation with `std::thread`
@@ -217,7 +217,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Handling concurrent requests in server applications
 - Background task processing
 
-## safe_counter
+## concurrency/safe_counter
 
 **Key Concepts:**
 - Thread safety with mutexes
@@ -235,7 +235,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Thread-safe data structures for concurrent access
 - Critical for multi-user server applications
 
-## async_simple
+## concurrency/async_simple
 
 **Key Concepts:**
 - Asynchronous programming with `std::async` and `std::future`
@@ -253,7 +253,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Simulates handling concurrent user requests in a web server
 - Foundation for building scalable, non-blocking services
 
-## smart_pointers
+## memory/smart_pointers
 
 **Key Concepts:**
 - Modern smart pointer usage in C++
@@ -279,7 +279,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Resource management in multi-threaded environments
 - Safe object ownership patterns
 
-## type_safety
+## types/type_safety
 
 **Key Concepts:**
 - std::optional for optional values (replacing pointers for "not found")
@@ -305,7 +305,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Optional configuration values
 - Error handling in network protocols
 
-## move_semantics
+## memory/move_semantics
 
 **Key Concepts:**
 - Move constructors and move assignment operators
@@ -332,7 +332,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Database connection pooling
 - Large object handling in APIs
 
-## template_meta
+## advanced/template_meta
 
 **Key Concepts:**
 - Template specialization and partial specialization
@@ -360,7 +360,7 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Template-based serialization
 - Generic algorithms in frameworks
 
-## memory_management
+## memory/memory_management
 
 **Key Concepts:**
 - Custom allocators for STL containers
