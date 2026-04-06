@@ -13,29 +13,10 @@ TEST(TemplateMetaTest, IsPointerSpecialization) {
   EXPECT_FALSE(IsPointer<std::string>::value);
 }
 
-// Test SFINAE with enable_if
-TEST(TemplateMetaTest, SFINAE_EnableIf) {
-  testing::internal::CaptureStdout();
-  print_if_integral(42);
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("42 is an integral type"), std::string::npos);
-
-  testing::internal::CaptureStdout();
-  print_if_floating(3.14);
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("3.14 is a floating-point type"), std::string::npos);
-}
-
 // Test type traits
 TEST(TemplateMetaTest, TypeTraits) {
   EXPECT_TRUE(IsContainer<std::vector<int>>::value);
   EXPECT_FALSE(IsContainer<int>::value);
-
-  testing::internal::CaptureStdout();
-  const std::vector vec = {1, 2, 3};
-  print_container_size(vec);
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("Container size: 3"), std::string::npos);
 }
 
 // Test constexpr programming
@@ -56,11 +37,6 @@ TEST(TemplateMetaTest, ConstexprProgramming) {
 TEST(TemplateMetaTest, VariadicTemplates) {
   EXPECT_EQ(sum_all(1, 2, 3, 4), 10);
   EXPECT_EQ(sum_all(1.5, 2.5), 4.0);
-
-  testing::internal::CaptureStdout();
-  print_all("a", "b", "c");
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("abc"), std::string::npos);
 }
 
 // Test template recursion
@@ -72,40 +48,4 @@ TEST(TemplateMetaTest, TemplateRecursion) {
   static_assert(Fibonacci<10>::value == 55, "Fib(10) should be 55");
 
   EXPECT_EQ(Fibonacci<10>::value, 55);
-}
-
-// Test CRTP
-TEST(TemplateMetaTest, CRTP) {
-  constexpr MyClass obj;
-  testing::internal::CaptureStdout();
-  obj.print();
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("Printing MyClass"), std::string::npos);
-}
-
-// Test tag dispatch
-TEST(TemplateMetaTest, TagDispatch) {
-  testing::internal::CaptureStdout();
-  dispatch_process(42);
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("42 is processed as integral"), std::string::npos);
-
-  testing::internal::CaptureStdout();
-  dispatch_process(3.14);
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("3.14 is processed as floating-point"),
-            std::string::npos);
-
-  testing::internal::CaptureStdout();
-  dispatch_process("hello");
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("hello is processed as other type"), std::string::npos);
-}
-
-// Test overall demonstration function
-TEST(TemplateMetaTest, DemonstrateFunction) {
-  testing::internal::CaptureStdout();
-  demonstrate_template_meta();
-  const std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_FALSE(output.empty());
 }

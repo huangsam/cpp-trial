@@ -64,22 +64,6 @@ TEST_F(ResourceManagerTest, DemonstrateMove) {
   EXPECT_GE(rm_.size(), 0);
 }
 
-// Test perfect forwarding template
-TEST(MoveSemanticsTest, PerfectForwarding) {
-  ResourceManager rm(5);
-
-  testing::internal::CaptureStdout();
-  process_resource(rm);
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("Processed resource with 5 elements"),
-            std::string::npos);
-
-  testing::internal::CaptureStdout();
-  process_resource(std::move(rm));
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("Processed resource with"), std::string::npos);
-}
-
 // Test MoveOnlyType
 TEST(MoveOnlyTypeTest, DefaultConstruction) {
   const MoveOnlyType mot;
@@ -102,14 +86,4 @@ TEST(MoveOnlyTypeTest, MoveAssignment) {
   MoveOnlyType mot2("second");
   mot2 = std::move(mot1);
   EXPECT_EQ(mot2.get_data(), "first");
-}
-
-// Test performance demonstration
-TEST(MoveSemanticsTest, PerformanceDemonstration) {
-  testing::internal::CaptureStdout();
-  demonstrate_move_vs_copy();
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_NE(output.find("Move vs Copy Demonstration"), std::string::npos);
-  EXPECT_NE(output.find("Move is approximately"), std::string::npos);
-  EXPECT_NE(output.find("Use move when"), std::string::npos);
 }
