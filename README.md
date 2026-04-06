@@ -8,7 +8,17 @@ Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest]
 
 ## Project goals
 
-This repository serves as a comprehensive learning resource for modern C++ development, focusing on language mastery through C++11 to C++23 features, tool proficiency with CMake and GoogleTest, backend development patterns for systems programming, code quality with clean and testable C++ code, and progressive learning from basic concepts to advanced template metaprogramming.
+This repository serves as a comprehensive learning resource for modern C++ development, focusing on language mastery through C++11 to C++20 features, tool proficiency with CMake and GoogleTest, backend development patterns for systems programming, code quality with clean and testable C++ code, and progressive learning from basic concepts to advanced template metaprogramming.
+
+## Project Structure
+
+The codebase is organized into domain-specific modules:
+- **`advanced/`**: Metaprogramming, lambdas, and factorial templates.
+- **`concurrency/`**: Threading, async programming, and synchronization structures.
+- **`memory/`**: Smart pointers, move semantics, and custom memory management.
+- **`oop/`**: Inheritance, polymorphism, and core class design.
+- **`stl/`**: Standard Template Library containers, algorithms, and file I/O.
+- **`types/`**: Primitive type safety, namespaces, and enums/unions.
 
 ## Getting started
 
