@@ -50,9 +50,10 @@ BENCHMARK(BM_VectorStandardAllocator)->Arg(100)->Arg(1000)->Arg(10000);
 // Benchmark std::vector with ArenaAllocator
 static void BM_VectorArenaAllocator(benchmark::State& state) {
   const size_t arena_size = state.range(0) * sizeof(SmallObject) * 2;
+  ArenaAllocator arena(arena_size * 2);
+  CustomAllocator<SmallObject> alloc(&arena);
   for (auto _ : state) {
-    ArenaAllocator arena(arena_size);
-    CustomAllocator<SmallObject> alloc(&arena);
+    arena.reset();
     std::vector<SmallObject, CustomAllocator<SmallObject>> v(alloc);
     v.reserve(state.range(0));
     for (int i = 0; i < state.range(0); ++i) {

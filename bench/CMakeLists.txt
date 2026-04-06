@@ -13,15 +13,17 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googlebenchmark)
 
-# Add the benchmark executable
-add_executable(bench.out
-  memory_management_bench.cpp
-)
+# 1. Memory Management Bench
+add_executable(memory_bench.out memory_management_bench.cpp)
+target_link_libraries(memory_bench.out PRIVATE benchmark::benchmark_main cpp_trial_core)
+set_target_properties(memory_bench.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-target_link_libraries(bench.out
-  PRIVATE
-    benchmark::benchmark_main
-    cpp_trial_core
-)
+# 2. Concurrency Bench
+add_executable(concurrency_bench.out concurrency_bench.cpp)
+target_link_libraries(concurrency_bench.out PRIVATE benchmark::benchmark_main cpp_trial_core)
+set_target_properties(concurrency_bench.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
-set_target_properties(bench.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+# 3. Move Semantics Bench
+add_executable(move_bench.out move_semantics_bench.cpp)
+target_link_libraries(move_bench.out PRIVATE benchmark::benchmark_main cpp_trial_core)
+set_target_properties(move_bench.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)

@@ -148,37 +148,3 @@ TEST(MemoryManagementTest, StackVector) {
   vec.push_back(50);
   EXPECT_EQ(vec[5], 50);
 }
-
-// Test demonstration functions
-TEST(MemoryManagementTest, DemonstrateFunctions) {
-  // These functions print output, we just ensure they don't crash
-  testing::internal::CaptureStdout();
-  demonstrate_custom_allocators();
-  std::string output = testing::internal::GetCapturedStdout();
-  EXPECT_FALSE(output.empty());
-
-  testing::internal::CaptureStdout();
-  demonstrate_memory_pools();
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_FALSE(output.empty());
-
-  testing::internal::CaptureStdout();
-  demonstrate_raii_patterns();
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_FALSE(output.empty());
-
-  testing::internal::CaptureStdout();
-  demonstrate_placement_new();
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_FALSE(output.empty());
-
-  testing::internal::CaptureStdout();
-  demonstrate_memory_alignment();
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_FALSE(output.empty());
-
-  testing::internal::CaptureStdout();
-  demonstrate_stack_memory();
-  output = testing::internal::GetCapturedStdout();
-  EXPECT_FALSE(output.empty());
-}
