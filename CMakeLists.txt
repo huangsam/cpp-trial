@@ -19,7 +19,7 @@ set(CMAKE_CXX_FLAGS "-Wall -Wextra -Wpedantic -Wunused -Werror")
 # Set flags for each build type
 # https://stackoverflow.com/a/41361741/2748860
 set(CMAKE_CXX_FLAGS_DEBUG "-g")
-set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3 -DNDEBUG")
 
 # Set standard to C++20
 # https://en.cppreference.com/w/cpp/20
