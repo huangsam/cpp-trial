@@ -14,8 +14,9 @@ This workspace contains a C++ learning project demonstrating modern C++ concepts
 - **Source Structure**:
   - `src/`: Implementation files (.cpp/.h) organized into domain modules (`concurrency`, `memory`, etc.)
   - `test/`: Corresponding unit tests mirroring the `src/` module structure
+  - `bench/`: Performance benchmarks using Google Benchmark
   - `build/`: Generated build artifacts and dependencies
-- **Topics Covered**: RAII, smart pointers, templates, inheritance, concurrency, STL, file I/O, type safety
+- **Topics Covered**: RAII, smart pointers, templates, inheritance, concurrency, STL, file I/O, type safety, benchmarking
 
 ## Conditional Instructions
 
@@ -24,6 +25,11 @@ IF user wants to add a new C++ topic or learning module, THEN:
 - Add corresponding unit tests in the matching domain folder within the `test/` directory
 - Update `CMakeLists.txt` in both the `src/` and `test/` roots to include new files using relative paths
 - Follow existing naming conventions in those folders for consistency
+
+IF user wants to add or update performance benchmarks, THEN:
+- Add benchmark files (`_bench.cpp`) to the `bench/` directory
+- Update `bench/CMakeLists.txt` to include the new benchmark using `add_trial_benchmark`
+- Use the standard Google Benchmark library for implementation
 
 IF user encounters memory management or RAII issues, THEN:
 - Check for proper resource acquisition and release patterns

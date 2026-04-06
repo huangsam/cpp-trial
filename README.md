@@ -14,6 +14,7 @@ This repository serves as a comprehensive learning resource for modern C++ devel
 
 The codebase is organized into domain-specific modules:
 - **`advanced/`**: Metaprogramming, lambdas, and factorial templates.
+- **`bench/`**: Performance benchmarks using Google Benchmark for various features.
 - **`concurrency/`**: Threading, async programming, and synchronization structures.
 - **`memory/`**: Smart pointers, move semantics, and custom memory management.
 - **`oop/`**: Inheritance, polymorphism, and core class design.
@@ -35,6 +36,11 @@ cmake --build --preset dev
 # Run binaries in their original form
 ./build/bin/main.out
 ./build/bin/test.out
+
+# Run performance benchmarks
+./build/bin/memory_bench.out
+./build/bin/concurrency_bench.out
+./build/bin/move_bench.out
 ```
 
 For contributors:
