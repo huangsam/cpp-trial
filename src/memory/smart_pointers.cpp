@@ -1,5 +1,6 @@
 #include "memory/smart_pointers.h"
 
+#include <iostream>
 #include <stdexcept>
 #include <utility>
 
@@ -9,7 +10,6 @@ FileHandler::FileHandler(const std::filesystem::path& filename)
   if (!file_) {
     throw std::runtime_error("Failed to open file: " + filename.string());
   }
-  std::cout << "File opened: " << filename.string() << "\n";
 }
 
 void FileHandler::writeData(const std::string& data) const {
@@ -35,26 +35,18 @@ std::string FileHandler::readData() const {
 }
 
 // SharedResource implementation
-SharedResource::SharedResource(std::string name) : name_(std::move(name)) {
-  std::cout << "SharedResource created: " << name_ << "\n";
-}
+SharedResource::SharedResource(std::string name) : name_(std::move(name)) {}
 
-SharedResource::~SharedResource() {
-  std::cout << "SharedResource destroyed: " << name_ << "\n";
-}
+SharedResource::~SharedResource() {}
 
-void SharedResource::useResource() const {
-  std::cout << "Using resource: " << name_ << "\n";
-}
+void SharedResource::useResource() const {}
 
 std::string SharedResource::getName() const { return name_; }
 
 // Parent implementation
-Parent::Parent(std::string name) : name_(std::move(name)) {
-  std::cout << "Parent created: " << name_ << "\n";
-}
+Parent::Parent(std::string name) : name_(std::move(name)) {}
 
-Parent::~Parent() { std::cout << "Parent destroyed: " << name_ << "\n"; }
+Parent::~Parent() {}
 
 void Parent::setChild(const std::shared_ptr<Child>& child) { child_ = child; }
 
@@ -69,11 +61,9 @@ void Parent::showFamily() const {
 }
 
 // Child implementation
-Child::Child(std::string name) : name_(std::move(name)) {
-  std::cout << "Child created: " << name_ << "\n";
-}
+Child::Child(std::string name) : name_(std::move(name)) {}
 
-Child::~Child() { std::cout << "Child destroyed: " << name_ << "\n"; }
+Child::~Child() {}
 
 void Child::setParent(const std::shared_ptr<Parent>& parent) {
   parent_ = parent;
@@ -123,7 +113,6 @@ void ExceptionSafeManager::addResourceWithExceptionSafety(
   }
 
   resources_.push_back(resource);
-  std::cout << "Added resource safely: " << data << "\n";
 }
 
 size_t ExceptionSafeManager::getResourceCount() const {

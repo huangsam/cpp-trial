@@ -140,7 +140,6 @@ class FileHandle {
 class Timer {
  private:
   std::chrono::high_resolution_clock::time_point start_;
-  const char* label_;
 
  public:
   explicit Timer(const char* label);

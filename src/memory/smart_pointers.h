@@ -2,7 +2,6 @@
 #define SMART_POINTERS_H
 
 #include <filesystem>
-#include <iostream>
 #include <memory>
 #include <string>
 #include <vector>
@@ -11,7 +10,6 @@
 struct FileDeleter {
   void operator()(FILE* file) const {
     if (file) {
-      std::cout << "Closing file with custom deleter\n";
       fclose(file);
     }
   }

@@ -11,13 +11,9 @@
 
 ArenaAllocator::ArenaAllocator(const size_t size) : size_(size), offset_(0) {
   buffer_ = new char[size];
-  std::cout << "ArenaAllocator created with " << size << " bytes\n";
 }
 
-ArenaAllocator::~ArenaAllocator() {
-  delete[] buffer_;
-  std::cout << "ArenaAllocator destroyed\n";
-}
+ArenaAllocator::~ArenaAllocator() { delete[] buffer_; }
 
 void* ArenaAllocator::allocate(const size_t bytes, const size_t alignment) {
   // Calculate aligned address within the buffer
@@ -48,16 +44,11 @@ size_t ArenaAllocator::remaining_space() const { return size_ - offset_; }
 // ============================================================================
 
 FileHandle::FileHandle(const std::filesystem::path& filename, const char* mode)
-    : file_(fopen(filename.string().c_str(), mode)) {
-  if (file_) {
-    std::cout << "File opened: " << filename.string() << "\n";
-  }
-}
+    : file_(fopen(filename.string().c_str(), mode)) {}
 
 FileHandle::~FileHandle() {
   if (file_) {
     fclose(file_);
-    std::cout << "File closed\n";
   }
 }
 
@@ -76,18 +67,10 @@ FileHandle& FileHandle::operator=(FileHandle&& other) noexcept {
   return *this;
 }
 
-Timer::Timer(const char* label)
-    : start_(std::chrono::high_resolution_clock::now()), label_(label) {
-  std::cout << "Timer started: " << label << "\n";
-}
+Timer::Timer(const char* /*label*/)
+    : start_(std::chrono::high_resolution_clock::now()) {}
 
-Timer::~Timer() {
-  const auto end = std::chrono::high_resolution_clock::now();
-  const auto duration =
-      std::chrono::duration_cast<std::chrono::microseconds>(end - start_);
-  std::cout << "Timer ended: " << label_ << " - " << duration.count()
-            << " microseconds\n";
-}
+Timer::~Timer() {}
 
 // ============================================================================
 // 4. Placement New Implementation
@@ -95,13 +78,9 @@ Timer::~Timer() {
 
 MemoryManager::MemoryManager(const size_t size) : size_(size), used_(0) {
   buffer_ = new char[size];
-  std::cout << "MemoryManager created with " << size << " bytes\n";
 }
 
-MemoryManager::~MemoryManager() {
-  delete[] buffer_;
-  std::cout << "MemoryManager destroyed\n";
-}
+MemoryManager::~MemoryManager() { delete[] buffer_; }
 
 void* MemoryManager::allocate(const size_t bytes, const size_t alignment) {
   const auto current = reinterpret_cast<size_t>(buffer_ + used_);

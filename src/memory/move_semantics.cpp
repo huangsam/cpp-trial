@@ -1,43 +1,34 @@
 #include "memory/move_semantics.h"
 
-// ResourceManager implementations
-ResourceManager::ResourceManager() {
-  std::cout << "ResourceManager default constructed\n";
-}
+#include <iostream>
+#include <vector>
 
-ResourceManager::ResourceManager(const size_t size) : data_(size, 0) {
-  std::cout << "ResourceManager constructed with size " << size << "\n";
-}
+// ResourceManager implementations
+ResourceManager::ResourceManager() {}
+
+ResourceManager::ResourceManager(const size_t size) : data_(size, 0) {}
 
 ResourceManager::ResourceManager(const ResourceManager& other)
-    : data_(other.data_) {
-  std::cout << "ResourceManager copy constructed (expensive deep copy)\n";
-}
+    : data_(other.data_) {}
 
 ResourceManager& ResourceManager::operator=(const ResourceManager& other) {
   if (this != &other) {
     data_ = other.data_;
-    std::cout << "ResourceManager copy assigned (expensive deep copy)\n";
   }
   return *this;
 }
 
 ResourceManager::ResourceManager(ResourceManager&& other) noexcept
-    : data_(std::move(other.data_)) {
-  std::cout << "ResourceManager move constructed (cheap transfer)\n";
-}
+    : data_(std::move(other.data_)) {}
 
 ResourceManager& ResourceManager::operator=(ResourceManager&& other) noexcept {
   if (this != &other) {
     data_ = std::move(other.data_);
-    std::cout << "ResourceManager move assigned (cheap transfer)\n";
   }
   return *this;
 }
 
-ResourceManager::~ResourceManager() {
-  std::cout << "ResourceManager destroyed\n";
-}
+ResourceManager::~ResourceManager() {}
 
 void ResourceManager::set_data(const size_t index, const int value) {
   if (index < data_.size()) {
@@ -47,7 +38,6 @@ void ResourceManager::set_data(const size_t index, const int value) {
 
 void ResourceManager::consume_rvalue(std::vector<int>&& vec) {
   data_ = std::move(vec);
-  std::cout << "Consumed rvalue vector with " << data_.size() << " elements\n";
 }
 
 ResourceManager ResourceManager::create_large_resource(const size_t size) {
@@ -60,7 +50,6 @@ ResourceManager ResourceManager::create_large_resource(const size_t size) {
 
 void ResourceManager::demonstrate_move(ResourceManager& rm) {
   const ResourceManager new_rm = std::move(rm);
-  std::cout << "Moved resource with " << new_rm.size() << " elements\n";
 }
 
 // Performance measurement functions
