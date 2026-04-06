@@ -13,17 +13,18 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(googlebenchmark)
 
+# Function to add a benchmark with standard settings
+function(add_trial_benchmark target source)
+  add_executable(${target}.out ${source})
+  target_link_libraries(${target}.out PRIVATE benchmark::benchmark_main cpp_trial_core)
+  set_target_properties(${target}.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+endfunction()
+
 # 1. Memory Management Bench
-add_executable(memory_bench.out memory_management_bench.cpp)
-target_link_libraries(memory_bench.out PRIVATE benchmark::benchmark_main cpp_trial_core)
-set_target_properties(memory_bench.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+add_trial_benchmark(memory_bench memory_management_bench.cpp)
 
 # 2. Concurrency Bench
-add_executable(concurrency_bench.out concurrency_bench.cpp)
-target_link_libraries(concurrency_bench.out PRIVATE benchmark::benchmark_main cpp_trial_core)
-set_target_properties(concurrency_bench.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+add_trial_benchmark(concurrency_bench concurrency_bench.cpp)
 
 # 3. Move Semantics Bench
-add_executable(move_bench.out move_semantics_bench.cpp)
-target_link_libraries(move_bench.out PRIVATE benchmark::benchmark_main cpp_trial_core)
-set_target_properties(move_bench.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+add_trial_benchmark(move_bench move_semantics_bench.cpp)
