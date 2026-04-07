@@ -26,6 +26,7 @@ Checks: >
   modernize-loop-convert,
   readability-const-return-type,
   readability-container-size-empty,
+  readability-identifier-naming,
   readability-make-member-function-const,
   readability-redundant-smartptr-get,
   cppcoreguidelines-pro-type-member-init,
