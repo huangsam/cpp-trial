@@ -10,12 +10,16 @@
  * counters:
  * - Mutex: Thread-safe but expensive due to locking overhead
  * - Atomic: Lock-free operations, scales better with contention
- * - Unsafe: No synchronization (for baseline performance measurement only)
+ * - Unsafe: Educational only - shows what happens without synchronization
  *
  * Key concepts demonstrated:
  * - Mutex contention overhead increases with thread count
  * - Atomic operations provide better scalability
- * - Trade-offs between safety and performance
+ * - Synchronization is mandatory for correct concurrent programs
+ *
+ * The unsafe benchmark is included solely for educational purposes
+ * to demonstrate why thread safety matters. Never use unsynchronized shared
+ * mutable state in production code.
  */
 
 // Shared counters with proper synchronization
@@ -56,22 +60,26 @@ static void BM_AtomicCounter(benchmark::State& state) {
 // Test scaling to show how atomics handle contention better than mutexes
 BENCHMARK(BM_AtomicCounter)->ThreadRange(1, 8)->Repetitions(3);
 
-// 3. Unsafe counter (shared state, no protection) - Baseline for hardware speed
-// WARNING: This is intentionally unsafe - demonstrates maximum hardware speed
-// without any synchronization. Only use for performance comparison!
+// 3. Unsafe counter (shared state, no protection) - educational only
+// This benchmark intentionally violates thread safety.
+// It demonstrates what happens when you ignore synchronization requirements.
+// Never use unsynchronized shared mutable state in real code.
+//
+// Purpose: Shows theoretical maximum hardware performance without synchronization
+// Reality: Results are unpredictable due to race conditions - this is why we need mutex/atomic
+// Educational value: Quantifies the performance cost of thread safety
 static void BM_UnsafeCounter(benchmark::State& state) {
   if (state.thread_index() == 0) {
-    shared_mutex_count =
-        0;  // Reset only on main thread (reuse shared_mutex_count for unsafe)
+    shared_mutex_count = 0;  // Reset only on main thread (reuse shared_mutex_count for unsafe)
   }
 
   for (auto _ : state) {
-    shared_mutex_count++;  // Intentionally unsafe - no synchronization
+    shared_mutex_count++;  // RACE CONDITION: Multiple threads modifying without synchronization
   }
 
   benchmark::DoNotOptimize(shared_mutex_count);
 }
-// Shows theoretical maximum performance (single-threaded equivalent)
+// Note: Results may vary between runs due to race conditions - this proves why synchronization matters!
 BENCHMARK(BM_UnsafeCounter)->ThreadRange(1, 8)->Repetitions(3);
 
 // 4. Read-heavy workload comparison
