@@ -72,8 +72,8 @@ add_subdirectory(bench)
 
 # Format target
 add_custom_target(format
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMAND bash -c "git ls-files '*.cpp' '*.h' | xargs clang-format -i"
-    COMMENT "Formatting all source files with clang-format"
-    VERBATIM
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  COMMAND bash -c "git ls-files '*.cpp' '*.h' | xargs clang-format -i"
+  COMMENT "Formatting all source files with clang-format"
+  VERBATIM
 )
