@@ -2,9 +2,11 @@
 #include <iostream>
 #include <vector>
 
+#include "advanced/factorial.h"
 #include "advanced/lambda.h"
 #include "advanced/template_meta.h"
 #include "concurrency/async_simple.h"
+#include "concurrency/safe_counter.h"
 #include "concurrency/thread_simple.h"
 #include "memory/memory_management.h"
 #include "memory/move_semantics.h"
@@ -29,7 +31,8 @@ int main() {
   }
 
   // factorial.h demo
-  std::cout << std::format("factorial(4): {}\n", factorial(4));
+  std::cout << std::format("Full::factorial(5): {}\n", Full::factorial(5));
+  std::cout << std::format("Full::factorial(10): {}\n", Full::factorial(10));
 
   // lambda.h demo
   std::cout << std::format("less_than(3,4): {}\n",
@@ -162,6 +165,8 @@ int main() {
   }
 
   // template_meta.h demo
+  std::cout << std::format("Minimal::factorial(7): {}\n",
+                           Minimal::factorial(7));
   std::cout << "Template metaprogramming: Fibonacci<10> = "
             << Fibonacci<10>::value << "\n";
 
@@ -171,6 +176,14 @@ int main() {
     thread_demo.start_worker_thread();
     thread_demo.join_worker_thread();
     std::cout << "Worker message: " << thread_demo.get_worker_message() << "\n";
+  }
+
+  // safe_counter.h demo
+  {
+    SafeCounter counter;
+    counter.start_worker_threads(4, 100);
+    counter.join_worker_threads();
+    std::cout << "Safe counter final value: " << counter.get_count() << "\n";
   }
 
   // async_simple.h demo

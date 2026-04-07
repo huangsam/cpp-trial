@@ -53,8 +53,10 @@ void print_container_size(const Container& c) {
   std::cout << "Container size: " << c.size() << "\n";
 }
 
+namespace Minimal {
 // constexpr programming
 constexpr int factorial(int n) { return (n <= 1) ? 1 : n * factorial(n - 1); }
+}  // namespace Minimal
 
 template <int Base, int Exp>
 struct Power {

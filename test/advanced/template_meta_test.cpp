@@ -21,15 +21,15 @@ TEST(TemplateMetaTest, TypeTraits) {
 
 // Test constexpr programming
 TEST(TemplateMetaTest, ConstexprProgramming) {
-  static_assert(factorial(0) == 1, "0! should be 1");
-  static_assert(factorial(1) == 1, "1! should be 1");
-  static_assert(factorial(5) == 120, "5! should be 120");
+  static_assert(Minimal::factorial(0) == 1, "0! should be 1");
+  static_assert(Minimal::factorial(1) == 1, "1! should be 1");
+  static_assert(Minimal::factorial(5) == 120, "5! should be 120");
 
   static_assert(Power<2, 0>::value == 1, "2^0 should be 1");
   static_assert(Power<2, 3>::value == 8, "2^3 should be 8");
   static_assert(Power<3, 2>::value == 9, "3^2 should be 9");
 
-  EXPECT_EQ(factorial(5), 120);
+  EXPECT_EQ(Minimal::factorial(5), 120);
   EXPECT_EQ((Power<2, 3>::value), 8);
 }
 

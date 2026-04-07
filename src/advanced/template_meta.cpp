@@ -25,7 +25,7 @@ void demo_type_traits() {
 
 void demo_constexpr() {
   std::cout << "=== constexpr Programming ===\n";
-  constexpr int fact5 = factorial(5);
+  constexpr int fact5 = Minimal::factorial(5);
   std::cout << "5! = " << fact5 << "\n";
 
   constexpr int pow2_3 = Power<2, 3>::value;

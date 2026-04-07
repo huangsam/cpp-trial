@@ -4,6 +4,7 @@
 #include <format>
 #include <stdexcept>
 
+namespace Full {
 // Function template for factorial with requires constraint
 template <typename T>
   requires std::integral<T>
@@ -20,5 +21,6 @@ T factorial(T n) {
   }
   return result;
 }
+}  // namespace Full
 
 #endif  // FACTORIAL_H
