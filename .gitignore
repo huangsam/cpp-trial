@@ -16,6 +16,5 @@ DartConfiguration.tcl
 Makefile
 build.ninja
 /*.json
-/*.txt
 /*.xml
 test_data/
