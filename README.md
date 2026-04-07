@@ -2,7 +2,7 @@
 
 [![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/huangsam/cpp-trial/ci.yml)](https://github.com/huangsam/cpp-trial/actions)
 
-Coding in C++ to explore tools like [CMake](https://cmake.org/) and [GoogleTest](https://google.github.io/googletest/).
+Exploring modern C++ concepts (C++11 to C++20) with [CMake](https://cmake.org/) and [GoogleTest](https://google.github.io/googletest/) as development tools.
 
 <img src="images/cplusplus.webp" alt="C++" width="250px">
 
