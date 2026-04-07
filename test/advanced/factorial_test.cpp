@@ -2,6 +2,7 @@
 
 #include <gtest/gtest.h>
 
+#include <cstdint>
 #include <stdexcept>
 
 TEST(FactorialTest, TextbookInputs) {

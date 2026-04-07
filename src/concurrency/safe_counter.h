@@ -2,6 +2,7 @@
 #define SAFE_COUNTER_H
 
 #include <atomic>
+#include <cstdint>
 #include <mutex>
 #include <thread>
 #include <vector>

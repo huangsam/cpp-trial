@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+#include <cstdint>
+
 class SafeCounterTest : public testing::Test {
  protected:
   SafeCounter counter_obj;

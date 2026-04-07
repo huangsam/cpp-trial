@@ -1,6 +1,7 @@
 #include <benchmark/benchmark.h>
 
 #include <atomic>
+#include <cstdint>
 #include <mutex>
 
 /**

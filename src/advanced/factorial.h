@@ -1,6 +1,7 @@
 #ifndef FACTORIAL_H
 #define FACTORIAL_H
 
+#include <cstdint>
 #include <format>
 #include <stdexcept>
 

@@ -1,5 +1,7 @@
 #include "concurrency/safe_counter.h"
 
+#include <cstdint>
+
 SafeCounter::SafeCounter() : count_(0), all_workers_finished_(false) {}
 
 void SafeCounter::start_worker_threads(const int num_threads,
