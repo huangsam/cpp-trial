@@ -46,3 +46,9 @@ IF user needs to update documentation or lessons, THEN:
 - Update `README.md` for project overview
 - Ensure code examples match documented concepts
 - Test any code snippets in documentation
+
+IF user wants to check code style or run static analysis, THEN:
+- Use `clang-format` to automatically format code according to project style guidelines
+- Run `clang-tidy` to catch common issues and enforce best practices
+- Configuration files `.clang-format` and `.clang-tidy` define project-specific rules
+- Consider running these tools before committing changes to maintain code quality
