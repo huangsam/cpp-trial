@@ -16,16 +16,6 @@ This workspace contains a C++ learning project demonstrating modern C++ concepts
   - `test/`: Corresponding unit tests mirroring the `src/` module structure
   - `bench/`: Performance benchmarks using Google Benchmark
   - `build/`: Generated build artifacts and dependencies
-- **Topics Covered**:
-  - RAII
-  - Smart pointers
-  - Templates
-  - Inheritance
-  - Concurrency
-  - STL
-  - File I/O
-  - Type safety
-  - Benchmarking
 
 ## Conditional Instructions
 
