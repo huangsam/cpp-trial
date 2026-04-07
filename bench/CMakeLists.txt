@@ -25,11 +25,11 @@ function(add_trial_benchmark target source)
   endif()
 endfunction()
 
-# 1. Memory Management Bench
+# Memory Management Bench
 add_trial_benchmark(memory_bench memory_management_bench.cpp)
 
-# 2. Concurrency Bench
+# Concurrency Bench
 add_trial_benchmark(concurrency_bench concurrency_bench.cpp)
 
-# 3. Move Semantics Bench
+# Move Semantics Bench
 add_trial_benchmark(move_bench move_semantics_bench.cpp)
