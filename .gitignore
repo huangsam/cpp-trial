@@ -1,5 +1,5 @@
-.idea/
 .cache/
+.idea/
 .vscode/
 CMakeFiles/
 Testing/
@@ -7,14 +7,11 @@ _deps/
 bin/
 build/
 lib/
+test_data/
 *.cmake
 *.out
 .DS_Store
-.ninja*
 CMakeCache.txt
 DartConfiguration.tcl
 Makefile
-build.ninja
-/*.json
-/*.xml
-test_data/
+bench*.json
