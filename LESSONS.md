@@ -454,8 +454,8 @@ Understand classes, inheritance hierarchies, and virtual functions.
 - CI/CD with GitHub Actions
 
 **Code Quality Tools:**
-- Clang-Format: Configured for Google style to ensure consistent code formatting across the project
-- Clang-Tidy: Static analysis checks for bug detection, performance, readability, and modern C++ best practices (currently disabled in build but available for manual use or IDE integration)
+- Clang-Format: Configured to ensure consistent code formatting across the project
+- Clang-Tidy: Static analysis checks for bug detection, performance, readability, and more
 
 **C++ Standards:**
 - C++20 features and modern idioms
