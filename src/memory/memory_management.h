@@ -113,6 +113,15 @@ class MemoryPool {
     return result;
   }
 
+  void reset() {
+    // Reset all blocks to unused state
+    Block* block = current_block_;
+    while (block) {
+      block->used = 0;
+      block = block->next;
+    }
+  }
+
   static void deallocate(T* /*ptr*/) {
     // Simple pool doesn't track individual deallocations
     // In a real implementation, you'd maintain a free list
