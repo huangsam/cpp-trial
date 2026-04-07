@@ -25,9 +25,6 @@ The codebase is organized into domain-specific modules:
 For everyone:
 
 ```shell
-# Install developer tools
-brew install --formula cmake llvm ninja
-
 # Build binaries
 cmake --preset dev
 cmake --build --preset dev
@@ -35,11 +32,6 @@ cmake --build --preset dev
 # Run binaries in their original form
 ./build/bin/main.out
 ./build/bin/test.out
-
-# Run performance benchmarks
-./build/bin/memory_bench.out
-./build/bin/concurrency_bench.out
-./build/bin/move_bench.out
 ```
 
 For performance engineers:
@@ -50,10 +42,9 @@ cmake --preset release
 cmake --build --preset release
 
 # Run benchmarks
-./build/bin/bench.out
-./build/bin/concurrency_bench.out
-./build/bin/memory_bench.out
-./build/bin/move_bench.out
+./build/bin/bench/memory_bench.out
+./build/bin/bench/concurrency_bench.out
+./build/bin/bench/move_bench.out
 ```
 
 For contributors:

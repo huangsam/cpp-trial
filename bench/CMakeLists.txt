@@ -17,7 +17,7 @@ FetchContent_MakeAvailable(googlebenchmark)
 function(add_trial_benchmark target source)
   add_executable(${target}.out ${source})
   target_link_libraries(${target}.out PRIVATE benchmark::benchmark_main cpp_trial_core project_options)
-  set_target_properties(${target}.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+  set_target_properties(${target}.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/bench)
 
   # Clang-Tidy integration
   if(WITH_CLANG_TIDY)
