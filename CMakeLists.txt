@@ -71,12 +71,7 @@ add_subdirectory(test)
 add_subdirectory(bench)
 
 # Format target
-file(GLOB_RECURSE ALL_SOURCE_FILES
-    src/*.cpp src/*.h
-    test/*.cpp test/*.h
-    bench/*.cpp bench/*.h
-)
 add_custom_target(format
-    COMMAND clang-format -i ${ALL_SOURCE_FILES}
+    COMMAND git ls-files '*.cpp' '*.h' | xargs clang-format -i
     COMMENT "Formatting all source files with clang-format"
 )
