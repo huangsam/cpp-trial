@@ -20,6 +20,8 @@ The codebase is organized into domain-specific modules:
 - **`stl/`**: Standard Template Library containers, algorithms, and file I/O.
 - **`types/`**: Primitive type safety, namespaces, and enums/unions.
 
+For a guided learning path of C++ concepts in this project, refer to [LESSONS.md](LESSONS.md).
+
 ## Getting started
 
 For everyone:
