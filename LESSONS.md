@@ -468,9 +468,3 @@ Understand classes, inheritance hierarchies, and virtual functions.
 - Concurrency patterns
 - Error handling strategies
 - Code organization for maintainability
-
-**Future Extensions:**
-- Networking (HTTP servers)
-- Database integration
-- Serialization (JSON)
-- Configuration management
