@@ -43,6 +43,24 @@
       "cacheVariables": {
         "CMAKE_BUILD_TYPE": "Release"
       }
+    },
+    {
+      "name": "asan",
+      "displayName": "ASan Build (Debug)",
+      "description": "Debug build with ASan and UBSan enabled.",
+      "inherits": "dev",
+      "cacheVariables": {
+        "WITH_SANITIZERS": "ON"
+      }
+    },
+    {
+      "name": "tidy",
+      "displayName": "Clang-Tidy Build (Debug)",
+      "description": "Debug build with Clang-Tidy analysis enabled.",
+      "inherits": "dev",
+      "cacheVariables": {
+        "WITH_CLANG_TIDY": "ON"
+      }
     }
   ],
   "buildPresets": [
@@ -60,6 +78,16 @@
       "name": "release",
       "displayName": "Build Release",
       "configurePreset": "release"
+    },
+    {
+      "name": "asan",
+      "displayName": "Build ASan",
+      "configurePreset": "asan"
+    },
+    {
+      "name": "tidy",
+      "displayName": "Build with Clang-Tidy",
+      "configurePreset": "tidy"
     }
   ],
   "testPresets": [
@@ -87,6 +115,14 @@
       "name": "release",
       "displayName": "Test Release (Optimized)",
       "configurePreset": "release",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "asan",
+      "displayName": "Test ASan",
+      "configurePreset": "asan",
       "output": {
         "outputOnFailure": true
       }

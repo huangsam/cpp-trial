@@ -25,8 +25,8 @@ std::string to_upper(std::string_view str);
 
 }  // namespace utils
 
-// Using declaration (brings specific name into scope)
-using utils::to_upper;
+// Global using declarations in headers are prohibited by
+// google-global-names-in-headers
 
 // Another namespace for demonstration
 namespace data {

@@ -16,8 +16,13 @@ FetchContent_MakeAvailable(googlebenchmark)
 # Function to add a benchmark with standard settings
 function(add_trial_benchmark target source)
   add_executable(${target}.out ${source})
-  target_link_libraries(${target}.out PRIVATE benchmark::benchmark_main cpp_trial_core)
+  target_link_libraries(${target}.out PRIVATE benchmark::benchmark_main cpp_trial_core project_options)
   set_target_properties(${target}.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+  # Clang-Tidy integration
+  if(WITH_CLANG_TIDY)
+    set_target_properties(${target}.out PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+  endif()
 endfunction()
 
 # 1. Memory Management Bench

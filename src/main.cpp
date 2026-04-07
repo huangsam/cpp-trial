@@ -141,7 +141,7 @@ int main() {
   std::cout << "Math result: " << utils::math::add(5, 3) << "\n";
   std::cout << "Calculator multiply: "
             << utils::math::Calculator::multiply(4, 7) << "\n";
-  std::cout << "Upper case: " << to_upper("hello world") << "\n";
+  std::cout << "Upper case: " << utils::to_upper("hello world") << "\n";
   std::cout << "Processed: " << data::Processor::process("input data") << "\n";
 
   // file_io.h demo

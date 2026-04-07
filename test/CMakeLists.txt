@@ -5,6 +5,7 @@
 # https://github.com/google/googletest/releases
 ###
 
+# enable_testing() is called by the root include(CTest)
 # Download and build Google Test framework
 include(FetchContent)
 FetchContent_Declare(
@@ -14,8 +15,6 @@ FetchContent_Declare(
 )
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
-
-enable_testing()
 
 # Add test files and libraries to the test executable
 add_executable(
@@ -41,8 +40,13 @@ add_executable(
   types/namespaces_test.cpp
   types/type_safety_test.cpp
 )
-target_link_libraries(test.out gtest_main cpp_trial_core)
+target_link_libraries(test.out PRIVATE gtest_main cpp_trial_core project_options)
 set_target_properties(test.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# Clang-Tidy integration
+if(WITH_CLANG_TIDY)
+  set_target_properties(test.out PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+endif()
 
 # Find all tests and register them with CTest
 include(GoogleTest)

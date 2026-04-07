@@ -66,7 +66,7 @@ std::optional<Point> parse_point(std::string_view input) {
       std::from_chars(input.data() + comma + 1, input.data() + input.size(), y);
   if (ec != std::errc{}) return std::nullopt;
 
-  return Point{x, y};
+  return Point{.x = x, .y = y};
 }
 
 bool compare_configs(const ConfigValue& a, const ConfigValue& b) {

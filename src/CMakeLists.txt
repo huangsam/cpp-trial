@@ -32,8 +32,16 @@ add_library(
   types/type_safety.cpp types/type_safety.h
 )
 target_include_directories(cpp_trial_core PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_compile_definitions(cpp_trial_core PUBLIC TEST_DATA_DIR="${TEST_DATA_DIR}")
+target_link_libraries(cpp_trial_core PRIVATE project_options)
 
 # Add entrypoint and library to the main executable
 add_executable(main.out main.cpp)
-target_link_libraries(main.out cpp_trial_core)
+target_link_libraries(main.out PRIVATE cpp_trial_core project_options)
 set_target_properties(main.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+# Clang-Tidy integration
+if(WITH_CLANG_TIDY)
+  set_target_properties(cpp_trial_core PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+  set_target_properties(main.out PROPERTIES CXX_CLANG_TIDY "${CLANG_TIDY_COMMAND}")
+endif()

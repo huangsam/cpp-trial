@@ -18,7 +18,7 @@ TEST(NamespacesTest, NestedNamespaceClass) {
 }
 
 TEST(NamespacesTest, TopLevelNamespaceFunction) {
-  const std::string result = to_upper("hello");
+  const std::string result = utils::to_upper("hello");
   EXPECT_EQ(result, "HELLO");
 }
 
@@ -28,8 +28,8 @@ TEST(NamespacesTest, NamespaceAlias) {
 }
 
 TEST(NamespacesTest, UsingDeclaration) {
-  // to_upper is brought into global scope via using declaration
-  const std::string result = to_upper("world");
+  // to_upper used to be brought into global scope via using declaration
+  const std::string result = utils::to_upper("world");
   EXPECT_EQ(result, "WORLD");
 }
 
