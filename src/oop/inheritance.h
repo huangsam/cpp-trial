@@ -7,7 +7,11 @@
 class Animal {
  public:
   explicit Animal(std::string name) : name_(std::move(name)) {}
-  virtual ~Animal() = default;  // Pure virtual destructor for polymorphism
+  virtual ~Animal() = default;  // Virtual destructor for polymorphism
+  Animal(const Animal&) = delete;
+  Animal& operator=(const Animal&) = delete;
+  Animal(Animal&&) = default;
+  Animal& operator=(Animal&&) = default;
 
   // Virtual function for polymorphism
   [[nodiscard]] virtual std::string speak() const = 0;

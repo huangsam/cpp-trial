@@ -20,6 +20,10 @@ class ArenaAllocator {
  public:
   explicit ArenaAllocator(size_t size);
   ~ArenaAllocator();
+  ArenaAllocator(const ArenaAllocator&) = delete;
+  ArenaAllocator& operator=(const ArenaAllocator&) = delete;
+  ArenaAllocator(ArenaAllocator&&) = delete;
+  ArenaAllocator& operator=(ArenaAllocator&&) = delete;
 
   void* allocate(size_t bytes, size_t alignment = alignof(std::max_align_t));
   static void deallocate(void* ptr, size_t bytes);
@@ -94,6 +98,11 @@ class MemoryPool {
     }
   }
 
+  MemoryPool(const MemoryPool&) = delete;
+  MemoryPool& operator=(const MemoryPool&) = delete;
+  MemoryPool(MemoryPool&&) = delete;
+  MemoryPool& operator=(MemoryPool&&) = delete;
+
   T* allocate() {
     if (current_block_->used >= objects_per_block_) {
       add_block();
@@ -147,6 +156,8 @@ class Timer {
 
   Timer(const Timer&) = delete;
   Timer& operator=(const Timer&) = delete;
+  Timer(Timer&&) = delete;
+  Timer& operator=(Timer&&) = delete;
 };
 
 // ============================================================================
@@ -164,6 +175,10 @@ class MemoryManager {
  public:
   explicit MemoryManager(size_t size);
   ~MemoryManager();
+  MemoryManager(const MemoryManager&) = delete;
+  MemoryManager& operator=(const MemoryManager&) = delete;
+  MemoryManager(MemoryManager&&) = delete;
+  MemoryManager& operator=(MemoryManager&&) = delete;
 
   template <typename T, typename... Args>
   T* construct(Args&&... args) {
@@ -214,6 +229,7 @@ class StackVector {
   size_t size_ = 0;
 
  public:
+  StackVector() : data_{}, size_(0) {}
   void push_back(const T& value) {
     if (size_ < Capacity) {
       data_[size_++] = value;

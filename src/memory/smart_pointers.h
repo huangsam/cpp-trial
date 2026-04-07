@@ -42,6 +42,10 @@ class SharedResource : public std::enable_shared_from_this<SharedResource> {
  public:
   explicit SharedResource(std::string name);
   ~SharedResource();
+  SharedResource(const SharedResource&) = delete;
+  SharedResource& operator=(const SharedResource&) = delete;
+  SharedResource(SharedResource&&) = delete;
+  SharedResource& operator=(SharedResource&&) = delete;
 
   void useResource() const;
   std::string getName() const;
@@ -60,6 +64,10 @@ class Parent {
  public:
   explicit Parent(std::string name);
   ~Parent();
+  Parent(const Parent&) = delete;
+  Parent& operator=(const Parent&) = delete;
+  Parent(Parent&&) = delete;
+  Parent& operator=(Parent&&) = delete;
 
   void setChild(const std::shared_ptr<Child>& child);
   void showFamily() const;
@@ -75,6 +83,10 @@ class Child {
  public:
   explicit Child(std::string name);
   ~Child();
+  Child(const Child&) = delete;
+  Child& operator=(const Child&) = delete;
+  Child(Child&&) = delete;
+  Child& operator=(Child&&) = delete;
 
   void setParent(const std::shared_ptr<Parent>& parent);
   void showFamily() const;
@@ -91,6 +103,10 @@ class SmartContainer {
  public:
   SmartContainer();
   ~SmartContainer() = default;
+  SmartContainer(const SmartContainer&) = default;
+  SmartContainer& operator=(const SmartContainer&) = default;
+  SmartContainer(SmartContainer&&) = default;
+  SmartContainer& operator=(SmartContainer&&) = default;
 
   // Rule of Zero: No need to define copy/move operations
   // Smart pointers handle resource management automatically
@@ -108,6 +124,10 @@ class ExceptionSafeManager {
  public:
   ExceptionSafeManager();
   ~ExceptionSafeManager() = default;
+  ExceptionSafeManager(const ExceptionSafeManager&) = default;
+  ExceptionSafeManager& operator=(const ExceptionSafeManager&) = default;
+  ExceptionSafeManager(ExceptionSafeManager&&) = default;
+  ExceptionSafeManager& operator=(ExceptionSafeManager&&) = default;
 
   // Demonstrates exception safety with smart pointers
   void addResourceWithExceptionSafety(const std::string& data);

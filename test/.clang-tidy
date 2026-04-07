@@ -1,0 +1,5 @@
+# Inherit from parent .clang-tidy but disable noisy optional-access checks for unit tests
+# as GoogleTest macros commonly cause false positives for static analysis.
+InheritParentConfig: true
+Checks: >
+  -bugprone-unchecked-optional-access

@@ -1,0 +1,5 @@
+# Inherit from parent .clang-tidy but disable noisy optional-access checks for benchmarks
+# as they often use assumptions for performance testing.
+InheritParentConfig: true
+Checks: >
+  -bugprone-unchecked-optional-access
