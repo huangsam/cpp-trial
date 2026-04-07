@@ -27,11 +27,11 @@ For a guided learning path of C++ concepts in this project, refer to [LESSONS.md
 For everyone:
 
 ```shell
-# Build binaries
+# Build with development mode
 cmake --preset dev
 cmake --build --preset dev
 
-# Run binaries in their original form
+# Run application and tests
 ./build/bin/main.out
 ./build/bin/test.out
 ```
@@ -53,7 +53,7 @@ For contributors:
 
 ```shell
 # Ensure all files are formatted before PR
-git ls-files '*.cpp' '*.h' | xargs clang-format -i
+cmake --build build --target format
 ```
 
 ## Helpful resources
