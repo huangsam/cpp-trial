@@ -4,26 +4,48 @@ This document tracks the key C++ concepts and learnings from each module in the 
 
 Please refer to README.md for project setup, build instructions, and testing procedures.
 
+## Learning Path
+
+This guide is structured to build progressively from fundamentals to advanced topics. It's recommended to follow the order presented, as later sections build on concepts introduced earlier.
+
 ## Table of Contents
 
+### Part 1: Fundamentals
 1. [oop/person](#oopperson) - Class design and encapsulation
-2. [stl/date](#stldate) - Operator overloading and RAII
-3. [advanced/factorial](#advancedfactorial) - Function templates and generic programming
-4. [advanced/lambda](#advancedlambda) - Lambda expressions and functional programming
+2. [types/namespaces](#typesnamespaces) - Code organization and modularization
+3. [types/enums_unions](#typesenums_unions) - Enums, unions, and type safety
+
+### Part 2: STL & Collections
+4. [stl/date](#stldate) - Operator overloading and RAII
 5. [stl/stl_deep_dive](#stlstl_deep_dive) - STL containers and algorithms
-6. [types/enums_unions](#typesenums_unions) - Enums, unions, and type safety
-7. [types/namespaces](#typesnamespaces) - Code organization and modularization
-8. [oop/inheritance](#oopinheritance) - Inheritance and polymorphism
-9. [stl/file_io](#stlfile_io) - File input/output operations
-10. [concurrency/thread_simple](#concurrencythread_simple) - Basic threading concepts
-11. [concurrency/safe_counter](#concurrencysafe_counter) - Thread safety and synchronization
-12. [concurrency/async_simple](#concurrencyasync_simple) - Asynchronous programming
-13. [memory/smart_pointers](#memorysmart_pointers) - Modern smart pointer usage
-14. [types/type_safety](#typestype_safety) - C++17/20 type safety features
-15. [memory/move_semantics](#memorymove_semantics) - Move semantics and rvalue references
-16. [advanced/template_meta](#advancedtemplate_meta) - Advanced template metaprogramming
-17. [memory/memory_management](#memorymemory_management) - Custom memory management patterns
+6. [stl/file_io](#stlfile_io) - File input/output operations
+
+### Part 3: Modern C++ Memory Management
+7. [memory/smart_pointers](#memorysmart_pointers) - Modern smart pointer usage
+8. [memory/move_semantics](#memorymove_semantics) - Move semantics and rvalue references
+9. [memory/memory_management](#memorymemory_management) - Custom memory management patterns
+
+### Part 4: Advanced C++ & Functional Programming
+10. [advanced/factorial](#advancedfactorial) - Function templates and generic programming
+11. [advanced/lambda](#advancedlambda) - Lambda expressions and functional programming
+12. [types/type_safety](#typestype_safety) - C++17/20 type safety features
+13. [advanced/template_meta](#advancedtemplate_meta) - Advanced template metaprogramming
+
+### Part 5: Concurrency & Multi-threading
+14. [concurrency/thread_simple](#concurrencythread_simple) - Basic threading concepts
+15. [concurrency/safe_counter](#concurrencysafe_counter) - Thread safety and synchronization
+16. [concurrency/async_simple](#concurrencyasync_simple) - Asynchronous programming
+
+### Part 6: Object-Oriented Design
+17. [oop/inheritance](#oopinheritance) - Inheritance and polymorphism
+
+### Project Overview
 18. [Overall Project Learnings](#overall-project-learnings)
+
+## Part 1: Fundamentals
+
+### Prerequisite
+None! Start here if you're new to C++.
 
 ## oop/person
 
@@ -43,6 +65,50 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Data models for user entities
 - Business object design
 
+## types/namespaces
+
+**Key Concepts:**
+- Organizing code with namespaces
+- Nested namespaces and namespace aliases
+- Using declarations and directives
+- Avoiding name conflicts in large codebases
+
+**Learnings:**
+- Defining and using namespaces for code organization
+- Namespace aliases for shorter names
+- Using declarations to bring specific names into scope
+- Best practices for namespace usage in C++
+
+**Backend Relevance:**
+- Modular code organization in large applications
+- Preventing naming collisions in libraries and APIs
+- Clean interfaces for backend services
+
+## types/enums_unions
+
+**Key Concepts:**
+- Enums (scoped vs. unscoped) and their usage
+- Unions for memory-efficient storage
+- Tagged unions and modern alternatives like `std::variant`
+- Type safety and memory management
+
+**Learnings:**
+- Scoped enums (`enum class`) prevent implicit conversions
+- Unions share memory between different types
+- Using tags with unions to avoid unsafe access
+- `std::variant` as a type-safe alternative to unions
+
+**Backend Relevance:**
+- Efficient data structures for configuration or protocol parsing
+- Type-safe handling of multiple data types in APIs
+
+---
+
+## Part 2: STL & Collections
+
+### Prerequisite
+Understand class design from Part 1.
+
 ## stl/date
 
 **Key Concepts:**
@@ -60,6 +126,147 @@ Please refer to README.md for project setup, build instructions, and testing pro
 **Backend Relevance:**
 - Custom data types for business logic
 - Date handling in APIs and data processing
+
+## stl/stl_deep_dive
+
+**Key Concepts:**
+- STL containers (vector, map, set, unordered_map)
+- STL algorithms (sort, find, transform, accumulate, copy_if)
+- Iterator usage and range-based loops
+- Lambda expressions with algorithms
+- Container operations and performance considerations
+- C++20 ranges and views for composable, lazy-evaluated operations
+
+**Learnings:**
+- Using vector for dynamic arrays with push_back, size, and indexing
+- Map for key-value pairs with operator[] and find
+- Set for unique elements with insert and count
+- Unordered_map for fast lookups
+- Algorithms like sort, find_if, transform, accumulate
+- Lambda captures and usage in algorithms
+- Iterator-based operations
+- C++20 ranges: std::views::filter, std::views::transform, std::ranges::max_element
+- Lazy evaluation: Views create pipelines without immediate computation
+- Functional composition: Chaining views with pipe operator (|)
+
+**Backend Relevance:**
+- Data structures for caching and configuration
+- Algorithm implementations for data processing
+- Efficient container usage in high-performance applications
+- Functional programming patterns in C++
+- Modern C++ patterns: Ranges enable more expressive and efficient data processing
+
+## stl/file_io
+
+**Key Concepts:**
+- File input/output with `std::fstream`
+- Exception handling for file operations
+- Using `std::filesystem` for paths
+- Reading/writing text files
+
+**Learnings:**
+- Opening files with different modes (`std::ios::in`, `std::ios::out`)
+- Reading entire files vs. line-by-line
+- Error handling with `std::runtime_error`
+- Using `std::filesystem::path` for cross-platform paths
+
+**Backend Relevance:**
+- Configuration file reading/writing
+- Logging to files
+- Data persistence in applications
+
+---
+
+## Part 3: Modern C++ Memory Management
+
+### Prerequisite
+Understand classes and STL containers. Smart pointers are **critical** for writing safe C++ code.
+
+## memory/smart_pointers
+
+**Key Concepts:**
+- Modern smart pointer usage in C++
+- unique_ptr with custom deleters
+- shared_ptr with reference counting
+- weak_ptr to break circular references
+- make_unique and make_shared best practices
+- Rule of Zero/Five with smart pointers
+- Exception safety with smart pointers
+
+**Learnings:**
+- When to use each smart pointer type
+- Implementing custom deleters for unique_ptr
+- Understanding reference counting in shared_ptr
+- Breaking circular references with weak_ptr
+- Best practices for factory functions
+- Automatic resource management following Rule of Zero
+- Exception-safe resource allocation
+
+**Backend Relevance:**
+- Memory management in C++ applications
+- Preventing memory leaks and dangling pointers
+- Resource management in multi-threaded environments
+- Safe object ownership patterns
+
+## memory/move_semantics
+
+**Key Concepts:**
+- Move constructors and move assignment operators
+- Rvalue references (&&) usage
+- std::move and std::forward
+- Rule of Five (or Rule of Zero with smart pointers)
+- Performance benefits of move semantics
+- When to use move vs copy
+- Perfect forwarding in templates
+- Move-only types
+
+**Learnings:**
+- Implementing move operations for performance
+- Understanding lvalue vs rvalue references
+- When to use std::move vs copy
+- Perfect forwarding in generic code
+- Rule of Zero for automatic resource management
+- Performance implications of move vs copy
+- Move-only type design patterns
+
+**Backend Relevance:**
+- High-performance data structures
+- Efficient resource transfer in servers
+- Database connection pooling
+- Large object handling in APIs
+
+## memory/memory_management
+
+**Key Concepts:**
+- Custom allocators for STL containers
+- Memory pools and arena allocation
+- RAII (Resource Acquisition Is Initialization) patterns
+- Placement new and custom memory management
+- Memory alignment and alignment-aware allocation
+- Stack-based memory management
+
+**Learnings:**
+- Custom allocator implementation
+- Memory pool patterns for performance
+- RAII for exception safety
+- Placement new for custom allocation
+- Memory alignment for cache efficiency
+- Stack allocation for small objects
+- Memory management best practices
+
+**Backend Relevance:**
+- High-performance server applications
+- Game engine memory management
+- Embedded systems programming
+- Real-time system requirements
+- Custom heap implementations
+
+---
+
+## Part 4: Advanced C++ & Functional Programming
+
+### Prerequisite
+Understand smart pointers and STL containers. Templates require careful study.
 
 ## advanced/factorial
 
@@ -97,107 +304,66 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Data processing pipelines
 - Callback mechanisms in event-driven systems
 
-## stl/stl_deep_dive
+## types/type_safety
 
 **Key Concepts:**
-- STL containers (vector, map, set, unordered_map)
-- STL algorithms (sort, find, transform, accumulate, copy_if)
-- Iterator usage and range-based loops
-- Lambda expressions with algorithms
-- Container operations and performance considerations
-- C++20 ranges and views for composable, lazy-evaluated operations
+- std::optional for optional values (replacing pointers for "not found")
+- std::variant for type-safe unions (improving on raw unions)
+- std::any for type-erased storage
+- std::string_view for non-owning string references
+- Structured bindings with these types
+- Safe comparisons and operations
+- Error handling patterns
 
 **Learnings:**
-- Using vector for dynamic arrays with push_back, size, and indexing
-- Map for key-value pairs with operator[] and find
-- Set for unique elements with insert and count
-- Unordered_map for fast lookups
-- Algorithms like sort, find_if, transform, accumulate
-- Lambda captures and usage in algorithms
-- Iterator-based operations
-- C++20 ranges: std::views::filter, std::views::transform, std::ranges::max_element
-- Lazy evaluation: Views create pipelines without immediate computation
-- Functional composition: Chaining views with pipe operator (|)
+- Using optional instead of null pointers
+- Type-safe unions with variant
+- Type-erased containers with any
+- Efficient string handling with string_view
+- Structured bindings for unpacking types
+- Safe error handling without exceptions
+- Compile-time type safety
 
 **Backend Relevance:**
-- Data structures for caching and configuration
-- Algorithm implementations for data processing
-- Efficient container usage in high-performance applications
-- Functional programming patterns in C++
-- Modern C++ patterns: Ranges enable more expressive and efficient data processing
+- Type-safe APIs and data structures
+- Efficient string processing in servers
+- Optional configuration values
+- Error handling in network protocols
 
-## types/enums_unions
+## advanced/template_meta
 
 **Key Concepts:**
-- Enums (scoped vs. unscoped) and their usage
-- Unions for memory-efficient storage
-- Tagged unions and modern alternatives like `std::variant`
-- Type safety and memory management
+- Template specialization and partial specialization
+- SFINAE (Substitution Failure is Not An Error)
+- Type traits and std::enable_if
+- constexpr programming with templates
+- Variadic templates and parameter packs
+- Template recursion and compile-time computation
+- CRTP (Curiously Recurring Template Pattern)
+- Tag dispatch and overload resolution
 
 **Learnings:**
-- Scoped enums (`enum class`) prevent implicit conversions
-- Unions share memory between different types
-- Using tags with unions to avoid unsafe access
-- `std::variant` as a type-safe alternative to unions
+- Advanced template metaprogramming techniques
+- Compile-time type manipulation
+- SFINAE for function overloading
+- Variadic template programming
+- CRTP for static polymorphism
+- Tag dispatch for optimization
+- constexpr metaprogramming
 
 **Backend Relevance:**
-- Efficient data structures for configuration or protocol parsing
-- Type-safe handling of multiple data types in APIs
+- Generic library design
+- Type-safe APIs
+- Compile-time optimization
+- Template-based serialization
+- Generic algorithms in frameworks
 
-## types/namespaces
+---
 
-**Key Concepts:**
-- Organizing code with namespaces
-- Nested namespaces and namespace aliases
-- Using declarations and directives
-- Avoiding name conflicts in large codebases
+## Part 5: Concurrency & Multi-threading
 
-**Learnings:**
-- Defining and using namespaces for code organization
-- Namespace aliases for shorter names
-- Using declarations to bring specific names into scope
-- Best practices for namespace usage in C++
-
-**Backend Relevance:**
-- Modular code organization in large applications
-- Preventing naming collisions in libraries and APIs
-- Clean interfaces for backend services
-
-## oop/inheritance
-
-**Key Concepts:**
-- Inheritance with base and derived classes
-- Polymorphism using virtual functions and pure virtual destructors
-- Runtime polymorphism via base class references
-
-**Learnings:**
-- Defining base classes with virtual methods
-- Overriding virtual functions in derived classes
-- Using `override` keyword for safety
-- Demonstrating polymorphism with base references
-
-**Backend Relevance:**
-- Object hierarchies in data models
-- Extensible interfaces for plugins or handlers
-
-## stl/file_io
-
-**Key Concepts:**
-- File input/output with `std::fstream`
-- Exception handling for file operations
-- Using `std::filesystem` for paths
-- Reading/writing text files
-
-**Learnings:**
-- Opening files with different modes (`std::ios::in`, `std::ios::out`)
-- Reading entire files vs. line-by-line
-- Error handling with `std::runtime_error`
-- Using `std::filesystem::path` for cross-platform paths
-
-**Backend Relevance:**
-- Configuration file reading/writing
-- Logging to files
-- Data persistence in applications
+### Prerequisite
+**Strongly recommended:** Complete Part 3 (Memory Management) before this section. Understanding smart pointers is essential for safe multi-threaded code.
 
 ## concurrency/thread_simple
 
@@ -253,138 +419,31 @@ Please refer to README.md for project setup, build instructions, and testing pro
 - Simulates handling concurrent user requests in a web server
 - Foundation for building scalable, non-blocking services
 
-## memory/smart_pointers
+---
+
+## Part 6: Object-Oriented Design
+
+### Prerequisite
+Understand classes, inheritance hierarchies, and virtual functions.
+
+## oop/inheritance
 
 **Key Concepts:**
-- Modern smart pointer usage in C++
-- unique_ptr with custom deleters
-- shared_ptr with reference counting
-- weak_ptr to break circular references
-- make_unique and make_shared best practices
-- Rule of Zero/Five with smart pointers
-- Exception safety with smart pointers
+- Inheritance with base and derived classes
+- Polymorphism using virtual functions and pure virtual destructors
+- Runtime polymorphism via base class references
 
 **Learnings:**
-- When to use each smart pointer type
-- Implementing custom deleters for unique_ptr
-- Understanding reference counting in shared_ptr
-- Breaking circular references with weak_ptr
-- Best practices for factory functions
-- Automatic resource management following Rule of Zero
-- Exception-safe resource allocation
+- Defining base classes with virtual methods
+- Overriding virtual functions in derived classes
+- Using `override` keyword for safety
+- Demonstrating polymorphism with base references
 
 **Backend Relevance:**
-- Memory management in C++ applications
-- Preventing memory leaks and dangling pointers
-- Resource management in multi-threaded environments
-- Safe object ownership patterns
+- Object hierarchies in data models
+- Extensible interfaces for plugins or handlers
 
-## types/type_safety
-
-**Key Concepts:**
-- std::optional for optional values (replacing pointers for "not found")
-- std::variant for type-safe unions (improving on raw unions)
-- std::any for type-erased storage
-- std::string_view for non-owning string references
-- Structured bindings with these types
-- Safe comparisons and operations
-- Error handling patterns
-
-**Learnings:**
-- Using optional instead of null pointers
-- Type-safe unions with variant
-- Type-erased containers with any
-- Efficient string handling with string_view
-- Structured bindings for unpacking types
-- Safe error handling without exceptions
-- Compile-time type safety
-
-**Backend Relevance:**
-- Type-safe APIs and data structures
-- Efficient string processing in servers
-- Optional configuration values
-- Error handling in network protocols
-
-## memory/move_semantics
-
-**Key Concepts:**
-- Move constructors and move assignment operators
-- Rvalue references (&&) usage
-- std::move and std::forward
-- Rule of Five (or Rule of Zero with smart pointers)
-- Performance benefits of move semantics
-- When to use move vs copy
-- Perfect forwarding in templates
-- Move-only types
-
-**Learnings:**
-- Implementing move operations for performance
-- Understanding lvalue vs rvalue references
-- When to use std::move vs copy
-- Perfect forwarding in generic code
-- Rule of Zero for automatic resource management
-- Performance implications of move vs copy
-- Move-only type design patterns
-
-**Backend Relevance:**
-- High-performance data structures
-- Efficient resource transfer in servers
-- Database connection pooling
-- Large object handling in APIs
-
-## advanced/template_meta
-
-**Key Concepts:**
-- Template specialization and partial specialization
-- SFINAE (Substitution Failure is Not An Error)
-- Type traits and std::enable_if
-- constexpr programming with templates
-- Variadic templates and parameter packs
-- Template recursion and compile-time computation
-- CRTP (Curiously Recurring Template Pattern)
-- Tag dispatch and overload resolution
-
-**Learnings:**
-- Advanced template metaprogramming techniques
-- Compile-time type manipulation
-- SFINAE for function overloading
-- Variadic template programming
-- CRTP for static polymorphism
-- Tag dispatch for optimization
-- constexpr metaprogramming
-
-**Backend Relevance:**
-- Generic library design
-- Type-safe APIs
-- Compile-time optimization
-- Template-based serialization
-- Generic algorithms in frameworks
-
-## memory/memory_management
-
-**Key Concepts:**
-- Custom allocators for STL containers
-- Memory pools and arena allocation
-- RAII (Resource Acquisition Is Initialization) patterns
-- Placement new and custom memory management
-- Memory alignment and alignment-aware allocation
-- Stack-based memory management
-
-**Learnings:**
-- Custom allocator implementation
-- Memory pool patterns for performance
-- RAII for exception safety
-- Placement new for custom allocation
-- Memory alignment for cache efficiency
-- Stack allocation for small objects
-- Memory management best practices
-
-**Backend Relevance:**
-- High-performance server applications
-- Game engine memory management
-- Embedded systems programming
-- Real-time system requirements
-- Custom heap implementations
+---
 
 ## Overall Project Learnings
 
