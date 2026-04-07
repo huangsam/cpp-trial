@@ -27,7 +27,7 @@ static std::atomic<int64_t> shared_atomic_count(0);
 static int64_t shared_mutex_count = 0;
 static std::mutex shared_mutex;
 
-// 1. Mutex-protected counter (shared state)
+// Mutex-protected counter (shared state)
 // Demonstrates the cost of mutex contention in high-frequency operations
 static void BM_MutexCounter(benchmark::State& state) {
   if (state.thread_index() == 0) {
@@ -44,7 +44,7 @@ static void BM_MutexCounter(benchmark::State& state) {
 // Test scaling from 1 to 8 threads to show contention effects
 BENCHMARK(BM_MutexCounter)->ThreadRange(1, 8)->Repetitions(3);
 
-// 2. Atomic counter (shared state)
+// Atomic counter (shared state)
 // Shows lock-free performance using atomic operations
 static void BM_AtomicCounter(benchmark::State& state) {
   if (state.thread_index() == 0) {
@@ -60,7 +60,7 @@ static void BM_AtomicCounter(benchmark::State& state) {
 // Test scaling to show how atomics handle contention better than mutexes
 BENCHMARK(BM_AtomicCounter)->ThreadRange(1, 8)->Repetitions(3);
 
-// 3. Unsafe counter (shared state, no protection) - educational only
+// Unsafe counter (shared state, no protection) - educational only
 // This benchmark intentionally violates thread safety.
 // It demonstrates what happens when you ignore synchronization requirements.
 // Never use unsynchronized shared mutable state in real code.
@@ -86,7 +86,7 @@ static void BM_UnsafeCounter(benchmark::State& state) {
 // synchronization matters!
 BENCHMARK(BM_UnsafeCounter)->ThreadRange(1, 8)->Repetitions(3);
 
-// 4. Read-heavy workload comparison
+// Read-heavy workload comparison
 // Demonstrates different behavior under read-heavy vs write-heavy workloads
 static std::atomic<int64_t> read_heavy_atomic(0);
 static int64_t read_heavy_mutex = 0;
