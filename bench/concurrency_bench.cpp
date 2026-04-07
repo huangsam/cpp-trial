@@ -65,21 +65,25 @@ BENCHMARK(BM_AtomicCounter)->ThreadRange(1, 8)->Repetitions(3);
 // It demonstrates what happens when you ignore synchronization requirements.
 // Never use unsynchronized shared mutable state in real code.
 //
-// Purpose: Shows theoretical maximum hardware performance without synchronization
-// Reality: Results are unpredictable due to race conditions - this is why we need mutex/atomic
-// Educational value: Quantifies the performance cost of thread safety
+// Purpose: Shows theoretical maximum hardware performance without
+// synchronization Reality: Results are unpredictable due to race conditions -
+// this is why we need mutex/atomic Educational value: Quantifies the
+// performance cost of thread safety
 static void BM_UnsafeCounter(benchmark::State& state) {
   if (state.thread_index() == 0) {
-    shared_mutex_count = 0;  // Reset only on main thread (reuse shared_mutex_count for unsafe)
+    shared_mutex_count =
+        0;  // Reset only on main thread (reuse shared_mutex_count for unsafe)
   }
 
   for (auto _ : state) {
-    shared_mutex_count++;  // RACE CONDITION: Multiple threads modifying without synchronization
+    shared_mutex_count++;  // RACE CONDITION: Multiple threads modifying without
+                           // synchronization
   }
 
   benchmark::DoNotOptimize(shared_mutex_count);
 }
-// Note: Results may vary between runs due to race conditions - this proves why synchronization matters!
+// Note: Results may vary between runs due to race conditions - this proves why
+// synchronization matters!
 BENCHMARK(BM_UnsafeCounter)->ThreadRange(1, 8)->Repetitions(3);
 
 // 4. Read-heavy workload comparison
