@@ -8,10 +8,5 @@ bin/
 build/
 lib/
 test_data/
-*.cmake
-*.out
 .DS_Store
-CMakeCache.txt
-DartConfiguration.tcl
-Makefile
 bench*.json
