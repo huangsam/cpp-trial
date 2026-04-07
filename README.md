@@ -13,12 +13,12 @@ This repository serves as a comprehensive learning resource for modern C++ devel
 ## Project Structure
 
 The codebase is organized into domain-specific modules:
-- **`advanced/`**: Metaprogramming, lambdas, and factorial templates.
-- **`concurrency/`**: Threading, async programming, and synchronization structures.
-- **`memory/`**: Smart pointers, move semantics, and custom memory management.
-- **`oop/`**: Inheritance, polymorphism, and core class design.
-- **`stl/`**: Standard Template Library containers, algorithms, and file I/O.
-- **`types/`**: Primitive type safety, namespaces, and enums/unions.
+- `advanced/`: Metaprogramming, lambdas, and factorial templates.
+- `concurrency/`: Threading, async programming, and synchronization structures.
+- `memory/`: Smart pointers, move semantics, and custom memory management.
+- `oop/`: Inheritance, polymorphism, and core class design.
+- `stl/`: Standard Template Library containers, algorithms, and file I/O.
+- `types/`: Primitive type safety, namespaces, and enums/unions.
 
 For a guided learning path of C++ concepts in this project, refer to [LESSONS.md](LESSONS.md).
 
