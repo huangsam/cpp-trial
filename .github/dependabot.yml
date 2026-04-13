@@ -1,20 +1,5 @@
 version: 2
 updates:
-  - package-ecosystem: "cmake"
-    directory: "/"
-    schedule:
-      interval: "weekly"
-
-  - package-ecosystem: "cmake"
-    directory: "/test"
-    schedule:
-      interval: "weekly"
-
-  - package-ecosystem: "cmake"
-    directory: "/bench"
-    schedule:
-      interval: "weekly"
-
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
