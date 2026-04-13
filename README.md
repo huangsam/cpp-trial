@@ -10,7 +10,7 @@ Exploring modern C++ concepts (C++11 to C++20) with [CMake](https://cmake.org/) 
 
 This repository serves as a comprehensive learning resource for modern C++ development, focusing on language mastery through C++11 to C++20 features, tool proficiency with CMake and GoogleTest, backend development patterns for systems programming, code quality with clean and testable C++ code, and progressive learning from basic concepts to advanced template metaprogramming.
 
-## Project Structure
+## Project structure
 
 The codebase is organized into domain-specific modules:
 - `advanced/`: Metaprogramming, lambdas, and factorial templates.
@@ -56,7 +56,7 @@ For contributors:
 cmake --build build --target format
 ```
 
-## Helpful resources
+## Useful resources
 
 - <https://cplusplus.com/>
 - <https://en.cppreference.com/w/>
