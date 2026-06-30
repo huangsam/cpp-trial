@@ -41,6 +41,10 @@ add_executable(
   types/type_safety_test.cpp
 )
 target_link_libraries(test.out PRIVATE gtest_main cpp_trial_core project_options)
+
+# Suppress warnings from googletest headers (treat as system headers)
+target_include_directories(test.out SYSTEM PRIVATE ${gtest_SOURCE_DIR}/include ${gtest_main_SOURCE_DIR}/include)
+
 set_target_properties(test.out PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # Clang-Tidy integration
