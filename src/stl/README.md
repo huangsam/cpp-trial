@@ -4,11 +4,11 @@ This directory explores the Standard Template Library (STL) in C++20, spanning v
 
 ## Files & Components
 
-| File | Purpose | Key Features |
-|---|---|---|
-| [date.h](date.h) / [date.cpp](date.cpp) | Value Semantics & Comparisons | Domain-checked types (`Year`, `Month`, `Day`), C++20 spaceship operator (`<=>`), defaulted equality (`==`), `std::formatter<Date>` |
-| [stl_deep_dive.h](stl_deep_dive.h) / [stl_deep_dive.cpp](stl_deep_dive.cpp) | Containers, Algorithms & Ranges | `std::vector`, `std::map`, `std::set`, algorithms (`sort`, `accumulate`, `max_element`, `set_intersection`), C++20 views pipeline |
-| [file_io.h](file_io.h) / [file_io.cpp](file_io.cpp) | File I/O & Filesystem Abstraction | `std::ifstream`, `std::ofstream`, binary streams, bulk iterator reads, line-based processing, `std::filesystem::path` |
+| Component | Focus & Role |
+|---|---|
+| **[`date.h`](date.h)** · [`cpp`](date.cpp) | Value semantics, spaceship comparisons (`<=>`), and formatting |
+| **[`stl_deep_dive.h`](stl_deep_dive.h)** · [`cpp`](stl_deep_dive.cpp) | Containers, algorithms, and lazy ranges/views pipelines |
+| **[`file_io.h`](file_io.h)** · [`cpp`](file_io.cpp) | Fast buffer I/O, line streaming, and filesystem path operations |
 
 ---
 

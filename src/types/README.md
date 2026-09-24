@@ -4,11 +4,11 @@ This directory explores type organization, safety, and modern vocabulary types i
 
 ## Files & Components
 
-| File | Purpose | Key Features |
-|---|---|---|
-| [namespaces.h](namespaces.h) / [namespaces.cpp](namespaces.cpp) | Code Organization & Scoping | Nested namespaces (`utils::math`), namespace aliases, avoiding symbol pollution, header cleanliness rules |
-| [enums_unions.h](enums_unions.h) / [enums_unions.cpp](enums_unions.cpp) | Enumerations & Memory Sharing | Unscoped vs scoped enums (`enum class`), memory layout of raw `union`, `TaggedData`, C++20 `using enum`, `std::variant` |
-| [type_safety.h](type_safety.h) / [type_safety.cpp](type_safety.cpp) | Modern Vocabulary Types | `std::optional`, `std::variant`, `std::any`, `std::string_view`, structured bindings, `std::from_chars`, `Result` pattern |
+| Component | Focus & Role |
+|---|---|
+| **[`namespaces.h`](namespaces.h)** · [`cpp`](namespaces.cpp) | Nested namespaces, aliases, and symbol pollution prevention |
+| **[`enums_unions.h`](enums_unions.h)** · [`cpp`](enums_unions.cpp) | Scoped enums, union memory sharing, and type-safe variants |
+| **[`type_safety.h`](type_safety.h)** · [`cpp`](type_safety.cpp) | Modern vocabulary types, string views, and structured bindings |
 
 ---
 

@@ -4,11 +4,11 @@ This directory covers modern C++ memory management, ranging from safe RAII owner
 
 ## Files & Components
 
-| File | Purpose | Key Features |
-|---|---|---|
-| [smart_pointers.h](smart_pointers.h) / [smart_pointers.cpp](smart_pointers.cpp) | Safe Ownership & Lifetime | `std::unique_ptr` with custom deleters, `std::shared_ptr`, `std::weak_ptr` cycle breaking, Rule of Zero, factory functions |
-| [move_semantics.h](move_semantics.h) / [move_semantics.cpp](move_semantics.cpp) | Value Semantics & Resource Stealing | Rule of Five (`ResourceManager`), rvalue references (`&&`), `std::move`, perfect forwarding (`std::forward`), move-only types |
-| [memory_management.h](memory_management.h) / [memory_management.cpp](memory_management.cpp) | High-Performance Allocators | `ArenaAllocator`, STL `CustomAllocator<T>`, `MemoryPool<T>`, placement `new`, cache alignment (`alignas(64)`), `StackVector` |
+| Component | Focus & Role |
+|---|---|
+| **[`smart_pointers.h`](smart_pointers.h)** · [`cpp`](smart_pointers.cpp) | Unique/shared ownership, custom deleters, and cyclic reference breaking |
+| **[`move_semantics.h`](move_semantics.h)** · [`cpp`](move_semantics.cpp) | Resource stealing, Rule of Five, perfect forwarding, and move-only types |
+| **[`memory_management.h`](memory_management.h)** · [`cpp`](memory_management.cpp) | Contiguous arenas, chunked memory pools, cache alignment, and stack vectors |
 
 ---
 

@@ -4,11 +4,11 @@ This directory covers advanced C++ features, including C++20 concepts and constr
 
 ## Files & Components
 
-| File | Purpose | Key Features |
-|---|---|---|
-| [factorial.h](factorial.h) | Concepts & Compile-Time Checks | Function templates, C++20 `requires std::integral<T>`, `static_assert`, runtime bounds checks |
-| [lambda.h](lambda.h) / [lambda.cpp](lambda.cpp) | Functional Programming & Lambdas | Closures, capture semantics, higher-order algorithms (`std::accumulate`), value wrappers |
-| [template_meta.h](template_meta.h) / [template_meta.cpp](template_meta.cpp) | Template Metaprogramming | Custom type traits (`std::void_t`), `constexpr` computation, variadic templates, fold expressions, CRTP, tag dispatch |
+| Component | Focus & Role |
+|---|---|
+| **[`factorial.h`](factorial.h)** | Constrained function templates and compile-time assertions |
+| **[`lambda.h`](lambda.h)** · [`cpp`](lambda.cpp) | Functional transformations, lambda closures, and capture semantics |
+| **[`template_meta.h`](template_meta.h)** · [`cpp`](template_meta.cpp) | Custom type traits, compile-time recursion, fold expressions, and CRTP |
 
 ---
 

@@ -4,10 +4,10 @@ This directory illustrates fundamental and modern object-oriented programming pa
 
 ## Files & Components
 
-| File | Purpose | Key Features |
-|---|---|---|
-| [person.h](person.h) / [person.cpp](person.cpp) | Encapsulation & Domain Validation | Validated value structs (`Age`, `Salary`), `Person` entity, `std::formatter<Person>` specialization, C++20 range pipelines |
-| [inheritance.h](inheritance.h) / [inheritance.cpp](inheritance.cpp) | Inheritance & Polymorphism | Abstract base class (`Animal`), pure virtual functions, virtual destructors, derived classes (`Dog`, `Cat`), polymorphic base dispatch |
+| Component | Focus & Role |
+|---|---|
+| **[`person.h`](person.h)** · [`cpp`](person.cpp) | Encapsulation, strong parameter types, custom formatting, and range pipelines |
+| **[`inheritance.h`](inheritance.h)** · [`cpp`](inheritance.cpp) | Abstract base classes, virtual destructors, and dynamic runtime dispatch |
 
 ---
 

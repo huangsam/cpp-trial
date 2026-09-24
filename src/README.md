@@ -39,31 +39,24 @@ Modern C++ is often perceived as verbose or intimidating when compared to high-l
 
 The source tree is divided into six domain directories. Each submodule has its own dedicated `README.md` detailing its design, code highlights, key takeaways, and test references:
 
-| Module | Focus & Features | Deep Dive Guide |
-|---|---|---|
-| **[`oop/`](oop/)** | Strong types, validation wrappers, encapsulation, class hierarchies, virtual dispatch, runtime polymorphism, C++20 `std::formatter` | [oop/README.md](oop/README.md) |
-| **[`types/`](types/)** | Modular namespaces, scoped enums (`enum class`), unions, `std::variant`, `std::optional`, `std::any`, `std::string_view`, structured bindings | [types/README.md](types/README.md) |
-| **[`stl/`](stl/)** | C++20 three-way comparison (`<=>`), STL containers (`vector`, `map`, `set`), standard algorithms, C++20 ranges & views, file I/O with `std::filesystem` | [stl/README.md](stl/README.md) |
-| **[`memory/`](memory/)** | `unique_ptr` with custom deleters, `shared_ptr`, `weak_ptr`, Rule of Zero/Five, move semantics, perfect forwarding, arena allocators, memory pools, alignment | [memory/README.md](memory/README.md) |
-| **[`advanced/`](advanced/)** | Concepts & requires constraints, lambdas & functional composition, type traits (`std::void_t`), `constexpr`, fold expressions, variadics, CRTP, tag dispatch | [advanced/README.md](advanced/README.md) |
-| **[`concurrency/`](concurrency/)** | Multithreading with `std::thread`, mutex synchronization, `lock_guard` RAII, atomic status flags, asynchronous tasks with `std::async` and `std::future` | [concurrency/README.md](concurrency/README.md) |
+| Module & Guide | Core Domain Focus |
+|---|---|
+| **[`oop/`](oop/README.md)** | Encapsulation, strong parameter validation, class hierarchies, and runtime polymorphism |
+| **[`types/`](types/README.md)** | Namespace scoping, scoped enumerations, type-safe variants, and modern vocabulary types |
+| **[`stl/`](stl/README.md)** | Synthesized comparisons, standard containers, constrained algorithms, and lazy range views |
+| **[`memory/`](memory/README.md)** | Smart pointer ownership, zero-copy move semantics, arena allocators, and memory pools |
+| **[`advanced/`](advanced/README.md)** | Concepts and constraints, functional closures, compile-time introspection, and static polymorphism |
+| **[`concurrency/`](concurrency/README.md)** | Native thread lifecycle, critical section synchronization, lock-free atomics, and async futures |
 
 ---
 
 ## Application Entrypoint (`main.cpp`)
 
-[src/main.cpp](main.cpp) serves as an end-to-end integration harness exercising components across all six modules. It demonstrates:
-- Date formatting and three-way comparisons
-- Factorial calculation with template constraints
-- Lambda comparisons and functional sum-of-squares
-- Validated Person entity formatting
-- Custom deleters for file I/O using `std::unique_ptr`
-- Reference counting and circular reference breaking with `std::shared_ptr` / `std::weak_ptr`
-- Memory arena allocation and RAII cleanup
-- Move semantics resource consumption
-- STL container filtering, counting, and intersection
-- Namespace resolution and type-safe config parsing
-- Thread-safe counting and async task dispatch
+[src/main.cpp](main.cpp) serves as an end-to-end integration harness exercising components across all six modules. It organizes demonstrations into three cohesive system areas:
+
+- **Domain Models & Type Safety**: Validated `Person` formatting via `std::format`, C++20 `Date` spaceship comparisons (`<=>`), and type-safe `ConfigValue` variants with `std::visit`.
+- **Memory Architecture & Lifetimes**: Custom `unique_ptr` file deleters, cycle-breaking `shared_ptr`/`weak_ptr` relationships, scoped `ArenaAllocator` regions, and `ResourceManager` move semantics.
+- **Algorithms & Concurrent Tasks**: C++20 range filtering and transforms, `sum_of_squares` lambda closures, `SafeCounter` thread synchronization with mutexes, and `std::async` worker offloading.
 
 Run the main application:
 ```shell
@@ -76,11 +69,12 @@ cmake --build --preset dev
 
 ## Coding Conventions Across `src/`
 
-- **Type Safety over Primitives**: Use wrapper types (e.g., `Age`, `Salary`, `Year`, `Month`) with validation logic in constructors instead of passing raw primitives.
-- **Resource Management (RAII)**: Own resources via smart pointers or dedicated RAII classes. Explicitly delete copy operations when implementing unique-ownership types.
-- **`[[nodiscard]]`**: Apply to non-void getters, pure functions, and factory methods to prevent discarded return values.
-- **Const Correctness**: Mark non-mutating member functions `const` and prefer `const auto` for immutable local variables.
-- **Modern C++ Idioms**: Prefer C++20 ranges (`| std::views::filter`), `std::format`, `using enum`, concepts, and `std::from_chars` over legacy C-style idioms.
+| Convention | Modern C++ Idiom | Engineering Rationale |
+|---|---|---|
+| **Strong Typing** | Dedicated structs (`Age`, `Salary`, `Year`) | Prevents primitive obsession and catches swapped or invalid arguments at construction. |
+| **Deterministic RAII** | `std::unique_ptr`, `std::shared_ptr`, custom deleters | Guarantees resource release upon scope exit without manual cleanup calls. |
+| **Compiler Attributes** | `[[nodiscard]]`, `const`, `explicit`, `noexcept` | Enforces compiler-level diagnostics against accidental copies, drops, or mutations. |
+| **Zero-Cost Abstractions** | C++20 ranges (`\|`), `std::format`, concepts, `std::from_chars` | Expressive, declarative syntax that optimizes down to tight machine assembly. |
 
 ---
 

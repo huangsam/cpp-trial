@@ -4,11 +4,11 @@ This directory covers concurrency, thread synchronization, race condition preven
 
 ## Files & Components
 
-| File | Purpose | Key Features |
-|---|---|---|
-| [thread_simple.h](thread_simple.h) / [thread_simple.cpp](thread_simple.cpp) | Basic Thread Lifecycle | `std::thread`, lifecycle management, `.join()`, worker thread encapsulation |
-| [safe_counter.h](safe_counter.h) / [safe_counter.cpp](safe_counter.cpp) | Synchronization & Data Races | `std::mutex`, `std::lock_guard` RAII, atomic status flag (`std::atomic<bool>`), multi-thread coordination |
-| [async_simple.h](async_simple.h) / [async_simple.cpp](async_simple.cpp) | Asynchronous Task Execution | `std::async`, `std::future`, `std::launch::async`, non-blocking task offloading |
+| Component | Focus & Role |
+|---|---|
+| **[`thread_simple.h`](thread_simple.h)** · [`cpp`](thread_simple.cpp) | Direct OS thread lifecycle, join semantics, and worker encapsulation |
+| **[`safe_counter.h`](safe_counter.h)** · [`cpp`](safe_counter.cpp) | Critical section synchronization, RAII mutex locks, and atomic flags |
+| **[`async_simple.h`](async_simple.h)** · [`cpp`](async_simple.cpp) | Asynchronous task execution and cross-thread future result retrieval |
 
 ---
 
