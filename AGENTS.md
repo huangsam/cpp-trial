@@ -1,21 +1,9 @@
 ---
 name: cpp-trial-agents
-description: Workspace instructions for C++ learning project covering modern C++ features, CMake build system, and GoogleTest framework
+description: Workspace guidance for C++ learning project covering modern C++, CMake, GoogleTest
 ---
 
 # C++ Trial Project Agents
-
-## Project Architecture
-
-This workspace contains a C++ learning project demonstrating modern C++ concepts:
-
-- **Build System**: CMake with Ninja generator, configured via `CMakePresets.json`
-- **Testing Framework**: GoogleTest (gtest) for unit testing
-- **Source Structure**:
-  - `src/`: Implementation files (.cpp/.h) organized into domain modules (`concurrency`, `memory`, etc.)
-  - `test/`: Corresponding unit tests mirroring the `src/` module structure
-  - `bench/`: Performance benchmarks using Google Benchmark
-  - `build/`: Generated build artifacts and dependencies
 
 ## Conditional Instructions
 
