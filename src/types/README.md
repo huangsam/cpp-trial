@@ -12,6 +12,19 @@ This directory explores type organization, safety, and modern vocabulary types i
 
 ---
 
+## Realistic Engineering Goals: Why Modern C++ Replaces C-Style Idioms
+
+In legacy C and pre-C++17 codebases, types were often treated casually—raw pointers represented "optional" values, integers doubled as error codes, and untyped unions shared memory blindly. Modern C++ provides explicit vocabulary types that eliminate these classic sources of production crashes:
+
+| Legacy / C-Style Idiom | Modern C++ Replacement | Problem Solved |
+|---|---|---|
+| Null pointers (`nullptr`) for missing data | `std::optional<T>` | Eliminates null pointer dereference crashes; forces explicit handling of the absent case at compile time. |
+| Raw C-unions (`union Data`) | `std::variant<...>` | Prevents undefined behavior from reading the wrong union member; manages constructors and destructors safely. |
+| Integer error codes (`-1`, `errno`) | `Result` (`std::variant<T, Error>`) | Unambiguous error signaling without throwing exceptions or risking unchecked error codes. |
+| Passing `const std::string&` | `std::string_view` | Avoids heap allocation when inspecting string literals or substrings. |
+
+---
+
 ## Detailed Topic Guides
 
 ### 1. Namespaces & Scoping (`namespaces.h`)

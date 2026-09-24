@@ -11,6 +11,19 @@ This directory illustrates fundamental and modern object-oriented programming pa
 
 ---
 
+## Mindset Shift: Why `Person` Is Structured This Way
+
+If you come from Python, Java, or TypeScript, the implementation in [person.h](person.h) might initially feel like "over-engineering" for a simple entity class. Here is the realistic engineering rationale behind this structure:
+
+| Naive / Introductory OOP | Production Modern C++ ([person.h](person.h)) | Engineering Rationale |
+|---|---|---|
+| `Person(string name, int age, double salary)` | `Person(string name, Age age, Salary salary)` | **Prevents Primitive Obsession**: In a naive constructor, accidentally calling `Person("Alice", 75000, 30)` compiles silently. Strong wrapper types catch parameter transposition at compile time and guarantee validation on instantiation. |
+| Public fields (`p.salary = -100`) | Private fields + `[[nodiscard]]` getters | **Guaranteed Invariants**: An object cannot be mutated into an invalid state after construction. |
+| Custom `.toString()` returning `std::string` | `std::formatter<Person>` specialization | **Zero Heap Allocations**: Custom `.toString()` methods allocate a new heap string on every invocation. `std::formatter` streams formatted characters directly into output buffers without allocations. |
+| Imperative `for` loop with intermediate arrays | C++20 Range Pipeline (`std::views::filter`) | **Zero Temporary Allocations & Laziness**: Declarative stream processing without allocating temporary vectors for intermediate results. |
+
+---
+
 ## Detailed Topic Guides
 
 ### 1. Person & Value Encapsulation (`person.h`)

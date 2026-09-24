@@ -12,6 +12,20 @@ This directory covers modern C++ memory management, ranging from safe RAII owner
 
 ---
 
+## Realistic Engineering Goals: Deterministic Ownership Without a GC
+
+In garbage-collected environments (Java, Python, Go), developers don't track object ownership—a runtime background collector sweeps memory periodically. In legacy C, developers manually paired `malloc()` and `free()`, resulting in notorious leaks, double-frees, and use-after-free vulnerabilities.
+
+Modern C++ rejects both approaches. Instead, it achieves **deterministic ownership** with zero runtime GC pauses through three tiers of memory control demonstrated in this module:
+
+| Memory Tier | Mechanism | Production Purpose |
+|---|---|---|
+| **Tier 1: Smart Pointers** | `std::unique_ptr`, `std::shared_ptr`, `std::weak_ptr` | Explicit ownership semantics; memory is freed deterministically at scope exit without leaks. |
+| **Tier 2: Move Semantics** | Rvalue references (`&&`), `std::move` | Steals buffer pointers instead of duplicating expensive heap allocations during data transfer. |
+| **Tier 3: Custom Allocators** | `ArenaAllocator`, `MemoryPool<T>`, `alignas(64)` | Bypasses general-purpose OS heap locks for low-latency, high-frequency allocation loops. |
+
+---
+
 ## Detailed Topic Guides
 
 ### 1. Smart Pointers & Custom Deleters (`smart_pointers.h`)

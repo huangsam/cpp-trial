@@ -12,6 +12,18 @@ This directory explores the Standard Template Library (STL) in C++20, spanning v
 
 ---
 
+## Realistic Engineering Goals: Value Semantics & Zero-Copy Streams
+
+The Standard Template Library in modern C++ is not just a collection of data structures. It represents a unified philosophy of **contiguous memory layout, value semantics, and composable zero-allocation pipelines**:
+
+| Traditional Container Usage | Modern C++ STL ([src/stl/](.)) | Production Benefit |
+|---|---|---|
+| Overloading six relational operators (`<`, `<=`, `>`, `>=`, `==`, `!=`) | Spaceship Operator (`operator<=>`) | Synthesizes consistent, bug-free ordering comparisons in a single `constexpr` function. |
+| Nested loops creating intermediate vectors | C++20 Ranges & Views (`std::views::filter`) | Lazy evaluation: stream transformations happen on-the-fly without allocating intermediate heap vectors. |
+| Manual byte-by-byte file read loops | Stream buffer iterators (`std::istreambuf_iterator`) | Reads entire files into contiguous memory buffers with minimal kernel-to-user space copy overhead. |
+
+---
+
 ## Detailed Topic Guides
 
 ### 1. Date & Three-Way Comparison (`date.h`)

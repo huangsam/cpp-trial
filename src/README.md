@@ -17,6 +17,24 @@ All modules in `src/` are compiled into a shared static library target called `c
 
 ---
 
+## Architectural Goals & The Modern C++ Mindset
+
+Modern C++ is often perceived as verbose or intimidating when compared to high-level scripting languages. However, in C++, **verbosity is not boilerplate—it represents explicit engineering control**:
+
+1. **Deterministic Lifetime over Garbage Collection**:
+   - There are no background GC pauses or mark-and-sweep cycles.
+   - Resource cleanup is tied strictly to scope exit via **RAII** (Resource Acquisition Is Initialization). Smart pointers (`std::unique_ptr`, `std::shared_ptr`) automate memory reclamation without runtime overhead.
+
+2. **Compile-Time Safety over Runtime Exception Recovery**:
+   - Instead of passing raw primitive types (`int`, `double`) and hoping runtime callers provide valid values, we use strong wrapper types (`Age`, `Salary`, `Year`, `Month`) with explicit constructors.
+   - Modifiers like `explicit`, `[[nodiscard]]`, `const`, and `noexcept` turn common human oversights (like swapped parameters or ignored return values) into immediate compiler errors.
+
+3. **Zero-Cost Abstractions over Layered Indirection**:
+   - High-level constructs like C++20 range pipelines (`| std::views::filter`) and compile-time templates compile down to the exact same assembly as handwritten pointer loops.
+   - You get declarative, readable code without paying runtime performance penalties.
+
+---
+
 ## Domain Modules
 
 The source tree is divided into six domain directories. Each submodule has its own dedicated `README.md` detailing its design, code highlights, key takeaways, and test references:

@@ -12,6 +12,19 @@ This directory covers advanced C++ features, including C++20 concepts and constr
 
 ---
 
+## Realistic Engineering Goals: Compile-Time Computation & Zero-Cost Abstraction
+
+Template metaprogramming is often perceived as "arcane syntax". In modern systems C++, however, metaprogramming is not about clever tricks—it is about **shifting performance costs from runtime to compilation time**:
+
+| Runtime Technique (Other Languages) | Compile-Time C++ Equivalent | Production Benefit |
+|---|---|---|
+| Runtime reflection & type checking | Concepts (`requires std::integral<T>`) | Incompatible types are rejected at compile time with zero CPU cycles spent on runtime type inspection. |
+| Interface dispatch via virtual tables (vtables) | CRTP (Curiously Recurring Template Pattern) | Inlines method calls directly without the pointer indirection or cache misses of dynamic vtable lookups. |
+| Dynamic loops for static calculations | `constexpr` & template recursion | Computes constants, lookup tables, and formulas during compilation into raw binary data. |
+| Variadic runtime packing / arrays | Variadic templates & fold expressions | Emits tight specialized machine instructions for any parameter pack without allocating temporary arrays. |
+
+---
+
 ## Detailed Topic Guides
 
 ### 1. Concepts & Function Templates (`factorial.h`)

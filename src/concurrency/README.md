@@ -12,6 +12,19 @@ This directory covers concurrency, thread synchronization, race condition preven
 
 ---
 
+## Realistic Engineering Goals: Bare-Metal Concurrency Without a VM
+
+Unlike languages with managed green threads or virtual runtimes (Go goroutines, Java virtual threads, Node.js event loops), C++ concurrency operates **directly on native operating system threads and CPU memory**:
+
+| VM / Runtime-Managed Concurrency | C++ Systems Concurrency | Engineering Implication |
+|---|---|---|
+| Background green-thread scheduler | Direct OS kernel threads (`std::thread`) | Predictable priority and hardware scheduling; zero runtime scheduler overhead. |
+| Coarse / implicit synchronization | Explicit `std::mutex` & `std::lock_guard` | You control exact critical section granularity to minimize thread contention. |
+| Implicit memory barriers | Explicit `std::atomic<T>` | Lock-free coordination mapped directly to hardware CPU atomic instructions. |
+| Callback chains / runtime promises | `std::async` & `std::future` | Typed asynchronous task offloading with clean cross-thread exception propagation. |
+
+---
+
 ## Detailed Topic Guides
 
 ### 1. Basic Thread Lifecycle (`thread_simple.h`)
