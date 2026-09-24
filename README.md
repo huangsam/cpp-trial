@@ -22,7 +22,6 @@ The core codebase is organized into domain-specific modules in [`src/`](src/READ
 
 For a guided, progressive learning path across these concepts, refer to [LESSONS.md](LESSONS.md).
 
-
 ## Getting started
 
 For everyone:
