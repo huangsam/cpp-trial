@@ -88,7 +88,7 @@ class Animal {
  public:
   explicit Animal(std::string name) : name_(std::move(name)) {}
   virtual ~Animal() = default;  // Crucial for safe polymorphic deletion
-  
+
   Animal(const Animal&) = delete;
   Animal& operator=(const Animal&) = delete;
   Animal(Animal&&) = default;
