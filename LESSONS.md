@@ -1,470 +1,211 @@
-# C++ Lessons and Learnings
+# C++ Lessons & Curriculum Roadmap
 
-This document tracks the key C++ concepts and learnings from each module in the `src/` directory. Each module demonstrates specific language features, best practices, and backend-relevant skills.
+This document serves as the high-level learning roadmap for this repository. It guides you progressively through modern C++ features (C++11 through C++20), systems programming patterns, and backend design principles.
 
-Please refer to README.md for project setup, build instructions, and testing procedures.
+For module-level architectures, code snippets, and in-depth guides, see the [Source Directory Guide (`src/README.md`)](src/README.md) and each module's dedicated README.
 
-## Learning Path
+---
 
-This guide is structured to build progressively from fundamentals to advanced topics. It's recommended to follow the order presented, as later sections build on concepts introduced earlier.
+## Progressive Learning Path
 
-## Table of Contents
+The curriculum is structured into six progressive parts. Each section builds on concepts introduced in preceding modules:
 
-### Part 1: Fundamentals
-1. [oop/person](#oopperson) - Class design and encapsulation
-2. [types/namespaces](#typesnamespaces) - Code organization and modularization
-3. [types/enums_unions](#typesenums_unions) - Enums, unions, and type safety
+```mermaid
+flowchart TD
+  P1["Part 1: Fundamentals\n(oop/person, types/namespaces, types/enums_unions)"]
+  P2["Part 2: STL & Collections\n(stl/date, stl/stl_deep_dive, stl/file_io)"]
+  P3["Part 3: Modern Memory Management\n(memory/smart_pointers, memory/move_semantics, memory/memory_management)"]
+  P4["Part 4: Advanced C++ & Metaprogramming\n(advanced/factorial, advanced/lambda, types/type_safety, advanced/template_meta)"]
+  P5["Part 5: Concurrency & Multithreading\n(concurrency/thread_simple, concurrency/safe_counter, concurrency/async_simple)"]
+  P6["Part 6: Object-Oriented Design & Polymorphism\n(oop/inheritance)"]
 
-### Part 2: STL & Collections
-4. [stl/date](#stldate) - Operator overloading and RAII
-5. [stl/stl_deep_dive](#stlstl_deep_dive) - STL containers and algorithms
-6. [stl/file_io](#stlfile_io) - File input/output operations
+  P1 --> P2
+  P2 --> P3
+  P3 --> P4
+  P3 --> P5
+  P1 --> P6
+```
 
-### Part 3: Modern C++ Memory Management
-7. [memory/smart_pointers](#memorysmart_pointers) - Modern smart pointer usage
-8. [memory/move_semantics](#memorymove_semantics) - Move semantics and rvalue references
-9. [memory/memory_management](#memorymemory_management) - Custom memory management patterns
-
-### Part 4: Advanced C++ & Functional Programming
-10. [advanced/factorial](#advancedfactorial) - Function templates and generic programming
-11. [advanced/lambda](#advancedlambda) - Lambda expressions and functional programming
-12. [types/type_safety](#typestype_safety) - C++17/20 type safety features
-13. [advanced/template_meta](#advancedtemplate_meta) - Advanced template metaprogramming
-
-### Part 5: Concurrency & Multi-threading
-14. [concurrency/thread_simple](#concurrencythread_simple) - Basic threading concepts
-15. [concurrency/safe_counter](#concurrencysafe_counter) - Thread safety and synchronization
-16. [concurrency/async_simple](#concurrencyasync_simple) - Asynchronous programming
-
-### Part 6: Object-Oriented Design
-17. [oop/inheritance](#oopinheritance) - Inheritance and polymorphism
-
-### Project Overview
-18. [Overall Project Learnings](#overall-project-learnings)
+---
 
 ## Part 1: Fundamentals
 
-### Prerequisite
-None! Start here if you're new to C++.
+> [!NOTE]
+> **Prerequisites**: None. Start here to master strong typing, class design, namespaces, and enumerations.
 
-## oop/person
+### 1. [oop/person](src/oop/README.md#1-person--value-encapsulation-personh)
+- **Objective**: Replace primitive obsession with validated value types; implement encapsulation and custom string formatting.
+- **Key Concepts**: Validated value wrappers (`Age`, `Salary`), constructor validation, `std::formatter<Person>` specialization, C++20 range pipelines.
+- **Files**: [src/oop/person.h](src/oop/person.h) | [src/oop/person.cpp](src/oop/person.cpp)
+- **Unit Tests**: [test/oop/person_test.cpp](test/oop/person_test.cpp)
+- **Detailed Guide**: [src/oop/README.md](src/oop/README.md)
 
-**Key Concepts:**
-- Class design with multiple constructors
-- Access specifiers and encapsulation
-- Method chaining and fluent interfaces
-- Data validation in setters
+### 2. [types/namespaces](src/types/README.md#1-namespaces--scoping-namespacesh)
+- **Objective**: Prevent symbol collision in large-scale codebases through hierarchical namespaces and aliasing.
+- **Key Concepts**: Nested namespaces (`utils::math`), namespace aliases, header file namespace hygiene.
+- **Files**: [src/types/namespaces.h](src/types/namespaces.h) | [src/types/namespaces.cpp](src/types/namespaces.cpp)
+- **Unit Tests**: [test/types/namespaces_test.cpp](test/types/namespaces_test.cpp)
+- **Detailed Guide**: [src/types/README.md](src/types/README.md)
 
-**Learnings:**
-- Designing classes with proper abstraction
-- Implementing getter/setter patterns
-- Using `const` member functions
-- Object initialization patterns
-
-**Backend Relevance:**
-- Data models for user entities
-- Business object design
-
-## types/namespaces
-
-**Key Concepts:**
-- Organizing code with namespaces
-- Nested namespaces and namespace aliases
-- Using declarations and directives
-- Avoiding name conflicts in large codebases
-
-**Learnings:**
-- Defining and using namespaces for code organization
-- Namespace aliases for shorter names
-- Using declarations to bring specific names into scope
-- Best practices for namespace usage in C++
-
-**Backend Relevance:**
-- Modular code organization in large applications
-- Preventing naming collisions in libraries and APIs
-- Clean interfaces for backend services
-
-## types/enums_unions
-
-**Key Concepts:**
-- Enums (scoped vs. unscoped) and their usage
-- Unions for memory-efficient storage
-- Tagged unions and modern alternatives like `std::variant`
-- Type safety and memory management
-
-**Learnings:**
-- Scoped enums (`enum class`) prevent implicit conversions
-- Unions share memory between different types
-- Using tags with unions to avoid unsafe access
-- `std::variant` as a type-safe alternative to unions
-
-**Backend Relevance:**
-- Efficient data structures for configuration or protocol parsing
-- Type-safe handling of multiple data types in APIs
+### 3. [types/enums_unions](src/types/README.md#2-enums-unions-and-stdvariant-enums_unionsh)
+- **Objective**: Compare scoped and unscoped enums; understand raw union memory layouts versus type-safe alternatives.
+- **Key Concepts**: Scoped enums (`enum class`), union shared memory, tagged unions, C++20 `using enum`, `std::variant`.
+- **Files**: [src/types/enums_unions.h](src/types/enums_unions.h) | [src/types/enums_unions.cpp](src/types/enums_unions.cpp)
+- **Unit Tests**: [test/types/enums_unions_test.cpp](test/types/enums_unions_test.cpp)
+- **Detailed Guide**: [src/types/README.md](src/types/README.md)
 
 ---
 
 ## Part 2: STL & Collections
 
-### Prerequisite
-Understand class design from Part 1.
+> [!NOTE]
+> **Prerequisites**: Completion of Part 1. Understand value classes and standard formatting.
 
-## stl/date
+### 4. [stl/date](src/stl/README.md#1-date--three-way-comparison-dateh)
+- **Objective**: Implement value semantics and comparison operator synthesis in C++20.
+- **Key Concepts**: Three-way comparison operator (`operator<=>`), defaulted equality (`operator==`), `std::formatter<Date>`.
+- **Files**: [src/stl/date.h](src/stl/date.h) | [src/stl/date.cpp](src/stl/date.cpp)
+- **Unit Tests**: [test/stl/date_test.cpp](test/stl/date_test.cpp)
+- **Detailed Guide**: [src/stl/README.md](src/stl/README.md)
 
-**Key Concepts:**
-- Class design and encapsulation
-- Operator overloading (comparison operators)
-- RAII (Resource Acquisition Is Initialization)
-- Custom types and value semantics
+### 5. [stl/stl_deep_dive](src/stl/README.md#2-stl-deep-dive-containers-algorithms--ranges-stl_deep_diveh)
+- **Objective**: Leverage standard containers (`vector`, `map`, `set`), constrained algorithms, and C++20 views pipelines.
+- **Key Concepts**: Lazy evaluation with `std::views::filter` and `std::views::transform`, pipe operator (`|`), `std::ranges::max_element`, `std::ranges::set_intersection`.
+- **Files**: [src/stl/stl_deep_dive.h](src/stl/stl_deep_dive.h) | [src/stl/stl_deep_dive.cpp](src/stl/stl_deep_dive.cpp)
+- **Unit Tests**: [test/stl/stl_deep_dive_test.cpp](test/stl/stl_deep_dive_test.cpp)
+- **Detailed Guide**: [src/stl/README.md](src/stl/README.md)
 
-**Learnings:**
-- Implementing comparison operators for custom classes
-- Using `const` correctness in member functions
-- Basic date arithmetic and validation
-- Object-oriented design principles
-
-**Backend Relevance:**
-- Custom data types for business logic
-- Date handling in APIs and data processing
-
-## stl/stl_deep_dive
-
-**Key Concepts:**
-- STL containers (vector, map, set, unordered_map)
-- STL algorithms (sort, find, transform, accumulate, copy_if)
-- Iterator usage and range-based loops
-- Lambda expressions with algorithms
-- Container operations and performance considerations
-- C++20 ranges and views for composable, lazy-evaluated operations
-
-**Learnings:**
-- Using vector for dynamic arrays with push_back, size, and indexing
-- Map for key-value pairs with operator[] and find
-- Set for unique elements with insert and count
-- Unordered_map for fast lookups
-- Algorithms like sort, find_if, transform, accumulate
-- Lambda captures and usage in algorithms
-- Iterator-based operations
-- C++20 ranges: std::views::filter, std::views::transform, std::ranges::max_element
-- Lazy evaluation: Views create pipelines without immediate computation
-- Functional composition: Chaining views with pipe operator (|)
-
-**Backend Relevance:**
-- Data structures for caching and configuration
-- Algorithm implementations for data processing
-- Efficient container usage in high-performance applications
-- Functional programming patterns in C++
-- Modern C++ patterns: Ranges enable more expressive and efficient data processing
-
-## stl/file_io
-
-**Key Concepts:**
-- File input/output with `std::fstream`
-- Exception handling for file operations
-- Using `std::filesystem` for paths
-- Reading/writing text files
-
-**Learnings:**
-- Opening files with different modes (`std::ios::in`, `std::ios::out`)
-- Reading entire files vs. line-by-line
-- Error handling with `std::runtime_error`
-- Using `std::filesystem::path` for cross-platform paths
-
-**Backend Relevance:**
-- Configuration file reading/writing
-- Logging to files
-- Data persistence in applications
+### 6. [stl/file_io](src/stl/README.md#3-file-inputoutput--filesystem-file_ioh)
+- **Objective**: Manage disk input/output deterministically with binary streams and filesystem abstractions.
+- **Key Concepts**: `std::ifstream`, `std::ofstream`, stream buffer bulk iterators, line streaming, `std::filesystem::path`.
+- **Files**: [src/stl/file_io.h](src/stl/file_io.h) | [src/stl/file_io.cpp](src/stl/file_io.cpp)
+- **Unit Tests**: [test/stl/file_io_test.cpp](test/stl/file_io_test.cpp)
+- **Detailed Guide**: [src/stl/README.md](src/stl/README.md)
 
 ---
 
-## Part 3: Modern C++ Memory Management
+## Part 3: Modern Memory Management
 
-### Prerequisite
-Understand classes and STL containers. Smart pointers are **critical** for writing safe C++ code.
+> [!IMPORTANT]
+> **Prerequisites**: Completion of Parts 1 and 2. Mastering smart pointers and move semantics is foundational for writing crash-free, efficient C++.
 
-## memory/smart_pointers
+### 7. [memory/smart_pointers](src/memory/README.md#1-smart-pointers--custom-deleters-smart_pointersh)
+- **Objective**: Eliminate memory leaks, manage resource ownership, and prevent circular dependencies.
+- **Key Concepts**: `std::unique_ptr` with custom deleters (`FileDeleter`), `std::shared_ptr` reference counting, `std::weak_ptr` cycle breaking, Rule of Zero.
+- **Files**: [src/memory/smart_pointers.h](src/memory/smart_pointers.h) | [src/memory/smart_pointers.cpp](src/memory/smart_pointers.cpp)
+- **Unit Tests**: [test/memory/smart_pointers_test.cpp](test/memory/smart_pointers_test.cpp)
+- **Detailed Guide**: [src/memory/README.md](src/memory/README.md)
 
-**Key Concepts:**
-- Modern smart pointer usage in C++
-- unique_ptr with custom deleters
-- shared_ptr with reference counting
-- weak_ptr to break circular references
-- make_unique and make_shared best practices
-- Rule of Zero/Five with smart pointers
-- Exception safety with smart pointers
+### 8. [memory/move_semantics](src/memory/README.md#2-move-semantics--perfect-forwarding-move_semanticsh)
+- **Objective**: Eliminate redundant heap allocations via resource stealing and perfect forwarding.
+- **Key Concepts**: Rule of Five (`ResourceManager`), rvalue references (`&&`), `std::move`, perfect forwarding (`std::forward`), move-only types (`MoveOnlyType`).
+- **Files**: [src/memory/move_semantics.h](src/memory/move_semantics.h) | [src/memory/move_semantics.cpp](src/memory/move_semantics.cpp)
+- **Unit Tests**: [test/memory/move_semantics_test.cpp](test/memory/move_semantics_test.cpp)
+- **Benchmarks**: [bench/move_semantics_bench.cpp](bench/move_semantics_bench.cpp)
+- **Detailed Guide**: [src/memory/README.md](src/memory/README.md)
 
-**Learnings:**
-- When to use each smart pointer type
-- Implementing custom deleters for unique_ptr
-- Understanding reference counting in shared_ptr
-- Breaking circular references with weak_ptr
-- Best practices for factory functions
-- Automatic resource management following Rule of Zero
-- Exception-safe resource allocation
-
-**Backend Relevance:**
-- Memory management in C++ applications
-- Preventing memory leaks and dangling pointers
-- Resource management in multi-threaded environments
-- Safe object ownership patterns
-
-## memory/move_semantics
-
-**Key Concepts:**
-- Move constructors and move assignment operators
-- Rvalue references (&&) usage
-- std::move and std::forward
-- Rule of Five (or Rule of Zero with smart pointers)
-- Performance benefits of move semantics
-- When to use move vs copy
-- Perfect forwarding in templates
-- Move-only types
-
-**Learnings:**
-- Implementing move operations for performance
-- Understanding lvalue vs rvalue references
-- When to use std::move vs copy
-- Perfect forwarding in generic code
-- Rule of Zero for automatic resource management
-- Performance implications of move vs copy
-- Move-only type design patterns
-
-**Backend Relevance:**
-- High-performance data structures
-- Efficient resource transfer in servers
-- Database connection pooling
-- Large object handling in APIs
-
-## memory/memory_management
-
-**Key Concepts:**
-- Custom allocators for STL containers
-- Memory pools and arena allocation
-- RAII (Resource Acquisition Is Initialization) patterns
-- Placement new and custom memory management
-- Memory alignment and alignment-aware allocation
-- Stack-based memory management
-
-**Learnings:**
-- Custom allocator implementation
-- Memory pool patterns for performance
-- RAII for exception safety
-- Placement new for custom allocation
-- Memory alignment for cache efficiency
-- Stack allocation for small objects
-- Memory management best practices
-
-**Backend Relevance:**
-- High-performance server applications
-- Game engine memory management
-- Embedded systems programming
-- Real-time system requirements
-- Custom heap implementations
+### 9. [memory/memory_management](src/memory/README.md#3-custom-memory-management--allocation-patterns-memory_managementh)
+- **Objective**: Design custom memory architectures for low-latency, high-throughput systems.
+- **Key Concepts**: Arena allocators (`ArenaAllocator`), STL-compatible `CustomAllocator<T>`, chunked `MemoryPool<T>`, RAII timers, placement `new`, cache alignment (`alignas(64)`), `StackVector`.
+- **Files**: [src/memory/memory_management.h](src/memory/memory_management.h) | [src/memory/memory_management.cpp](src/memory/memory_management.cpp)
+- **Unit Tests**: [test/memory/memory_management_test.cpp](test/memory/memory_management_test.cpp)
+- **Benchmarks**: [bench/memory_management_bench.cpp](bench/memory_management_bench.cpp)
+- **Detailed Guide**: [src/memory/README.md](src/memory/README.md)
 
 ---
 
-## Part 4: Advanced C++ & Functional Programming
+## Part 4: Advanced C++ & Metaprogramming
 
-### Prerequisite
-Understand smart pointers and STL containers. Templates require careful study.
+> [!NOTE]
+> **Prerequisites**: Completion of Part 3. Requires familiarity with templates and value categories.
 
-## advanced/factorial
+### 10. [advanced/factorial](src/advanced/README.md#1-concepts--function-templates-factorialh)
+- **Objective**: Implement constrained generic functions with explicit compile-time preconditions.
+- **Key Concepts**: Function templates, C++20 `requires std::integral<T>`, `static_assert`, runtime exception validation.
+- **Files**: [src/advanced/factorial.h](src/advanced/factorial.h)
+- **Unit Tests**: [test/advanced/factorial_test.cpp](test/advanced/factorial_test.cpp)
+- **Detailed Guide**: [src/advanced/README.md](src/advanced/README.md)
 
-**Key Concepts:**
-- Function templates and generic programming
-- Exception handling with custom exceptions
-- Input validation and error propagation
-- Template specialization
+### 11. [advanced/lambda](src/advanced/README.md#2-lambda-expressions--functional-programming-lambdah)
+- **Objective**: Express functional transformations cleanly using closures and standard algorithms.
+- **Key Concepts**: Anonymous closures, capture mechanics, higher-order functions (`std::accumulate`).
+- **Files**: [src/advanced/lambda.h](src/advanced/lambda.h) | [src/advanced/lambda.cpp](src/advanced/lambda.cpp)
+- **Unit Tests**: [test/advanced/lambda_test.cpp](test/advanced/lambda_test.cpp)
+- **Detailed Guide**: [src/advanced/README.md](src/advanced/README.md)
 
-**Learnings:**
-- Writing generic functions that work with different types
-- Throwing and catching exceptions appropriately
-- Using `static_assert` for compile-time checks
-- Mathematical computations with overflow considerations
+### 12. [types/type_safety](src/types/README.md#3-modern-type-safety-features-type_safetyh)
+- **Objective**: Replace raw pointers, type puns, and exceptions with expressive C++17/20 vocabulary types.
+- **Key Concepts**: `std::optional`, `std::variant`, `std::any`, `std::string_view`, structured bindings, `std::from_chars`, `Result` pattern.
+- **Files**: [src/types/type_safety.h](src/types/type_safety.h) | [src/types/type_safety.cpp](src/types/type_safety.cpp)
+- **Unit Tests**: [test/types/type_safety_test.cpp](test/types/type_safety_test.cpp)
+- **Detailed Guide**: [src/types/README.md](src/types/README.md)
 
-**Backend Relevance:**
-- Generic utility functions for data processing
-- Error handling in computational services
-
-## advanced/lambda
-
-**Key Concepts:**
-- Lambda expressions and closures
-- Higher-order functions
-- Algorithm library usage (`std::transform`, `std::accumulate`)
-- Functional programming in C++
-
-**Learnings:**
-- Capturing variables in lambdas (by value, reference, or move)
-- Using lambdas with standard algorithms
-- Functional composition and data transformation
-- Performance implications of lambda captures
-
-**Backend Relevance:**
-- Data processing pipelines
-- Callback mechanisms in event-driven systems
-
-## types/type_safety
-
-**Key Concepts:**
-- std::optional for optional values (replacing pointers for "not found")
-- std::variant for type-safe unions (improving on raw unions)
-- std::any for type-erased storage
-- std::string_view for non-owning string references
-- Structured bindings with these types
-- Safe comparisons and operations
-- Error handling patterns
-
-**Learnings:**
-- Using optional instead of null pointers
-- Type-safe unions with variant
-- Type-erased containers with any
-- Efficient string handling with string_view
-- Structured bindings for unpacking types
-- Safe error handling without exceptions
-- Compile-time type safety
-
-**Backend Relevance:**
-- Type-safe APIs and data structures
-- Efficient string processing in servers
-- Optional configuration values
-- Error handling in network protocols
-
-## advanced/template_meta
-
-**Key Concepts:**
-- Template specialization and partial specialization
-- SFINAE (Substitution Failure is Not An Error)
-- Type traits and std::enable_if
-- constexpr programming with templates
-- Variadic templates and parameter packs
-- Template recursion and compile-time computation
-- CRTP (Curiously Recurring Template Pattern)
-- Tag dispatch and overload resolution
-
-**Learnings:**
-- Advanced template metaprogramming techniques
-- Compile-time type manipulation
-- SFINAE for function overloading
-- Variadic template programming
-- CRTP for static polymorphism
-- Tag dispatch for optimization
-- constexpr metaprogramming
-
-**Backend Relevance:**
-- Generic library design
-- Type-safe APIs
-- Compile-time optimization
-- Template-based serialization
-- Generic algorithms in frameworks
+### 13. [advanced/template_meta](src/advanced/README.md#3-template-metaprogramming--compile-time-evaluation-template_metah)
+- **Objective**: Execute compile-time computations and type introspection to achieve zero-overhead abstractions.
+- **Key Concepts**: Type traits via `std::void_t`, compile-time `constexpr`, fold expressions, variadic templates, template recursion (`Fibonacci`), CRTP, tag dispatch with `if constexpr`.
+- **Files**: [src/advanced/template_meta.h](src/advanced/template_meta.h) | [src/advanced/template_meta.cpp](src/advanced/template_meta.cpp)
+- **Unit Tests**: [test/advanced/template_meta_test.cpp](test/advanced/template_meta_test.cpp)
+- **Detailed Guide**: [src/advanced/README.md](src/advanced/README.md)
 
 ---
 
-## Part 5: Concurrency & Multi-threading
+## Part 5: Concurrency & Multithreading
 
-### Prerequisite
-**Strongly recommended:** Complete Part 3 (Memory Management) before this section. Understanding smart pointers is essential for safe multi-threaded code.
+> [!IMPORTANT]
+> **Prerequisites**: Strongly recommend completing Part 3 (Memory Management) prior to concurrency to ensure safe object lifetimes across thread boundaries.
 
-## concurrency/thread_simple
+### 14. [concurrency/thread_simple](src/concurrency/README.md#1-basic-thread-lifecycle-thread_simpleh)
+- **Objective**: Manage thread lifecycles safely, preventing thread destruction aborts.
+- **Key Concepts**: `std::thread`, lifecycle management, `.join()`, worker thread encapsulation.
+- **Files**: [src/concurrency/thread_simple.h](src/concurrency/thread_simple.h) | [src/concurrency/thread_simple.cpp](src/concurrency/thread_simple.cpp)
+- **Unit Tests**: [test/concurrency/thread_simple_test.cpp](test/concurrency/thread_simple_test.cpp)
+- **Detailed Guide**: [src/concurrency/README.md](src/concurrency/README.md)
 
-**Key Concepts:**
-- Basic thread creation with `std::thread`
-- Thread synchronization with `std::mutex` and `std::unique_lock`
-- Condition variables for thread communication
-- Thread lifecycle management
+### 15. [concurrency/safe_counter](src/concurrency/README.md#2-thread-synchronization--data-safety-safe_counterh)
+- **Objective**: Prevent data races and synchronize shared mutable state across concurrent workers.
+- **Key Concepts**: `std::mutex`, RAII `std::lock_guard`, lock-free status signaling with `std::atomic<bool>`.
+- **Files**: [src/concurrency/safe_counter.h](src/concurrency/safe_counter.h) | [src/concurrency/safe_counter.cpp](src/concurrency/safe_counter.cpp)
+- **Unit Tests**: [test/concurrency/safe_counter_test.cpp](test/concurrency/safe_counter_test.cpp)
+- **Benchmarks**: [bench/concurrency_bench.cpp](bench/concurrency_bench.cpp)
+- **Detailed Guide**: [src/concurrency/README.md](src/concurrency/README.md)
 
-**Learnings:**
-- Creating and joining threads
-- Avoiding data races with proper synchronization
-- Using condition variables for producer-consumer patterns
-- Thread safety best practices
-
-**Backend Relevance:**
-- Handling concurrent requests in server applications
-- Background task processing
-
-## concurrency/safe_counter
-
-**Key Concepts:**
-- Thread safety with mutexes
-- RAII for resource management (`std::lock_guard`)
-- Atomic operations and memory barriers
-- Race condition prevention
-
-**Learnings:**
-- Protecting shared data in multi-threaded environments
-- Using RAII for automatic lock management
-- Understanding thread synchronization primitives
-- Performance trade-offs of synchronization
-
-**Backend Relevance:**
-- Thread-safe data structures for concurrent access
-- Critical for multi-user server applications
-
-## concurrency/async_simple
-
-**Key Concepts:**
-- Asynchronous programming with `std::async` and `std::future`
-- Non-blocking execution for concurrent tasks
-- Error handling in async contexts
-- C++11/14 concurrency features
-
-**Learnings:**
-- How to launch tasks asynchronously without blocking the main thread
-- Using `std::future::get()` to retrieve results
-- Basic thread pool concepts (though not implemented here)
-- Importance of async for backend services handling multiple requests
-
-**Backend Relevance:**
-- Simulates handling concurrent user requests in a web server
-- Foundation for building scalable, non-blocking services
+### 16. [concurrency/async_simple](src/concurrency/README.md#3-asynchronous-programming-async_simpleh)
+- **Objective**: Execute asynchronous tasks and retrieve results non-blockingly without explicit thread management.
+- **Key Concepts**: `std::async`, `std::future`, `std::launch::async`, non-blocking computation.
+- **Files**: [src/concurrency/async_simple.h](src/concurrency/async_simple.h) | [src/concurrency/async_simple.cpp](src/concurrency/async_simple.cpp)
+- **Unit Tests**: [test/concurrency/async_simple_test.cpp](test/concurrency/async_simple_test.cpp)
+- **Detailed Guide**: [src/concurrency/README.md](src/concurrency/README.md)
 
 ---
 
-## Part 6: Object-Oriented Design
+## Part 6: Object-Oriented Design & Polymorphism
 
-### Prerequisite
-Understand classes, inheritance hierarchies, and virtual functions.
+> [!NOTE]
+> **Prerequisites**: Understand class definitions, pointers, and references.
 
-## oop/inheritance
-
-**Key Concepts:**
-- Inheritance with base and derived classes
-- Polymorphism using virtual functions and pure virtual destructors
-- Runtime polymorphism via base class references
-
-**Learnings:**
-- Defining base classes with virtual methods
-- Overriding virtual functions in derived classes
-- Using `override` keyword for safety
-- Demonstrating polymorphism with base references
-
-**Backend Relevance:**
-- Object hierarchies in data models
-- Extensible interfaces for plugins or handlers
+### 17. [oop/inheritance](src/oop/README.md#2-inheritance--runtime-polymorphism-inheritanceh)
+- **Objective**: Model polymorphic hierarchies correctly while avoiding object slicing and resource leaks.
+- **Key Concepts**: Abstract base classes (`Animal`), virtual destructors, pure virtual methods (`speak()`), `override` keyword, dynamic dispatch via base reference.
+- **Files**: [src/oop/inheritance.h](src/oop/inheritance.h) | [src/oop/inheritance.cpp](src/oop/inheritance.cpp)
+- **Unit Tests**: [test/oop/inheritance_test.cpp](test/oop/inheritance_test.cpp)
+- **Detailed Guide**: [src/oop/README.md](src/oop/README.md)
 
 ---
 
 ## Overall Project Learnings
 
-**Build System:**
-- CMake configuration and presets
-- Cross-platform compilation
-- Testing integration with Google Test
-- CI/CD with GitHub Actions
+### Build System & Toolchain
+- **CMake & Presets**: Unified configuration via `CMakePresets.json` separating `dev` and `release` workflows.
+- **Static Library Structure**: Core code is packaged as `cpp_trial_core` and linked across binaries, tests, and benchmarks.
+- **Format & Linting**: Enforced with `clang-format` and `clang-tidy` to catch defects before code review.
 
-**Code Quality Tools:**
-- Clang-Format: Configured to ensure consistent code formatting across the project
-- Clang-Tidy: Static analysis checks for bug detection, performance, readability, and more
+### Modern C++ Standards (C++17 & C++20)
+- **C++20 Concepts**: Replaces complex SFINAE with clean constraints (`requires std::integral<T>`).
+- **C++20 Ranges & Views**: Composable data processing pipelines without intermediate container allocations.
+- **Spaceship Operator (`<=>`)**: Automatic synthesis of relational operators with single three-way comparisons.
+- **Structured Bindings & Fast Parsing**: Efficient tuple/struct decomposition and locale-free parsing via `std::from_chars`.
 
-**C++ Standards:**
-- C++20 features and modern idioms
-- Smart pointers and RAII
-- Exception safety
-- Template metaprogramming basics
-
-**Backend Development Insights:**
-- Performance considerations
-- Concurrency patterns
-- Error handling strategies
-- Code organization for maintainability
+### Backend Systems Engineering
+- **Zero-Copy Performance**: Using `std::string_view`, rvalue references (`&&`), and `std::move` to avoid memory copies.
+- **Predictable Allocations**: Replacing heap allocations with arena and pool allocators in critical paths.
+- **Concurrency Safety**: Protecting shared state via RAII locks and atomics; isolating long-running jobs with async tasks.
