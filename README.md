@@ -42,6 +42,7 @@ cmake --preset release && cmake --build --preset release
 - <https://en.cppreference.com/w/>
 - <https://google.github.io/styleguide/cppguide.html>
 - <https://google.github.io/googletest/reference/assertions.html>
+- <https://changkun.de/modern-cpp/en/>
 - <https://cmake.org/cmake/help/git-master/manual/cmake-commands.7.html>
 - <https://clang.llvm.org/docs/ClangFormatStyleOptions.html>
 - <https://clang.llvm.org/extra/clang-tidy/checks/list.html>
