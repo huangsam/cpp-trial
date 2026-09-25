@@ -37,7 +37,7 @@ std::string FileHandler::readData() const {
 // SharedResource implementation
 SharedResource::SharedResource(std::string name) : name_(std::move(name)) {}
 
-SharedResource::~SharedResource() {}
+SharedResource::~SharedResource() = default;
 
 void SharedResource::useResource() const {}
 
@@ -46,7 +46,7 @@ std::string SharedResource::getName() const { return name_; }
 // Parent implementation
 Parent::Parent(std::string name) : name_(std::move(name)) {}
 
-Parent::~Parent() {}
+Parent::~Parent() = default;
 
 void Parent::setChild(const std::shared_ptr<Child>& child) { child_ = child; }
 
@@ -63,7 +63,7 @@ void Parent::showFamily() const {
 // Child implementation
 Child::Child(std::string name) : name_(std::move(name)) {}
 
-Child::~Child() {}
+Child::~Child() = default;
 
 void Child::setParent(const std::shared_ptr<Parent>& parent) {
   parent_ = parent;

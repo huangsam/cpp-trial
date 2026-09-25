@@ -3,7 +3,28 @@ name: cpp-trial-agents
 description: Workspace guidance for C++ learning project covering modern C++, CMake, GoogleTest
 ---
 
-# C++ Trial Project Agents
+# C++ Trial Agents
+
+## Verification Commands
+
+Run these preset commands to verify changes across development, analysis, and sanitizers:
+
+```shell
+# Fast build & unit test suite (standard verification)
+cmake --preset dev && cmake --build --preset dev && ctest --test-dir build --output-on-failure
+
+# Auto-format all source and header files
+cmake --build build --target format
+
+# Static analysis with Clang-Tidy (warnings treated as errors)
+cmake --preset tidy && cmake --build --preset tidy
+
+# Memory leak & undefined behavior detection (ASan + UBSan)
+cmake --preset asan && cmake --build --preset asan && ctest --test-dir build --output-on-failure
+
+# Data race detection (ThreadSanitizer)
+cmake --preset tsan && cmake --build --preset tsan && ctest --test-dir build --output-on-failure
+```
 
 ## Conditional Instructions
 
@@ -20,11 +41,12 @@ IF user wants to add or update performance benchmarks, THEN:
 
 IF user encounters memory management or RAII issues, THEN:
 - Check for proper resource acquisition and release patterns
-- Use valgrind or similar tools for memory leak detection
+- Run AddressSanitizer (`cmake --preset asan`) for memory leak and UB detection
 - Ensure smart pointers are used appropriately (`unique_ptr`, `shared_ptr`, `weak_ptr`)
 
 IF user asks about concurrency or threading problems, THEN:
 - Check for race conditions and proper synchronization
+- Run ThreadSanitizer (`cmake --preset tsan`) to detect runtime data races
 - Use thread-safe patterns and avoid global state
 - Consider using C++ standard library concurrency features
 

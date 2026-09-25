@@ -127,6 +127,10 @@ Unit tests:
 
 ```shell
 ctest --preset dev -R "ThreadSimpleTest|SafeCounterTest|AsyncSimpleTest" --output-on-failure
+
+# Verify thread safety with ThreadSanitizer (data race detection)
+cmake --preset tsan && cmake --build --preset tsan
+ctest --preset tsan -R "ThreadSimpleTest|SafeCounterTest|AsyncSimpleTest" --output-on-failure
 ```
 
 Performance benchmarks:

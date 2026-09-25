@@ -4,12 +4,11 @@
 #include <vector>
 
 // ResourceManager implementations
-ResourceManager::ResourceManager() {}
+ResourceManager::ResourceManager() = default;
 
 ResourceManager::ResourceManager(const size_t size) : data_(size, 0) {}
 
-ResourceManager::ResourceManager(const ResourceManager& other)
-    : data_(other.data_) {}
+ResourceManager::ResourceManager(const ResourceManager& other) = default;
 
 ResourceManager& ResourceManager::operator=(const ResourceManager& other) {
   if (this != &other) {
@@ -28,7 +27,7 @@ ResourceManager& ResourceManager::operator=(ResourceManager&& other) noexcept {
   return *this;
 }
 
-ResourceManager::~ResourceManager() {}
+ResourceManager::~ResourceManager() = default;
 
 void ResourceManager::set_data(const size_t index, const int value) {
   if (index < data_.size()) {

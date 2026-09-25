@@ -1,4 +1,4 @@
-# C++ Lessons & Curriculum Roadmap
+# C++ Trial Lessons
 
 This document serves as the high-level curriculum roadmap for this repository. It guides developers progressively through modern C++ features (C++11 through C++20), systems programming patterns, and backend design principles.
 

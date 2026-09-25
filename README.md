@@ -24,36 +24,16 @@ For a guided, progressive learning path across these concepts, refer to [LESSONS
 
 ## Getting started
 
-For everyone:
-
 ```shell
-# Build with development mode
-cmake --preset dev
-cmake --build --preset dev
+# Build and run unit tests
+cmake --preset dev && cmake --build --preset dev && ctest --test-dir build --output-on-failure
 
-# Run application and tests
+# Run demo application
 ./build/bin/main.out
-./build/bin/test.out
-```
 
-For performance engineers:
-
-```shell
-# Build with release mode
-cmake --preset release
-cmake --build --preset release
-
-# Run benchmarks
+# Run benchmarks (release mode)
+cmake --preset release && cmake --build --preset release
 ./build/bin/bench/memory_bench.out
-./build/bin/bench/concurrency_bench.out
-./build/bin/bench/move_bench.out
-```
-
-For contributors:
-
-```shell
-# Ensure all files are formatted before PR
-cmake --build build --target format
 ```
 
 ## Useful resources

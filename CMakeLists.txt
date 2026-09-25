@@ -10,6 +10,7 @@ project(
 
 # Options
 option(WITH_SANITIZERS "Enable Address and Undefined Behavior Sanitizers" OFF)
+option(WITH_TSAN "Enable ThreadSanitizer" OFF)
 option(WITH_CLANG_TIDY "Enable Clang-Tidy static analysis" OFF)
 option(ENABLE_LTO "Enable Interprocedural Optimization (LTO)" OFF)
 
@@ -34,9 +35,18 @@ target_compile_options(project_options INTERFACE
 )
 
 # Sanitizers
+if(WITH_SANITIZERS AND WITH_TSAN)
+  message(FATAL_ERROR "WITH_SANITIZERS (ASan/UBSan) and WITH_TSAN (ThreadSanitizer) cannot be enabled simultaneously.")
+endif()
+
 if(WITH_SANITIZERS)
   target_compile_options(project_options INTERFACE -fsanitize=address,undefined)
   target_link_options(project_options INTERFACE -fsanitize=address,undefined)
+endif()
+
+if(WITH_TSAN)
+  target_compile_options(project_options INTERFACE -fsanitize=thread)
+  target_link_options(project_options INTERFACE -fsanitize=thread)
 endif()
 
 # Interprocedural Optimization (LTO)

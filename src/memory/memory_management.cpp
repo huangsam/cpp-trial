@@ -70,8 +70,6 @@ FileHandle& FileHandle::operator=(FileHandle&& other) noexcept {
 Timer::Timer(const char* /*label*/)
     : start_(std::chrono::high_resolution_clock::now()) {}
 
-Timer::~Timer() {}
-
 // ============================================================================
 // 4. Placement New Implementation
 // ============================================================================

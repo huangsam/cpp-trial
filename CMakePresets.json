@@ -14,7 +14,10 @@
       "binaryDir": "${sourceDir}/build",
       "installDir": "${sourceDir}/install",
       "cacheVariables": {
-        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON"
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "WITH_SANITIZERS": "OFF",
+        "WITH_TSAN": "OFF",
+        "WITH_CLANG_TIDY": "OFF"
       }
     },
     {
@@ -23,7 +26,10 @@
       "description": "Debug build for local development.",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Debug"
+        "CMAKE_BUILD_TYPE": "Debug",
+        "WITH_SANITIZERS": "OFF",
+        "WITH_TSAN": "OFF",
+        "WITH_CLANG_TIDY": "OFF"
       }
     },
     {
@@ -32,7 +38,10 @@
       "description": "Release build for CI systems.",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_SANITIZERS": "OFF",
+        "WITH_TSAN": "OFF",
+        "WITH_CLANG_TIDY": "OFF"
       }
     },
     {
@@ -41,7 +50,10 @@
       "description": "Optimized release build for final artifacts.",
       "inherits": "base",
       "cacheVariables": {
-        "CMAKE_BUILD_TYPE": "Release"
+        "CMAKE_BUILD_TYPE": "Release",
+        "WITH_SANITIZERS": "OFF",
+        "WITH_TSAN": "OFF",
+        "WITH_CLANG_TIDY": "OFF"
       }
     },
     {
@@ -50,7 +62,18 @@
       "description": "Debug build with ASan and UBSan enabled.",
       "inherits": "dev",
       "cacheVariables": {
-        "WITH_SANITIZERS": "ON"
+        "WITH_SANITIZERS": "ON",
+        "WITH_TSAN": "OFF"
+      }
+    },
+    {
+      "name": "tsan",
+      "displayName": "TSan Build (Debug)",
+      "description": "Debug build with ThreadSanitizer enabled.",
+      "inherits": "dev",
+      "cacheVariables": {
+        "WITH_TSAN": "ON",
+        "WITH_SANITIZERS": "OFF"
       }
     },
     {
@@ -59,7 +82,9 @@
       "description": "Debug build with Clang-Tidy analysis enabled.",
       "inherits": "dev",
       "cacheVariables": {
-        "WITH_CLANG_TIDY": "ON"
+        "WITH_CLANG_TIDY": "ON",
+        "WITH_SANITIZERS": "OFF",
+        "WITH_TSAN": "OFF"
       }
     }
   ],
@@ -83,6 +108,11 @@
       "name": "asan",
       "displayName": "Build ASan",
       "configurePreset": "asan"
+    },
+    {
+      "name": "tsan",
+      "displayName": "Build TSan",
+      "configurePreset": "tsan"
     },
     {
       "name": "tidy",
@@ -123,6 +153,14 @@
       "name": "asan",
       "displayName": "Test ASan",
       "configurePreset": "asan",
+      "output": {
+        "outputOnFailure": true
+      }
+    },
+    {
+      "name": "tsan",
+      "displayName": "Test TSan",
+      "configurePreset": "tsan",
       "output": {
         "outputOnFailure": true
       }
