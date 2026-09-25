@@ -54,7 +54,7 @@ class CustomAllocator {
 
   // Required for allocator compatibility
   template <typename U>
-  CustomAllocator(const CustomAllocator<U>& other) : arena_(other.arena_) {}
+  explicit CustomAllocator(const CustomAllocator<U>& other) : arena_(other.arena_) {}
 };
 
 // ============================================================================
