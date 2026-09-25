@@ -33,6 +33,7 @@ IF user wants to add a new C++ topic or learning module, THEN:
 - Add corresponding unit tests in the matching domain folder within the `test/` directory
 - Update `CMakeLists.txt` in both the `src/` and `test/` roots to include new files using relative paths
 - Follow existing naming conventions in those folders for consistency
+- Mark all single-argument constructors and converting member templates as `explicit`
 
 IF user wants to add or update performance benchmarks, THEN:
 - Add benchmark files (`_bench.cpp`) to the `bench/` directory
