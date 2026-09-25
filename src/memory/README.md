@@ -1,4 +1,4 @@
-# Modern Memory Management (`src/memory/`)
+# Memory Management (`src/memory/`)
 
 This directory covers modern C++ memory management, ranging from safe RAII ownership with smart pointers to high-performance zero-copy move semantics and custom memory allocators.
 

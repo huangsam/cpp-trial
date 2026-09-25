@@ -1,4 +1,4 @@
-# Source Directory (`src/`)
+# C++ Trial Source (`src/`)
 
 Welcome to the core implementation source tree of `cpp-trial`. This directory contains modular, domain-focused C++20 components demonstrating modern idioms, memory management patterns, standard library features, template metaprogramming, and concurrent systems programming.
 
